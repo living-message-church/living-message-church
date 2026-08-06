@@ -45,7 +45,8 @@ a { color: inherit; text-underline-offset: 0.2em; }
 button, input, textarea, select { font: inherit; }
 ::selection { background: var(--color-gold); color: var(--color-ink); }
 :focus-visible { outline: 3px solid var(--color-cobalt); outline-offset: 4px; border-radius: 2px; }
-.service-bar :focus-visible, .hero :focus-visible, .page-hero :focus-visible, .section-ink :focus-visible, .site-footer :focus-visible { outline-color: var(--color-gold); }
+.service-bar :focus-visible { outline-color: var(--color-paper-bright); }
+.hero :focus-visible, .page-hero :focus-visible, .section-ink :focus-visible, .site-footer :focus-visible { outline-color: var(--color-gold); }
 
 .skip-link { position: fixed; z-index: 100; top: var(--space-3); left: var(--space-3); transform: translateY(-180%); background: var(--color-paper-bright); color: var(--color-ink); padding: 0.75rem 1rem; font-weight: 800; }
 .skip-link:focus { transform: translateY(0); }
@@ -73,7 +74,7 @@ button, input, textarea, select { font: inherit; }
 .action-text { min-height: 2.75rem; border: 0; padding-inline: 0; }
 .section-paper .action-secondary, .section-sage .action-secondary, .section-sun .action-secondary { border-color: var(--color-ink); }
 
-.service-bar { background: #121311; color: var(--color-paper); font-size: var(--step--1); }
+.service-bar { background: var(--color-coral); color: var(--color-paper-bright); font-size: var(--step--1); }
 .service-bar-inner { display: flex; min-height: 2.75rem; align-items: center; justify-content: space-between; gap: 1rem; }
 .service-bar p { margin: 0; }
 .service-bar a { display: inline-flex; min-height: 2.75rem; align-items: center; font-weight: 750; text-decoration: none; }
