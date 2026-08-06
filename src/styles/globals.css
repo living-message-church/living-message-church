@@ -95,15 +95,15 @@ button, input, textarea, select { font: inherit; }
 .mobile-menu nav { position: absolute; top: calc(100% + 1.8rem); right: 0; width: min(20rem, calc(100vw - 2rem)); border: 1px solid var(--color-line); background: var(--color-paper-bright); color: var(--color-ink); box-shadow: var(--shadow-card); padding: 1rem; }
 .mobile-menu nav a { display: block; border-bottom: 1px solid var(--color-line); padding: 0.85rem 0.5rem; font-weight: 800; text-decoration: none; }
 
-.hero { position: relative; display: grid; min-height: clamp(42rem, 72vh, 56rem); align-items: center; isolation: isolate; overflow: clip; background: var(--color-ink); color: var(--color-paper-bright); padding-block: clamp(4rem, 8vw, 7.5rem); }
+.hero { position: relative; display: grid; min-height: clamp(40rem, 70vh, 52rem); align-items: center; isolation: isolate; overflow: clip; background: var(--color-ink); color: var(--color-paper-bright); padding-block: clamp(4rem, 7vw, 6.5rem); }
 .hero-media, .hero-scrim { position: absolute; inset: 0; }
 .hero-media { z-index: -2; background: var(--color-ink) url("/images/hero/living-message-church-community-poster.jpg") center 46% / cover no-repeat; }
 .hero-video { width: 100%; height: 100%; object-fit: cover; object-position: center 46%; }
 .hero-scrim { z-index: -1; background: linear-gradient(90deg, rgb(18 19 17 / 0.9) 0%, rgb(18 19 17 / 0.72) 52%, rgb(18 19 17 / 0.48) 100%); }
-.hero-grid { position: relative; display: grid; align-items: center; grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.48fr); gap: clamp(3rem, 6vw, 6rem); padding-left: clamp(0.5rem, 1.35vw, 1.35rem); }
-.hero .heading-display { max-width: 11ch; font-size: clamp(2.8rem, 1.75rem + 4.8vw, 7.1rem); line-height: 1.01; text-wrap: wrap; white-space: pre-line; }
-.hero-copy { max-width: 51rem; }
-.hero-copy .lede { margin: var(--space-5) 0 0; }
+.hero-grid { position: relative; display: grid; align-items: center; grid-template-columns: minmax(0, 1fr) minmax(16rem, 19rem); gap: clamp(2rem, 4vw, 4rem); padding-left: clamp(0.5rem, 1.35vw, 1.35rem); }
+.hero .heading-display { max-width: 100%; font-size: clamp(3.75rem, 2.15rem + 3.2vw, 5.8rem); line-height: 0.94; text-wrap: wrap; white-space: pre-line; }
+.hero-copy { width: 100%; max-width: 58rem; }
+.hero-copy .lede { max-width: 34ch; margin: var(--space-5) 0 0; }
 .hero-side { display: flex; align-self: end; justify-content: flex-end; }
 .hero-fact-card { display: grid; width: min(100%, 19rem); border: 1px solid rgb(255 255 255 / 0.28); border-radius: var(--radius-sm); background: rgb(251 250 247 / 0.94); color: var(--color-ink); padding: 1.15rem; box-shadow: var(--shadow-card); }
 .hero-fact-card span { font-size: var(--step--1); font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
@@ -294,7 +294,7 @@ button, input, textarea, select { font: inherit; }
   :root { --step-5: clamp(3.3rem, 1.9rem + 4.6vw, 6.4rem); }
   .desktop-nav { display: none; }
   .mobile-menu { display: block; }
-  .hero-grid { grid-template-columns: 1fr 0.45fr; gap: var(--space-5); }
+  .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(15rem, 17rem); gap: var(--space-5); }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .ministry-card:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
   .message-card-grid, .event-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -318,7 +318,7 @@ button, input, textarea, select { font: inherit; }
   .header-inner { min-height: 5rem; }
   .hero-grid, .editorial-split, .feature-grid, .message-feature, .outreach-grid, .invitation-grid, .contact-grid, .footer-lead, .route-purpose { grid-template-columns: 1fr; }
   .hero { min-height: 0; }
-  .hero .heading-display { font-size: var(--step-5); line-height: 1.01; }
+  .hero .heading-display { font-size: clamp(2.35rem, 1.75rem + 2.6vw, 3rem); line-height: 0.96; }
   .hero-scrim { background: rgb(18 19 17 / 0.76); }
   .page-hero-photo { min-height: clamp(22rem, 72vw, 30rem); background-position: center; }
   .section-heading-row { align-items: flex-start; flex-direction: column; }
