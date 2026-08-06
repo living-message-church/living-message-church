@@ -3,9 +3,10 @@
 :root {
   --color-paper: #f3f0e9;
   --color-paper-bright: #fbfaf7;
+  --color-ink-deep: #080908;
   --color-ink: #1d1d1b;
   --color-ink-soft: #4d4c47;
-  --color-cobalt: #36538f;
+  --color-blue: #607d8b;
   --color-coral: #ad4f3b;
   --color-gold: #e5cf91;
   --color-sage: #e1e7dc;
@@ -45,7 +46,7 @@ p { text-wrap: pretty; }
 a { color: inherit; text-underline-offset: 0.2em; }
 button, input, textarea, select { font: inherit; }
 ::selection { background: var(--color-gold); color: var(--color-ink); }
-:focus-visible { outline: 3px solid var(--color-cobalt); outline-offset: 4px; border-radius: 2px; }
+:focus-visible { outline: 3px solid var(--color-blue); outline-offset: 4px; border-radius: 2px; }
 .service-bar :focus-visible { outline-color: var(--color-paper-bright); }
 .hero :focus-visible, .page-hero :focus-visible, .section-ink :focus-visible, .site-footer :focus-visible { outline-color: var(--color-gold); }
 
@@ -116,7 +117,7 @@ button, input, textarea, select { font: inherit; }
 .media-landscape { aspect-ratio: 4 / 3; }
 .media-portrait { aspect-ratio: 4 / 5; }
 .media-wide { aspect-ratio: 16 / 9; }
-.media-cobalt { background: color-mix(in srgb, var(--color-cobalt) 74%, var(--color-ink)); color: white; }
+.media-cobalt { background: var(--color-blue); color: white; }
 .media-coral { background: color-mix(in srgb, var(--color-coral) 78%, var(--color-paper)); color: var(--color-paper-bright); }
 .media-sage { background: var(--color-sage); color: var(--color-ink); }
 .media-gold { background: var(--color-gold); color: var(--color-ink); }
@@ -127,13 +128,13 @@ button, input, textarea, select { font: inherit; }
 
 .editorial-split { display: grid; grid-template-columns: 0.45fr 1fr; gap: var(--space-6); }
 .editorial-split .lede { margin: var(--space-5) 0 0; }
-.identity-section { isolation: isolate; background: color-mix(in srgb, var(--color-cobalt) 84%, var(--color-ink)); color: var(--color-paper-bright); }
+.identity-section { isolation: isolate; background: var(--color-blue); color: var(--color-paper-bright); }
 .identity-section::after { position: absolute; z-index: -1; top: 50%; right: clamp(-9rem, -5vw, -4rem); width: clamp(16rem, 27vw, 28rem); border: 1px solid rgb(229 207 145 / 0.18); border-radius: 50%; aspect-ratio: 1; content: ""; transform: translateY(-50%); }
 .identity-layout { align-items: center; grid-template-columns: minmax(10rem, 0.3fr) minmax(0, 1fr) minmax(18rem, 0.5fr); gap: clamp(2rem, 4.5vw, 5rem); }
-.identity-layout > .eyebrow { max-width: 15rem; border-top: 0.3rem solid var(--color-coral); color: var(--color-gold); padding-top: var(--space-4); }
+.identity-layout > .eyebrow { max-width: 15rem; border-top: 0.3rem solid var(--color-coral); color: var(--color-ink-deep); padding-top: var(--space-4); }
 .identity-copy { max-width: 58rem; }
 .identity-copy .heading { max-width: 13ch; font-size: clamp(2.8rem, 2rem + 2.7vw, 5.25rem); line-height: 0.94; }
-.identity-copy .lede { max-width: 38ch; border-left: 1px solid rgb(255 255 255 / 0.3); color: rgb(255 255 255 / 0.8); padding-left: var(--space-4); }
+.identity-copy .lede { max-width: 38ch; border-left: 1px solid rgb(255 255 255 / 0.42); color: var(--color-paper-bright); font-size: clamp(1.5rem, 1.35rem + 0.45vw, 1.8rem); padding-left: var(--space-4); }
 .identity-copy::after { display: block; width: 4.5rem; height: 0.35rem; margin-top: var(--space-6); background: var(--color-coral); content: ""; }
 .identity-layout > .media-frame { width: 100%; max-width: 24rem; justify-self: end; border: 1px solid rgb(255 255 255 / 0.18); border-bottom: 0.4rem solid var(--color-coral); box-shadow: 1rem 1rem 0 rgb(229 207 145 / 0.12); }
 .identity-layout > .media-frame .media-image { object-position: center 42%; }
@@ -145,7 +146,7 @@ button, input, textarea, select { font: inherit; }
 .visit-image-shell::after { position: absolute; inset: 0; background: linear-gradient(135deg, transparent 45%, rgb(29 29 27 / 0.22)); content: ""; pointer-events: none; }
 .visit-image-shell .media-frame { border-radius: 0; aspect-ratio: 4 / 3; }
 .visit-image-shell .media-image { object-position: center 58%; animation: visit-image-drift 18s ease-in-out infinite alternate; }
-.visit-time-card { position: absolute; z-index: 3; right: 0; bottom: 0; width: min(21rem, 68%); border: 1px solid rgb(255 255 255 / 0.16); border-radius: var(--radius-md); background: color-mix(in srgb, var(--color-ink) 94%, var(--color-cobalt)); color: var(--color-paper-bright); padding: 1.15rem 1.3rem; box-shadow: 0 1rem 2.5rem rgb(29 29 27 / 0.24); animation: visit-card-float 6s ease-in-out infinite; }
+.visit-time-card { position: absolute; z-index: 3; right: 0; bottom: 0; width: min(21rem, 68%); border: 1px solid rgb(255 255 255 / 0.16); border-radius: var(--radius-md); background: color-mix(in srgb, var(--color-ink) 94%, var(--color-blue)); color: var(--color-paper-bright); padding: 1.15rem 1.3rem; box-shadow: 0 1rem 2.5rem rgb(29 29 27 / 0.24); animation: visit-card-float 6s ease-in-out infinite; }
 .visit-time-card > span { display: block; margin-bottom: 0.65rem; color: var(--color-gold); font-size: 0.68rem; font-weight: 820; letter-spacing: 0.12em; line-height: 1.2; text-transform: uppercase; }
 .visit-time-card > div { display: flex; align-items: center; gap: 0.85rem; }
 .visit-time-card strong { font-family: var(--font-display); font-size: clamp(1.25rem, 1rem + 0.75vw, 1.75rem); letter-spacing: -0.04em; line-height: 1; white-space: nowrap; }
@@ -172,7 +173,7 @@ button, input, textarea, select { font: inherit; }
 .empty-card { display: grid; grid-template-columns: auto 1fr; gap: var(--space-5); padding: clamp(1.5rem, 4vw, 3rem); }
 .empty-card h3 { margin: 0; font-size: var(--step-2); letter-spacing: -0.04em; }
 .empty-card p { max-width: 48rem; margin-bottom: 0; }
-.card-index { font-family: var(--font-display); font-size: var(--step-1); color: var(--color-cobalt); }
+.card-index { font-family: var(--font-display); font-size: var(--step-1); font-weight: 700; color: var(--color-blue); }
 .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
 .ministry-card { transition: background-color 160ms ease, border-color 160ms ease; }
 .ministry-card:hover { border-color: color-mix(in srgb, var(--color-ink) 26%, transparent); background: var(--color-paper); }
@@ -193,7 +194,7 @@ button, input, textarea, select { font: inherit; }
 .editorial-panel-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: var(--space-6); border-top: 1px solid var(--color-line); border-left: 1px solid var(--color-line); }
 .editorial-panel { min-height: 16rem; border-right: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); padding: clamp(1.5rem, 2.5vw, 2.25rem); transition: background-color 160ms ease; }
 .editorial-panel:hover { background: var(--color-paper); }
-.editorial-panel > span:first-child { color: var(--color-cobalt); font-family: var(--font-display); font-size: var(--step-1); }
+.editorial-panel > span:first-child { color: var(--color-blue); font-family: var(--font-display); font-size: var(--step-1); font-weight: 700; }
 .editorial-panel h3 { margin: var(--space-5) 0 var(--space-3); font-family: var(--font-display); font-size: var(--step-2); font-weight: 720; letter-spacing: -0.035em; line-height: 1.05; }
 .editorial-panel p { color: var(--color-ink-soft); }
 .editorial-panel a { display: inline-flex; gap: 0.75rem; margin-top: var(--space-3); font-size: var(--step--1); font-weight: 720; letter-spacing: 0; }
@@ -228,7 +229,7 @@ button, input, textarea, select { font: inherit; }
 .message-search button, .message-admin-search button { min-height: 2.75rem; border: 0; background: transparent; color: var(--color-coral); font-size: var(--step--1); font-weight: 800; cursor: pointer; }
 .message-library-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
 .message-library-card { overflow: hidden; border: 1px solid var(--color-line); border-radius: var(--radius-md); background: white; }
-.message-thumbnail { position: relative; display: grid; width: 100%; border: 0; aspect-ratio: 16 / 9; place-items: center; overflow: hidden; background-color: var(--color-cobalt); background-position: center; background-size: cover; cursor: pointer; }
+.message-thumbnail { position: relative; display: grid; width: 100%; border: 0; aspect-ratio: 16 / 9; place-items: center; overflow: hidden; background-color: var(--color-blue); background-position: center; background-size: cover; cursor: pointer; }
 .message-thumbnail-shade { position: absolute; background: linear-gradient(180deg, transparent, rgb(0 0 0 / 0.34)); inset: 0; }
 .message-play { position: relative; display: grid; width: 3.4rem; height: 3.4rem; place-items: center; border: 1px solid rgb(255 255 255 / 0.62); border-radius: 50%; background: rgb(18 19 17 / 0.72); color: white; padding-left: 0.18rem; transition: background-color 160ms ease, transform 160ms ease; }
 .message-thumbnail:hover .message-play { background: var(--color-coral); transform: scale(1.04); }
@@ -264,7 +265,7 @@ button, input, textarea, select { font: inherit; }
 .message-admin-category-manager { display: grid; gap: 0.65rem; border-block: 1px solid var(--color-line); padding-block: var(--space-4); }
 .message-admin-category-manager > strong { font-size: var(--step--1); }
 .message-admin-category-manager > div, .message-admin-tags > div { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.message-admin-category-manager button, .message-admin-tags > div button { min-height: 2.35rem; border: 1px solid color-mix(in srgb, var(--color-cobalt) 22%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--color-sage) 72%, white); color: var(--color-ink); padding: 0.35rem 0.75rem; font-size: 0.74rem; font-weight: 760; cursor: pointer; }
+.message-admin-category-manager button, .message-admin-tags > div button { min-height: 2.35rem; border: 1px solid color-mix(in srgb, var(--color-blue) 22%, transparent); border-radius: 999px; background: color-mix(in srgb, var(--color-sage) 72%, white); color: var(--color-ink); padding: 0.35rem 0.75rem; font-size: 0.74rem; font-weight: 760; cursor: pointer; }
 .message-admin-category-manager button:hover, .message-admin-tags > div button:hover { border-color: var(--color-coral); color: var(--color-coral); }
 .message-admin-count { color: var(--color-ink-soft); font-size: var(--step--1); font-weight: 760; }
 .message-admin-list { display: grid; gap: var(--space-3); }

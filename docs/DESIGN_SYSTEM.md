@@ -16,17 +16,22 @@ Tokens live in `src/styles/globals.css`.
 
 ### Color
 
-| Token | Role |
-| --- | --- |
-| `--color-paper`, `--color-paper-bright` | Warm page and card surfaces |
-| `--color-ink`, `--color-ink-soft` | Primary text and immersive sections |
-| `--color-cobalt` | Information accent and light-surface focus |
-| `--color-coral` | Reserved primary-action accent |
-| `--color-gold` | Warm dark-surface focus and subtle invitation emphasis |
-| `--color-sage` | Calm, pale ministry and information surfaces |
-| `--color-line` | Low-contrast structural borders |
+| Token | Value | Role |
+| --- | --- | --- |
+| `--color-paper` | `#F3F0E9` | Warm page surface |
+| `--color-paper-bright` | `#FBFAF7` | Elevated cards and light text on dark fields |
+| `--color-ink-deep` | `#080908` | High-contrast small text on mid-tone color fields |
+| `--color-ink` | `#1D1D1B` | Primary text and immersive sections |
+| `--color-ink-soft` | `#4D4C47` | Secondary copy |
+| `--color-blue` | `#607D8B` | Approved muted blue-gray for brand fields, information accents, and light-surface focus |
+| `--color-coral` | `#AD4F3B` | Primary actions and energetic accents |
+| `--color-gold` | `#E5CF91` | Warm emphasis and dark-surface focus |
+| `--color-sage` | `#E1E7DC` | Calm ministry and information surfaces |
+| `--color-line` | 14% ink mix | Low-contrast structural borders |
 
-Color combinations must retain WCAG AA text contrast. Cobalt is used for focus on light surfaces and gold on dark surfaces. Accent fields are restrained so warm paper and ink remain visually dominant.
+The muted blue-gray is sampled from the approved visual reference supplied on 2026-08-06 and replaces the previous saturated cobalt (`#36538F`). Components may derive restrained darker or translucent variants with `color-mix()`, but must use `--color-blue` as their source rather than introducing a second blue.
+
+Color combinations must retain WCAG AA text contrast. Blue is used for focus on light surfaces and gold on dark surfaces. Because the approved blue is a mid-tone, small text placed directly on blue uses deep ink; light text on blue is reserved for large display copy. Accent fields are restrained so warm paper and ink remain visually dominant.
 
 ### Typography
 
@@ -52,7 +57,7 @@ Color combinations must retain WCAG AA text contrast. Cobalt is used for focus o
 ## Interaction
 
 - Buttons and primary action links are at least 48px high, exceeding the 44px minimum interaction target, with clear text and directional affordances.
-- Every interactive element receives a visible 3px focus outline: cobalt on light surfaces and gold on dark surfaces.
+- Every interactive element receives a visible 3px focus outline: blue on light surfaces and gold on dark surfaces.
 - Hover feedback is limited to color, border, and background changes and never carries essential meaning.
 - Mobile navigation uses native `details`/`summary` semantics and full-width tap targets.
 - The skip link is the first focusable element and targets `#main-content`.
