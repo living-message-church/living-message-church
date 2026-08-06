@@ -255,9 +255,9 @@ button, input, textarea, select { font: inherit; }
 .youtube-facade-shade { position: absolute; background: linear-gradient(180deg, rgb(8 9 8 / 0.12), rgb(8 9 8 / 0.42)); inset: 0; transition: background-color 180ms ease; }
 .youtube-facade-control { position: relative; display: grid; width: clamp(7rem, 15vw, 9rem); aspect-ratio: 1; place-items: center; transition: transform 240ms ease; }
 .youtube-facade-ring { position: absolute; width: 100%; height: 100%; overflow: visible; animation: youtube-ring-turn 16s linear infinite; }
-.youtube-facade-ring text { fill: white; font-family: var(--font-sans); font-size: 8.4px; font-weight: 700; letter-spacing: 1.45px; text-transform: uppercase; }
-.youtube-tree-circle { display: grid; width: 54%; aspect-ratio: 1; place-items: center; border: 1px solid rgb(255 255 255 / 0.78); border-radius: 50%; background: linear-gradient(135deg, var(--color-brand-navy), var(--color-brand-indigo)); box-shadow: 0 0.85rem 2.75rem rgb(8 9 8 / 0.28), inset 0 0 0 1px rgb(255 255 255 / 0.12); }
-.youtube-tree-mark { width: 74%; height: auto; object-fit: contain; filter: brightness(0) invert(1); }
+.youtube-facade-ring text { fill: white; font-family: var(--font-sans); font-size: 8.4px; font-weight: 700; text-transform: uppercase; }
+.youtube-tree-circle { display: grid; overflow: hidden; width: 62%; aspect-ratio: 1; place-items: center; border: 1px solid rgb(255 255 255 / 0.78); border-radius: 50%; background: linear-gradient(135deg, var(--color-brand-navy), var(--color-brand-indigo)); box-shadow: 0 0.85rem 2.75rem rgb(8 9 8 / 0.28), inset 0 0 0 1px rgb(255 255 255 / 0.12); }
+.youtube-tree-mark { width: 136%; max-width: none; height: 136%; object-fit: contain; }
 .youtube-facade:hover .youtube-facade-shade { background-color: rgb(8 9 8 / 0.08); }
 .youtube-facade:hover .youtube-facade-control { transform: scale(1.045); }
 .youtube-facade:focus-visible { outline-offset: -6px; }

@@ -44,15 +44,22 @@ export function YouTubeEmbed({ message }: { message: Message }) {
                 <path id={ringId} d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
               </defs>
               <text>
-                <textPath href={`#${ringId}`}>WATCH MESSAGE • LIVING MESSAGE CHURCH • </textPath>
+                <textPath
+                  href={`#${ringId}`}
+                  lengthAdjust="spacing"
+                  startOffset="1%"
+                  textLength="283"
+                >
+                  WATCH MESSAGE • LIVING MESSAGE CHURCH •
+                </textPath>
               </text>
             </svg>
             <span className="youtube-tree-circle">
               <Image
                 alt=""
                 className="youtube-tree-mark"
-                height={92}
-                src="/images/brand/living-message-church-logo.svg"
+                height={288}
+                src="/images/brand/living-message-tree.svg"
                 width={288}
               />
             </span>
