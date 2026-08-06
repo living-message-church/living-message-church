@@ -2,11 +2,13 @@
 
 Implementation date: 2026-08-05
 
+Updated: 2026-08-06
+
 ## Direction
 
-The foundation is editorial, welcoming, energetic, spacious, and church-appropriate. Oversized type, strong color fields, disciplined rhythm, and large media areas create energy without reproducing Motivation Church’s layout, assets, branding, fonts, or interaction code.
+The foundation is editorial, welcoming, energetic, spacious, and church-appropriate. Oversized but controlled type, neutral-dominant surfaces, disciplined rhythm, and large media areas create energy without reproducing Motivation Church’s layout, assets, branding, fonts, or interaction code.
 
-Photography is intentionally represented by local abstract media placeholders until Living Message-owned, consent-cleared originals are approved. The placeholders make required crop ratios and layout behavior testable without implying that unapproved legacy imagery may be reused.
+Photography is intentionally represented by local abstract media placeholders until Living Message-owned, consent-cleared originals are approved. The placeholders make required crop ratios and layout behavior testable without implying that unapproved legacy imagery may be reused. The church's existing production-site wordmark is approved for reuse and is the only legacy visual asset currently integrated.
 
 ## Tokens
 
@@ -18,40 +20,40 @@ Tokens live in `src/styles/globals.css`.
 | --- | --- |
 | `--color-paper`, `--color-paper-bright` | Warm page and card surfaces |
 | `--color-ink`, `--color-ink-soft` | Primary text and immersive sections |
-| `--color-cobalt` | Navigation/location accent and focus |
-| `--color-coral` | Primary actions and energetic media treatment |
-| `--color-gold` | Invitation/visitor emphasis |
-| `--color-sage` | Calm ministry and information surfaces |
+| `--color-cobalt` | Information accent and light-surface focus |
+| `--color-coral` | Reserved primary-action accent |
+| `--color-gold` | Warm dark-surface focus and subtle invitation emphasis |
+| `--color-sage` | Calm, pale ministry and information surfaces |
 | `--color-line` | Low-contrast structural borders |
 
-Color combinations must retain WCAG AA text contrast. Cobalt is used as the visible focus color; coral/gold surfaces use dark text.
+Color combinations must retain WCAG AA text contrast. Cobalt is used for focus on light surfaces and gold on dark surfaces. Accent fields are restrained so warm paper and ink remain visually dominant.
 
 ### Typography
 
-- Display: resilient local system stack headed by Arial Black/Helvetica Neue; no remote font request.
+- Display: resilient local/system stack headed by Helvetica Neue; no remote font request.
 - Body: accessible system sans stack.
 - Fluid scale: `--step--1` through `--step-5` using `clamp()`.
-- Display headings use tight leading and tracking; body text keeps generous leading and a controlled reading measure.
+- Display headings use controlled tight leading and tracking; body text keeps generous leading and a controlled reading measure.
 - Components preserve one `h1` per page and hierarchical `h2`/`h3` levels.
 
 ### Spacing and layout
 
 - `--space-1` through `--space-8` establish the rhythm.
-- Section padding uses fluid `--space-8`; content clusters use smaller tokens.
-- Wide container: `88rem`; reading container: `48rem`; responsive gutter uses `clamp()`.
+- Section padding uses fluid `--space-7`; content clusters use smaller tokens.
+- Wide container: `80rem`; reading container: `43rem`; responsive gutter uses `clamp()`.
 - Main editorial grids collapse intentionally to one column below 48rem.
 
 ### Shape and imagery
 
-- Cards are mostly square-edged to retain editorial clarity.
+- Cards use a subtle radius, hairline border, and no persistent shadow to retain editorial clarity.
 - Media crop ratios: landscape 4:3, portrait 4:5, wide 16:9.
 - Approved photography should use focal-point-aware cropping and contextual alt text. Decorative imagery must use empty alt text; meaningful imagery must describe the content and purpose, not begin with “image of.”
 
 ## Interaction
 
-- Buttons and action links are at least 52px high with clear text and directional affordances.
-- Every interactive element receives a visible 3px cobalt focus outline.
-- Hover movement is limited to small translations and never carries essential meaning.
+- Buttons and primary action links are at least 48px high, exceeding the 44px minimum interaction target, with clear text and directional affordances.
+- Every interactive element receives a visible 3px focus outline: cobalt on light surfaces and gold on dark surfaces.
+- Hover feedback is limited to color, border, and background changes and never carries essential meaning.
 - Mobile navigation uses native `details`/`summary` semantics and full-width tap targets.
 - The skip link is the first focusable element and targets `#main-content`.
 

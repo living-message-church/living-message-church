@@ -10,6 +10,12 @@ No Living Message Church photography has been approved or supplied to the reposi
 | --- | --- | --- | --- | --- | --- |
 | None | Photography | No approved files supplied | Not applicable | Not applicable | Blocked by verification |
 
+## Brand assets
+
+| Asset | Repository path | Production source | Dimensions | Rights/approval note | Usage |
+| --- | --- | --- | ---: | --- | --- |
+| Living Message Church logo | `public/images/brand/living-message-church-logo.png` | `https://www.livingmessagechurch.com/wp-content/uploads/2017/03/Living-Message-Logo-05.png` | 250 × 69 PNG, transparent | User explicitly directed reuse of the existing church logo on 2026-08-06. No ownership beyond that requested project use is inferred. | Responsive site header and footer via `next/image`; alt text “Living Message Church” |
+
 ## Current placeholders
 
 The layout uses the code-native `MediaFrame` component rather than bitmap photography. It renders abstract Living Message-branded color fields and labels the future editorial purpose through an accessible `role="img"` name.
@@ -21,7 +27,7 @@ The layout uses the code-native `MediaFrame` component rather than bitmap photog
 | Latest message | Home messages section | 16:9 wide | Verified message artwork or approved service still tied to a real message record |
 | Ministry cards | Home ministry grid | 4:3 landscape | Approved ministry-specific photographs with current representation and consent |
 
-No placeholder file is stored under `public/images` because the current placeholders are code-native, not photographic assets. Create `public/images/` only when approved originals arrive; use descriptive filenames such as `living-message-kids-check-in.webp`, retain originals outside the build when required, and record every file here.
+No photographic placeholder file is stored under `public/images` because the current placeholders are code-native. Approved brand assets live under `public/images/brand`; future approved photography should use a separate descriptive folder and filenames such as `living-message-kids-check-in.webp`.
 
 ## Required asset metadata
 

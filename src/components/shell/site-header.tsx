@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { primaryNavigation, siteIdentity } from "@/content";
@@ -9,8 +10,14 @@ export function SiteHeader() {
     <header className="site-header">
       <Container className="header-inner">
         <Link href="/" className="wordmark" aria-label={`${siteIdentity.name.value} home`}>
-          <span className="wordmark-monogram" aria-hidden="true">LM</span>
-          <span className="wordmark-text">Living Message<span>Church</span></span>
+          <Image
+            className="site-logo"
+            src="/images/brand/living-message-church-logo.png"
+            alt={siteIdentity.name.value}
+            width={250}
+            height={69}
+            priority
+          />
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary navigation">

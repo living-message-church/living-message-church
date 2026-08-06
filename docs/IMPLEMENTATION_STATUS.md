@@ -22,6 +22,8 @@ Updated: 2026-08-06
 - Editorial route panels, feed states, stronger page-hero treatment, card depth, and responsive compositions refined.
 - Asset register confirms no approved photography was supplied or copied; code-native placeholders remain.
 - HTTP route, metadata, no-index, structured-data, provider-fallback, sitemap, robots, and representative redirect smoke checks pass.
+- Design System Review completed with a presentation-only refinement pass: calmer type scale, tighter rhythm, warmer neutral-dominant palette, quieter cards/actions/navigation/placeholders, and reduced decorative motion.
+- Existing Living Message Church production logo added locally and used through `next/image` in the header and footer; source and approval recorded in `ASSET_REGISTER.md`.
 
 ## In progress
 

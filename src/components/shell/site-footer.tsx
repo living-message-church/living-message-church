@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { contactInformation, footerContent, footerGroups, serviceTimes, siteIdentity, socialChannels } from "@/content";
 import { Container } from "@/components/ui/container";
@@ -17,7 +18,15 @@ export function SiteFooter() {
         </div>
         <div className="footer-grid">
           <div>
-            <Link href="/" className="footer-brand">{siteIdentity.name.value}</Link>
+            <Link href="/" className="footer-brand" aria-label={`${siteIdentity.name.value} home`}>
+              <Image
+                className="footer-logo"
+                src="/images/brand/living-message-church-logo.png"
+                alt={siteIdentity.name.value}
+                width={250}
+                height={69}
+              />
+            </Link>
             <a href={`tel:${contactInformation.phone.value.replaceAll("-", "")}`}>{contactInformation.phone.value}</a>
             <a href={`mailto:${contactInformation.email.value}`}>{contactInformation.email.value}</a>
           </div>

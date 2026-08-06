@@ -9,7 +9,6 @@ interface MediaFrameProps {
 export function MediaFrame({ label, ratio = "landscape", tone = "cobalt" }: MediaFrameProps) {
   return (
     <div className={`media-frame media-${ratio} media-${tone}`} role="img" aria-label={label}>
-      <span className="media-mark" aria-hidden="true">LM</span>
       <span className="media-label">{label}</span>
     </div>
   );
