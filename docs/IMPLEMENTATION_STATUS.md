@@ -46,6 +46,8 @@ Updated: 2026-08-06
 - The homepage Plan Your Visit headline now supports one typed, content-defined accent phrase and renders it as an isolated old-style italic serif moment; the rest of the section and site remain in the Helvetica Neue-led system.
 - The identity headline uses the same typed accent mechanism for “community,” keeping the complete statement as one accessible heading and leaving all non-accent words in Helvetica Neue.
 - The Plan Your Visit photograph now receives a section-scoped 20-second cinematic push-and-pan within its existing crop. It causes no layout movement, introduces no dependency, and is explicitly disabled for reduced-motion visitors.
+- Mobile spacing now uses a consistent 5–5.5% gutter and a minimum 4rem section rhythm. Identity, ministry-introduction, and final-invitation moments center deliberately while scan-heavy sections remain left-aligned.
+- The mobile header now uses an accessible 48px icon-only navigation trigger with a larger 30px hamburger, open/close labels, gutter-aligned dropdown, and 52px navigation rows; the visible “Menu” label was removed.
 
 ## In progress
 

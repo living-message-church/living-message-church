@@ -3,6 +3,14 @@
 QA date: 2026-08-06  
 Application: local Next.js development preview
 
+## Mobile spacing and navigation refinement
+
+The 2026-08-06 mobile polish pass reviewed the current Motivation Church public implementation for transferable responsive principles only. Living Message now uses a disciplined mobile gutter of approximately 5–5.5% with a 1.25rem minimum, a calmer 4rem-or-greater section rhythm, and selective centering for the identity statement, ministry introduction, and final invitation. Content-led sections, event rows, message browsing, visit details, and footer information remain left-aligned for scanning clarity.
+
+The mobile header no longer displays the word “Menu.” Its native `details` summary is now a 48px icon-only target with a 30px three-line hamburger, accessible open/close labels, and a restrained close-state transformation. The dropdown shares the page gutter, provides 52px navigation rows, and retains native keyboard/focus behavior.
+
+The connected in-app browser was unavailable after the documented connection and troubleshooting checks, so rendered optical approval at 430, 390, 375, 360, and 320 pixels remains pending. Source inspection confirms that the 320px canvas retains 280px of usable content width, the 9.5rem logo and 48px menu target fit the header, centered copy keeps bounded measures, and reduced-motion rules suppress the icon transition duration.
+
 ## Verified YouTube feed integration
 
 The user-approved Streams source resolves to channel ID `UC-YctizZq1wTbhgn3tQOJqA`; the official public Atom feed resolves to the same channel. The provider-neutral adapter now fetches and normalizes the newest 15 records, sorts them newest-first, marks the first as featured, and supplies title, published date, first description paragraph, video ID, watch URL, and thumbnail without credentials. Categories are derived only from explicit stream/title/description metadata and publication year. Home, `/messages`, and `/messages/live` revalidate hourly; `/messages` is now indexable and included in the sitemap.

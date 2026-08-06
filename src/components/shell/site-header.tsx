@@ -28,7 +28,15 @@ export function SiteHeader() {
         </nav>
 
         <details className="mobile-menu">
-          <summary><span>Menu</span><span aria-hidden="true" className="menu-icon">☰</span></summary>
+          <summary>
+            <span className="sr-only menu-label-open">Open navigation</span>
+            <span className="sr-only menu-label-close">Close navigation</span>
+            <span aria-hidden="true" className="menu-icon">
+              <span />
+              <span />
+              <span />
+            </span>
+          </summary>
           <nav aria-label="Mobile navigation">
             {primaryNavigation.map((item) => (
               <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>
