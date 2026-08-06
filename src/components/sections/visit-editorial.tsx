@@ -1,4 +1,4 @@
-import { homeSections } from "@/content";
+import { homePhotography, homeSections } from "@/content";
 import { ActionGroup } from "@/components/ui/action-link";
 import { MediaFrame } from "@/components/ui/media-frame";
 import { Section } from "@/components/ui/section";
@@ -8,7 +8,7 @@ export function VisitEditorial() {
   const content = homeSections.visit;
   return (
     <Section tone={content.tone} labelledBy="visit-title" containerClassName="feature-grid">
-      <MediaFrame label="Reserved for approved first-visit and welcome-team photography" ratio="landscape" tone="gold" />
+      <MediaFrame image={homePhotography.visit} label="First-visit and welcome-team photography" ratio="landscape" tone="gold" />
       <div className="feature-copy">
         <Eyebrow>{content.eyebrow}</Eyebrow>
         <Heading id="visit-title">{content.title}</Heading>

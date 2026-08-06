@@ -20,17 +20,22 @@ Updated: 2026-08-06
 - Provider-neutral message and event adapters added with deterministic unavailable-source fallbacks and no fabricated records.
 - `/messages`, `/messages/live`, `/events`, and the homepage event section now consume normalized adapter results.
 - Editorial route panels, feed states, stronger page-hero treatment, card depth, and responsive compositions refined.
-- Asset register confirms no approved photography was supplied or copied; code-native placeholders remain.
+- Asset register now records the approved-source photography library, its optimized local derivatives, page uses, and outstanding attribution/release checks.
 - HTTP route, metadata, no-index, structured-data, provider-fallback, sitemap, robots, and representative redirect smoke checks pass.
 - Design System Review completed with a presentation-only refinement pass: calmer type scale, tighter rhythm, warmer neutral-dominant palette, quieter cards/actions/navigation/placeholders, and reduced decorative motion.
 - Existing Living Message Church production logo added locally and used through `next/image` in the header and footer; source and approval recorded in `ASSET_REGISTER.md`.
 - Existing Living Message Church community promo video added as an optimized 720p H.264 hero background with a 204 KB poster fallback; the 46.15 MB source was reduced to 7.28 MB, stripped of audio, and gated off for mobile/reduced-motion visitors.
+- Ten production-site Living Message Church photographs were audited, locally optimized, registered, and integrated across the homepage and priority page heroes; no reference-site assets were used.
+- Homepage first-visit, latest-message, Kids, Groups, Next Steps, and outreach visual placeholders were replaced with church-specific photography using the existing `MediaFrame` and typed content foundation.
+- New Here, Contact, About, Leadership, Connect, Kids, Groups, Next Steps, Messages, Live, and Outreach now use restrained photography-led page heroes without changing routes or page structures.
+- Homepage hero copy was refined to “Come as you are. Grow in truth. Find community.” with deliberate line breaks, a roughly 9% smaller desktop cap, tighter line-height, narrower measure, and desktop-only compositional offset.
+- The secondary service bar continues to use the same restrained coral as the homepage primary CTA, with quieter spacing and hover behavior; the white primary navigation remains unchanged.
 
 ## In progress
 
-- The homepage hero now uses the user-approved current-site promo video; remaining section and ministry media retain abstract local placeholders pending additional approved church photography.
+- Current event cards, message archive records, Youth, and Young Adults still require verified record-specific or ministry-specific photography; their truthful fallback presentation remains in place.
 - Legal routes preserve the current subjects but remain interim/no-index pending legal and processor review.
-- Interactive responsive/browser QA remains pending because no in-app or extension browser was connected. All five requested viewport checks are documented as not testable in `QA_REPORT.md`.
+- Interactive responsive/browser QA remains pending because no in-app or extension browser was connected. All 15 requested viewport widths are source-reviewed and documented as rendered verification pending in `QA_REPORT.md`.
 
 ## Blocked by verification
 
@@ -39,7 +44,7 @@ Updated: 2026-08-06
 - Canonical YouTube channel, message metadata owner, and Podbean status.
 - Authoritative event source and publishing/registration policy.
 - Church Center namespaces, giving destination, visit form, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
-- Outreach relationship/program details, partner approvals, social ownership, and all image rights/releases.
+- Outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
 
 ## Deferred
@@ -52,7 +57,7 @@ Updated: 2026-08-06
 
 ## Recommended next milestone
 
-Run a structured content-verification workshop with operations, pastoral leadership, ministry/safeguarding, communications, outreach, finance, legal, and technical owners. Resolve the launch-critical registry rows, supply approved photography, and confirm YouTube, event, Church Center, and giving ownership. Then populate the completed route structures, activate the existing adapters, and run the deferred interactive five-viewport browser QA before considering indexing.
+Run a structured content-verification workshop with operations, pastoral leadership, ministry/safeguarding, communications, outreach, finance, legal, and technical owners. Resolve the launch-critical registry rows, confirm release/attribution records for the migrated images, provide current Youth and event photography, and confirm YouTube, event, Church Center, and giving ownership. Then populate the completed route structures, activate the existing adapters, and run the deferred interactive 15-viewport browser QA before considering indexing.
 
 ## Validation record
 

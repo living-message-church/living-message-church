@@ -77,7 +77,8 @@ button, input, textarea, select { font: inherit; }
 .service-bar { background: var(--color-coral); color: var(--color-paper-bright); font-size: var(--step--1); }
 .service-bar-inner { display: flex; min-height: 2.75rem; align-items: center; justify-content: space-between; gap: 1rem; }
 .service-bar p { margin: 0; }
-.service-bar a { display: inline-flex; min-height: 2.75rem; align-items: center; font-weight: 750; text-decoration: none; }
+.service-bar a { display: inline-flex; min-height: 2.75rem; align-items: center; font-weight: 750; text-decoration: none; transition: opacity 160ms ease; }
+.service-bar a:hover { opacity: 0.78; }
 .site-header { position: relative; z-index: 20; border-bottom: 1px solid var(--color-line); background: #fff; color: var(--color-ink); }
 .header-inner { display: flex; min-height: 6.3rem; align-items: center; justify-content: space-between; gap: var(--space-4); }
 .wordmark { display: inline-flex; align-items: center; gap: 0.75rem; font-weight: 900; line-height: 1; text-decoration: none; }
@@ -98,7 +99,9 @@ button, input, textarea, select { font: inherit; }
 .hero-media { z-index: -2; background: var(--color-ink) url("/images/hero/living-message-church-community-poster.jpg") center 46% / cover no-repeat; }
 .hero-video { width: 100%; height: 100%; object-fit: cover; object-position: center 46%; }
 .hero-scrim { z-index: -1; background: linear-gradient(90deg, rgb(18 19 17 / 0.9) 0%, rgb(18 19 17 / 0.72) 52%, rgb(18 19 17 / 0.48) 100%); }
-.hero-grid { position: relative; display: grid; align-items: center; grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.48fr); gap: clamp(3rem, 6vw, 6rem); }
+.hero-grid { position: relative; display: grid; align-items: center; grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.48fr); gap: clamp(3rem, 6vw, 6rem); padding-left: clamp(0.5rem, 1.35vw, 1.35rem); }
+.hero .heading-display { max-width: 11ch; font-size: clamp(2.8rem, 1.75rem + 4.8vw, 7.1rem); line-height: 1.01; text-wrap: wrap; white-space: pre-line; }
+.hero-copy { max-width: 51rem; }
 .hero-copy .lede { margin: var(--space-5) 0 0; }
 .hero-side { display: flex; align-self: end; justify-content: flex-end; }
 .hero-fact-card { display: grid; width: min(100%, 19rem); border: 1px solid rgb(255 255 255 / 0.28); border-radius: var(--radius-sm); background: rgb(251 250 247 / 0.94); color: var(--color-ink); padding: 1.15rem; box-shadow: var(--shadow-card); }
@@ -115,6 +118,9 @@ button, input, textarea, select { font: inherit; }
 .media-sage { background: var(--color-sage); color: var(--color-ink); }
 .media-gold { background: var(--color-gold); color: var(--color-ink); }
 .media-label { max-width: 22rem; border-radius: 999px; background: rgb(0 0 0 / 0.24); padding: 0.4rem 0.65rem; color: white; font-size: 0.68rem; font-weight: 680; letter-spacing: 0.02em; }
+.media-image { object-fit: cover; }
+.media-has-image { background: var(--color-ink); padding: 0; }
+.ministry-card .media-frame { border-radius: 0; }
 
 .editorial-split { display: grid; grid-template-columns: 0.45fr 1fr; gap: var(--space-6); }
 .editorial-split .lede { margin: var(--space-5) 0 0; }
@@ -143,6 +149,8 @@ button, input, textarea, select { font: inherit; }
 .invitation-details .lede strong { color: var(--color-gold); }
 
 .page-hero { position: relative; isolation: isolate; overflow: hidden; border-top: 1px solid rgb(255 255 255 / 0.08); background: var(--color-ink); color: var(--color-paper-bright); padding-block: clamp(4rem, 7vw, 7rem); }
+.page-hero-photo { display: grid; min-height: clamp(25rem, 38vw, 36rem); align-content: end; background-position: center 44%; background-size: cover; }
+.page-hero-photo .container-shell { position: relative; z-index: 1; }
 .page-hero .lede { margin: var(--space-5) 0 0; }
 .route-purpose { display: grid; grid-template-columns: minmax(13rem, 0.35fr) minmax(0, 1fr); gap: clamp(3rem, 6vw, 6rem); }
 .route-status { position: sticky; top: 2rem; align-self: start; border-top: 0.4rem solid var(--color-coral); padding-top: var(--space-4); }
@@ -214,7 +222,7 @@ button, input, textarea, select { font: inherit; }
 }
 
 @media (max-width: 56rem) {
-  .hero-grid { grid-template-columns: 1fr; }
+  .hero-grid { grid-template-columns: 1fr; padding-left: 0; }
   .hero-copy { max-width: 46rem; }
   .hero-side { justify-content: flex-start; }
 }
@@ -230,7 +238,9 @@ button, input, textarea, select { font: inherit; }
   .header-inner { min-height: 5rem; }
   .hero-grid, .editorial-split, .feature-grid, .message-feature, .outreach-grid, .invitation-grid, .contact-grid, .footer-lead, .route-purpose { grid-template-columns: 1fr; }
   .hero { min-height: 0; }
+  .hero .heading-display { font-size: var(--step-5); line-height: 1.01; }
   .hero-scrim { background: rgb(18 19 17 / 0.76); }
+  .page-hero-photo { min-height: clamp(22rem, 72vw, 30rem); background-position: center; }
   .section-heading-row { align-items: flex-start; flex-direction: column; }
   .section-intro { display: block; }
   .section-intro .heading { margin-bottom: var(--space-4); }

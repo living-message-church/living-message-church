@@ -19,17 +19,38 @@ The 46.15 MB QuickTime source was used only as conversion input and was not adde
 | --- | --- | --- | ---: | --- | --- |
 | Living Message Church logo | `public/images/brand/living-message-church-logo.png` | `https://www.livingmessagechurch.com/wp-content/uploads/2017/03/Living-Message-Logo-05.png` | 250 × 69 PNG, transparent | User explicitly directed reuse of the existing church logo on 2026-08-06. No ownership beyond that requested project use is inferred. | Responsive site header and footer via `next/image`; alt text “Living Message Church” |
 
-## Current placeholders
+## Living Message Church photography
 
-The layout uses the code-native `MediaFrame` component rather than bitmap photography. It renders abstract Living Message-branded color fields and labels the future editorial purpose through an accessible `role="img"` name.
+The project owner approved the existing Living Message Church website as the image source for this milestone. Each file below came from that production domain; no image from Motivation Church or another inspiration site was downloaded. This project-level approval does not independently establish photographer attribution, model releases, or consent records. Those records remain a launch-governance requirement, especially where children appear.
 
-| Placeholder | Location | Intended future crop | Replacement requirement |
-| --- | --- | --- | --- |
-| First-visit welcome | Home visitor section | 4:3 landscape | Approved entrance, lobby, or welcome-team photograph; accessibility context |
-| Latest message | Home messages section | 16:9 wide | Verified message artwork or approved service still tied to a real message record |
-| Ministry cards | Home ministry grid | 4:3 landscape | Approved ministry-specific photographs with current representation and consent |
+JPEG originals were normalized to descriptive names and recompressed at a restrained quality setting. Large originals were reduced to a maximum 1600–1800 pixels; smaller originals were not enlarged. Runtime delivery uses `next/image` for responsive sizing and modern-format negotiation where the image is content. Page-hero photography is decorative CSS background imagery behind equivalent page text.
 
-Remaining photographic placeholders are code-native. Approved brand assets live under `public/images/brand`; the hero poster lives under `public/images/hero`; future approved photography should use separate descriptive folders and filenames such as `living-message-kids-check-in.webp`.
+| Original URL | New filename | Dimensions | Page/component used | Copyright status | Notes |
+| --- | --- | ---: | --- | --- | --- |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2025/03/20230129_102456-scaled.jpg` | `public/images/general/living-message-worship-gathering.jpg` | 1800 × 1350 | About page hero | Approved production-site source; photographer/release records need verification | Current sanctuary congregation; retained source alt context and wrote a concise local description. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2024/12/Screenshot-2024-12-17-140910.png` | `public/images/general/living-message-community-welcome.jpg` | 1600 × 1026 | Home first-visit section; New Here hero | Approved production-site source; photographer/release records need verification | Converted from PNG to JPEG; warm welcome/community moment. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2023/03/Church-2.png` | `public/images/general/living-message-lobby-community.jpg` | 1800 × 1001 | Contact and gallery page heroes | Approved production-site source; photographer/release records need verification | Converted from PNG to JPEG; church lobby connection scene. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2018/09/IMG_0764.jpg` | `public/images/ministries/living-message-prayer-and-connection.jpg` | 1600 × 1066 | Home Next Steps card; Next Steps hero | Approved production-site source; photographer/release records need verification | Warm connection moment; selected instead of dated Next Steps promotional artwork. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2023/04/IMG_6420.jpg` | `public/images/groups/living-message-community-table.jpg` | 1600 × 1200 | Home Groups card; Connect and Groups heroes | Approved production-site source; photographer/release records need verification | Church community gathered around tables. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2024/12/Kids-Min-1-scaled.jpg` | `public/images/kids/living-message-kids-room.jpg` | 1800 × 1350 | Home Kids card; Kids hero | Approved production-site source; minor release and safeguarding records need verification | Real kids-room activity; do not reuse beyond the approved website scope without release review. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2017/03/Feeding-Families.jpg` | `public/images/outreach/living-message-serving-families.jpg` | 577 × 433 | Outreach page hero | Approved production-site source; photographer/release records need verification | Original dimensions retained; no upscaling. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2016/11/Outreach-Pic.jpg` | `public/images/outreach/living-message-community-meal.jpg` | 640 × 360 | Home outreach feature | Approved production-site source; photographer/release records need verification | Original dimensions retained; old but church-specific, so recency/context should be confirmed. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2025/11/Family-2-2025-Mothers-Day.jpg` | `public/images/leadership/living-message-broadway-family.jpg` | 959 × 960 | Leadership page hero | Approved production-site source; family/minor releases need verification | Used decoratively; names and leadership facts remain gated by the verification registry. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2020/05/IMG_0927.jpg` | `public/images/general/living-message-bible-teaching.jpg` | 1800 × 1200 | Home Messages section; Beliefs, Messages, and Live heroes | Approved production-site source; photographer/release records need verification | General teaching photograph only; it is not presented as a verified latest-sermon record. |
+
+## Remaining placeholders and photography gaps
+
+The obvious homepage first-visit, message, ministry-card, and outreach placeholders were replaced. `MediaFrame` still supports a code-native fallback for records that have no approved image.
+
+| Location | Current state | Photography still needed |
+| --- | --- | --- |
+| Homepage events | Provider-neutral unavailable state; no fabricated cards | Current event imagery should arrive with verified event records and registration ownership. |
+| Message archive cards | Code-native fallback tied to unverified local records | Verified sermon thumbnails or video IDs from the canonical channel. |
+| Youth and Young Adults | Dark page hero without a photo | Current ministry photography with safeguarding/release approval and verified ministry context. |
+| Give and legal pages | Intentionally restrained dark page heroes | No image is required; add only if it improves comprehension and has clear approval. |
+| Events directory | No trusted current event photography found | Recent church-owned event photographs; stale picnic graphics were rejected. |
+
+Rejected source candidates included stock-looking leadership art, dated 2018 Home Groups graphics, stale event promotions, and youth promotional artwork. They were neither added nor substituted merely to fill space.
 
 ## Required asset metadata
 

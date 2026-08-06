@@ -4,7 +4,7 @@ export const homeSections: Record<string, HomepageSection> = {
   hero: {
     id: "hero",
     eyebrow: "Living Message Church · Clermont, Florida",
-    title: "Come as you are. Grow in truth. Find your church family.",
+    title: "Come as you are.\nGrow in truth.\nFind community.",
     body: "A welcoming church community centered on genuine connection, meaningful discipleship, and line-by-line Bible teaching.",
     tone: "ink",
     actions: [

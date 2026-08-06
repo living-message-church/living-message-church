@@ -1,5 +1,6 @@
 export * from "./events";
 export * from "./home";
+export * from "./images";
 export * from "./leadership";
 export * from "./messages";
 export * from "./ministries";

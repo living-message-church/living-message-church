@@ -3,6 +3,21 @@
 QA date: 2026-08-06  
 Application: local Next.js development preview
 
+## Photography integration and visual-polish update
+
+The 2026-08-06 photography pass replaced the homepage welcome, message, ministry-card, and outreach placeholders with ten locally optimized images sourced only from the current Living Message Church website. The same approved-source library now provides decorative photography-led heroes for New Here, Contact, About, Leadership, Connect, Kids, Groups, Next Steps, Messages, Live, and Outreach. Source URLs, use, dimensions, and rights caveats are recorded in `docs/ASSET_REGISTER.md`.
+
+The responsive cascade was re-reviewed at 3840, 2560, 1920, 1600, 1440, 1280, 1024, 834, 768, 430, 414, 390, 375, 360, and 320 pixels. Because no connected browser runtime was available, these results are based on source/CSS inspection, intrinsic image dimensions, aspect-ratio constraints, and successful production rendering—not screenshots or pixel measurements. Screenshots are therefore unavailable for this pass.
+
+Changes verified in source:
+
+- the hero statement now has three intentional lines, a 7.1rem desktop cap (about 9% below the former 7.8rem cap), 1.01 line-height, a narrower measure, and a slight desktop-only right offset;
+- the offset is removed at 896px and below, and the existing mobile display cap is restored at 768px and below;
+- photography frames preserve 4:3 or 16:9 ratios, use `object-fit: cover`, provide responsive `sizes`, and remain single-column at mobile widths;
+- page-hero photography has capped height, cover cropping, a dark readability overlay, and a mobile-specific height/crop rule;
+- the upper service bar uses the same restrained coral token as primary calls to action, with a subtle opacity hover state;
+- the white primary navigation, enlarged logo, 44px interaction targets, keyboard focus, and reduced-motion rules remain intact.
+
 ## Responsive review update
 
 The dedicated responsive review is documented in `docs/RESPONSIVE_DESIGN_REVIEW.md`. It evaluates the implemented cascade independently at 3840, 2560, 1920, 1600, 1440, 1280, 1024, 834, 768, 430, 414, 390, 375, 360, and 320 pixels.
@@ -48,7 +63,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | Focus foundation | Global `:focus-visible` styling provides a 3px high-contrast outline and offset. |
 | Button sizing | Action links have a 3.25rem minimum height and responsive wrapping. |
 | Reduced-motion code path | `prefers-reduced-motion: reduce` disables smooth scrolling and minimizes animation/transition duration. |
-| Placeholder crops | Code-native media frames define 4:5, 4:3, and 16:9 aspect ratios without remote or unapproved assets. |
+| Photography crops | Local approved-source images render within defined 4:3 and 16:9 frames using `next/image`, responsive `sizes`, and `object-fit: cover`; page-hero backgrounds use capped cover crops. |
 | Sitemap/robots | Both returned HTTP 200; sitemap contains only the published Home, New Here, and Contact routes. |
 
 ## Failed and fixed
@@ -60,6 +75,10 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 - Fixed cramped multi-action rows below 512px.
 - Fixed an overly narrow ultra-wide canvas at 1600–3840px without widening prose.
 - Updated the header logo from deprecated Next.js 16 `priority` behavior to `preload`.
+- Replaced the visually generic homepage media placeholders with church-specific photography while preserving the component and grid structure.
+- Reduced the desktop homepage heading cap by about 9%, preserved deliberate phrase breaks, tightened line-height, and removed its right offset on tablet/mobile.
+- Added controlled photography-led page heroes without widening body copy or weakening the text overlay.
+- Prevented upscaling of the smaller legacy outreach and leadership originals.
 
 ## Pending manual verification
 
@@ -67,8 +86,8 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 - Visual wrapping of oversized headings at 1440, 1280, 768, 390, and 375 pixels.
 - Computed horizontal overflow at every requested viewport.
 - Touch-target spacing and mobile menu positioning with browser chrome and zoom.
-- Color contrast with final approved photography and overlays.
-- Actual image focal crops, intrinsic dimensions, and layout shift after approved assets are supplied.
+- Browser-measured color contrast against each final photographic crop and overlay.
+- Human review of focal crops at all 15 requested viewport widths, especially Leadership and the lower-resolution Outreach images.
 - Reduced-motion behavior under real OS/browser emulation.
 - Screen-reader announcement of mobile navigation and feed empty states.
 - Safari/iOS and Chromium rendering differences.
@@ -79,6 +98,6 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed |
-| `npm run build` | Passed; 22 generated pages plus robots, sitemap, and API route |
+| `npm run build` | Passed after photography integration; 22 generated pages plus robots, sitemap, and API route |
 | Responsive milestone route smoke | Passed; all 22 checked public routes, including robots and sitemap, returned HTTP 200 |
 | Existing automated tests | No test suite or test command is configured |

@@ -1,4 +1,4 @@
-import { featuredMessage, homeSections } from "@/content";
+import { featuredMessage, homePhotography, homeSections } from "@/content";
 import { ActionGroup } from "@/components/ui/action-link";
 import { MediaFrame } from "@/components/ui/media-frame";
 import { Section } from "@/components/ui/section";
@@ -18,7 +18,7 @@ export function LatestMessage() {
         </div>
         {content.actions ? <ActionGroup actions={content.actions} /> : null}
       </div>
-      <MediaFrame label="Reserved for approved Living Message Church message artwork" ratio="wide" tone="cobalt" />
+      <MediaFrame image={homePhotography.message} label="Living Message Church message photography" ratio="wide" tone="cobalt" />
     </Section>
   );
 }
