@@ -50,7 +50,10 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 
 ### Shape and imagery
 
-- Cards use a subtle radius, hairline border, and no persistent shadow to retain editorial clarity.
+- `--radius-image` provides a fluid `1.25rem`–`2rem` corner radius for photography, video, and photo-led cards.
+- Standalone photography uses the image radius consistently. Photo-led cards retain matching upper corners so the image and card read as one composition.
+- Full-bleed hero backgrounds remain edge-to-edge; logos, icons, and decorative marks do not inherit the photography radius.
+- Non-media cards use a subtler radius, hairline border, and no persistent shadow to retain editorial clarity.
 - Media crop ratios: landscape 4:3, portrait 4:5, wide 16:9.
 - Approved photography should use focal-point-aware cropping and contextual alt text. Decorative imagery must use empty alt text; meaningful imagery must describe the content and purpose, not begin with “image of.”
 

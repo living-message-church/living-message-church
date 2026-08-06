@@ -24,7 +24,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 | `Heading` | Typed heading level and display scale |
 | `ActionLink`, `ActionGroup` | Internal/external calls to action with consistent states |
 | `Card` | Neutral semantic article surface |
-| `MediaFrame` | Local abstract fallback or responsive approved photography frame |
+| `MediaFrame` | Local abstract fallback or responsive approved photography frame with the shared fluid image radius |
 
 ## Page components
 
@@ -68,3 +68,4 @@ Every section reads church content from `src/content/`; components contain layou
 5. Do not turn staged empty states into fabricated messages or events.
 6. Keep provider response formats inside `src/lib/*` adapters; presentation components consume normalized typed records.
 7. Use `next/image` with explicit dimensions or `fill` plus a sized parent when approved photography replaces `MediaFrame` placeholders.
+8. Use `--radius-image` for photography and video. Preserve square edges only for intentional full-bleed treatments; do not introduce component-specific image radii.
