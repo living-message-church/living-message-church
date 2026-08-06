@@ -16,6 +16,7 @@ export const homeSections: Record<string, HomepageSection> = {
     id: "identity",
     eyebrow: "Church is more than a service",
     title: "A community shaped by Scripture and life together.",
+    titleAccent: "community",
     body: "Living Message describes its community through intentional fellowship, passionate service, equal love, and a consistent welcome into church family.",
     tone: "paper",
   },

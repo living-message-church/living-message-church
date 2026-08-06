@@ -44,6 +44,7 @@ Updated: 2026-08-06
 - The future Supabase schema, RLS, storage, upload, audit, and adapter transition are documented in `MESSAGES_ARCHITECTURE.md`.
 - Site typography now uses one Helvetica Neue-led local system stack across display, body, navigation, event, message, and administrative surfaces, with normalized 400/600/700/800/900 weights and no downloaded font dependency.
 - The homepage Plan Your Visit headline now supports one typed, content-defined accent phrase and renders it as an isolated old-style italic serif moment; the rest of the section and site remain in the Helvetica Neue-led system.
+- The identity headline uses the same typed accent mechanism for “community,” keeping the complete statement as one accessible heading and leaving all non-accent words in Helvetica Neue.
 - The Plan Your Visit photograph now receives a section-scoped 20-second cinematic push-and-pan within its existing crop. It causes no layout movement, introduces no dependency, and is explicitly disabled for reduced-motion visitors.
 
 ## In progress

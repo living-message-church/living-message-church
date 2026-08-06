@@ -146,6 +146,7 @@ button, input, textarea, select { font: inherit; }
 .identity-copy { max-width: 48rem; }
 .identity-copy .eyebrow { color: white; font-size: clamp(1.17rem, 1.05rem + 0.2vw, 1.28rem); }
 .identity-copy .heading { max-width: 12ch; color: white; font-size: clamp(3rem, 2.1rem + 3vw, 5.4rem); line-height: 0.96; }
+.identity-copy .heading em { font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.08em; font-weight: 400; letter-spacing: -0.045em; line-height: 0.9; }
 .identity-copy .lede { max-width: 36ch; margin: var(--space-5) 0 0; color: white; font-size: clamp(1.5rem, 1.35rem + 0.35vw, 1.75rem); }
 .identity-media { width: 100%; max-width: 36rem; justify-self: end; }
 .identity-media .media-frame { width: 100%; }

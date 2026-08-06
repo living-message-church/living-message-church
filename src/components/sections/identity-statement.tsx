@@ -1,7 +1,7 @@
 import { homePhotography, homeSections } from "@/content";
 import { MediaFrame } from "@/components/ui/media-frame";
 import { Section } from "@/components/ui/section";
-import { Eyebrow, Heading } from "@/components/ui/typography";
+import { AccentHeading, Eyebrow } from "@/components/ui/typography";
 
 export function IdentityStatement() {
   const content = homeSections.identity;
@@ -9,7 +9,7 @@ export function IdentityStatement() {
     <Section className="identity-section" tone={content.tone} labelledBy="identity-title" containerClassName="identity-layout" containerSize="editorial">
       <div className="identity-copy">
         <Eyebrow>{content.eyebrow}</Eyebrow>
-        <Heading id="identity-title">{content.title}</Heading>
+        <AccentHeading id="identity-title" title={content.title} accent={content.titleAccent} />
         <p className="lede">{content.body}</p>
       </div>
       <div className="identity-media">

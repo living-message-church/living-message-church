@@ -20,7 +20,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 | `Container` | Typed reading, content, standard, editorial, hero, and full-bleed widths with shared responsive gutters |
 | `Section` | Semantic section, tone, spacing, labelled-by connection, and intentional container-size selection |
 | `Eyebrow` | Compact editorial context label |
-| `Heading` | Typed heading level and display scale |
+| `Heading`, `AccentHeading` | Typed heading level/display scale, plus a semantic mixed-type heading for explicitly declared accent phrases |
 | `ActionLink`, `ActionGroup` | Internal/external calls to action with consistent states |
 | `Card` | Neutral semantic article surface |
 | `MediaFrame` | Local abstract fallback or responsive approved photography frame with the shared fluid image radius |
@@ -56,7 +56,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 Every section reads church content from `src/content/`; components contain layout and rendering logic rather than church records.
 
-`VisitEditorial` may consume the optional typed `titleAccent` value from its homepage content record. It keeps the complete title in one semantic heading while applying the section-exclusive serif treatment only to the declared phrase.
+`VisitEditorial` and `IdentityStatement` may consume the optional typed `titleAccent` value from their homepage content records through `AccentHeading`. Each complete title remains one semantic heading while the old-style serif treatment applies only to its declared phrase.
 
 `Hero` includes a decorative, muted background-video renderer that is hydration-gated by motion and viewport preferences. Mobile widths and `prefers-reduced-motion: reduce` receive the approved static poster without instantiating the video element. Verified Sunday times remain visible in the hero and footer; the former secondary service bar is intentionally not mounted.
 

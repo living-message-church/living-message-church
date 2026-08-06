@@ -9,7 +9,9 @@ The 2026-08-06 typography test standardizes the complete application on a Helvet
 
 No font files, font service request, package, route, content, layout, component structure, or data structure was added. Optical comparison still requires a connected browser; lint and the production build validate the implementation path.
 
-The subsequent Plan Your Visit refinement adds one content-defined accent phrase inside the existing semantic `h2`. Its three display lines remain one accessible heading, use fluid sizing from mobile through desktop, and rely only on local system font fallbacks. No other section matches the scoped selector.
+The subsequent Plan Your Visit refinement adds one content-defined accent phrase inside the existing semantic `h2`. Its three display lines remain one accessible heading, use fluid sizing from mobile through desktop, and rely only on local system font fallbacks.
+
+The identity statement now uses the same `AccentHeading` primitive for “community.” The accent remains inline within the single `h2`, inherits the section’s white foreground, and uses the same system-only old-style serif stack without affecting surrounding Helvetica Neue text.
 
 The section photograph now uses a GPU-composited, 20-second alternate transform between shallow scale and translation values. The media frame and document flow remain stationary, preventing layout shift. The reduced-motion media query removes both the animation and its transform, returning the approved source crop to a static presentation.
 
