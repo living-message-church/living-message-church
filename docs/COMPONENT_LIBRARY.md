@@ -24,7 +24,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 | `Heading` | Typed heading level and display scale |
 | `ActionLink`, `ActionGroup` | Internal/external calls to action with consistent states |
 | `Card` | Neutral semantic article surface |
-| `MediaFrame` | Local abstract placeholder and approved future crop contract |
+| `MediaFrame` | Local abstract fallback or responsive approved photography frame |
 
 ## Page components
 
@@ -36,9 +36,12 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 | Component | Responsibility |
 | --- | --- |
-| `MessageArchive` | Renders normalized message records or a truthful unavailable-source state |
+| `YouTubeEmbed` | Privacy-enhanced, responsive YouTube player for an approved normalized message record |
+| `MessageLibrary` | Featured player, category chips, keyword search, cards, and empty state for normalized message records |
+| `MessageArchive` | Compact normalized-message collection or a truthful unavailable-source state, retained for `/messages/live` |
+| `MessageAdminPrototype` | Non-persistent title/meta/category management preview; upload and save controls remain disabled pending Supabase/auth |
 | `EventCollection` | Renders normalized event records or a truthful unavailable-source state; historical events are excluded |
-| `messageSource` adapter | Provider-neutral message boundary; currently unconfigured because YouTube/Podbean is not verified |
+| `messageSource` adapter | Provider-neutral message boundary; currently returns approved-temporary local records sourced from the production sermon page |
 | `eventSource` adapter | Provider-neutral event boundary; currently unconfigured because the authoritative event source is not verified |
 
 ## Homepage sections

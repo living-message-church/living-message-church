@@ -1,5 +1,6 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
 import { stagedPages } from "@/content";
+import { MessageLibrary } from "@/components/messages/message-library";
 import { MessageArchive } from "@/components/messages/message-archive";
 import { PageHero } from "@/components/pages/page-hero";
 import { SiteHead } from "@/components/seo/site-head";
@@ -15,8 +16,8 @@ export default function MessagesPage({ feed }: InferGetStaticPropsType<typeof ge
     <>
       <SiteHead {...stagedPages.messages.seo} noIndex />
       <PageHero content={stagedPages.messages} />
-      <Section tone="paper" containerClassName="feed-section">
-        <MessageArchive feed={feed} />
+      <Section tone="paper" containerClassName="message-library-container">
+        {feed.status === "available" && feed.items.length ? <MessageLibrary messages={feed.items} /> : <MessageArchive feed={feed} />}
       </Section>
     </>
   );

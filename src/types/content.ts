@@ -83,12 +83,22 @@ export interface Ministry {
 
 export interface Message {
   id: string;
+  slug?: string;
   title: SourcedValue<string>;
   speaker?: SourcedValue<string>;
   date?: SourcedValue<string>;
   scripture?: SourcedValue<string>;
   summary: SourcedValue<string>;
   mediaUrl?: SourcedValue<string>;
+  youtubeVideoId?: SourcedValue<string>;
+  thumbnailUrl?: SourcedValue<string>;
+  categories?: SourcedValue<string[]>;
+  meta?: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+  featured?: boolean;
   availability: "pending-verification" | "published";
 }
 

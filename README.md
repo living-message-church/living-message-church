@@ -11,7 +11,8 @@ The current production website remains the source for church information. The au
 - Project-native responsive design system and shared site shell
 - Foundation routes for Home, New Here, Contact, Privacy Policy, and Photo Release
 - Production-quality no-index route structures for About, beliefs, leadership, Connect and its child routes, Outreach, Give, Messages, Live, and Events
-- Provider-neutral message and event adapters with safe unavailable-source fallbacks
+- Provider-neutral message and event adapters; messages currently use approved-temporary local records from the production sermon page while events retain a safe unavailable-source fallback
+- Featured YouTube sermon player, searchable/category-filtered `/messages` library, and a non-persistent no-index `/admin/messages` interface prototype
 - 453 legacy 301 redirects generated from `docs/old-site-inventory.json`
 - Metadata, canonical, Open Graph/Twitter, Organization JSON-LD, sitemap, and robots foundations
 - No WordPress, Supabase, live forms, or new dependencies
@@ -51,3 +52,4 @@ See:
 - [`docs/VERIFICATION_CHANGELOG.md`](./docs/VERIFICATION_CHANGELOG.md)
 - [`docs/ASSET_REGISTER.md`](./docs/ASSET_REGISTER.md)
 - [`docs/QA_REPORT.md`](./docs/QA_REPORT.md)
+- [`docs/MESSAGES_ARCHITECTURE.md`](./docs/MESSAGES_ARCHITECTURE.md)

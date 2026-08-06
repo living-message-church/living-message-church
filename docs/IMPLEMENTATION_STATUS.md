@@ -30,10 +30,15 @@ Updated: 2026-08-06
 - New Here, Contact, About, Leadership, Connect, Kids, Groups, Next Steps, Messages, Live, and Outreach now use restrained photography-led page heroes without changing routes or page structures.
 - Homepage hero copy was refined to “Come as you are. Grow in truth. Find community.” with deliberate line breaks, a roughly 9% smaller desktop cap, tighter line-height, narrower measure, and desktop-only compositional offset.
 - The secondary service bar continues to use the same restrained coral as the homepage primary CTA, with quieter spacing and hover behavior; the white primary navigation remains unchanged.
+- Featured homepage message now plays the production sermon-page YouTube record in a privacy-enhanced responsive player.
+- `/messages` now provides a featured player, public category chips, keyword search, responsive archive cards, and truthful empty states using four approved-temporary production-page video records.
+- `/admin/messages` provides a no-index, non-persistent visual prototype for title/meta editing and category creation/removal; save and upload remain disabled until Supabase storage and authenticated access are approved.
+- Message records now include optional slug, YouTube, thumbnail, category, featured, and SEO metadata fields behind the existing provider adapter boundary.
+- The future Supabase schema, RLS, storage, upload, audit, and adapter transition are documented in `MESSAGES_ARCHITECTURE.md`.
 
 ## In progress
 
-- Current event cards, message archive records, Youth, and Young Adults still require verified record-specific or ministry-specific photography; their truthful fallback presentation remains in place.
+- Current event cards, verified recent sermon records, Youth, and Young Adults still require current record-specific or ministry-specific media; truthful fallback or approved-temporary presentation remains in place.
 - Legal routes preserve the current subjects but remain interim/no-index pending legal and processor review.
 - Interactive responsive/browser QA remains pending because no in-app or extension browser was connected. All 15 requested viewport widths are source-reviewed and documented as rendered verification pending in `QA_REPORT.md`.
 
@@ -49,9 +54,9 @@ Updated: 2026-08-06
 
 ## Deferred
 
-- Supabase, native form submission, newsletter integration, prayer handling, analytics, and consent tooling.
-- Live YouTube/message and event APIs; adapter boundaries are ready but intentionally unconfigured.
-- Dynamic message/event detail routes and search/filtering.
+- Supabase persistence/auth/storage, native form submission, newsletter integration, prayer handling, analytics, and consent tooling.
+- Live YouTube and event APIs; adapter boundaries are ready, with messages temporarily backed by local production-page records.
+- Dynamic message/event detail routes; public message search and category filtering are now implemented.
 - Full ministry, beliefs, leadership, history, and gallery publication.
 - Production deployment, DNS changes, and WordPress decommissioning.
 
@@ -64,8 +69,8 @@ Run a structured content-verification workshop with operations, pastoral leaders
 | Check | Result |
 | --- | --- |
 | `npm run lint` | Passed |
-| `npm run validate:redirects` | Passed: 453 sources, 20 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
-| `npm run build` | Passed on Next.js 16.3.0; 22 generated pages plus robots/sitemap/API routes |
-| Local HTTP smoke check | 21 primary/priority routes, robots, and sitemap returned 200; no-index/provider fallbacks/metadata passed; representative legacy URLs returned a direct 301 |
+| `npm run validate:redirects` | Passed: 453 sources, 21 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
+| `npm run build` | Passed on Next.js 16.3.0; 23 generated pages plus robots/sitemap/API routes |
+| Local HTTP smoke check | Home, Messages, Live, and Admin returned 200; YouTube embed, local feed records, and no-index boundaries were present |
 | Interactive browser QA | Not run: no connected browser was available |
 | Existing tests | No test command or test suite is currently configured |

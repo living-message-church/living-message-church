@@ -1,6 +1,6 @@
-import { featuredMessage, homePhotography, homeSections } from "@/content";
+import { featuredMessage, homeSections } from "@/content";
 import { ActionGroup } from "@/components/ui/action-link";
-import { MediaFrame } from "@/components/ui/media-frame";
+import { YouTubeEmbed } from "@/components/messages/youtube-embed";
 import { Section } from "@/components/ui/section";
 import { Eyebrow, Heading } from "@/components/ui/typography";
 
@@ -14,11 +14,11 @@ export function LatestMessage() {
         <p className="lede">{content.body}</p>
         <div className="pending-record">
           <strong>{featuredMessage.title.value}</strong>
-          <span>{featuredMessage.summary.value}</span>
+          {featuredMessage.speaker ? <span>{featuredMessage.speaker.value}</span> : null}
         </div>
         {content.actions ? <ActionGroup actions={content.actions} /> : null}
       </div>
-      <MediaFrame image={homePhotography.message} label="Living Message Church message photography" ratio="wide" tone="cobalt" />
+      <YouTubeEmbed message={featuredMessage} />
     </Section>
   );
 }

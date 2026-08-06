@@ -1,24 +1,25 @@
 import type { ContentFeedResult, Message } from "@/types/content";
+import { localMessages } from "@/content/messages";
 
 export interface MessageSourceAdapter {
   getMessages(): Promise<ContentFeedResult<Message>>;
 }
 
-class UnconfiguredMessageSource implements MessageSourceAdapter {
+class LocalMessageSource implements MessageSourceAdapter {
   async getMessages(): Promise<ContentFeedResult<Message>> {
     return {
-      status: "unavailable",
-      provider: "unconfigured",
-      items: [],
+      status: "available",
+      provider: "local",
+      items: localMessages,
       message:
-        "The message archive is unavailable until the canonical YouTube channel and Podbean status are approved.",
+        "Temporary local records sourced from the current Living Message Church sermon page. Supabase is not connected.",
       checkedAt: "2026-08-06",
     };
   }
 }
 
-// Replace only after docs/CONTENT_VERIFICATION.md identifies an approved source.
-export const messageSource: MessageSourceAdapter = new UnconfiguredMessageSource();
+// Keep this provider-neutral boundary when Supabase becomes the editorial source.
+export const messageSource: MessageSourceAdapter = new LocalMessageSource();
 
 export async function getMessageFeed() {
   try {

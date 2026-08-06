@@ -3,6 +3,20 @@
 QA date: 2026-08-06  
 Application: local Next.js development preview
 
+## Message library and admin-prototype update
+
+The homepage and `/messages` now render a real privacy-enhanced YouTube player for the video currently featured on the production sermon page. Four production-page YouTube IDs and their public oEmbed titles/authors were normalized into approved-temporary local records. The implementation does not claim that the 2018 featured record is the newest chronological sermon, and the canonical YouTube-channel conflict remains open.
+
+Source and HTTP checks passed for:
+
+- homepage and `/messages` rendering `youtube-nocookie.com/embed/BFGOKJx3KDI` with an accessible iframe title;
+- `/messages` rendering four records, category controls, search input, responsive cards, and `noindex, nofollow`;
+- `/admin/messages` returning 200, retaining `noindex, nofollow`, exposing no write endpoint, and rendering disabled persistence/upload controls;
+- `/messages/live` returning 200 through the existing provider-normalized archive path;
+- final lint, redirect validation, and the 23-page production build.
+
+Interactive filtering, category creation/removal, local metadata editing, YouTube playback, focus order, and small-screen visual composition still require a connected browser. The browser connection check returned no available in-app or extension browser, so no screenshots or unverified interaction claims were recorded.
+
 ## Photography integration and visual-polish update
 
 The 2026-08-06 photography pass replaced the homepage welcome, message, ministry-card, and outreach placeholders with ten locally optimized images sourced only from the current Living Message Church website. The same approved-source library now provides decorative photography-led heroes for New Here, Contact, About, Leadership, Connect, Kids, Groups, Next Steps, Messages, Live, and Outreach. Source URLs, use, dimensions, and rights caveats are recorded in `docs/ASSET_REGISTER.md`.
@@ -50,11 +64,13 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 
 | Area | Evidence |
 | --- | --- |
-| Primary and priority routes | 21 requested/public routes, robots, and sitemap returned HTTP 200 locally. |
+| Primary and priority routes | Existing public routes plus the new no-index `/admin/messages` prototype build successfully; representative Home, Messages, Live, and Admin routes returned HTTP 200 locally. |
 | Staged/no-index handling | About, beliefs, leadership, all Connect routes, Messages, Live, Events, Outreach, and Give emitted `noindex, nofollow`. |
 | Metadata | Home emitted a unique title, canonical URL, Open Graph/Twitter metadata, and Organization JSON-LD. |
 | Structured-data restraint | Only the verified organization name and canonical URL are emitted; no address, phone, service, event, sermon, rating, or founding claims were fabricated. |
-| Messages fallback | `/messages` and `/messages/live` rendered the unconfigured adapter state and explicitly contained no inferred sermon metadata or media IDs. |
+| Messages source | `/messages` and Home render approved-temporary production-sermon-page records through the local adapter; `/messages/live` consumes the same normalized feed. No canonical-channel resolution is implied. |
+| Message privacy/SEO restraint | The iframe uses `youtube-nocookie.com`; Messages and Admin remain no-indexed, and no unapproved `VideoObject` claims are emitted. |
+| Admin safety boundary | `/admin/messages` has no API mutation, authentication claim, Supabase client, or enabled upload/save control; all prototype edits are browser-local. |
 | Events fallback | `/events` and Home rendered the unconfigured adapter state; historical WordPress events were not treated as upcoming. |
 | Redirects | Representative trailing-slash legacy routes returned a direct 301 to `/`, `/new-here`, and `/events`. Static validation found 453 sources, no duplicates, no loops, no chains, and no missing destinations. |
 | Skip link | The first shared-shell link targets `#main-content`; the main landmark is programmatically focusable. |
@@ -91,6 +107,8 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 - Reduced-motion behavior under real OS/browser emulation.
 - Screen-reader announcement of mobile navigation and feed empty states.
 - Safari/iOS and Chromium rendering differences.
+- Public category/search behavior, selected-player scrolling, remote YouTube thumbnail crops, and iframe playback in a real browser.
+- Admin keyboard behavior for local title/meta fields, category add/remove actions, and narrow-screen row composition.
 
 ## Validation commands
 
@@ -98,6 +116,6 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed |
-| `npm run build` | Passed after photography integration; 22 generated pages plus robots, sitemap, and API route |
-| Responsive milestone route smoke | Passed; all 22 checked public routes, including robots and sitemap, returned HTTP 200 |
+| `npm run build` | Passed after message integration; 23 generated pages plus robots, sitemap, and API route |
+| Message milestone route smoke | Passed; Home, Messages, Live, and Admin returned HTTP 200 with expected embed/no-index markers |
 | Existing automated tests | No test suite or test command is configured |

@@ -1,3 +1,4 @@
+import { homePhotography } from "@/content";
 import type { ContentFeedResult, Message } from "@/types/content";
 import { Card } from "@/components/ui/card";
 import { MediaFrame } from "@/components/ui/media-frame";
@@ -20,7 +21,7 @@ export function MessageArchive({ feed }: { feed: ContentFeedResult<Message> }) {
     <div className="message-card-grid">
       {feed.items.map((message) => (
         <Card className="message-card" key={message.id}>
-          <MediaFrame label={`Approved artwork for ${message.title.value}`} ratio="wide" tone="cobalt" />
+          <MediaFrame image={homePhotography.message} label={`Living Message Church teaching photography for ${message.title.value}`} ratio="wide" tone="cobalt" sizes="(max-width: 48rem) 100vw, 33vw" />
           <div className="card-copy">
             <h2>{message.title.value}</h2>
             <p>{message.summary.value}</p>
