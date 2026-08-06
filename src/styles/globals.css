@@ -186,13 +186,12 @@ button, input, textarea, select { font: inherit; }
 .empty-card p { max-width: 48rem; margin-bottom: 0; }
 .card-index { font-family: var(--font-display); font-size: var(--step-1); font-weight: 700; color: var(--color-blue); }
 .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
-.ministry-card { transition: background-color 160ms ease, border-color 160ms ease; }
+.ministry-card { display: grid; grid-template-rows: auto 1fr; transition: background-color 160ms ease, border-color 160ms ease; }
 .ministry-card:hover { border-color: color-mix(in srgb, var(--color-ink) 26%, transparent); }
-.ministry-story-grid { grid-template-columns: repeat(2, minmax(0, 38rem)); justify-content: space-between; gap: clamp(1.5rem, 3vw, 3rem); }
-.ministry-story-grid .ministry-card:first-child { display: grid; grid-column: 1 / -1; grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 0.5fr); }
-.ministry-story-grid .ministry-card:first-child .media-frame { border-radius: var(--radius-image) 0 0 var(--radius-image); aspect-ratio: 16 / 10; }
-.ministry-story-grid .ministry-card:first-child .card-copy { display: grid; align-content: center; padding: clamp(2rem, 4vw, 3.5rem); }
-.ministry-story-grid .ministry-card:first-child .card-copy p { max-width: 30ch; }
+.ministry-story-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.25rem, 2vw, 2rem); }
+.ministry-story-grid .media-frame { aspect-ratio: 4 / 3; }
+.ministry-story-grid .card-copy { display: flex; align-items: flex-start; flex-direction: column; }
+.ministry-story-grid .card-copy a { margin-top: auto; padding-top: var(--space-3); }
 .card-copy { padding: var(--space-4); }
 .card-copy h3 { margin: 0 0 0.75rem; font-family: var(--font-display); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.025em; line-height: 1.08; }
 .card-copy p { max-width: 34ch; color: var(--color-ink-soft); }
@@ -413,8 +412,6 @@ button, input, textarea, select { font: inherit; }
   .section-intro { display: block; }
   .section-intro .heading { margin-bottom: var(--space-4); }
   .card-grid, .facts-grid, .visit-list { grid-template-columns: 1fr; }
-  .ministry-story-grid .ministry-card:first-child { display: block; grid-column: auto; }
-  .ministry-story-grid .ministry-card:first-child .media-frame { border-radius: var(--radius-image) var(--radius-image) 0 0; aspect-ratio: 16 / 11; }
   .footer-lead .footer-facts { grid-column: 1; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid > div:first-child { grid-column: 1 / -1; margin-bottom: var(--space-4); }

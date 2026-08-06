@@ -23,6 +23,8 @@ The message player now renders a lightweight custom facade before YouTube loads.
 
 The homepage message section now carries a restrained 120-degree navy-to-indigo background wash derived from the same approved tokens. Both endpoints are mixed back into the existing ink surface, preserving white-text contrast and keeping the gradient subordinate to the message photography.
 
+The homepage ministry section now presents its three available pathways as equal image-first cards in one desktop row. The former oversized first-card exception was removed; all three cards share the same 4:3 photography crop, content rhythm, and bottom-aligned action. The existing responsive grid intentionally collapses to two columns below 70rem and one below 48rem.
+
 The user-supplied `Living Message Logo.svg` now replaces the previous raster logo in the header and footer through `next/image` with explicit intrinsic dimensions. The header preserves its native navy/brown color while the dark footer applies a white high-contrast treatment. The message-player medallion uses the separately supplied standalone tree SVG. Every use preserves its source asset’s native proportions. The previous PNG remains in the repository but is no longer referenced by application code.
 
 ## Helvetica Neue typography test
