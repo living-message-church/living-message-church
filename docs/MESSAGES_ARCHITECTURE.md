@@ -4,28 +4,30 @@ Updated: 2026-08-06
 
 ## Current milestone
 
-The message experience is now a functional, no-database prototype. It deliberately separates normalized sermon records, the provider adapter, public presentation, and admin presentation so Supabase can replace the local repository without rewriting the visual components.
+The public message experience now consumes the verified Living Message Church YouTube channel through a provider-neutral, no-database adapter. It deliberately separates normalized sermon records, the provider adapter, public presentation, and admin presentation so a future authenticated YouTube Data API or Supabase repository can extend the archive without rewriting the visual components.
 
 No Supabase client, schema, authentication, storage bucket, upload endpoint, or dependency was added in this milestone.
 
-## Approved temporary source
+## Verified source
 
-The current Living Message Church production sermon page is the temporary source for four public YouTube records:
+The user identified the Living Message Church Streams page as the message source of truth:
 
-- `https://www.livingmessagechurch.com/sermons-living-message-church-clermont/`
-- featured production-page link: `BFGOKJx3KDI`
-- embedded production-page videos: `rHPTve0MYkQ`, `BY2GSlbN1qA`, `zPLS9tL04XU`
+- Streams page: `https://www.youtube.com/@livingmessagechurch/streams`
+- canonical channel ID: `UC-YctizZq1wTbhgn3tQOJqA`
+- public Atom feed: `https://www.youtube.com/feeds/videos.xml?channel_id=UC-YctizZq1wTbhgn3tQOJqA`
 
-Titles and the speaker display name were checked through YouTube’s public oEmbed response. Editorial display titles normalize technical source titles without changing their subject. The production page does not prove that these are the newest chronological recordings or resolve the conflicting canonical-channel records in `CONTENT_VERIFICATION.md`; therefore the records remain `approved-temporary`, `/messages` remains no-indexed, and no `VideoObject` structured data is emitted yet.
+The official page metadata and public feed resolve to the same channel ID. The adapter uses the feed’s title, publication date, description, thumbnail, watch URL, and video ID without credentials. It sorts newest-first and marks the first record as featured. Categories are generated only from explicit title/description metadata—such as livestream, online service, a named Bible book—and publication year.
+
+The credential-free Atom feed exposes the newest 15 records, so it is a recent archive rather than a claim of complete channel history. The four previously approved production-page records (`BFGOKJx3KDI`, `rHPTve0MYkQ`, `BY2GSlbN1qA`, and `zPLS9tL04XU`) remain only as a network-failure fallback. `/messages` is indexable and included in the sitemap. No `VideoObject` structured data is emitted because detailed sermon metadata has not yet been editorially approved.
 
 ## Implemented experience
 
 ### Public
 
-- Homepage featured message uses a privacy-enhanced `youtube-nocookie.com` iframe.
-- `/messages` includes a featured player, category chips, keyword search, responsive video cards, empty results, and player selection without leaving the page.
-- Temporary thumbnails come from the YouTube thumbnail endpoint for the production-page video IDs.
-- `/messages/live` continues to use the provider-neutral archive component; livestream ownership and schedule are still unresolved.
+- Homepage featured message uses the newest feed record in a privacy-enhanced `youtube-nocookie.com` iframe and revalidates hourly.
+- `/messages` includes the newest feed record as its featured player, publication dates, evidence-backed category chips, keyword search, responsive video cards, empty results, and player selection without leaving the page.
+- Thumbnails come from the verified feed’s YouTube media metadata; the local fallback uses standard YouTube thumbnail URLs for its approved IDs.
+- `/messages/live` consumes the same normalized feed but remains no-indexed until the online-service schedule and live-page publishing policy are verified.
 
 ### Admin prototype
 
@@ -112,9 +114,10 @@ Category deletion should require confirmation and show how many messages will be
 
 ## Next implementation milestone
 
-1. Confirm the canonical YouTube channel and message metadata owner.
-2. Approve Supabase project ownership, authentication roles, RLS policy, storage strategy, upload limits, and backups.
-3. Add migrations and generated types.
-4. Replace the local adapter with a server-only Supabase adapter.
-5. Enable create/update/category/upload actions behind authenticated admin access.
-6. Add approved per-message routes, canonical metadata, Open Graph images, transcripts/captions, and `VideoObject` schema.
+1. Confirm the message metadata/editorial owner and whether the online-service schedule can be published.
+2. Decide whether complete channel history should come from the authenticated YouTube Data API, a one-time import, or the future Supabase editorial repository.
+3. Approve Supabase project ownership, authentication roles, RLS policy, storage strategy, upload limits, and backups.
+4. Add migrations and generated types only after that approval.
+5. Extend or replace the public-feed adapter behind the existing normalized interface.
+6. Enable create/update/category/upload actions behind authenticated admin access.
+7. Add approved per-message routes, canonical metadata, Open Graph images, transcripts/captions, and `VideoObject` schema.

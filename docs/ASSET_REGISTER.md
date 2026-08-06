@@ -45,7 +45,7 @@ The obvious homepage first-visit, message, ministry-card, and outreach placehold
 | Location | Current state | Photography still needed |
 | --- | --- | --- |
 | Homepage events | Provider-neutral unavailable state; no fabricated cards | Current event imagery should arrive with verified event records and registration ownership. |
-| Message archive cards | Code-native fallback tied to unverified local records | Verified sermon thumbnails or video IDs from the canonical channel. |
+| Message archive cards | Remote thumbnails supplied by the verified canonical YouTube feed, with the existing approved local records retained only as a feed-failure fallback | A future editorial backend may replace remote thumbnail references with approved managed posters when ownership, workflow, and storage are configured. |
 | Youth and Young Adults | Dark page hero without a photo | Current ministry photography with safeguarding/release approval and verified ministry context. |
 | Give and legal pages | Intentionally restrained dark page heroes | No image is required; add only if it improves comprehension and has clear approval. |
 | Events directory | No trusted current event photography found | Recent church-owned event photographs; stale picnic graphics were rejected. |

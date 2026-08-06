@@ -2,6 +2,7 @@ import { homePhotography } from "@/content";
 import type { ContentFeedResult, Message } from "@/types/content";
 import { Card } from "@/components/ui/card";
 import { MediaFrame } from "@/components/ui/media-frame";
+import { formatMessageDate } from "@/lib/messages/message-format";
 
 export function MessageArchive({ feed }: { feed: ContentFeedResult<Message> }) {
   if (feed.status === "unavailable" || feed.items.length === 0) {
@@ -24,6 +25,7 @@ export function MessageArchive({ feed }: { feed: ContentFeedResult<Message> }) {
           <MediaFrame image={homePhotography.message} label={`Living Message Church teaching photography for ${message.title.value}`} ratio="wide" tone="cobalt" sizes="(max-width: 48rem) 100vw, 33vw" />
           <div className="card-copy">
             <h2>{message.title.value}</h2>
+            {message.date ? <p className="message-date">{formatMessageDate(message.date.value)}</p> : null}
             <p>{message.summary.value}</p>
           </div>
         </Card>

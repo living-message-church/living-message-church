@@ -8,6 +8,7 @@ import { getMessageFeed } from "@/lib/messages/message-source";
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: { feed: await getMessageFeed() },
+  revalidate: 3600,
 });
 
 export default function LivePage({ feed }: InferGetStaticPropsType<typeof getStaticProps>) {

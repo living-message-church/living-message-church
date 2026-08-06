@@ -9,12 +9,13 @@ import { getMessageFeed } from "@/lib/messages/message-source";
 
 export const getStaticProps: GetStaticProps = async () => ({
   props: { feed: await getMessageFeed() },
+  revalidate: 3600,
 });
 
 export default function MessagesPage({ feed }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <SiteHead {...stagedPages.messages.seo} noIndex />
+      <SiteHead {...stagedPages.messages.seo} />
       <PageHero content={stagedPages.messages} />
       <Section tone="paper" containerClassName="message-library-container" containerSize="editorial">
         {feed.status === "available" && feed.items.length ? <MessageLibrary messages={feed.items} /> : <MessageArchive feed={feed} />}

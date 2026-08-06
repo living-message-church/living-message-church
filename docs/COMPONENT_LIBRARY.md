@@ -40,7 +40,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 | `MessageArchive` | Compact normalized-message collection or a truthful unavailable-source state, retained for `/messages/live` |
 | `MessageAdminPrototype` | Non-persistent title/meta/category management preview; upload and save controls remain disabled pending Supabase/auth |
 | `EventCollection` | Renders normalized events as image-led editorial rows with date, location, and optional registration action, or the same layout as a truthful unavailable-source state; historical events are excluded |
-| `messageSource` adapter | Provider-neutral message boundary; currently returns approved-temporary local records sourced from the production sermon page |
+| `messageSource` adapter | Provider-neutral message boundary; fetches and normalizes the verified canonical YouTube Atom feed, derives only evidence-backed categories, and falls back to approved local records when the feed is unavailable |
 | `eventSource` adapter | Provider-neutral event boundary; currently unconfigured because the authoritative event source is not verified |
 
 ## Homepage sections

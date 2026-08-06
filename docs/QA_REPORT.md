@@ -3,6 +3,12 @@
 QA date: 2026-08-06  
 Application: local Next.js development preview
 
+## Verified YouTube feed integration
+
+The user-approved Streams source resolves to channel ID `UC-YctizZq1wTbhgn3tQOJqA`; the official public Atom feed resolves to the same channel. The provider-neutral adapter now fetches and normalizes the newest 15 records, sorts them newest-first, marks the first as featured, and supplies title, published date, first description paragraph, video ID, watch URL, and thumbnail without credentials. Categories are derived only from explicit stream/title/description metadata and publication year. Home, `/messages`, and `/messages/live` revalidate hourly; `/messages` is now indexable and included in the sitemap.
+
+The public feed is intentionally a recent-history integration, not a claim of complete channel history. A full historical import requires the future authenticated Data API or editorial backend. If YouTube is unavailable during generation, the adapter retains the approved four-record local fallback instead of failing the page.
+
 ## Helvetica Neue typography test
 
 The 2026-08-06 typography test standardizes the complete application on a Helvetica Neue-led local stack, with Helvetica, Arial, and generic sans-serif fallbacks. The former mixed body stack and isolated Georgia event treatment were removed. Fractional weight declarations were normalized to explicit 400, 600, 700, 800, and 900 values so hierarchy resolves predictably across locally available Helvetica-family faces.
@@ -33,12 +39,12 @@ The event presentation now uses a ruled horizontal list, optional event-specific
 
 ## Message library and admin-prototype update
 
-The homepage and `/messages` now render a real privacy-enhanced YouTube player for the video currently featured on the production sermon page. Four production-page YouTube IDs and their public oEmbed titles/authors were normalized into approved-temporary local records. The implementation does not claim that the 2018 featured record is the newest chronological sermon, and the canonical YouTube-channel conflict remains open.
+The original message prototype rendered a production-sermon-page video and four approved-temporary local records. Those records now serve only as the network-failure fallback; the verified canonical YouTube feed is the primary source.
 
 Source and HTTP checks passed for:
 
-- homepage and `/messages` rendering `youtube-nocookie.com/embed/BFGOKJx3KDI` with an accessible iframe title;
-- `/messages` rendering four records, category controls, search input, responsive cards, and `noindex, nofollow`;
+- homepage and `/messages` rendering the current newest normalized feed record (`SGsP83hGEN8` at test time) through `youtube-nocookie.com` with an accessible iframe title;
+- `/messages` rendering normalized feed records, publication dates, category controls, search input, responsive cards, canonical metadata, and indexable robots behavior;
 - `/admin/messages` returning 200, retaining `noindex, nofollow`, exposing no write endpoint, and rendering disabled persistence/upload controls;
 - `/messages/live` returning 200 through the existing provider-normalized archive path;
 - final lint, redirect validation, and the 23-page production build.
@@ -93,11 +99,11 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | Area | Evidence |
 | --- | --- |
 | Primary and priority routes | Existing public routes plus the new no-index `/admin/messages` prototype build successfully; representative Home, Messages, Live, and Admin routes returned HTTP 200 locally. |
-| Staged/no-index handling | About, beliefs, leadership, all Connect routes, Messages, Live, Events, Outreach, and Give emitted `noindex, nofollow`. |
+| Staged/no-index handling | About, beliefs, leadership, all Connect routes, Live, Events, Outreach, and Give emitted `noindex, nofollow`; the verified `/messages` archive is indexable. |
 | Metadata | Home emitted a unique title, canonical URL, Open Graph/Twitter metadata, and Organization JSON-LD. |
 | Structured-data restraint | Only the verified organization name and canonical URL are emitted; no address, phone, service, event, sermon, rating, or founding claims were fabricated. |
-| Messages source | `/messages` and Home render approved-temporary production-sermon-page records through the local adapter; `/messages/live` consumes the same normalized feed. No canonical-channel resolution is implied. |
-| Message privacy/SEO restraint | The iframe uses `youtube-nocookie.com`; Messages and Admin remain no-indexed, and no unapproved `VideoObject` claims are emitted. |
+| Messages source | Home, `/messages`, and `/messages/live` consume the verified canonical YouTube feed through one normalized adapter, with approved local records retained only for feed failure. |
+| Message privacy/SEO restraint | The iframe uses `youtube-nocookie.com`; Messages is indexable after source verification, Admin remains no-indexed, and no unapproved `VideoObject` claims are emitted. |
 | Admin safety boundary | `/admin/messages` has no API mutation, authentication claim, Supabase client, or enabled upload/save control; all prototype edits are browser-local. |
 | Events fallback | `/events` and Home rendered the unconfigured adapter state; historical WordPress events were not treated as upcoming. |
 | Redirects | Representative trailing-slash legacy routes returned a direct 301 to `/`, `/new-here`, and `/events`. Static validation found 453 sources, no duplicates, no loops, no chains, and no missing destinations. |
@@ -108,7 +114,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | Button sizing | Action links have a 3rem minimum height and responsive wrapping. |
 | Reduced-motion code path | `prefers-reduced-motion: reduce` disables smooth scrolling and minimizes animation/transition duration. |
 | Photography crops | Local approved-source images render within defined 4:3 and 16:9 frames using `next/image`, responsive `sizes`, and `object-fit: cover`; page-hero backgrounds use capped cover crops. |
-| Sitemap/robots | Both returned HTTP 200; sitemap contains only the published Home, New Here, and Contact routes. |
+| Sitemap/robots | Both returned HTTP 200; the sitemap contains the published Home, New Here, Contact, and Messages routes. |
 
 ## Failed and fixed
 
@@ -149,7 +155,6 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed |
-| `npm run build` | Current Turbopack rerun is environment-blocked while its CSS worker attempts to bind an internal process port (`Operation not permitted`), including with elevated execution permission; no application parse/type error was reported |
-| `npx next build --webpack` | Passed on Next.js 16.3.0 after the viewport-height refinement; all 23 pages plus robots, sitemap, and API route generated successfully |
-| Message milestone route smoke | Passed; Home, Messages, Live, and Admin returned HTTP 200 with expected embed/no-index markers |
+| `npm run build` | Passed on Next.js 16.3.0 with the verified public YouTube feed available during generation; all 23 pages plus robots, sitemap, and API route generated successfully |
+| Message milestone route smoke | Passed; Home, Messages, Live, sitemap, and robots returned HTTP 200. Home and Messages contained newest video `SGsP83hGEN8`; Messages was indexable, Live retained no-index, and the sitemap contained `/messages`. |
 | Existing automated tests | No test suite or test command is configured |

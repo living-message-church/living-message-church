@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { Message } from "@/types/content";
+import { formatMessageDate } from "@/lib/messages/message-format";
 import { YouTubeEmbed } from "./youtube-embed";
 
 export function MessageLibrary({ messages }: { messages: Message[] }) {
@@ -40,6 +41,7 @@ export function MessageLibrary({ messages }: { messages: Message[] }) {
         <div className="message-library-feature-copy">
           <p className="eyebrow">Featured message</p>
           <h2 id="active-message-title">{activeMessage.title.value}</h2>
+          {activeMessage.date ? <p className="message-date">{formatMessageDate(activeMessage.date.value)}</p> : null}
           {activeMessage.speaker ? <p className="message-speaker">{activeMessage.speaker.value}</p> : null}
           <p>{activeMessage.summary.value}</p>
           <div className="message-category-list" aria-label="Message categories">
@@ -103,6 +105,7 @@ export function MessageLibrary({ messages }: { messages: Message[] }) {
                     {(message.categories?.value ?? []).map((category) => <span key={category}>{category}</span>)}
                   </div>
                   <h3>{message.title.value}</h3>
+                  {message.date ? <p className="message-date">{formatMessageDate(message.date.value)}</p> : null}
                   {message.speaker ? <p>{message.speaker.value}</p> : null}
                   <button className="message-watch-link" onClick={() => selectMessage(message)} type="button">
                     Watch message <span aria-hidden="true">→</span>

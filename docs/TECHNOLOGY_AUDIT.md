@@ -72,7 +72,7 @@ Recommendation vocabulary:
 
 | Service | Purpose | Where it appears | How integrated | Recommendation |
 | --- | --- | --- | --- | --- |
-| YouTube | Sermon video and livestream hosting | Online Church, Sermons, social navigation | Links, embeds, playlist/feed plugins | **KEEP + MODERNIZE.** Keep video/live hosting external; build a native messages presentation with cached API/feed metadata and accessible links. Canonical channel is **Needs Verification** because multiple IDs/handles appear. |
+| YouTube | Sermon video and livestream hosting | Home latest message, Messages, Online Church, social navigation | Verified public Atom feed and privacy-enhanced embeds; canonical Streams handle resolves to channel ID `UC-YctizZq1wTbhgn3tQOJqA` | **KEEP + MODERNIZE.** Keep video/live hosting external and retain the provider-neutral, hourly revalidated native messages presentation. |
 | YouTube Feed Pro 2.7.0 | Video feed UI | Online Church | WordPress feed plugin reading a YouTube channel | **REPLACE.** Use server-side cached official feed/API data or curated records; do not replicate plugin markup. |
 | YouTube Embed Plus 14.2.6 | YouTube embeds | Sermon/media pages and site assets | WordPress embed plugin | **REPLACE.** Use consent/performance-aware native embeds, ideally click-to-load with links/captions. |
 | Podbean | Podcast/audio sermon hosting | Sermons page | External multi-player/playlist with download controls | **KEEP + VERIFY.** Confirm account ownership, feed activity, rights, and whether audio remains a supported channel; modernize the native presentation if retained. |

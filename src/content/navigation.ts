@@ -5,7 +5,7 @@ export const primaryNavigation: NavigationItem[] = [
   { label: "New Here", href: "/new-here", availability: "implemented" },
   { label: "About", href: "/about", availability: "staged" },
   { label: "Connect", href: "/connect", availability: "staged" },
-  { label: "Messages", href: "/messages", availability: "staged" },
+  { label: "Messages", href: "/messages", availability: "implemented" },
   { label: "Events", href: "/events", availability: "staged" },
   { label: "Outreach", href: "/outreach", availability: "staged" },
   { label: "Give", href: "/give", availability: "staged" },
@@ -26,7 +26,7 @@ export const footerGroups: FooterGroup[] = [
     links: [
       { label: "About", href: "/about", availability: "staged" },
       { label: "Connect", href: "/connect", availability: "staged" },
-      { label: "Messages", href: "/messages", availability: "staged" },
+      { label: "Messages", href: "/messages", availability: "implemented" },
       { label: "Outreach", href: "/outreach", availability: "staged" },
       { label: "Give", href: "/give", availability: "staged" },
     ],

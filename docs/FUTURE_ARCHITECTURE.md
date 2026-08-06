@@ -134,6 +134,6 @@ Add approved Plan Your Visit, contact, prayer, newsletter, and volunteer workflo
 1. Confirm current service/contact/facility facts and named content owners.
 2. Choose Pages Router versus App Router after reading the installed Next 16 documentation and assessing migration cost; do not assume training-era conventions.
 3. Confirm Planning Center account/modules, API access, source-of-truth responsibilities, and the two Church Center namespaces.
-4. Confirm canonical YouTube channel, Podbean status, newsletter provider, form recipients, and social accounts.
+4. Confirm Podbean status, newsletter provider, form recipients, and remaining social-account ownership; the canonical YouTube Streams channel is verified.
 5. Approve whether Supabase is warranted, who administers it, and submission retention/access policies.
 6. Approve final sitemap, content/photo/legal material, analytics approach, and production cutover/rollback plan.

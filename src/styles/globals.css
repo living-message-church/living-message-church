@@ -247,6 +247,8 @@ button, input, textarea, select { font: inherit; }
 .message-library-feature { display: grid; scroll-margin-top: var(--space-5); align-items: center; grid-template-columns: minmax(15rem, 0.68fr) minmax(0, 1.32fr); gap: clamp(2rem, 5vw, 5rem); border-radius: var(--radius-md); background: var(--color-ink); color: var(--color-paper-bright); padding: clamp(1.5rem, 4vw, 4rem); }
 .message-library-feature h2, .message-library-heading h2 { margin: 0; font-family: var(--font-display); font-size: var(--step-3); font-weight: 700; letter-spacing: -0.04em; line-height: 0.98; text-wrap: balance; }
 .message-library-feature-copy > p:not(.eyebrow, .message-speaker) { max-width: 36rem; color: rgb(255 255 255 / 0.74); }
+.message-date { color: var(--color-ink-soft); font-size: var(--step--1); font-weight: 700; letter-spacing: 0.02em; }
+.message-library-feature .message-date { margin: var(--space-3) 0 0; color: rgb(255 255 255 / 0.7); }
 .message-speaker { margin: var(--space-4) 0 0; color: var(--color-gold); font-weight: 700; }
 .message-category-list { display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .message-category-list span { display: inline-flex; align-items: center; border: 1px solid color-mix(in srgb, currentColor 20%, transparent); border-radius: 999px; padding: 0.25rem 0.65rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em; }

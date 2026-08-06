@@ -10,7 +10,7 @@ Updated: 2026-08-06
 - Shared primary header, accessible mobile navigation, skip link, main landmark, and footer.
 - Required homepage sections with content separated from components.
 - Implemented foundation routes: `/`, `/new-here`, `/contact`, `/privacy-policy`, `/photo-release`.
-- Deliberate no-index staged destinations for About, beliefs, leadership, gallery, Connect, Next Steps, Messages, live, Events, Outreach, and Give so the full redirect ledger has valid destinations.
+- Deliberate no-index staged destinations for About, beliefs, leadership, gallery, Connect, Next Steps, live, Events, Outreach, and Give so the full redirect ledger has valid destinations; `/messages` is published from its verified source.
 - Sitewide metadata component, canonical URLs, Open Graph/Twitter defaults, minimal verified Organization JSON-LD, XML sitemap, and robots route.
 - 453 audited 301 redirect rules sourced from the machine-readable inventory, including one query-qualified legacy route.
 - Redirect validator for duplicate sources, statically missing destinations, loops, chains, ledger counts, and invalid status assumptions.
@@ -37,8 +37,8 @@ Updated: 2026-08-06
 - Decorative identity circles, accent bars, visit-section orbits, floating overlays, and image-drift animation were removed. The identity statement now uses a direct two-column composition with all-white type and a larger human photograph.
 - Homepage art direction review completed in `ART_DIRECTION_REVIEW.md`: strong hero, identity, first-visit, message, and outreach moments were protected; ministries gained one lead photographic story; and the final invitation now closes on approved human photography.
 - Upcoming Events now uses an editorial horizontal-list presentation with optional provider-supplied imagery, date/location hierarchy, quiet separators, and conditional registration actions. Until the authoritative feed is approved, the homepage renders the truthful calendar-pending state in the same layout rather than inventing events.
-- Featured homepage message now plays the production sermon-page YouTube record in a privacy-enhanced responsive player.
-- `/messages` now provides a featured player, public category chips, keyword search, responsive archive cards, and truthful empty states using four approved-temporary production-page video records.
+- Featured homepage message now plays the newest item from the verified Living Message Church YouTube feed in a privacy-enhanced responsive player.
+- `/messages` now provides an hourly revalidated newest-first YouTube feed, featured player, publication dates, evidence-backed category filters, keyword search, responsive archive cards, and truthful local fallback.
 - `/admin/messages` provides a no-index, non-persistent visual prototype for title/meta editing and category creation/removal; save and upload remain disabled until Supabase storage and authenticated access are approved.
 - Message records now include optional slug, YouTube, thumbnail, category, featured, and SEO metadata fields behind the existing provider adapter boundary.
 - The future Supabase schema, RLS, storage, upload, audit, and adapter transition are documented in `MESSAGES_ARCHITECTURE.md`.
@@ -49,7 +49,7 @@ Updated: 2026-08-06
 
 ## In progress
 
-- Current event cards, verified recent sermon records, Youth, and Young Adults still require current record-specific or ministry-specific media; truthful fallback or approved-temporary presentation remains in place.
+- Current event cards, Youth, and Young Adults still require current record-specific or ministry-specific media; truthful fallback or approved-temporary presentation remains in place.
 - Legal routes preserve the current subjects but remain interim/no-index pending legal and processor review.
 - Interactive responsive/browser QA remains pending because no in-app or extension browser was connected. All 15 requested viewport widths are source-reviewed and documented as rendered verification pending in `QA_REPORT.md`.
 
@@ -57,7 +57,7 @@ Updated: 2026-08-06
 
 - Service/online times, address/map/entrance, phone, email, accessibility, service duration, and kids ages/safety.
 - Leadership roster, spellings, titles, biographies, and portraits.
-- Canonical YouTube channel, message metadata owner, and Podbean status.
+- Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
 - Authoritative event source and publishing/registration policy.
 - Church Center namespaces, giving destination, visit form, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
 - Outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
@@ -66,14 +66,14 @@ Updated: 2026-08-06
 ## Deferred
 
 - Supabase persistence/auth/storage, native form submission, newsletter integration, prayer handling, analytics, and consent tooling.
-- Live YouTube and event APIs; adapter boundaries are ready, with messages temporarily backed by local production-page records.
+- Full-history YouTube Data API or future Supabase editorial sync and the live event API. The credential-free YouTube feed currently supplies the newest 15 records; local records remain a failure fallback.
 - Dynamic message/event detail routes; public message search and category filtering are now implemented.
 - Full ministry, beliefs, leadership, history, and gallery publication.
 - Production deployment, DNS changes, and WordPress decommissioning.
 
 ## Recommended next milestone
 
-Run a structured content-verification workshop with operations, pastoral leadership, ministry/safeguarding, communications, outreach, finance, legal, and technical owners. Resolve the launch-critical registry rows, confirm release/attribution records for the migrated images, provide current Youth and event photography, and confirm YouTube, event, Church Center, and giving ownership. Then populate the completed route structures, activate the existing adapters, and run the deferred interactive 15-viewport browser QA before considering indexing.
+Run a structured content-verification workshop with operations, pastoral leadership, ministry/safeguarding, communications, outreach, finance, legal, and technical owners. Resolve the remaining launch-critical registry rows, confirm release/attribution records for the migrated images, provide current Youth and event photography, and confirm event, Church Center, and giving ownership. Then populate the completed route structures, activate the remaining adapters, and run the deferred interactive 15-viewport browser QA.
 
 ## Validation record
 
@@ -81,7 +81,7 @@ Run a structured content-verification workshop with operations, pastoral leaders
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed: 453 sources, 21 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
-| `npm run build` | Previous milestone passed on Next.js 16.3.0. Current rerun is environment-blocked by Turbopack attempting to bind an internal process port (`Operation not permitted`); the supported `npx next build --webpack` path passed and generated all 23 pages plus robots/sitemap/API routes. |
-| Local HTTP smoke check | Home, Messages, Live, and Admin returned 200; YouTube embed, local feed records, and no-index boundaries were present |
+| `npm run build` | Passed on Next.js 16.3.0 with the verified YouTube feed available during generation; all 23 pages plus robots/sitemap/API routes generated successfully. |
+| Local HTTP smoke check | Home, Messages, Live, sitemap, and robots returned 200. Home and Messages rendered newest feed video `SGsP83hGEN8`; Messages was indexable, Live remained no-indexed, and the sitemap included `/messages`. |
 | Interactive browser QA | Not run: no connected browser was available |
 | Existing tests | No test command or test suite is currently configured |

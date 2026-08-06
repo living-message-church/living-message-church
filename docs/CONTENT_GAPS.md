@@ -56,7 +56,7 @@ Severity legend: **Critical** blocks trustworthy launch; **High** blocks a secti
 
 ## Messages, events, and giving
 
-- Select the canonical YouTube channel/playlist and determine whether Podbean remains active.
+- Determine whether Podbean remains active and whether the full historical YouTube archive should use a server-only Data API credential or the future editorial backend; the canonical Streams channel and credential-free recent feed are verified.
 - Sermons lack reliable title/date/speaker/series/scripture metadata on the current page. Define import source and editorial owner.
 - Decide whether transcripts/captions will be published and how accessibility corrections are handled.
 - Define event fields, cancellation/update ownership, registration capacity/status, recurrence behavior, timezone, and archival policy.
@@ -81,7 +81,7 @@ Severity legend: **Critical** blocks trustworthy launch; **High** blocks a secti
 - Old campaign/training registrations and dates must not remain actionable.
 - External partner/social/form/giving URLs need a launch-day status and ownership check.
 - X/Twitter account activity and desired inclusion should be confirmed.
-- Confirm ownership and continued need for both Church Center namespaces, two Typeform namespaces, Google Analytics/Tag Manager, YouTube channel IDs/handle, Podbean, and Text In Church.
+- Confirm ownership and continued need for both Church Center namespaces, two Typeform namespaces, Google Analytics/Tag Manager, Podbean, and Text In Church. The canonical YouTube channel is resolved.
 - No active newsletter provider, dedicated prayer-request workflow, public groups integration, or downloadable document library was positively identified; each is **Needs Verification**.
 
 ## SEO and structured content gaps

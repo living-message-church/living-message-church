@@ -116,9 +116,29 @@ export const socialChannels: SocialChannel[] = [
       source: productionSource,
     },
   },
+  {
+    platform: "YouTube",
+    label: "Living Message Church on YouTube",
+    url: {
+      value: "https://www.youtube.com/@livingmessagechurch/streams",
+      status: "verified",
+      source: "User-approved source of truth on 2026-08-06; canonical channel ID UC-YctizZq1wTbhgn3tQOJqA.",
+    },
+  },
 ];
 
 export const externalServiceLinks: ExternalServiceLink[] = [
+  {
+    id: "youtube-messages",
+    label: "Watch Living Message Church on YouTube",
+    provider: "YouTube",
+    purpose: "media",
+    url: {
+      value: "https://www.youtube.com/@livingmessagechurch/streams",
+      status: "verified",
+      source: "User-approved source of truth on 2026-08-06; canonical channel ID UC-YctizZq1wTbhgn3tQOJqA.",
+    },
+  },
   {
     id: "giving",
     label: "Give through Church Center",
