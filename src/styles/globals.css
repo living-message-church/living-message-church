@@ -45,7 +45,7 @@ a { color: inherit; text-underline-offset: 0.2em; }
 button, input, textarea, select { font: inherit; }
 ::selection { background: var(--color-gold); color: var(--color-ink); }
 :focus-visible { outline: 3px solid var(--color-cobalt); outline-offset: 4px; border-radius: 2px; }
-.service-bar :focus-visible, .site-header :focus-visible, .hero :focus-visible, .page-hero :focus-visible, .section-ink :focus-visible, .site-footer :focus-visible { outline-color: var(--color-gold); }
+.service-bar :focus-visible, .hero :focus-visible, .page-hero :focus-visible, .section-ink :focus-visible, .site-footer :focus-visible { outline-color: var(--color-gold); }
 
 .skip-link { position: fixed; z-index: 100; top: var(--space-3); left: var(--space-3); transform: translateY(-180%); background: var(--color-paper-bright); color: var(--color-ink); padding: 0.75rem 1rem; font-weight: 800; }
 .skip-link:focus { transform: translateY(0); }
@@ -77,10 +77,10 @@ button, input, textarea, select { font: inherit; }
 .service-bar-inner { display: flex; min-height: 2.75rem; align-items: center; justify-content: space-between; gap: 1rem; }
 .service-bar p { margin: 0; }
 .service-bar a { display: inline-flex; min-height: 2.75rem; align-items: center; font-weight: 750; text-decoration: none; }
-.site-header { position: relative; z-index: 20; border-bottom: 1px solid rgb(255 255 255 / 0.1); background: var(--color-ink); color: var(--color-paper-bright); }
+.site-header { position: relative; z-index: 20; border-bottom: 1px solid var(--color-line); background: var(--color-paper-bright); color: var(--color-ink); }
 .header-inner { display: flex; min-height: 5.35rem; align-items: center; justify-content: space-between; gap: var(--space-4); }
 .wordmark { display: inline-flex; align-items: center; line-height: 1; text-decoration: none; }
-.site-logo { width: clamp(10rem, 16vw, 12.5rem); height: auto; }
+.site-logo { width: clamp(10rem, 16vw, 12.5rem); height: auto; filter: brightness(0) saturate(100%); opacity: 0.9; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(0.75rem, 1.5vw, 1.5rem); }
 .desktop-nav a { position: relative; display: inline-flex; min-height: 2.75rem; align-items: center; font-size: 0.84rem; font-weight: 680; letter-spacing: 0; text-decoration: none; }
 .desktop-nav a::after { position: absolute; right: 0; bottom: -0.45rem; left: 0; height: 1px; background: var(--color-coral); content: ""; transform: scaleX(0); transform-origin: left; transition: transform 160ms ease; }
