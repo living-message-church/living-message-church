@@ -32,7 +32,7 @@ Updated: 2026-08-06
 - The secondary service bar was removed from the shared shell to reduce stacked navigation and first-viewport noise. Verified Sunday information remains in the hero and footer.
 - A system-level confidence pass standardized the public site around neutral-dominant section surfaces, sentence-case navigation, flatter cards, photography-first compositions, and restrained interaction feedback.
 - The single `78rem` canvas was replaced with typed semantic containers: reading `48rem`, content `64rem`, standard `80rem`, editorial `90rem`, hero `96rem`, and full bleed `100%`. Header/footer and image-led homepage sections now choose their canvas intentionally while prose remains bounded.
-- The homepage hero now uses the `96rem` canvas, a slightly shorter `40–52rem` height range, stronger horizontal column balance, and exact alignment with the wide shell. Editorial photography, video, and ministry grids receive more room without changing content, imagery, type scale, colors, section order, or motion.
+- The homepage hero now uses the `96rem` canvas, fills the stable viewport remaining below the separate site header, maintains stronger horizontal column balance, and aligns exactly with the wide shell. Editorial photography, video, and ministry grids receive more room without changing content, imagery, type scale, colors, section order, or motion.
 - Footer facts now occupy a deliberate third column on wide screens, navigation groups have more breathing room, and the lead area collapses before its minimum columns can crowd at tablet widths.
 - Decorative identity circles, accent bars, visit-section orbits, floating overlays, and image-drift animation were removed. The identity statement now uses a direct two-column composition with all-white type and a larger human photograph.
 - Homepage art direction review completed in `ART_DIRECTION_REVIEW.md`: strong hero, identity, first-visit, message, and outreach moments were protected; the verification-only events state was removed from the homepage; ministries gained one lead photographic story; and the final invitation now closes on approved human photography.
@@ -76,7 +76,7 @@ Run a structured content-verification workshop with operations, pastoral leaders
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed: 453 sources, 21 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
-| `npm run build` | Passed on Next.js 16.3.0; 23 generated pages plus robots/sitemap/API routes |
+| `npm run build` | Previous milestone passed on Next.js 16.3.0. Current rerun is environment-blocked by Turbopack attempting to bind an internal process port (`Operation not permitted`); the supported `npx next build --webpack` path passed and generated all 23 pages plus robots/sitemap/API routes. |
 | Local HTTP smoke check | Home, Messages, Live, and Admin returned 200; YouTube embed, local feed records, and no-index boundaries were present |
 | Interactive browser QA | Not run: no connected browser was available |
 | Existing tests | No test command or test suite is currently configured |

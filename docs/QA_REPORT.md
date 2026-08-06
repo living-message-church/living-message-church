@@ -7,7 +7,9 @@ Application: local Next.js development preview
 
 The 2026-08-06 layout-confidence pass replaced the fixed `78rem` site canvas with semantic reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) containers. The header, footer, and photography-led homepage sections now select wider canvases intentionally; standard interior pages and long-form reading remain constrained.
 
-No content, route, data model, photography asset, color token, typography scale, section order, component inventory, dependency, or motion behavior changed. The hero retains its existing text scale and photography while using a shorter `40–52rem` height range and wider horizontal composition. Image-led editorial splits allocate more space to media, message video receives the dominant column, supporting ministry cards retain bounded proportions, and footer facts gain a dedicated wide-screen column.
+No content, route, data model, photography asset, color token, typography scale, section order, component inventory, dependency, or motion behavior changed. The hero retains its existing text scale and photography while using a wider horizontal composition. Image-led editorial splits allocate more space to media, message video receives the dominant column, supporting ministry cards retain bounded proportions, and footer facts gain a dedicated wide-screen column.
+
+The subsequent hero-height refinement compared the current public Motivation Church behavior across its responsive rules. Its hero uses a stable full-viewport minimum while its content changes layout at smaller breakpoints. Living Message Church now follows the same proportional principle without copying the reference implementation: because its header occupies normal document flow rather than overlaying the media, the hero fills `100svh` minus the `6.5rem` desktop or `5.5rem` mobile header. A `vh` fallback precedes the stable-viewport rule. The video/poster continues to cover the complete hero, and content is allowed to increase the section height when a short viewport cannot contain it safely.
 
 The in-app browser connection and documented troubleshooting check found no available browser. Therefore all requested widths below are **source-reviewed and production-build verified, with rendered visual verification pending**. No screenshots were available, and no claim of optical browser approval is made.
 
@@ -135,6 +137,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed |
-| `npm run build` | Passed after wide-canvas integration on Next.js 16.3.0; 23 generated pages plus robots, sitemap, and API route |
+| `npm run build` | Current Turbopack rerun is environment-blocked while its CSS worker attempts to bind an internal process port (`Operation not permitted`), including with elevated execution permission; no application parse/type error was reported |
+| `npx next build --webpack` | Passed on Next.js 16.3.0 after the viewport-height refinement; all 23 pages plus robots, sitemap, and API route generated successfully |
 | Message milestone route smoke | Passed; Home, Messages, Live, and Admin returned HTTP 200 with expected embed/no-index markers |
 | Existing automated tests | No test suite or test command is configured |
