@@ -52,8 +52,10 @@ export function Hero() {
         </div>
         <div className="hero-side">
           <div className="hero-fact-card">
-            <span>Sundays</span>
-            <strong>{inPerson.map((service) => service.time).join(" · ")}</strong>
+            <span className="hero-invite">Join us this Sunday</span>
+            <div className="hero-times" aria-label={`Sunday service times: ${inPerson.map((service) => service.time).join(" and ")}`}>
+              {inPerson.map((service) => <strong key={service.id}>{service.time}</strong>)}
+            </div>
             <small>{contactInformation.address.value.street}</small>
           </div>
         </div>
