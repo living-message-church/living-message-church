@@ -9,6 +9,8 @@ The 2026-08-06 mobile polish pass reviewed the current Motivation Church public 
 
 The mobile header no longer displays the word “Menu.” Its native `details` summary is now a 48px icon-only target with a 30px three-line hamburger, accessible open/close labels, and a restrained close-state transformation. The dropdown shares the page gutter, provides 52px navigation rows, and retains native keyboard/focus behavior.
 
+Within the mobile homepage hero, the stacked primary and secondary actions now share the Sunday service panel’s 19rem maximum measure. At narrower widths both resolve fluidly to the available container, so their left and right edges remain aligned from 430px through 320px.
+
 The connected in-app browser was unavailable after the documented connection and troubleshooting checks, so rendered optical approval at 430, 390, 375, 360, and 320 pixels remains pending. Source inspection confirms that the 320px canvas retains 280px of usable content width, the 9.5rem logo and 48px menu target fit the header, centered copy keeps bounded measures, and reduced-motion rules suppress the icon transition duration.
 
 ## Verified YouTube feed integration

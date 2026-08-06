@@ -437,6 +437,7 @@ button, input, textarea, select { font: inherit; }
   .site-logo { width: 10rem; }
   .action-group { align-items: stretch; flex-direction: column; }
   .action-link:not(.action-text) { width: 100%; }
+  .hero .action-group { width: min(19rem, 100%); }
   .hero-fact-card { width: min(19rem, 100%); }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-grid > div:first-child { grid-column: auto; }
