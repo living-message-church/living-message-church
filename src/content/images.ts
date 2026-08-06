@@ -14,8 +14,8 @@ export const homePhotography: {
   ministries: Record<string, ContentImage>;
 } = {
   visit: approved(
-    "/images/general/living-message-community-welcome.jpg",
-    "People welcoming one another at a Living Message Church gathering.",
+    "/images/general/living-message-worship-gathering.jpg",
+    "The Living Message Church congregation gathered for worship.",
   ),
   message: approved(
     "/images/general/living-message-bible-teaching.jpg",
@@ -42,7 +42,10 @@ export const homePhotography: {
 };
 
 export const pagePhotography: Record<string, ContentImage> = {
-  "/new-here": homePhotography.visit,
+  "/new-here": approved(
+    "/images/general/living-message-community-welcome.jpg",
+    "People welcoming one another at a Living Message Church gathering.",
+  ),
   "/contact": approved(
     "/images/general/living-message-lobby-community.jpg",
     "People connecting in the lobby at Living Message Church.",
