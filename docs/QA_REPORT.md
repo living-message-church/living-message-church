@@ -11,6 +11,8 @@ The mobile header no longer displays the word “Menu.” Its native `details` s
 
 Within the mobile homepage hero, the stacked primary and secondary actions now share the Sunday service panel’s 19rem maximum measure. At narrower widths both resolve fluidly to the available container, so their left and right edges remain aligned from 430px through 320px.
 
+The mobile first-visit section now treats “A simple, welcoming first step” as a centered focal moment. Its headline scales from 3.25rem to 4.25rem, while the supporting copy is centered on a 31-character measure with a modestly larger reading size and the action remains centered below it. Desktop layout and typography are unchanged.
+
 The connected in-app browser was unavailable after the documented connection and troubleshooting checks, so rendered optical approval at 430, 390, 375, 360, and 320 pixels remains pending. Source inspection confirms that the 320px canvas retains 280px of usable content width, the 9.5rem logo and 48px menu target fit the header, centered copy keeps bounded measures, and reduced-motion rules suppress the icon transition duration.
 
 ## Verified YouTube feed integration

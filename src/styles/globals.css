@@ -423,6 +423,10 @@ button, input, textarea, select { font: inherit; }
   .section-intro { max-width: 34rem; margin-inline: auto; text-align: center; }
   .section-intro .heading, .section-intro p:last-child { margin-inline: auto; }
   .visit-visual .media-frame { aspect-ratio: 16 / 11; }
+  .visit-copy { width: 100%; max-width: 36rem; margin-inline: auto; text-align: center; }
+  .visit-copy .heading { max-width: 11ch; margin-inline: auto; font-size: clamp(3.25rem, 14.5vw, 4.25rem); }
+  .visit-copy > p:not(.eyebrow) { max-width: 31ch; margin-inline: auto; font-size: clamp(1.05rem, 4.4vw, 1.2rem); }
+  .visit-copy .action-group { justify-content: center; }
   .invitation-section { min-height: 36rem; background-position: 58% center; }
   .invitation-grid { justify-items: center; text-align: center; }
   .invitation-grid .heading, .invitation-grid .lede { margin-inline: auto; }
