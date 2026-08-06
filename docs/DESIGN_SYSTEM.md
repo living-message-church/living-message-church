@@ -24,12 +24,14 @@ Tokens live in `src/styles/globals.css`.
 | `--color-ink` | `#1D1D1B` | Primary text and immersive sections |
 | `--color-ink-soft` | `#4D4C47` | Secondary copy |
 | `--color-blue` | `#607D8B` | Approved muted blue-gray for brand fields, information accents, and light-surface focus |
+| `--color-brand-navy` | `#0E153D` | Deep endpoint of the approved branded media gradient |
+| `--color-brand-indigo` | `#282C72` | Indigo endpoint of the approved branded media gradient |
 | `--color-coral` | `#AD4F3B` | Primary actions and energetic accents |
 | `--color-gold` | `#E5CF91` | Warm emphasis and dark-surface focus |
 | `--color-sage` | `#E1E7DC` | Calm ministry and information surfaces |
 | `--color-line` | 14% ink mix | Low-contrast structural borders |
 
-The muted blue-gray is sampled from the approved visual reference supplied on 2026-08-06 and replaces the previous saturated cobalt (`#36538F`). Components may derive restrained darker or translucent variants with `color-mix()`, but must use `--color-blue` as their source rather than introducing a second blue.
+The muted blue-gray is sampled from the approved visual reference supplied on 2026-08-06 and replaces the previous saturated cobalt (`#36538F`). It remains the structural blue used for fields, information accents, and focus treatment. The user-supplied `lmc-colors.svg` establishes the separate navy-to-indigo brand gradient (`#0E153D` to `#282C72`). Those two tokens are reserved for compact branded media treatments and approved logo lockups; they should not replace the structural blue or justify introducing additional blues.
 
 Color combinations must retain WCAG AA text contrast. Blue is used for focus on light surfaces and gold on dark surfaces. Because the approved blue is a mid-tone, small text placed directly on blue uses deep ink; light text on blue is reserved for large display copy. Accent fields are restrained so warm paper and ink remain visually dominant.
 
