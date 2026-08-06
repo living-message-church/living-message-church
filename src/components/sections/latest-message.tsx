@@ -11,7 +11,13 @@ export function LatestMessage({ feed }: { feed: ContentFeedResult<Message> }) {
   const latestMessage = feed.items.find((message) => message.featured) ?? feed.items[0];
   const publishedDate = formatMessageDate(latestMessage?.date?.value);
   return (
-    <Section tone={content.tone} labelledBy="message-title" containerClassName="message-feature" containerSize="editorial">
+    <Section
+      className="latest-message-section"
+      tone={content.tone}
+      labelledBy="message-title"
+      containerClassName="message-feature"
+      containerSize="editorial"
+    >
       <div>
         <Eyebrow>{content.eyebrow}</Eyebrow>
         <Heading id="message-title">{content.title}</Heading>

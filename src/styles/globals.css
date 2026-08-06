@@ -71,6 +71,7 @@ button, input, textarea, select { font: inherit; }
 .section-ink { background: var(--color-ink); color: var(--color-paper-bright); }
 .section-sun { background: var(--color-paper); color: var(--color-ink); }
 .section-sage { background: var(--color-paper-bright); color: var(--color-ink); }
+.latest-message-section { background: linear-gradient(120deg, color-mix(in srgb, var(--color-brand-navy) 72%, var(--color-ink)), color-mix(in srgb, var(--color-brand-indigo) 50%, var(--color-ink))); }
 
 .eyebrow { margin: 0 0 var(--space-4); font-size: var(--step--1); font-weight: 700; letter-spacing: 0.08em; line-height: 1.2; text-transform: uppercase; }
 .heading { margin: 0; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.032em; line-height: 0.98; text-wrap: balance; }

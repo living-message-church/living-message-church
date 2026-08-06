@@ -21,6 +21,8 @@ The public feed is intentionally a recent-history integration, not a claim of co
 
 The message player now renders a lightweight custom facade before YouTube loads. It uses the verified thumbnail as the photographic field and centers a high-contrast white play triangle inside the exact `#0E153D` to `#282C72` circular brand gradient. The medallion occupies 62% of the control while the label is distributed across 98% of the circular path, leaving a controlled seam instead of a visibly short text run. The 16-second ring surrounds the medallion without overlapping it. The complete facade is one keyboard-accessible play button; activation replaces it with the privacy-enhanced `youtube-nocookie.com` iframe and requests autoplay. Reduced-motion styling leaves the ring static.
 
+The homepage message section now carries a restrained 120-degree navy-to-indigo background wash derived from the same approved tokens. Both endpoints are mixed back into the existing ink surface, preserving white-text contrast and keeping the gradient subordinate to the message photography.
+
 The user-supplied `Living Message Logo.svg` now replaces the previous raster logo in the header and footer through `next/image` with explicit intrinsic dimensions. The header preserves its native navy/brown color while the dark footer applies a white high-contrast treatment. The message-player medallion uses the separately supplied standalone tree SVG. Every use preserves its source asset’s native proportions. The previous PNG remains in the repository but is no longer referenced by application code.
 
 ## Helvetica Neue typography test
