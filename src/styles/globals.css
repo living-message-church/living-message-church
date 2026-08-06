@@ -158,7 +158,7 @@ button, input, textarea, select { font: inherit; }
 .visit-copy .heading { display: grid; max-width: 11ch; gap: 0.02em; font-size: clamp(2.7rem, 2rem + 2.1vw, 4.4rem); font-weight: 800; letter-spacing: -0.055em; line-height: 0.88; }
 .visit-copy .heading span, .visit-copy .heading em { display: block; }
 .visit-copy .heading em { font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.08em; font-weight: 400; letter-spacing: -0.045em; line-height: 0.9; }
-.visit-copy > p:not(.eyebrow) { max-width: 34ch; color: var(--color-ink-soft); }
+.visit-copy > p:not(.eyebrow) { max-width: 34ch; margin-top: clamp(1.75rem, 3vw, 2.5rem); color: var(--color-ink-soft); }
 .feature-copy > p:not(.eyebrow), .outreach-grid > div > p:not(.eyebrow) { max-width: 38rem; }
 .message-feature { grid-template-columns: minmax(20rem, 0.72fr) minmax(0, 1.28fr); }
 .outreach-grid { grid-template-columns: minmax(0, 1.18fr) minmax(20rem, 0.82fr); }
