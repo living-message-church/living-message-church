@@ -249,7 +249,21 @@ button, input, textarea, select { font: inherit; }
 .event-section-actions .action-group { margin-top: var(--space-6); }
 .youtube-player { position: relative; overflow: hidden; width: 100%; border: 1px solid rgb(255 255 255 / 0.18); border-radius: var(--radius-image); aspect-ratio: 16 / 9; background: #080808; }
 .youtube-player iframe { position: absolute; width: 100%; height: 100%; border: 0; inset: 0; }
+.youtube-facade { position: absolute; display: grid; width: 100%; height: 100%; border: 0; place-items: center; inset: 0; overflow: hidden; background-color: #080808; background-position: center; background-size: cover; color: white; cursor: pointer; }
+.youtube-facade-shade { position: absolute; background: linear-gradient(180deg, rgb(8 9 8 / 0.12), rgb(8 9 8 / 0.42)); inset: 0; transition: background-color 180ms ease; }
+.youtube-facade-control { position: relative; display: grid; width: clamp(7rem, 15vw, 9rem); aspect-ratio: 1; place-items: center; transition: transform 240ms ease; }
+.youtube-facade-ring { position: absolute; width: 100%; height: 100%; overflow: visible; animation: youtube-ring-turn 16s linear infinite; }
+.youtube-facade-ring text { fill: white; font-family: var(--font-sans); font-size: 8.4px; font-weight: 700; letter-spacing: 1.45px; text-transform: uppercase; }
+.youtube-tree-circle { display: grid; width: 52%; aspect-ratio: 1; place-items: center; border: 1px solid rgb(255 255 255 / 0.7); border-radius: 50%; background: color-mix(in srgb, var(--color-gold) 82%, white); box-shadow: 0 0.75rem 2.5rem rgb(8 9 8 / 0.22); }
+.youtube-tree-mark { width: 2.65rem; height: 2.3rem; background: url("/images/brand/living-message-church-logo.png") left center / auto 100% no-repeat; filter: brightness(0) saturate(100%); transform: translateX(0.12rem); }
+.youtube-facade:hover .youtube-facade-shade { background-color: rgb(8 9 8 / 0.08); }
+.youtube-facade:hover .youtube-facade-control { transform: scale(1.045); }
+.youtube-facade:focus-visible { outline-offset: -6px; }
 .youtube-player-empty { display: grid; place-items: center; min-height: 18rem; padding: var(--space-5); color: rgb(255 255 255 / 0.72); text-align: center; }
+
+@keyframes youtube-ring-turn {
+  to { transform: rotate(360deg); }
+}
 .message-library { display: grid; gap: var(--space-7); }
 .message-library-feature { display: grid; scroll-margin-top: var(--space-5); align-items: center; grid-template-columns: minmax(15rem, 0.68fr) minmax(0, 1.32fr); gap: clamp(2rem, 5vw, 5rem); border-radius: var(--radius-md); background: var(--color-ink); color: var(--color-paper-bright); padding: clamp(1.5rem, 4vw, 4rem); }
 .message-library-feature h2, .message-library-heading h2 { margin: 0; font-family: var(--font-display); font-size: var(--step-3); font-weight: 700; letter-spacing: -0.04em; line-height: 0.98; text-wrap: balance; }
@@ -457,5 +471,6 @@ button, input, textarea, select { font: inherit; }
   html { scroll-behavior: auto; }
   .hero-video { display: none; }
   .visit-visual .media-image { animation: none; transform: none; }
+  .youtube-facade-ring { animation: none; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }

@@ -19,6 +19,8 @@ The user-approved Streams source resolves to channel ID `UC-YctizZq1wTbhgn3tQOJq
 
 The public feed is intentionally a recent-history integration, not a claim of complete channel history. A full historical import requires the future authenticated Data API or editorial backend. If YouTube is unavailable during generation, the adapter retains the approved four-record local fallback instead of failing the page.
 
+The message player now renders a lightweight custom facade before YouTube loads. It uses the verified thumbnail as the photographic field and isolates the tree from the approved local Living Message logo inside a warm circular mark, surrounded by a 16-second rotating “Watch the message” ring. The complete facade is one keyboard-accessible play button; activation replaces it with the privacy-enhanced `youtube-nocookie.com` iframe and requests autoplay. Reduced-motion styling leaves the ring static.
+
 ## Helvetica Neue typography test
 
 The 2026-08-06 typography test standardizes the complete application on a Helvetica Neue-led local stack, with Helvetica, Arial, and generic sans-serif fallbacks. The former mixed body stack and isolated Georgia event treatment were removed. Fractional weight declarations were normalized to explicit 400, 600, 700, 800, and 900 values so hierarchy resolves predictably across locally available Helvetica-family faces.

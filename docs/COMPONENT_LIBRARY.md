@@ -35,7 +35,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 | Component | Responsibility |
 | --- | --- |
-| `YouTubeEmbed` | Privacy-enhanced, responsive YouTube player for an approved normalized message record |
+| `YouTubeEmbed` | Lightweight video facade using a verified thumbnail, the approved Living Message tree mark, a restrained rotating watch ring, and click-to-load privacy-enhanced YouTube playback; motion is disabled for reduced-motion users |
 | `MessageLibrary` | Featured player, category chips, keyword search, cards, and empty state for normalized message records |
 | `MessageArchive` | Compact normalized-message collection or a truthful unavailable-source state, retained for `/messages/live` |
 | `MessageAdminPrototype` | Non-persistent title/meta/category management preview; upload and save controls remain disabled pending Supabase/auth |
