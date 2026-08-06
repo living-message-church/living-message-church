@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
-import { Container } from "./container";
+import { Container, type ContainerSize } from "./container";
 
 interface SectionProps {
   children: ReactNode;
   className?: string;
   containerClassName?: string;
+  containerSize?: ContainerSize;
   id?: string;
   tone?: "paper" | "ink" | "sun" | "sage";
   labelledBy?: string;
@@ -14,6 +15,7 @@ export function Section({
   children,
   className = "",
   containerClassName = "",
+  containerSize = "standard",
   id,
   tone = "paper",
   labelledBy,
@@ -24,7 +26,7 @@ export function Section({
       aria-labelledby={labelledBy}
       className={`section section-${tone} ${className}`}
     >
-      <Container className={containerClassName}>{children}</Container>
+      <Container className={containerClassName} size={containerSize}>{children}</Container>
     </section>
   );
 }

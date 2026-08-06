@@ -10,7 +10,7 @@ export function StagedPage({ content }: { content: PageContent }) {
     <>
       <SiteHead {...content.seo} noIndex />
       <PageHero content={content} />
-      <Section tone="paper" labelledBy="staged-content-title" containerClassName="reading-content">
+      <Section tone="paper" labelledBy="staged-content-title" containerSize="reading" containerClassName="reading-content">
         <Heading as="h2" id="staged-content-title" size="section">This page is being thoughtfully prepared.</Heading>
         <p>{content.intro}</p>
         <p>For current help, service details, or directions, use the visitor and contact pages.</p>

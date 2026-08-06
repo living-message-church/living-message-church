@@ -17,8 +17,8 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 | Component | Responsibility |
 | --- | --- |
-| `Container` | Wide/reading content widths and responsive gutters |
-| `Section` | Semantic section, tone, spacing, and labelled-by connection |
+| `Container` | Typed reading, content, standard, editorial, hero, and full-bleed widths with shared responsive gutters |
+| `Section` | Semantic section, tone, spacing, labelled-by connection, and intentional container-size selection |
 | `Eyebrow` | Compact editorial context label |
 | `Heading` | Typed heading level and display scale |
 | `ActionLink`, `ActionGroup` | Internal/external calls to action with consistent states |

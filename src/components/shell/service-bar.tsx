@@ -5,7 +5,7 @@ export function ServiceBar() {
   const inPerson = serviceTimes.filter((service) => service.format === "in-person");
   return (
     <div className="service-bar">
-      <Container className="service-bar-inner">
+      <Container className="service-bar-inner" size="editorial">
         <p>
           <strong>Sundays</strong> {inPerson.map((service) => service.time).join(" & ")}
         </p>

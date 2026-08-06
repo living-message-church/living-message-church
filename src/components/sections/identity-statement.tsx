@@ -6,7 +6,7 @@ import { Eyebrow, Heading } from "@/components/ui/typography";
 export function IdentityStatement() {
   const content = homeSections.identity;
   return (
-    <Section className="identity-section" tone={content.tone} labelledBy="identity-title" containerClassName="identity-layout">
+    <Section className="identity-section" tone={content.tone} labelledBy="identity-title" containerClassName="identity-layout" containerSize="editorial">
       <div className="identity-copy">
         <Eyebrow>{content.eyebrow}</Eyebrow>
         <Heading id="identity-title">{content.title}</Heading>
@@ -18,7 +18,7 @@ export function IdentityStatement() {
           label="Living Message Church community connection"
           ratio="portrait"
           tone="coral"
-          sizes="(max-width: 48rem) 100vw, (max-width: 70rem) 42vw, 30rem"
+          sizes="(max-width: 48rem) 100vw, (max-width: 70rem) 42vw, 36rem"
         />
       </div>
     </Section>

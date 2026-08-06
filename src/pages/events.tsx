@@ -15,7 +15,7 @@ export default function EventsPage({ feed }: InferGetStaticPropsType<typeof getS
     <>
       <SiteHead {...stagedPages.events.seo} noIndex />
       <PageHero content={stagedPages.events} />
-      <Section tone="paper" containerClassName="feed-section">
+      <Section tone="paper" containerClassName="feed-section" containerSize="editorial">
         <EventCollection feed={feed} />
       </Section>
     </>

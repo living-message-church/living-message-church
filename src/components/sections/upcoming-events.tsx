@@ -10,7 +10,7 @@ export function UpcomingEvents({ feed }: { feed: ContentFeedResult<ChurchEvent> 
 
   const content = homeSections.events;
   return (
-    <Section tone={content.tone} labelledBy="events-title">
+    <Section tone={content.tone} labelledBy="events-title" containerSize="editorial">
       <div className="section-heading-row">
         <div><Eyebrow>{content.eyebrow}</Eyebrow><Heading id="events-title">{content.title}</Heading></div>
         {content.actions ? <ActionGroup actions={content.actions} /> : null}

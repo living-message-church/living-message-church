@@ -8,7 +8,7 @@ export function SiteHeader() {
   const { pathname } = useRouter();
   return (
     <header className="site-header">
-      <Container className="header-inner">
+      <Container className="header-inner" size="editorial">
         <Link href="/" className="wordmark" aria-label={`${siteIdentity.name.value} home`}>
           <Image
             className="site-logo"

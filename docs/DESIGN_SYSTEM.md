@@ -47,9 +47,10 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 
 - `--space-1` through `--space-8` establish the rhythm.
 - Section padding uses fluid `--space-7`; content clusters use smaller tokens.
-- Wide container: `78rem`; reading container: `42rem`; responsive gutter uses `clamp()`.
-- The wide container does not expand at ultra-wide breakpoints. Large screens gain surrounding whitespace rather than longer lines or looser alignment.
-- Shared two-column compositions use `--space-7` for their primary gap.
+- Semantic containers separate reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) canvases.
+- Every bounded container uses the same fluid gutter and centers within its own intentional maximum. Ultra-wide screens give photography-led sections more presence without widening prose.
+- Shared two-column compositions use a fluid gap bounded by the existing spacing rhythm.
+- Header and footer use the editorial canvas; the homepage hero and final invitation use the hero canvas; homepage image-led sections use the editorial canvas; ordinary interior pages default to standard.
 - Main editorial grids collapse intentionally to one column below 48rem.
 
 ### Shape and imagery

@@ -7,7 +7,7 @@ import { Eyebrow, Heading } from "@/components/ui/typography";
 export function OutreachFeature() {
   const content = homeSections.outreach;
   return (
-    <Section tone={content.tone} labelledBy="outreach-title" containerClassName="outreach-grid">
+    <Section tone={content.tone} labelledBy="outreach-title" containerClassName="outreach-grid" containerSize="editorial">
       <MediaFrame image={homePhotography.outreach} label="Living Message Church outreach photography" ratio="landscape" tone="coral" />
       <div>
         <Eyebrow>{content.eyebrow}</Eyebrow>

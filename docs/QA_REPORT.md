@@ -3,6 +3,14 @@
 QA date: 2026-08-06  
 Application: local Next.js development preview
 
+## Wide canvas and premium layout update
+
+The 2026-08-06 layout-confidence pass replaced the fixed `78rem` site canvas with semantic reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) containers. The header, footer, and photography-led homepage sections now select wider canvases intentionally; standard interior pages and long-form reading remain constrained.
+
+No content, route, data model, photography asset, color token, typography scale, section order, component inventory, dependency, or motion behavior changed. The hero retains its existing text scale and photography while using a shorter `40–52rem` height range and wider horizontal composition. Image-led editorial splits allocate more space to media, message video receives the dominant column, supporting ministry cards retain bounded proportions, and footer facts gain a dedicated wide-screen column.
+
+The in-app browser connection and documented troubleshooting check found no available browser. Therefore all requested widths below are **source-reviewed and production-build verified, with rendered visual verification pending**. No screenshots were available, and no claim of optical browser approval is made.
+
 ## Homepage art-direction update
 
 The homepage was reviewed section by section against a single-focal-point standard. Hero, identity, first visit, latest message, and outreach were protected rather than redesigned. The unavailable event-feed state is now omitted from the homepage while remaining truthful on `/events`; ministry cards now form one lead photographic story with two supporting paths; and the final invitation uses approved Living Message photography as its emotional focal point.
@@ -50,21 +58,21 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 
 | Viewport | Status | Result |
 | --- | --- | --- |
-| Desktop 3840px | Code-reviewed; rendered verification pending | The shared canvas remains capped at 78rem, creating deliberate surrounding whitespace without widening prose. |
-| Desktop 2560px | Code-reviewed; rendered verification pending | The 78rem cap maintains the same alignment system as standard desktop widths. |
-| Desktop 1920px | Code-reviewed; rendered verification pending | Photography and copy stay within the fixed 78rem operating grid. |
-| Desktop 1600px | Code-reviewed; rendered verification pending | The fixed container and navigation targets remain controlled and aligned. |
-| Desktop 1440px | Code-reviewed; rendered verification pending | The 78rem canvas and bounded copy measures remain appropriate. |
-| Desktop 1280px | Code-reviewed; rendered verification pending | Fluid gutters protect the 78rem canvas while full navigation remains available. |
-| Tablet 1024px | Code-reviewed; rendered verification pending | Mobile navigation is active and tablet display scaling is reduced. |
-| Tablet 834px | Code-reviewed; rendered verification pending | Hero now stacks independently and uses a bounded landscape crop. |
-| Tablet 768px | Code-reviewed; rendered verification pending | Primary grids collapse; media ratios and mobile heading caps now apply. |
-| Mobile 430px | Code-reviewed; rendered verification pending | Actions stack; footer targets are enlarged; display type is bounded. |
-| Mobile 414px | Code-reviewed; rendered verification pending | Pretty wrapping and deterministic crop ratios reduce widow/crop risk. |
-| Mobile 390px | Code-reviewed; rendered verification pending | Logo/menu and fact-card containment rules fit the available canvas. |
-| Mobile 375px | Code-reviewed; rendered verification pending | Shorter feed/contact states and smaller display caps improve vertical balance. |
-| Mobile 360px | Code-reviewed; rendered verification pending | Single-column controls and preserved media ratios remove primary overflow risks. |
-| Mobile 320px | Code-reviewed; rendered verification pending | 44.8px display type, 14px gutter, 140px logo, and bounded fact card apply. |
+| Desktop 3840px | Source-reviewed; rendered verification pending | Hero caps at 96rem, editorial sections at 90rem, standard content at 80rem, and reading at 48rem; full-bleed photography retains cinematic surrounding field. |
+| Desktop 2560px | Source-reviewed; rendered verification pending | Maximum semantic widths remain stable; larger media canvases reduce the former narrow-column effect without lengthening prose. |
+| Desktop 1920px | Source-reviewed; rendered verification pending | Hero reaches 96rem, shell/editorial sections reach 90rem, and the 80rem standard grid remains visibly distinct. |
+| Desktop 1600px | Source-reviewed; rendered verification pending | Fluid gutters leave a 94rem hero canvas and 90rem editorial canvas; navigation, hero facts, and footer columns fit their declared tracks. |
+| Desktop 1440px | Source-reviewed; rendered verification pending | Hero/editorial canvases become fluid at approximately 84rem while standard content remains capped at 80rem; paragraph measures stay unchanged. |
+| Desktop 1280px | Source-reviewed; rendered verification pending | All wide canvases resolve to the available fluid width; grid ratios—not stretched copy—create visual hierarchy. |
+| Tablet 1024px | Source-reviewed; rendered verification pending | Approximately 60rem of usable width preserves two-column editorial layouts where minimum tracks fit; mobile navigation is active. |
+| Tablet 834px | Source-reviewed; rendered verification pending | Hero stacks at the 56rem breakpoint; footer lead also becomes one column before its wide tracks can crowd. |
+| Tablet 768px | Source-reviewed; rendered verification pending | Primary editorial grids collapse to one column, existing image ratios remain bounded, and the mobile type scale is unchanged. |
+| Mobile 430px | Source-reviewed; rendered verification pending | A 24.9rem usable canvas, stacked actions, single-column cards, and bounded media prevent planned overflow. |
+| Mobile 414px | Source-reviewed; rendered verification pending | A 23.9rem usable canvas retains shared alignment across header, hero, sections, and footer. |
+| Mobile 390px | Source-reviewed; rendered verification pending | A 22.4rem usable canvas contains the logo/menu, hero facts, buttons, and card media. |
+| Mobile 375px | Source-reviewed; rendered verification pending | A 21.4rem usable canvas preserves the same single-column hierarchy without widening reading content. |
+| Mobile 360px | Source-reviewed; rendered verification pending | The narrow-screen 14px gutter yields a 20.75rem canvas and maintains existing action stacking. |
+| Mobile 320px | Source-reviewed; rendered verification pending | The 14px gutter yields an 18.25rem canvas; logo, menu, fact card, cards, and footer remain constrained by existing narrow rules. |
 
 ## Passed
 
@@ -101,6 +109,11 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 - Reduced the desktop homepage heading cap by about 9%, preserved deliberate phrase breaks, tightened line-height, and removed its right offset on tablet/mobile.
 - Added controlled photography-led page heroes without widening body copy or weakening the text overlay.
 - Prevented upscaling of the smaller legacy outreach and leadership originals.
+- Replaced the universal `78rem` cap with semantic widths so hero, editorial, standard, content, and reading layouts no longer compete for the same canvas.
+- Reduced the hero height range while expanding its horizontal grid and removing the former one-off left inset, aligning the headline directly with the wide shell.
+- Increased image allocation in identity, visit, message, and outreach compositions while preserving their existing text measures.
+- Bounded supporting ministry cards within the wider editorial grid instead of stretching them to fill every available pixel.
+- Rebalanced the footer into three intentional lead columns and added an earlier tablet collapse to avoid minimum-track overflow.
 
 ## Pending manual verification
 
@@ -122,6 +135,6 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed |
-| `npm run build` | Passed after message integration; 23 generated pages plus robots, sitemap, and API route |
+| `npm run build` | Passed after wide-canvas integration on Next.js 16.3.0; 23 generated pages plus robots, sitemap, and API route |
 | Message milestone route smoke | Passed; Home, Messages, Live, and Admin returned HTTP 200 with expected embed/no-index markers |
 | Existing automated tests | No test suite or test command is configured |

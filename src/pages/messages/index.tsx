@@ -16,7 +16,7 @@ export default function MessagesPage({ feed }: InferGetStaticPropsType<typeof ge
     <>
       <SiteHead {...stagedPages.messages.seo} noIndex />
       <PageHero content={stagedPages.messages} />
-      <Section tone="paper" containerClassName="message-library-container">
+      <Section tone="paper" containerClassName="message-library-container" containerSize="editorial">
         {feed.status === "available" && feed.items.length ? <MessageLibrary messages={feed.items} /> : <MessageArchive feed={feed} />}
       </Section>
     </>

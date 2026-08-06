@@ -43,7 +43,7 @@ export function Hero() {
         <HeroBackgroundVideo />
       </div>
       <div className="hero-scrim" aria-hidden="true" />
-      <Container className="hero-grid">
+      <Container className="hero-grid" size="hero">
         <div className="hero-copy">
           <Eyebrow>{content.eyebrow}</Eyebrow>
           <Heading as="h1" id="home-title" size="display">{content.title}</Heading>

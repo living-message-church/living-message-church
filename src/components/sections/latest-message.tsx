@@ -7,7 +7,7 @@ import { Eyebrow, Heading } from "@/components/ui/typography";
 export function LatestMessage() {
   const content = homeSections.messages;
   return (
-    <Section tone={content.tone} labelledBy="message-title" containerClassName="message-feature">
+    <Section tone={content.tone} labelledBy="message-title" containerClassName="message-feature" containerSize="editorial">
       <div>
         <Eyebrow>{content.eyebrow}</Eyebrow>
         <Heading id="message-title">{content.title}</Heading>

@@ -8,14 +8,14 @@ export function VisitEditorial() {
   const content = homeSections.visit;
 
   return (
-    <Section className="visit-section" tone={content.tone} labelledBy="visit-title" containerClassName="feature-grid visit-grid">
+    <Section className="visit-section" tone={content.tone} labelledBy="visit-title" containerClassName="feature-grid visit-grid" containerSize="editorial">
       <div className="visit-visual">
         <MediaFrame
           image={homePhotography.visit}
           label="Living Message Church gathered for worship"
           ratio="landscape"
           tone="gold"
-          sizes="(max-width: 48rem) 100vw, (max-width: 100rem) 58vw, 48rem"
+          sizes="(max-width: 48rem) 100vw, (max-width: 100rem) 62vw, 56rem"
         />
       </div>
       <div className="feature-copy visit-copy">

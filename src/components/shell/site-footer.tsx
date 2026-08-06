@@ -7,7 +7,7 @@ export function SiteFooter() {
   const inPerson = serviceTimes.filter((service) => service.format === "in-person");
   return (
     <footer className="site-footer">
-      <Container>
+      <Container size="editorial">
         <div className="footer-lead">
           <p className="eyebrow">{footerContent.eyebrow}</p>
           <p className="footer-invite">{footerContent.invitation}</p>
