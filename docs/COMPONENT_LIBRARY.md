@@ -61,7 +61,7 @@ Every section reads church content from `src/content/`; components contain layou
 ## Extension rules
 
 1. Add or revise content in `src/content/` and its model in `src/types/content.ts` before placing church facts in a component.
-2. Reuse tokenized color, typography, spacing, and focus behavior from `globals.css`.
+2. Reuse tokenized color, Helvetica Neue typography, spacing, and focus behavior from `globals.css`.
 3. Prefer semantic native elements. Add a headless component dependency only when a demonstrated complex interaction cannot be implemented accessibly and maintainably without it.
 4. Add approved images through a typed `ContentImage` record with meaningful alt text, rights/approval status, and intended crop.
 5. Do not turn staged empty states into fabricated messages or events.

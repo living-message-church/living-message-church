@@ -35,8 +35,8 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 
 ### Typography
 
-- Display: resilient local/system stack headed by Helvetica Neue; no remote font request.
-- Body: accessible system sans stack.
+- Display and body: one resilient stack headed by Helvetica Neue, followed by Helvetica, Arial, and generic sans-serif; no remote font request.
+- The system uses explicit production weights only: 400 for quiet contrast, 600 for supporting emphasis, 700 for primary hierarchy, 800 for compact high-emphasis labels, and 900 only for the wordmark fallback.
 - Fluid scale: `--step--1` through `--step-5` using `clamp()`.
 - Display headings use controlled tight leading and tracking; only the homepage hero receives the largest display treatment.
 - Section headings use the shared scale without one-off enlargement unless the section has a documented narrative role.
