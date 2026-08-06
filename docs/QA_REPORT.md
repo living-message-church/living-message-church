@@ -3,23 +3,6 @@
 QA date: 2026-08-06  
 Application: local Next.js development preview
 
-## White-dominant creative-direction reset
-
-The 2026-08-06 creative reset was reviewed across the shared shell, homepage, photographic page heroes, priority-page editorial panels, New Here, Contact, Messages, Events, legal routes, staged routes, and the non-persistent message-admin prototype. It preserves routes, content, integrations, and data structures while changing the sitewide visual balance.
-
-Source review confirms:
-
-- white now carries ordinary public sections, content collections, the header, and the footer; dark fields are limited to photographic hero moments and the closing invitation;
-- self-hosted Inter is the primary operating face, while self-hosted Instrument Serif is limited to selected emotional phrases and headings;
-- the section rhythm expands fluidly from approximately `7rem` to `13rem`, while reading measures remain capped;
-- public cards, message records, filters, search, editorial panels, and empty states shed unnecessary fills, outlines, pills, and shadows;
-- existing photography receives larger grid allocation and consistent restrained rounding without changing approved assets or crops;
-- primary actions use high-confidence ink-on-white treatment, with coral reserved for hover and editorial emphasis;
-- the footer now completes the page as an open white field rather than a second heavy dark block;
-- focus visibility, minimum interaction heights, semantic heading structure, mobile navigation, and reduced-motion behavior remain intact.
-
-The responsive rules were source-reviewed at 3840, 2560, 1920, 1600, 1440, 1280, 1024, 768, 430, 390, 375, and 320 pixels. Semantic container caps and prose measures remain unchanged; larger section padding contracts through fluid tokens and the existing mobile overrides. The in-app browser capability reported `No browser is available`, so optical inspection, screenshots, real keyboard traversal, and computed overflow checks remain pending manual browser verification.
-
 ## Wide canvas and premium layout update
 
 The 2026-08-06 layout-confidence pass replaced the fixed `78rem` site canvas with semantic reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) containers. The header, footer, and photography-led homepage sections now select wider canvases intentionally; standard interior pages and long-form reading remain constrained.
@@ -154,7 +137,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed |
-| `npm run build` | Passed on Next.js 16.3.0 with Turbopack after the white-dominant creative reset; TypeScript, compilation, and all 23 pages plus robots, sitemap, and API route generated successfully |
-| `npx next build --webpack` | Not required for this milestone because the standard Turbopack build passed |
+| `npm run build` | Current Turbopack rerun is environment-blocked while its CSS worker attempts to bind an internal process port (`Operation not permitted`), including with elevated execution permission; no application parse/type error was reported |
+| `npx next build --webpack` | Passed on Next.js 16.3.0 after the viewport-height refinement; all 23 pages plus robots, sitemap, and API route generated successfully |
 | Message milestone route smoke | Passed; Home, Messages, Live, and Admin returned HTTP 200 with expected embed/no-index markers |
 | Existing automated tests | No test suite or test command is configured |
