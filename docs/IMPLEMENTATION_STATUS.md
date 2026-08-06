@@ -42,7 +42,6 @@ Updated: 2026-08-06
 - `/admin/messages` provides a no-index, non-persistent visual prototype for title/meta editing and category creation/removal; save and upload remain disabled until Supabase storage and authenticated access are approved.
 - Message records now include optional slug, YouTube, thumbnail, category, featured, and SEO metadata fields behind the existing provider adapter boundary.
 - The future Supabase schema, RLS, storage, upload, audit, and adapter transition are documented in `MESSAGES_ARCHITECTURE.md`.
-- Typography is standardized on locally self-hosted Inter variable across the complete site. Cormorant Garamond is limited to the Plan Your Visit, final Sunday invitation, and footer invitation headlines; both font families include local OFL license records and require no runtime third-party request.
 
 ## In progress
 

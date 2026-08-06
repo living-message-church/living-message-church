@@ -35,15 +35,13 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 
 ### Typography
 
-- Primary typeface: locally self-hosted Inter variable, weights 400–900. It carries body copy, navigation, metadata, buttons, page titles, section headings, cards, events, messages, and administrative UI.
-- Accent typeface: locally self-hosted Cormorant Garamond, weights 500–600. It is restricted to the Plan Your Visit headline, final Sunday invitation headline, and footer invitation.
-- Font binaries and their OFL license files live in `public/fonts/`; no runtime font service request is required.
+- Display: resilient local/system stack headed by Helvetica Neue; no remote font request.
+- Body: accessible system sans stack.
 - Fluid scale: `--step--1` through `--step-5` using `clamp()`.
 - Display headings use controlled tight leading and tracking; only the homepage hero receives the largest display treatment.
 - Section headings use the shared scale without one-off enlargement unless the section has a documented narrative role.
 - Body text keeps generous leading and a controlled reading measure.
 - Components preserve one `h1` per page and hierarchical `h2`/`h3` levels.
-- Do not extend the accent face to ordinary editorial headings. Hierarchy within Inter should come from weight, size, line-height, and spacing.
 
 ### Spacing and layout
 
