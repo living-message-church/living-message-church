@@ -1,0 +1,131 @@
+import type { PageContent, SeoContent } from "@/types/content";
+
+const page = (
+  path: string,
+  title: string,
+  description: string,
+  eyebrow: string,
+  heading: string,
+  intro: string,
+  noIndex = false,
+): PageContent => ({
+  seo: { path, title, description, noIndex },
+  eyebrow,
+  title: heading,
+  intro,
+});
+
+export const pageContent = {
+  home: {
+    title: "Living Message Church | Clermont, Florida",
+    description:
+      "Plan a visit to Living Message Church in Clermont, Florida, and learn about Sunday gatherings, Bible teaching, connection, and outreach.",
+    path: "/",
+  } satisfies SeoContent,
+  newHere: page(
+    "/new-here",
+    "New Here | Living Message Church",
+    "Find Sunday times, location, parking, children’s check-in, and what to expect at Living Message Church.",
+    "New here",
+    "Your first Sunday can feel simple.",
+    "Here’s what the current church site says you can expect—and the practical details to help you arrive with confidence.",
+  ),
+  contact: page(
+    "/contact",
+    "Contact | Living Message Church",
+    "Find the current address, phone number, email, and directions for Living Message Church in Clermont, Florida.",
+    "Contact",
+    "We’re here to help.",
+    "Reach out with a question or use the current location details to plan your visit.",
+  ),
+  privacy: page(
+    "/privacy-policy",
+    "Privacy Policy | Living Message Church",
+    "Read the current privacy notice for Living Message Church.",
+    "Policy",
+    "Privacy policy",
+    "This interim policy page preserves the scope of the current public notice while legal and technical review is completed.",
+  ),
+  photoRelease: page(
+    "/photo-release",
+    "Photo Release | Living Message Church",
+    "Read the current photography, audio, and video notice for Living Message Church events and programs.",
+    "Policy",
+    "Photo and media notice",
+    "This interim notice preserves the subject of the current release while safeguarding and legal review is completed.",
+  ),
+};
+
+export const stagedPages: Record<string, PageContent> = {
+  about: page("/about", "About | Living Message Church", "Learn about Living Message Church.", "About", "A church community shaped by Scripture.", "The church story, beliefs, and leadership are being prepared from reviewed source content."),
+  beliefs: page("/about/beliefs", "Beliefs | Living Message Church", "Living Message Church beliefs and teaching philosophy.", "About", "Beliefs and teaching philosophy.", "Doctrinal content is staged pending pastoral review."),
+  leadership: page("/about/leadership", "Leadership | Living Message Church", "Meet the leadership of Living Message Church.", "About", "Leadership rooted in service.", "The audited leadership roster is staged pending confirmation of every name, title, biography, and portrait."),
+  gallery: page("/about/gallery", "Gallery | Living Message Church", "A future gallery of Living Message Church community life.", "About", "Church life, honestly seen.", "Photography will be added only after ownership, consent, relevance, and alt text are approved."),
+  connect: page("/connect", "Connect | Living Message Church", "Explore connection and ministry pathways at Living Message Church.", "Connect", "There is a next step for you.", "Ministry and group details are being prepared with their leaders."),
+  nextSteps: page("/connect/next-steps", "Next Steps | Living Message Church", "Connect, serve, and grow through Next Steps.", "Connect", "Connect. Serve. Grow.", "The current Next Steps schedule and registration path are pending verification."),
+  messages: page("/messages", "Messages | Living Message Church", "Explore Bible teaching from Living Message Church.", "Messages", "Teaching rooted in the text.", "A structured message archive will follow after the canonical YouTube channel and Podbean status are confirmed."),
+  live: page("/messages/live", "Watch Live | Living Message Church", "Find online services from Living Message Church.", "Messages", "Join Living Message online.", "The online-service destination and schedule are pending final verification."),
+  events: page("/events", "Events | Living Message Church", "See upcoming Living Message Church events.", "Events", "Make room for life together.", "Only current events will publish after the authoritative source and registration workflow are confirmed."),
+  outreach: page("/outreach", "Outreach | Living Message Church", "Learn about Living Message Church outreach and Find, Feed & Restore.", "Outreach", "Practical hope for families.", "The current site centers Find, Feed & Restore; program and relationship details remain under owner review."),
+  give: page("/give", "Give | Living Message Church", "Learn about giving to Living Message Church through its specialist giving provider.", "Give", "Generosity with a trusted handoff.", "Giving remains with Church Center. The account destination and finance-approved explanatory copy require confirmation."),
+};
+
+export const legalContent = {
+  privacySections: [
+    {
+      title: "Information and contact",
+      body: "The current public policy discusses contact and profile information, marketing communications, surveys, and information people choose to provide.",
+    },
+    {
+      title: "Cookies, analytics, and external services",
+      body: "The current policy acknowledges cookies, tracking, security, and third-party links. The final policy must name the services actually used by the new website.",
+    },
+    {
+      title: "Review required",
+      body: "An effective date, retention periods, user rights, children’s privacy, processors, consent choices, and a verified privacy contact remain pending legal and technical approval.",
+    },
+  ],
+  photoSections: [
+    {
+      title: "Current notice scope",
+      body: "The existing public notice states that photography, audio, or video recording may occur at church events and programs and may be used in church communications.",
+    },
+    {
+      title: "Review required",
+      body: "The final notice must define guardian consent for minors, an accessible opt-out process, event signage, withdrawal requests, storage and use duration, and a verified contact.",
+    },
+  ],
+};
+
+export const newHereDetails = {
+  essentialsTitle: "The essentials",
+  expectationsEyebrow: "What to expect",
+  expectationsTitle: "Arrive with confidence.",
+  expectationsIntro:
+    "The current site provides these practical expectations. Church operations and ministry owners still need to approve the details before production launch.",
+  details: [
+    { title: "Parking", body: "The current visitor page describes easy parking around the building." },
+    { title: "Children’s check-in", body: "The current visitor page describes lobby self-check-in stations. Exact ages and safety details are still being confirmed." },
+    { title: "Worship and teaching", body: "The current site describes contemporary worship and expository, line-by-line Bible teaching." },
+    { title: "A warm welcome", body: "Living Message’s visitor pages emphasize greeting new people and helping them feel connected rather than alone." },
+  ],
+  questionsEyebrow: "Still wondering?",
+  questionsTitle: "Ask before you arrive.",
+  questionsBody: "No question is too small when you’re planning a first visit.",
+};
+
+export const contactPageDetails = {
+  detailsEyebrow: "Current contact details",
+  detailsTitle: "Come by or reach out.",
+  formEyebrow: "Contact form",
+  formTitle: "A secure form is coming next.",
+  formBody:
+    "No information is collected here yet. Form recipients, privacy, retention, and spam protection must be approved before launch.",
+  emailLabel: "Email the church instead",
+};
+
+export const givePageDetails = {
+  providerEyebrow: "Specialist provider",
+  providerTitle: "Giving stays with Church Center.",
+  providerBody: "The website does not collect or process payment details.",
+};

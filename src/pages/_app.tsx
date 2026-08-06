@@ -1,6 +1,11 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { SiteShell } from "@/components/shell/site-shell";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <SiteShell>
+      <Component {...pageProps} />
+    </SiteShell>
+  );
 }
