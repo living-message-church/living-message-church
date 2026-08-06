@@ -6,9 +6,9 @@ Updated: 2026-08-06
 
 ## Direction
 
-The system is confident, minimal, warm, and photography-led. Hierarchy comes from content order, type scale, image crop, and space—not ornamental rules, floating graphics, alternating color bands, or section-specific effects. Every public section uses the same bounded grid and spacing vocabulary so the site reads as one product rather than a collection of designed moments.
+The system is confident, minimal, warm, and photography-led. White is the dominant design material. Hierarchy comes from content order, type scale, image crop, and space—not ornamental rules, floating graphics, alternating color bands, or section-specific effects. Every public section uses the same bounded grid and spacing vocabulary so the site reads as one brand rather than a collection of designed moments.
 
-Living Message-owned photography supplies the emotional energy. Interface surfaces remain quiet, and full-color fields are reserved for the hero, identity statement, and final invitation where they clarify the page narrative.
+Living Message-owned photography supplies the emotional energy. The approximate page-level balance is 80% white and 20% dark. Dark fields are reserved for photographic page heroes and the final homepage invitation; blue, coral, gold, and sage operate as restrained accents rather than section backgrounds. Interface surfaces remain quiet enough to disappear behind the story.
 
 ## Tokens
 
@@ -18,25 +18,26 @@ Tokens live in `src/styles/globals.css`.
 
 | Token | Value | Role |
 | --- | --- | --- |
-| `--color-paper` | `#F3F0E9` | Warm page surface |
-| `--color-paper-bright` | `#FBFAF7` | Elevated cards and light text on dark fields |
-| `--color-ink-deep` | `#080908` | High-contrast small text on mid-tone color fields |
-| `--color-ink` | `#1D1D1B` | Primary text and immersive sections |
-| `--color-ink-soft` | `#4D4C47` | Secondary copy |
-| `--color-blue` | `#607D8B` | Approved muted blue-gray for brand fields, information accents, and light-surface focus |
-| `--color-coral` | `#AD4F3B` | Primary actions and energetic accents |
-| `--color-gold` | `#E5CF91` | Warm emphasis and dark-surface focus |
-| `--color-sage` | `#E1E7DC` | Calm ministry and information surfaces |
-| `--color-line` | 14% ink mix | Low-contrast structural borders |
+| `--color-paper` | `#F7F5F0` | Warm fallback and small supporting surface |
+| `--color-paper-bright` | `#FFFFFF` | Dominant page field and light text on dark fields |
+| `--color-ink-deep` | `#0C0C0B` | Highest-contrast text and media fallback |
+| `--color-ink` | `#141412` | Primary typography and immersive sections |
+| `--color-ink-soft` | `#5B5953` | Secondary copy |
+| `--color-blue` | `#6E838C` | Restrained blue-gray accent and light-surface focus |
+| `--color-coral` | `#A34F3C` | Select action and editorial accent |
+| `--color-gold` | `#E8DCC2` | Warm dark-surface focus and supporting tint |
+| `--color-sage` | `#F0F1ED` | Rare supporting tint, not a section field |
+| `--color-line` | 9% ink mix | Near-invisible structural rule |
 
-The muted blue-gray is sampled from the approved visual reference supplied on 2026-08-06 and replaces the previous saturated cobalt (`#36538F`). Components may derive restrained darker or translucent variants with `color-mix()`, but must use `--color-blue` as their source rather than introducing a second blue.
+The muted blue-gray remains the sole blue source, but no longer carries large content sections. Components may derive restrained darker or translucent variants with `color-mix()`, but must not introduce a second blue.
 
 Color combinations must retain WCAG AA text contrast. Blue is used for focus on light surfaces and gold on dark surfaces. Because the approved blue is a mid-tone, small text placed directly on blue uses deep ink; light text on blue is reserved for large display copy. Accent fields are restrained so warm paper and ink remain visually dominant.
 
 ### Typography
 
-- Display: resilient local/system stack headed by Helvetica Neue; no remote font request.
-- Body: accessible system sans stack.
+- Primary display and body: locally self-hosted Inter variable (`400`–`800`) for clarity, discipline, and consistent metrics.
+- Emotional display moments: locally self-hosted Instrument Serif regular and italic. It is limited to selected phrases and narrative headings; it is never the default heading face.
+- Font binaries and OFL licenses are stored in `public/fonts/`; the site makes no third-party font request.
 - Fluid scale: `--step--1` through `--step-5` using `clamp()`.
 - Display headings use controlled tight leading and tracking; only the homepage hero receives the largest display treatment.
 - Section headings use the shared scale without one-off enlargement unless the section has a documented narrative role.
@@ -46,7 +47,7 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 ### Spacing and layout
 
 - `--space-1` through `--space-8` establish the rhythm.
-- Section padding uses fluid `--space-7`; content clusters use smaller tokens.
+- Section padding uses fluid `--space-8` (approximately `7rem`–`13rem`); content clusters use smaller tokens.
 - Semantic containers separate reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) canvases.
 - Every bounded container uses the same fluid gutter and centers within its own intentional maximum. Ultra-wide screens give photography-led sections more presence without widening prose.
 - Shared two-column compositions use a fluid gap bounded by the existing spacing rhythm.
@@ -55,10 +56,10 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 
 ### Shape and imagery
 
-- `--radius-image` provides a fluid `1.25rem`–`2rem` corner radius for photography, video, and photo-led cards.
+- `--radius-image` provides a restrained fluid corner radius capped near `1.35rem` for photography, video, and photo-led cards.
 - Standalone photography uses the image radius consistently. Photo-led cards retain matching upper corners so the image and card read as one composition.
 - Full-bleed hero backgrounds remain edge-to-edge; logos, icons, and decorative marks do not inherit the photography radius.
-- Non-media cards use a subtler radius, hairline border, and no persistent shadow to retain editorial clarity.
+- Public content cards are ordinarily transparent and borderless. Photography and spacing establish their edges; shadows are omitted. Form and administrative surfaces may retain quiet boundaries where interaction requires them.
 - Media crop ratios: landscape 4:3, portrait 4:5, wide 16:9.
 - Approved photography should use focal-point-aware cropping and contextual alt text. Decorative imagery must use empty alt text; meaningful imagery must describe the content and purpose, not begin with “image of.”
 

@@ -42,6 +42,7 @@ Updated: 2026-08-06
 - `/admin/messages` provides a no-index, non-persistent visual prototype for title/meta editing and category creation/removal; save and upload remain disabled until Supabase storage and authenticated access are approved.
 - Message records now include optional slug, YouTube, thumbnail, category, featured, and SEO metadata fields behind the existing provider adapter boundary.
 - The future Supabase schema, RLS, storage, upload, audit, and adapter transition are documented in `MESSAGES_ARCHITECTURE.md`.
+- A sitewide creative-direction reset established a white-dominant approximately 80/20 light-to-dark balance, locally self-hosted Inter and Instrument Serif, substantially larger section rhythm, quieter borderless public cards, restrained image radii, a white footer, simplified public search/filter controls, and selective serif narrative moments. Existing routes, church content, integrations, and data structures were preserved.
 
 ## In progress
 
@@ -77,7 +78,7 @@ Run a structured content-verification workshop with operations, pastoral leaders
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed: 453 sources, 21 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
-| `npm run build` | Previous milestone passed on Next.js 16.3.0. Current rerun is environment-blocked by Turbopack attempting to bind an internal process port (`Operation not permitted`); the supported `npx next build --webpack` path passed and generated all 23 pages plus robots/sitemap/API routes. |
+| `npm run build` | Passed on Next.js 16.3.0 with Turbopack; TypeScript, compilation, and all 23 pages plus robots/sitemap/API routes completed successfully. |
 | Local HTTP smoke check | Home, Messages, Live, and Admin returned 200; YouTube embed, local feed records, and no-index boundaries were present |
 | Interactive browser QA | Not run: no connected browser was available |
 | Existing tests | No test command or test suite is currently configured |

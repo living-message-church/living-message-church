@@ -37,6 +37,7 @@ function HeroBackgroundVideo() {
 export function Hero() {
   const content = homeSections.hero;
   const inPerson = serviceTimes.filter((service) => service.format === "in-person");
+  const titleLines = content.title.split("\n");
   return (
     <section className="hero" aria-labelledby="home-title">
       <div className="hero-media" aria-hidden="true">
@@ -46,7 +47,9 @@ export function Hero() {
       <Container className="hero-grid" size="hero">
         <div className="hero-copy">
           <Eyebrow>{content.eyebrow}</Eyebrow>
-          <Heading as="h1" id="home-title" size="display">{content.title}</Heading>
+          <Heading as="h1" id="home-title" size="display">
+            {titleLines.map((line, index) => <span className={index === titleLines.length - 1 ? "hero-title-serif" : undefined} key={line}>{line}</span>)}
+          </Heading>
           <p className="lede">{content.body}</p>
           {content.actions ? <ActionGroup actions={content.actions} /> : null}
         </div>

@@ -22,7 +22,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 | `Eyebrow` | Compact editorial context label |
 | `Heading` | Typed heading level and display scale |
 | `ActionLink`, `ActionGroup` | Internal/external calls to action with consistent states |
-| `Card` | Neutral semantic article surface |
+| `Card` | Neutral semantic article wrapper; public presentation is borderless so photography and space establish hierarchy |
 | `MediaFrame` | Local abstract fallback or responsive approved photography frame with the shared fluid image radius |
 
 ## Page components
@@ -61,10 +61,11 @@ Every section reads church content from `src/content/`; components contain layou
 ## Extension rules
 
 1. Add or revise content in `src/content/` and its model in `src/types/content.ts` before placing church facts in a component.
-2. Reuse tokenized color, typography, spacing, and focus behavior from `globals.css`.
+2. Reuse tokenized color, typography, spacing, and focus behavior from `globals.css`. Inter is the operating face; Instrument Serif is reserved for sparse emotional emphasis.
 3. Prefer semantic native elements. Add a headless component dependency only when a demonstrated complex interaction cannot be implemented accessibly and maintainably without it.
 4. Add approved images through a typed `ContentImage` record with meaningful alt text, rights/approval status, and intended crop.
 5. Do not turn staged empty states into fabricated messages or events.
 6. Keep provider response formats inside `src/lib/*` adapters; presentation components consume normalized typed records.
 7. Use `next/image` with explicit dimensions or `fill` plus a sized parent when approved photography replaces `MediaFrame` placeholders.
 8. Use `--radius-image` for photography and video. Preserve square edges only for intentional full-bleed treatments; do not introduce component-specific image radii.
+9. Default to white, whitespace, and borderless public surfaces. Add a field, border, or shadow only when it communicates structure that space cannot.

@@ -32,7 +32,7 @@ export const homeSections: Record<string, HomepageSection> = {
     eyebrow: "Messages",
     title: "Teaching rooted in the text.",
     body: "Explore teaching intended to help people understand the Bible in context and grow in their walk with Christ.",
-    tone: "ink",
+    tone: "paper",
     actions: [{ label: "Explore messages", href: "/messages", style: "secondary" }],
   },
   events: {

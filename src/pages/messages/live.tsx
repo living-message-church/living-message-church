@@ -15,7 +15,7 @@ export default function LivePage({ feed }: InferGetStaticPropsType<typeof getSta
     <>
       <SiteHead {...stagedPages.live.seo} noIndex />
       <PageHero content={stagedPages.live} />
-      <Section tone="ink" containerClassName="feed-section">
+      <Section tone="paper" containerClassName="feed-section">
         <MessageArchive feed={feed} />
       </Section>
     </>
