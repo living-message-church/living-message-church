@@ -109,6 +109,7 @@ export interface ChurchEvent {
   start?: SourcedValue<string>;
   location?: SourcedValue<string>;
   registrationUrl?: SourcedValue<string>;
+  image?: ContentImage;
   availability: "pending-verification" | "published";
 }
 

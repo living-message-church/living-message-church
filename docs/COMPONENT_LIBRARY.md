@@ -39,7 +39,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 | `MessageLibrary` | Featured player, category chips, keyword search, cards, and empty state for normalized message records |
 | `MessageArchive` | Compact normalized-message collection or a truthful unavailable-source state, retained for `/messages/live` |
 | `MessageAdminPrototype` | Non-persistent title/meta/category management preview; upload and save controls remain disabled pending Supabase/auth |
-| `EventCollection` | Renders normalized event records or a truthful unavailable-source state; historical events are excluded |
+| `EventCollection` | Renders normalized events as image-led editorial rows with date, location, and optional registration action, or the same layout as a truthful unavailable-source state; historical events are excluded |
 | `messageSource` adapter | Provider-neutral message boundary; currently returns approved-temporary local records sourced from the production sermon page |
 | `eventSource` adapter | Provider-neutral event boundary; currently unconfigured because the authoritative event source is not verified |
 

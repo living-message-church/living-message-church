@@ -15,9 +15,9 @@ The in-app browser connection and documented troubleshooting check found no avai
 
 ## Homepage art-direction update
 
-The homepage was reviewed section by section against a single-focal-point standard. Hero, identity, first visit, latest message, and outreach were protected rather than redesigned. The unavailable event-feed state is now omitted from the homepage while remaining truthful on `/events`; ministry cards now form one lead photographic story with two supporting paths; and the final invitation uses approved Living Message photography as its emotional focal point.
+The homepage was reviewed section by section against a single-focal-point standard. Hero, identity, first visit, latest message, and outreach were protected rather than redesigned. Ministry cards form one lead photographic story with two supporting paths, and the final invitation uses approved Living Message photography as its emotional focal point.
 
-Source checks confirm that the homepage event omission is conditional on an unavailable or empty normalized feed, so verified future records will restore the section automatically. Lint, redirect validation, and the 23-page production build pass. Final optical review remains pending a connected browser.
+The event presentation now uses a ruled horizontal list, optional event-specific imagery, compact date/title/location hierarchy, and conditional registration actions. The current unavailable adapter renders an honest calendar-pending row on Home and `/events`; historical records are still excluded. Verified future records will populate the same component without changing its visual contract. Final optical review remains pending a connected browser.
 
 ## Message library and admin-prototype update
 

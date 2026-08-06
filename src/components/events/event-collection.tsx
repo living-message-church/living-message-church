@@ -1,30 +1,43 @@
+import Image from "next/image";
 import type { ChurchEvent, ContentFeedResult } from "@/types/content";
-import { Card } from "@/components/ui/card";
 
 export function EventCollection({ feed, headingLevel = "h2" }: { feed: ContentFeedResult<ChurchEvent>; headingLevel?: "h2" | "h3" }) {
   const Heading = headingLevel;
   if (feed.status === "unavailable" || feed.items.length === 0) {
     return (
-      <Card className="feed-empty-state">
-        <span className="card-index">00</span>
-        <div>
-          <Heading>Event source pending</Heading>
-          <p>{feed.message}</p>
-          <p className="feed-meta">Historical WordPress events are not treated as upcoming.</p>
-        </div>
-      </Card>
+      <div className="event-list event-list-empty">
+        <article className="event-list-item">
+          <div className="event-list-placeholder" aria-hidden="true"><span>Events</span></div>
+          <div className="event-list-copy">
+            <p className="event-date">Calendar update</p>
+            <Heading>Upcoming events are being confirmed</Heading>
+            <p>{feed.message}</p>
+            <p className="feed-meta">Historical WordPress events are not treated as upcoming.</p>
+          </div>
+        </article>
+      </div>
     );
   }
 
   return (
-    <div className="event-card-grid">
+    <div className="event-list">
       {feed.items.map((event) => (
-        <Card className="event-card" key={event.id}>
-          <div className="card-copy">
+        <article className="event-list-item" key={event.id}>
+          <div className={`event-list-media${event.image ? " event-list-media-image" : ""}`}>
+            {event.image ? (
+              <Image src={event.image.src} alt={event.image.alt} fill sizes="(max-width: 48rem) 100vw, (max-width: 70rem) 32vw, 28rem" />
+            ) : (
+              <span aria-hidden="true">{event.title.value}</span>
+            )}
+          </div>
+          <div className="event-list-copy">
+            {event.start ? <p className="event-date">{event.start.value}</p> : null}
             <Heading>{event.title.value}</Heading>
             <p>{event.summary.value}</p>
+            {event.location ? <p className="event-location">{event.location.value}</p> : null}
           </div>
-        </Card>
+          {event.registrationUrl ? <a className="event-row-action" href={event.registrationUrl.value} target="_blank" rel="noreferrer">Learn more</a> : null}
+        </article>
       ))}
     </div>
   );

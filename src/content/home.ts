@@ -38,7 +38,7 @@ export const homeSections: Record<string, HomepageSection> = {
   events: {
     id: "events",
     eyebrow: "What’s happening",
-    title: "Gather, connect, and grow.",
+    title: "Upcoming Events",
     body: "Current events will appear here after the church confirms the authoritative calendar and registration source.",
     tone: "paper",
     actions: [{ label: "View events", href: "/events", style: "text" }],
