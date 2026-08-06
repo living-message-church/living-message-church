@@ -3,9 +3,11 @@
 QA date: 2026-08-06  
 Application: local Next.js development preview
 
-## Environment limitation
+## Responsive review update
 
-The browser-control runtime reported no connected in-app or extension browser after the required connection and troubleshooting checks. Interactive viewport rendering, screenshots, keyboard traversal, computed overflow measurement, and media-feature emulation were therefore **Not testable in the current environment**. No unrelated browser automation tool was substituted.
+The dedicated responsive review is documented in `docs/RESPONSIVE_DESIGN_REVIEW.md`. It evaluates the implemented cascade independently at 3840, 2560, 1920, 1600, 1440, 1280, 1024, 834, 768, 430, 414, 390, 375, 360, and 320 pixels.
+
+The browser-control runtime again reported no connected in-app or extension browser after the required connection and troubleshooting checks. Interactive viewport rendering, screenshots, keyboard traversal, computed overflow measurement, and media-feature emulation were therefore **Not testable in the current environment**. No unrelated browser automation tool was substituted.
 
 HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoints, provider fallbacks, redirects, lint, and the production build were tested directly.
 
@@ -13,11 +15,21 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 
 | Viewport | Status | Result |
 | --- | --- | --- |
-| Desktop 1440px | Not testable in current environment | Responsive layout rules exist, but rendered composition could not be visually inspected. |
-| Desktop 1280px | Not testable in current environment | Responsive layout rules exist, but rendered composition could not be visually inspected. |
-| Tablet 768px | Not testable in current environment | The 70rem/48rem breakpoints were reviewed statically; interactive rendering remains pending. |
-| Mobile 390px | Not testable in current environment | Single-column rules and native mobile menu semantics were reviewed statically; visual/touch QA remains pending. |
-| Mobile 375px | Not testable in current environment | Single-column rules and native mobile menu semantics were reviewed statically; visual/touch QA remains pending. |
+| Desktop 3840px | Code-reviewed; rendered verification pending | Canvas expands to 104rem while typography and reading measures remain capped. |
+| Desktop 2560px | Code-reviewed; rendered verification pending | Canvas expands to 104rem; photography/card regions gain presence without widening prose. |
+| Desktop 1920px | Code-reviewed; rendered verification pending | Canvas expands to 96rem; desktop hierarchy remains capped. |
+| Desktop 1600px | Code-reviewed; rendered verification pending | Canvas expands to 88rem; navigation targets are at least 44px high. |
+| Desktop 1440px | Code-reviewed; rendered verification pending | Existing 80rem canvas and bounded copy measures remain appropriate. |
+| Desktop 1280px | Code-reviewed; rendered verification pending | Fluid canvas and full navigation fit; link targets were enlarged without visual inflation. |
+| Tablet 1024px | Code-reviewed; rendered verification pending | Mobile navigation is active and tablet display scaling is reduced. |
+| Tablet 834px | Code-reviewed; rendered verification pending | Hero now stacks independently and uses a bounded landscape crop. |
+| Tablet 768px | Code-reviewed; rendered verification pending | Primary grids collapse; media ratios and mobile heading caps now apply. |
+| Mobile 430px | Code-reviewed; rendered verification pending | Actions stack; footer targets are enlarged; display type is bounded. |
+| Mobile 414px | Code-reviewed; rendered verification pending | Pretty wrapping and deterministic crop ratios reduce widow/crop risk. |
+| Mobile 390px | Code-reviewed; rendered verification pending | Logo/menu and fact-card containment rules fit the available canvas. |
+| Mobile 375px | Code-reviewed; rendered verification pending | Shorter feed/contact states and smaller display caps improve vertical balance. |
+| Mobile 360px | Code-reviewed; rendered verification pending | Single-column controls and preserved media ratios remove primary overflow risks. |
+| Mobile 320px | Code-reviewed; rendered verification pending | 44.8px display type, 14px gutter, 140px logo, and bounded fact card apply. |
 
 ## Passed
 
@@ -41,7 +53,13 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 
 ## Failed and fixed
 
-No new deterministic failure was found in this milestone. The previously discovered trailing-slash 308→301 chain remains fixed through `skipTrailingSlashRedirect: true`, and representative regression checks passed.
+- Fixed narrow-screen media frames that lost their intended aspect ratio because of an 18rem minimum height.
+- Fixed the tablet/mobile hero becoming excessively tall when its portrait media stacked.
+- Fixed the smallest display scale remaining too large at 320–430px.
+- Fixed undersized desktop-navigation and mobile-footer interaction targets.
+- Fixed cramped multi-action rows below 512px.
+- Fixed an overly narrow ultra-wide canvas at 1600–3840px without widening prose.
+- Updated the header logo from deprecated Next.js 16 `priority` behavior to `preload`.
 
 ## Pending manual verification
 
@@ -62,4 +80,5 @@ No new deterministic failure was found in this milestone. The previously discove
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed |
 | `npm run build` | Passed; 22 generated pages plus robots, sitemap, and API route |
+| Responsive milestone route smoke | Passed; all 22 checked public routes, including robots and sitemap, returned HTTP 200 |
 | Existing automated tests | No test suite or test command is configured |

@@ -16,7 +16,7 @@ export function SiteHeader() {
             alt={siteIdentity.name.value}
             width={250}
             height={69}
-            priority
+            preload
           />
         </Link>
 
