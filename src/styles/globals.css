@@ -441,7 +441,10 @@ button, input, textarea, select { font: inherit; }
   .site-logo { width: 10rem; }
   .action-group { align-items: stretch; flex-direction: column; }
   .action-link:not(.action-text) { width: 100%; }
-  .hero-fact-card { width: 100%; }
+  .hero-fact-card { width: 100%; gap: 0.9rem; padding: 1.5rem 1.25rem; }
+  .hero-times { width: min(17rem, 100%); margin-inline: auto; column-gap: 1.25rem; }
+  .hero-times::after { top: 0; bottom: 0; }
+  .hero-fact-card small { max-width: 26ch; margin-inline: auto; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-grid > div:first-child { grid-column: auto; }
   .empty-card { grid-template-columns: 1fr; }
