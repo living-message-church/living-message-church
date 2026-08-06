@@ -3,6 +3,12 @@
 QA date: 2026-08-06  
 Application: local Next.js development preview
 
+## Homepage art-direction update
+
+The homepage was reviewed section by section against a single-focal-point standard. Hero, identity, first visit, latest message, and outreach were protected rather than redesigned. The unavailable event-feed state is now omitted from the homepage while remaining truthful on `/events`; ministry cards now form one lead photographic story with two supporting paths; and the final invitation uses approved Living Message photography as its emotional focal point.
+
+Source checks confirm that the homepage event omission is conditional on an unavailable or empty normalized feed, so verified future records will restore the section automatically. Lint, redirect validation, and the 23-page production build pass. Final optical review remains pending a connected browser.
+
 ## Message library and admin-prototype update
 
 The homepage and `/messages` now render a real privacy-enhanced YouTube player for the video currently featured on the production sermon page. Four production-page YouTube IDs and their public oEmbed titles/authors were normalized into approved-temporary local records. The implementation does not claim that the 2018 featured record is the newest chronological sermon, and the canonical YouTube-channel conflict remains open.

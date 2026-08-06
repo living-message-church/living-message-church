@@ -6,6 +6,8 @@ import { Section } from "@/components/ui/section";
 import { Eyebrow, Heading } from "@/components/ui/typography";
 
 export function UpcomingEvents({ feed }: { feed: ContentFeedResult<ChurchEvent> }) {
+  if (feed.status === "unavailable" || feed.items.length === 0) return null;
+
   const content = homeSections.events;
   return (
     <Section tone={content.tone} labelledBy="events-title">
