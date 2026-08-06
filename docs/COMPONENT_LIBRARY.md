@@ -56,6 +56,8 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 Every section reads church content from `src/content/`; components contain layout and rendering logic rather than church records.
 
+`VisitEditorial` may consume the optional typed `titleAccent` value from its homepage content record. It keeps the complete title in one semantic heading while applying the section-exclusive serif treatment only to the declared phrase.
+
 `Hero` includes a decorative, muted background-video renderer that is hydration-gated by motion and viewport preferences. Mobile widths and `prefers-reduced-motion: reduce` receive the approved static poster without instantiating the video element. Verified Sunday times remain visible in the hero and footer; the former secondary service bar is intentionally not mounted.
 
 ## Extension rules

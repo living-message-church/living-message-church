@@ -9,6 +9,8 @@ The 2026-08-06 typography test standardizes the complete application on a Helvet
 
 No font files, font service request, package, route, content, layout, component structure, or data structure was added. Optical comparison still requires a connected browser; lint and the production build validate the implementation path.
 
+The subsequent Plan Your Visit refinement adds one content-defined accent phrase inside the existing semantic `h2`. Its three display lines remain one accessible heading, use fluid sizing from mobile through desktop, and rely only on local system font fallbacks. No other section matches the scoped selector.
+
 ## Wide canvas and premium layout update
 
 The 2026-08-06 layout-confidence pass replaced the fixed `78rem` site canvas with semantic reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) containers. The header, footer, and photography-led homepage sections now select wider canvases intentionally; standard interior pages and long-form reading remain constrained.

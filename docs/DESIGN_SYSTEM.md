@@ -37,6 +37,7 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 
 - Display and body: one resilient stack headed by Helvetica Neue, followed by Helvetica, Arial, and generic sans-serif; no remote font request.
 - The system uses explicit production weights only: 400 for quiet contrast, 600 for supporting emphasis, 700 for primary hierarchy, 800 for compact high-emphasis labels, and 900 only for the wordmark fallback.
+- One deliberate exception is scoped to the homepage Plan Your Visit headline: its content-defined accent phrase uses a local old-style serif fallback stack. This treatment must not propagate to other sections without a separate art-direction decision.
 - Fluid scale: `--step--1` through `--step-5` using `clamp()`.
 - Display headings use controlled tight leading and tracking; only the homepage hero receives the largest display treatment.
 - Section headings use the shared scale without one-off enlargement unless the section has a documented narrative role.

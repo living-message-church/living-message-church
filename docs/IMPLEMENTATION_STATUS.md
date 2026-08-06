@@ -43,6 +43,7 @@ Updated: 2026-08-06
 - Message records now include optional slug, YouTube, thumbnail, category, featured, and SEO metadata fields behind the existing provider adapter boundary.
 - The future Supabase schema, RLS, storage, upload, audit, and adapter transition are documented in `MESSAGES_ARCHITECTURE.md`.
 - Site typography now uses one Helvetica Neue-led local system stack across display, body, navigation, event, message, and administrative surfaces, with normalized 400/600/700/800/900 weights and no downloaded font dependency.
+- The homepage Plan Your Visit headline now supports one typed, content-defined accent phrase and renders it as an isolated old-style italic serif moment; the rest of the section and site remain in the Helvetica Neue-led system.
 
 ## In progress
 

@@ -23,6 +23,7 @@ export const homeSections: Record<string, HomepageSection> = {
     id: "visit",
     eyebrow: "Your first Sunday",
     title: "A simple, welcoming first step.",
+    titleAccent: "welcoming",
     body: "Find practical details about parking, children’s check-in, worship, teaching, and ways to connect before you arrive.",
     tone: "sun",
     actions: [{ label: "Start planning", href: "/new-here", style: "primary" }],

@@ -6,6 +6,9 @@ import { Eyebrow, Heading } from "@/components/ui/typography";
 
 export function VisitEditorial() {
   const content = homeSections.visit;
+  const accent = content.titleAccent ?? "";
+  const accentStart = accent ? content.title.indexOf(accent) : -1;
+  const hasAccent = accent.length > 0 && accentStart >= 0;
 
   return (
     <Section className="visit-section" tone={content.tone} labelledBy="visit-title" containerClassName="feature-grid visit-grid" containerSize="editorial">
@@ -20,7 +23,15 @@ export function VisitEditorial() {
       </div>
       <div className="feature-copy visit-copy">
         <Eyebrow>{content.eyebrow}</Eyebrow>
-        <Heading id="visit-title">{content.title}</Heading>
+        <Heading id="visit-title">
+          {hasAccent ? (
+            <>
+              <span>{content.title.slice(0, accentStart).trim()}</span>
+              <em>{accent}</em>
+              <span>{content.title.slice(accentStart + accent.length).trim()}</span>
+            </>
+          ) : content.title}
+        </Heading>
         <p>{content.body}</p>
         {content.actions ? <ActionGroup actions={content.actions} /> : null}
       </div>

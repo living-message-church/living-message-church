@@ -153,6 +153,7 @@ export interface HomepageSection {
   id: string;
   eyebrow?: string;
   title: string;
+  titleAccent?: string;
   body: string;
   tone: "paper" | "ink" | "sun" | "sage";
   actions?: CallToAction[];
