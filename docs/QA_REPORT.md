@@ -9,7 +9,7 @@ The 2026-08-06 mobile polish pass reviewed the current Motivation Church public 
 
 The mobile header no longer displays the word “Menu.” Its native `details` summary is now a 48px icon-only target with a 30px three-line hamburger, accessible open/close labels, and a restrained close-state transformation. The dropdown shares the page gutter, provides 52px navigation rows, and retains native keyboard/focus behavior.
 
-Within the mobile homepage hero, the stacked primary and secondary actions now share the Sunday service panel’s 19rem maximum measure. At narrower widths both resolve fluidly to the available container, so their left and right edges remain aligned from 430px through 320px.
+At 512px and below, the Sunday service panel now expands to the full mobile content width, matching the existing full-width hero buttons without changing their established sizing or stacking behavior.
 
 The mobile first-visit section now treats “A simple, welcoming first step” as a centered focal moment. Its headline scales from 3.25rem to 4.25rem, while the supporting copy is centered on a 31-character measure with a modestly larger reading size and the action remains centered below it. Desktop layout and typography are unchanged.
 
