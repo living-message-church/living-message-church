@@ -254,8 +254,8 @@ button, input, textarea, select { font: inherit; }
 .youtube-facade-control { position: relative; display: grid; width: clamp(7rem, 15vw, 9rem); aspect-ratio: 1; place-items: center; transition: transform 240ms ease; }
 .youtube-facade-ring { position: absolute; width: 100%; height: 100%; overflow: visible; animation: youtube-ring-turn 16s linear infinite; }
 .youtube-facade-ring text { fill: white; font-family: var(--font-sans); font-size: 8.4px; font-weight: 700; letter-spacing: 1.45px; text-transform: uppercase; }
-.youtube-tree-circle { display: grid; width: 52%; aspect-ratio: 1; place-items: center; border: 1px solid rgb(255 255 255 / 0.7); border-radius: 50%; background: color-mix(in srgb, var(--color-gold) 82%, white); box-shadow: 0 0.75rem 2.5rem rgb(8 9 8 / 0.22); }
-.youtube-tree-mark { width: 2.65rem; height: 2.3rem; background: url("/images/brand/living-message-church-logo.svg") left center / auto 100% no-repeat; filter: brightness(0) saturate(100%); transform: translateX(0.12rem); }
+.youtube-tree-circle { display: grid; width: 54%; aspect-ratio: 1; place-items: center; border: 1px solid rgb(255 255 255 / 0.78); border-radius: 50%; background: linear-gradient(135deg, #0b163f 0%, #242766 58%, #512f74 100%); box-shadow: 0 0.85rem 2.75rem rgb(8 9 8 / 0.28), inset 0 0 0 1px rgb(255 255 255 / 0.12); }
+.youtube-tree-mark { width: 2rem; height: 3rem; background: url("/images/brand/living-message-church-logo.svg") left 18% / auto 4.2rem no-repeat; filter: brightness(0) invert(1); }
 .youtube-facade:hover .youtube-facade-shade { background-color: rgb(8 9 8 / 0.08); }
 .youtube-facade:hover .youtube-facade-control { transform: scale(1.045); }
 .youtube-facade:focus-visible { outline-offset: -6px; }

@@ -43,7 +43,7 @@ export function YouTubeEmbed({ message }: { message: Message }) {
                 <path id={ringId} d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
               </defs>
               <text>
-                <textPath href={`#${ringId}`}>WATCH THE MESSAGE • LIVING MESSAGE • </textPath>
+                <textPath href={`#${ringId}`}>WATCH MESSAGE • LIVING MESSAGE CHURCH • </textPath>
               </text>
             </svg>
             <span className="youtube-tree-circle">
