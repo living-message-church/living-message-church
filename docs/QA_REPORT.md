@@ -29,7 +29,7 @@ Changes verified in source:
 - the offset is removed at 896px and below, and the existing mobile display cap is restored at 768px and below;
 - photography frames preserve 4:3 or 16:9 ratios, use `object-fit: cover`, provide responsive `sizes`, and remain single-column at mobile widths;
 - page-hero photography has capped height, cover cropping, a dark readability overlay, and a mobile-specific height/crop rule;
-- the upper service bar uses the same restrained coral token as primary calls to action, with a subtle opacity hover state;
+- the secondary service bar is no longer mounted; service times remain available in the hero and footer without stacking navigation layers;
 - the white primary navigation, enlarged logo, 44px interaction targets, keyboard focus, and reduced-motion rules remain intact.
 
 ## Responsive review update
@@ -44,12 +44,12 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 
 | Viewport | Status | Result |
 | --- | --- | --- |
-| Desktop 3840px | Code-reviewed; rendered verification pending | Canvas expands to 104rem while typography and reading measures remain capped. |
-| Desktop 2560px | Code-reviewed; rendered verification pending | Canvas expands to 104rem; photography/card regions gain presence without widening prose. |
-| Desktop 1920px | Code-reviewed; rendered verification pending | Canvas expands to 96rem; desktop hierarchy remains capped. |
-| Desktop 1600px | Code-reviewed; rendered verification pending | Canvas expands to 88rem; navigation targets are at least 44px high. |
-| Desktop 1440px | Code-reviewed; rendered verification pending | Existing 80rem canvas and bounded copy measures remain appropriate. |
-| Desktop 1280px | Code-reviewed; rendered verification pending | Fluid canvas and full navigation fit; link targets were enlarged without visual inflation. |
+| Desktop 3840px | Code-reviewed; rendered verification pending | The shared canvas remains capped at 78rem, creating deliberate surrounding whitespace without widening prose. |
+| Desktop 2560px | Code-reviewed; rendered verification pending | The 78rem cap maintains the same alignment system as standard desktop widths. |
+| Desktop 1920px | Code-reviewed; rendered verification pending | Photography and copy stay within the fixed 78rem operating grid. |
+| Desktop 1600px | Code-reviewed; rendered verification pending | The fixed container and navigation targets remain controlled and aligned. |
+| Desktop 1440px | Code-reviewed; rendered verification pending | The 78rem canvas and bounded copy measures remain appropriate. |
+| Desktop 1280px | Code-reviewed; rendered verification pending | Fluid gutters protect the 78rem canvas while full navigation remains available. |
 | Tablet 1024px | Code-reviewed; rendered verification pending | Mobile navigation is active and tablet display scaling is reduced. |
 | Tablet 834px | Code-reviewed; rendered verification pending | Hero now stacks independently and uses a bounded landscape crop. |
 | Tablet 768px | Code-reviewed; rendered verification pending | Primary grids collapse; media ratios and mobile heading caps now apply. |
@@ -77,7 +77,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | Navigation semantics | Desktop and mobile navigation have accessible labels; mobile uses native `details`/`summary`; current-page state uses `aria-current`. |
 | Heading structure | Page templates use one `h1` through `PageHero`/Hero and hierarchical `h2`/`h3` section/card headings. |
 | Focus foundation | Global `:focus-visible` styling provides a 3px high-contrast outline and offset. |
-| Button sizing | Action links have a 3.25rem minimum height and responsive wrapping. |
+| Button sizing | Action links have a 3rem minimum height and responsive wrapping. |
 | Reduced-motion code path | `prefers-reduced-motion: reduce` disables smooth scrolling and minimizes animation/transition duration. |
 | Photography crops | Local approved-source images render within defined 4:3 and 16:9 frames using `next/image`, responsive `sizes`, and `object-fit: cover`; page-hero backgrounds use capped cover crops. |
 | Sitemap/robots | Both returned HTTP 200; sitemap contains only the published Home, New Here, and Contact routes. |
@@ -89,7 +89,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 - Fixed the smallest display scale remaining too large at 320–430px.
 - Fixed undersized desktop-navigation and mobile-footer interaction targets.
 - Fixed cramped multi-action rows below 512px.
-- Fixed an overly narrow ultra-wide canvas at 1600–3840px without widening prose.
+- Removed escalating ultra-wide canvas overrides so every desktop uses one disciplined 78rem grid.
 - Updated the header logo from deprecated Next.js 16 `priority` behavior to `preload`.
 - Replaced the visually generic homepage media placeholders with church-specific photography while preserving the component and grid structure.
 - Reduced the desktop homepage heading cap by about 9%, preserved deliberate phrase breaks, tightened line-height, and removed its right offset on tablet/mobile.

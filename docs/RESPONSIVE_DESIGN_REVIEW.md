@@ -33,12 +33,12 @@ Status vocabulary:
 
 | Width | Independent observations | Result after refinement |
 | --- | --- | --- |
-| 3840px | The former fixed 80rem canvas would occupy only one third of the viewport and make photography, cards, and section composition feel undersized. Display type was already capped, so increasing type further would have reduced readability. | The content canvas now caps at 104rem while reading copy remains 43rem. This preserves editorial restraint without making the whole site look like a narrow column on 4K. Code-reviewed; final optical scale is pending rendered verification. |
-| 2560px | The former 80rem cap left 640px margins on both sides. Three-card and two-column sections had insufficient visual presence relative to the screen. | The canvas steps to 104rem at this width. Type remains capped and text measures do not expand with the grid. Code-reviewed; pending rendered verification. |
-| 1920px | The former 80rem cap left 320px side margins and reduced the intended photography-led balance. Body copy itself was correctly bounded. | The canvas steps to 96rem, leaving comfortable margins while allowing media and card composition to breathe. Code-reviewed; pending rendered verification. |
-| 1600px | An 80rem canvas was usable but slightly conservative for hero media and feature splits. Navigation had adequate room. | The canvas steps to 88rem. The full desktop navigation retains 44px-high targets and the 7.8rem display cap prevents heading inflation. Code-reviewed; pending rendered verification. |
-| 1440px | The 80rem canvas leaves approximately 80px margins, a strong desktop proportion. Hero and feature grids have adequate width; copy measures remain readable. | No width expansion is applied. Balanced headings and pretty-wrapped paragraphs reduce lonely final words where supported. Code-reviewed; pending rendered verification. |
-| 1280px | The fluid gutter produces an approximately 1216px canvas. Nine navigation links and the 200px wordmark fit, but their former line-box-only targets were undersized. | Desktop navigation links now provide a 44px minimum target without enlarging their visual typography. Section and card spacing remain unchanged. Code-reviewed; pending rendered verification. |
+| 3840px | An expanding canvas made the site’s grid change character on 4K displays. | The content canvas remains capped at 78rem while reading copy stays at 42rem. The additional space becomes deliberate margin rather than looser internal composition. Code-reviewed; final optical scale is pending rendered verification. |
+| 2560px | Ultra-wide overrides previously changed media and card proportions relative to standard desktop. | The same 78rem operating grid now applies, preserving alignment and section rhythm. Code-reviewed; pending rendered verification. |
+| 1920px | Body copy was correctly bounded, but the canvas expanded independently. | Photography and copy remain within the fixed 78rem grid. Code-reviewed; pending rendered verification. |
+| 1600px | The larger canvas step weakened continuity with 1440px layouts. | The full desktop navigation and content now share the same capped grid used at other desktop widths. Code-reviewed; pending rendered verification. |
+| 1440px | The bounded canvas provides a strong desktop proportion. | The 78rem cap, balanced headings, and pretty-wrapped paragraphs preserve clarity. Code-reviewed; pending rendered verification. |
+| 1280px | The fluid gutter protects the content canvas while the full navigation remains available. | Desktop navigation links retain 44px minimum targets without enlarging their visual typography. Code-reviewed; pending rendered verification. |
 
 ### Tablet
 
@@ -56,14 +56,14 @@ Status vocabulary:
 | 414px | Heading balance and long address wrapping are the primary risks. Fixed media minimum heights previously made wide imagery nearly square. | `text-wrap: pretty`, constrained reading measures, preserved aspect ratios, and full-width actions reduce widows, awkward crops, and control imbalance. Code-reviewed; pending rendered verification. |
 | 390px | The logo/menu pairing fits the shared header. The hero fact card and long directions/contact values need predictable wrapping. | The wordmark remains 148px wide; the fact card is bounded by its container; contact/footer links can wrap safely within their columns. Code-reviewed; pending rendered verification. |
 | 375px | The former display minimum produced a visually heavy multi-line hero and page heroes. Empty feed/contact panels consumed too much of the initial viewport. | Mobile display and page scales are capped, empty feed state minimum height drops to 16rem, and the contact placeholder drops to 18rem. Code-reviewed; pending rendered verification. |
-| 360px | The default 16px gutter leaves a 328px content area, sufficient for the 148px logo and menu. Very long labels and side-by-side controls remained the main overflow risk. | Controls stack; media ratios remain intact; the service bar uses its existing two-line mobile structure. Code-reviewed; pending rendered verification. |
+| 360px | The default gutter leaves sufficient room for the logo and menu. Very long labels and side-by-side controls remained the main overflow risk. | Controls stack, media ratios remain intact, and removal of the secondary service bar reduces first-viewport density. Code-reviewed; pending rendered verification. |
 | 320px | The former 52.8px minimum display size created excessive wrapping, the media minimum height distorted crops, and paired buttons could feel cramped. Header composition had only a small reserve. | Display type now resolves to 44.8px, actions stack, the logo reduces to 140px, the gutter reduces to 14px, hero visual inset tightens, and the fact card cannot exceed its containing block. Code-reviewed; pending rendered verification. |
 
 ## Issues found and changes made
 
 | Area | Issue | Change |
 | --- | --- | --- |
-| Ultra-wide layout | A single 80rem cap made 1920–3840px screens feel undersized and visually timid. | Added deliberate 88rem, 96rem, and 104rem canvas steps while keeping reading copy fixed at 43rem. |
+| Ultra-wide layout | Expanding canvas steps weakened alignment consistency and made sections feel independently composed. | Standardized every desktop width on one 78rem canvas while keeping reading copy fixed at 42rem. |
 | Tablet hero | The long hero headline and portrait media competed inside a narrow two-column grid at 834px. | Collapsed only the hero below 56rem and bounded its media width. |
 | Mobile typography | The display scale had a 3.3rem minimum, too heavy for 320–430px headlines. | Added mobile display and page-heading caps without changing component semantics or content. |
 | Image treatment | `min-height: 18rem` overrode 16:9 and 4:3 aspect ratios on narrow screens. | Removed the fixed minimum so declared crop ratios govern layout. |

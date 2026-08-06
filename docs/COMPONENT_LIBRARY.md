@@ -8,8 +8,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 | Component | Location | Responsibility |
 | --- | --- | --- |
-| `SiteShell` | `src/components/shell/site-shell.tsx` | Skip link, service bar, header, main landmark, footer |
-| `ServiceBar` | `src/components/shell/service-bar.tsx` | Current observed Sunday times and location gateway |
+| `SiteShell` | `src/components/shell/site-shell.tsx` | Skip link, primary header, main landmark, footer |
 | `SiteHeader` | `src/components/shell/site-header.tsx` | Wordmark, responsive primary navigation, current-page state |
 | `SiteFooter` | `src/components/shell/site-footer.tsx` | Visit facts, grouped routes, contact, social and legal links |
 | `SiteHead` | `src/components/seo/site-head.tsx` | Title, description, canonical, Open Graph, Twitter, robots, JSON-LD |
@@ -57,7 +56,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 Every section reads church content from `src/content/`; components contain layout and rendering logic rather than church records.
 
-`Hero` includes a decorative, muted background-video renderer that is hydration-gated by motion and viewport preferences. Mobile widths and `prefers-reduced-motion: reduce` receive the approved static poster without instantiating the video element.
+`Hero` includes a decorative, muted background-video renderer that is hydration-gated by motion and viewport preferences. Mobile widths and `prefers-reduced-motion: reduce` receive the approved static poster without instantiating the video element. Verified Sunday times remain visible in the hero and footer; the former secondary service bar is intentionally not mounted.
 
 ## Extension rules
 

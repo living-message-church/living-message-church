@@ -6,9 +6,9 @@ Updated: 2026-08-06
 
 ## Direction
 
-The foundation is editorial, welcoming, energetic, spacious, and church-appropriate. Oversized but controlled type, neutral-dominant surfaces, disciplined rhythm, and large media areas create energy without reproducing Motivation Church’s layout, assets, branding, fonts, or interaction code.
+The system is confident, minimal, warm, and photography-led. Hierarchy comes from content order, type scale, image crop, and space—not ornamental rules, floating graphics, alternating color bands, or section-specific effects. Every public section uses the same bounded grid and spacing vocabulary so the site reads as one product rather than a collection of designed moments.
 
-Photography is intentionally represented by local abstract media placeholders until Living Message-owned, consent-cleared originals are approved. The placeholders make required crop ratios and layout behavior testable without implying that unapproved legacy imagery may be reused. The church's existing production-site wordmark is approved for reuse and is the only legacy visual asset currently integrated.
+Living Message-owned photography supplies the emotional energy. Interface surfaces remain quiet, and full-color fields are reserved for the hero, identity statement, and final invitation where they clarify the page narrative.
 
 ## Tokens
 
@@ -38,14 +38,18 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 - Display: resilient local/system stack headed by Helvetica Neue; no remote font request.
 - Body: accessible system sans stack.
 - Fluid scale: `--step--1` through `--step-5` using `clamp()`.
-- Display headings use controlled tight leading and tracking; body text keeps generous leading and a controlled reading measure.
+- Display headings use controlled tight leading and tracking; only the homepage hero receives the largest display treatment.
+- Section headings use the shared scale without one-off enlargement unless the section has a documented narrative role.
+- Body text keeps generous leading and a controlled reading measure.
 - Components preserve one `h1` per page and hierarchical `h2`/`h3` levels.
 
 ### Spacing and layout
 
 - `--space-1` through `--space-8` establish the rhythm.
 - Section padding uses fluid `--space-7`; content clusters use smaller tokens.
-- Wide container: `80rem`; reading container: `43rem`; responsive gutter uses `clamp()`.
+- Wide container: `78rem`; reading container: `42rem`; responsive gutter uses `clamp()`.
+- The wide container does not expand at ultra-wide breakpoints. Large screens gain surrounding whitespace rather than longer lines or looser alignment.
+- Shared two-column compositions use `--space-7` for their primary gap.
 - Main editorial grids collapse intentionally to one column below 48rem.
 
 ### Shape and imagery
@@ -67,7 +71,7 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 
 ## Motion and reduced motion
 
-Default transitions are short and limited to color, underline, shadow, and small vertical movement. Under `prefers-reduced-motion: reduce`, smooth scrolling is disabled and animation/transition duration is effectively removed. Essential content never depends on motion or scroll reveal.
+Default transitions are short and limited to color, border, and underline changes. Decorative floating, orbiting, and image-drift motion is not part of the shared system. Under `prefers-reduced-motion: reduce`, smooth scrolling is disabled and animation/transition duration is effectively removed. Essential content never depends on motion or scroll reveal.
 
 The homepage hero video is decorative, muted, and non-interactive. It is instantiated only above 768px when reduced motion is not requested. Mobile and reduced-motion presentations use the approved static poster, preserving hierarchy without downloading autoplay video.
 

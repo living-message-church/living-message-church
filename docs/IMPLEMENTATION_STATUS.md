@@ -7,7 +7,7 @@ Updated: 2026-08-06
 - Content verification registry covering the audit’s unresolved and conflicting facts.
 - Typed content models for identity, contact, services, navigation/footer, leadership, ministries, messages, events, outreach, social channels, external services, images, calls to action, pages, and homepage sections.
 - Project-native design tokens and responsive editorial component foundation.
-- Shared service bar, header, accessible mobile navigation, skip link, main landmark, and footer.
+- Shared primary header, accessible mobile navigation, skip link, main landmark, and footer.
 - Required homepage sections with content separated from components.
 - Implemented foundation routes: `/`, `/new-here`, `/contact`, `/privacy-policy`, `/photo-release`.
 - Deliberate no-index staged destinations for About, beliefs, leadership, gallery, Connect, Next Steps, Messages, live, Events, Outreach, and Give so the full redirect ledger has valid destinations.
@@ -29,7 +29,9 @@ Updated: 2026-08-06
 - Homepage first-visit, latest-message, Kids, Groups, Next Steps, and outreach visual placeholders were replaced with church-specific photography using the existing `MediaFrame` and typed content foundation.
 - New Here, Contact, About, Leadership, Connect, Kids, Groups, Next Steps, Messages, Live, and Outreach now use restrained photography-led page heroes without changing routes or page structures.
 - Homepage hero copy was refined to “Come as you are. Grow in truth. Find community.” with deliberate line breaks, a roughly 9% smaller desktop cap, tighter line-height, narrower measure, and desktop-only compositional offset.
-- The secondary service bar continues to use the same restrained coral as the homepage primary CTA, with quieter spacing and hover behavior; the white primary navigation remains unchanged.
+- The secondary service bar was removed from the shared shell to reduce stacked navigation and first-viewport noise. Verified Sunday information remains in the hero and footer.
+- A system-level confidence pass standardized the public site around one fixed `78rem` container, one shared two-column gap, neutral-dominant section surfaces, sentence-case navigation, flatter cards, photography-first compositions, and restrained interaction feedback.
+- Decorative identity circles, accent bars, visit-section orbits, floating overlays, and image-drift animation were removed. The identity statement now uses a direct two-column composition with all-white type and a larger human photograph.
 - Featured homepage message now plays the production sermon-page YouTube record in a privacy-enhanced responsive player.
 - `/messages` now provides a featured player, public category chips, keyword search, responsive archive cards, and truthful empty states using four approved-temporary production-page video records.
 - `/admin/messages` provides a no-index, non-persistent visual prototype for title/meta editing and category creation/removal; save and upload remain disabled until Supabase storage and authenticated access are approved.
