@@ -48,6 +48,7 @@ Updated: 2026-08-06
 - The Plan Your Visit photograph now receives a section-scoped 20-second cinematic push-and-pan within its existing crop. It causes no layout movement, introduces no dependency, and is explicitly disabled for reduced-motion visitors.
 - Mobile spacing now uses a consistent 5–5.5% gutter and a minimum 4rem section rhythm. Identity, ministry-introduction, and final-invitation moments center deliberately while scan-heavy sections remain left-aligned.
 - The mobile header now uses an accessible 48px icon-only navigation trigger with a larger 30px hamburger, open/close labels, gutter-aligned dropdown, and 52px navigation rows; the visible “Menu” label was removed.
+- The user-supplied `Living Message Logo.svg` is now the shared brand master across the site. Header rendering preserves its native navy/brown palette, while the dark footer and animated message-player tree use high-contrast treatments of the same local vector asset; the superseded PNG remains archived.
 
 ## In progress
 

@@ -12,10 +12,10 @@ export function SiteHeader() {
         <Link href="/" className="wordmark" aria-label={`${siteIdentity.name.value} home`}>
           <Image
             className="site-logo"
-            src="/images/brand/living-message-church-logo.png"
+            src="/images/brand/living-message-church-logo.svg"
             alt={siteIdentity.name.value}
-            width={250}
-            height={69}
+            width={288}
+            height={92}
             preload
           />
         </Link>

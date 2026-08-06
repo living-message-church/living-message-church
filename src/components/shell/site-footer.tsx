@@ -21,10 +21,10 @@ export function SiteFooter() {
             <Link href="/" className="footer-brand" aria-label={`${siteIdentity.name.value} home`}>
               <Image
                 className="footer-logo"
-                src="/images/brand/living-message-church-logo.png"
+                src="/images/brand/living-message-church-logo.svg"
                 alt={siteIdentity.name.value}
-                width={250}
-                height={69}
+                width={288}
+                height={92}
               />
             </Link>
             <a href={`tel:${contactInformation.phone.value.replaceAll("-", "")}`}>{contactInformation.phone.value}</a>

@@ -21,6 +21,8 @@ The public feed is intentionally a recent-history integration, not a claim of co
 
 The message player now renders a lightweight custom facade before YouTube loads. It uses the verified thumbnail as the photographic field and isolates the tree from the approved local Living Message logo inside a warm circular mark, surrounded by a 16-second rotating “Watch the message” ring. The complete facade is one keyboard-accessible play button; activation replaces it with the privacy-enhanced `youtube-nocookie.com` iframe and requests autoplay. Reduced-motion styling leaves the ring static.
 
+The user-supplied `Living Message Logo.svg` now replaces the previous raster logo in every rendered brand location. Header and footer use the vector through `next/image` with explicit 288 × 92 intrinsic dimensions; the header preserves native navy/brown color, the dark footer applies a white high-contrast treatment, and the message-player mark crops the tree from the same vector. The previous PNG remains in the repository but is no longer referenced by application code.
+
 ## Helvetica Neue typography test
 
 The 2026-08-06 typography test standardizes the complete application on a Helvetica Neue-led local stack, with Helvetica, Arial, and generic sans-serif fallbacks. The former mixed body stack and isolated Georgia event treatment were removed. Fractional weight declarations were normalized to explicit 400, 600, 700, 800, and 900 values so hierarchy resolves predictably across locally available Helvetica-family faces.

@@ -80,7 +80,7 @@ Scope: presentation-only refinement of the existing foundation
 
 - `src/styles/globals.css`
 - Existing presentational components only where markup is purely decorative (`MediaFrame`, wordmark/menu visual wrappers if necessary)
-- `public/images/brand/living-message-church-logo.png`
+- `public/images/brand/living-message-church-logo.svg` (user-supplied vector master; supersedes the archived PNG)
 - `docs/DESIGN_REVIEW.md`
 - `docs/VISUAL_REFINEMENT_PLAN.md`
 - `docs/DESIGN_SYSTEM.md`

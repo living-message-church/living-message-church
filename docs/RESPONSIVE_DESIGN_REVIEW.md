@@ -73,7 +73,7 @@ Status vocabulary:
 | Vertical balance | Contact and feed placeholder panels were disproportionately tall on small screens. | Reduced only their mobile minimum heights. |
 | Widows | Paragraphs could end with a single short word despite bounded measures. | Added progressive `text-wrap: pretty`; headings retain `text-wrap: balance`. |
 | 320px containment | The hero fact card and default gutter left minimal tolerance. | Bounded the card, reduced the smallest gutter, and slightly reduced the logo/inset. |
-| Image performance | The header logo used the deprecated Next.js 16 `priority` prop. | Replaced it with `preload`; intrinsic 250×69 dimensions remain present to prevent layout shift. |
+| Image performance | The header logo used the deprecated Next.js 16 `priority` prop. | Replaced it with `preload`; the current vector master has explicit 288×92 intrinsic dimensions to prevent layout shift. |
 
 ## Typography and readability
 
@@ -101,7 +101,7 @@ Status vocabulary:
 
 - Semantic landmarks, one page-level heading, skip link, native mobile disclosure, `aria-current`, visible focus states, and reduced-motion overrides remain intact.
 - No animation was added. Existing transitions are limited to short color/border changes and are effectively removed under `prefers-reduced-motion: reduce`.
-- The approved logo is a 7KB local PNG with intrinsic dimensions and Next.js image handling. A higher-resolution or vector master is still recommended for the sharpest 4K/high-density rendering.
+- The approved user-supplied logo is now a local SVG with a 288 × 91.19 viewBox and Next.js image handling, providing resolution-independent rendering from 320px mobile screens through 4K/high-density displays.
 - No new dependency, remote font, script, image payload, or runtime integration was added.
 
 ## Screenshots

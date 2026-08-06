@@ -94,7 +94,7 @@ button, input, textarea, select { font: inherit; }
 .site-header { position: relative; z-index: 20; border-bottom: 1px solid var(--color-line); background: #fff; color: var(--color-ink); }
 .header-inner { display: flex; min-height: 6.5rem; align-items: center; justify-content: space-between; gap: var(--space-4); }
 .wordmark { display: inline-flex; align-items: center; gap: 0.75rem; font-weight: 900; line-height: 1; text-decoration: none; }
-.site-logo { width: clamp(12rem, 18vw, 15rem); height: auto; filter: brightness(0) saturate(100%); opacity: 0.9; }
+.site-logo { width: clamp(12rem, 18vw, 15rem); height: auto; }
 .desktop-nav { display: flex; align-items: center; gap: clamp(0.85rem, 1.5vw, 1.4rem); }
 .desktop-nav a { position: relative; display: inline-flex; min-height: 2.75rem; align-items: center; font-size: clamp(0.86rem, 0.8rem + 0.12vw, 0.92rem); font-weight: 700; letter-spacing: 0; text-decoration: none; }
 .desktop-nav a::after { position: absolute; right: 0; bottom: -0.5rem; left: 0; height: 2px; background: var(--color-coral); content: ""; transform: scaleX(0); transform-origin: left; transition: transform 180ms ease; }
@@ -255,7 +255,7 @@ button, input, textarea, select { font: inherit; }
 .youtube-facade-ring { position: absolute; width: 100%; height: 100%; overflow: visible; animation: youtube-ring-turn 16s linear infinite; }
 .youtube-facade-ring text { fill: white; font-family: var(--font-sans); font-size: 8.4px; font-weight: 700; letter-spacing: 1.45px; text-transform: uppercase; }
 .youtube-tree-circle { display: grid; width: 52%; aspect-ratio: 1; place-items: center; border: 1px solid rgb(255 255 255 / 0.7); border-radius: 50%; background: color-mix(in srgb, var(--color-gold) 82%, white); box-shadow: 0 0.75rem 2.5rem rgb(8 9 8 / 0.22); }
-.youtube-tree-mark { width: 2.65rem; height: 2.3rem; background: url("/images/brand/living-message-church-logo.png") left center / auto 100% no-repeat; filter: brightness(0) saturate(100%); transform: translateX(0.12rem); }
+.youtube-tree-mark { width: 2.65rem; height: 2.3rem; background: url("/images/brand/living-message-church-logo.svg") left center / auto 100% no-repeat; filter: brightness(0) saturate(100%); transform: translateX(0.12rem); }
 .youtube-facade:hover .youtube-facade-shade { background-color: rgb(8 9 8 / 0.08); }
 .youtube-facade:hover .youtube-facade-control { transform: scale(1.045); }
 .youtube-facade:focus-visible { outline-offset: -6px; }
@@ -366,7 +366,7 @@ button, input, textarea, select { font: inherit; }
 .footer-grid a { width: fit-content; color: rgb(255 255 255 / 0.82); text-decoration: none; }
 .footer-grid a:hover { color: white; text-decoration: underline; }
 .footer-brand { color: white !important; line-height: 1; }
-.footer-logo { width: min(100%, 12.5rem); height: auto; }
+.footer-logo { width: min(100%, 12.5rem); height: auto; filter: brightness(0) invert(1); opacity: 0.92; }
 .footer-bottom { display: flex; justify-content: space-between; gap: var(--space-4); border-top: 1px solid rgb(255 255 255 / 0.18); padding-top: var(--space-4); font-size: var(--step--1); color: rgb(255 255 255 / 0.62); }
 .footer-bottom p { margin: 0; }
 .footer-bottom div { display: flex; gap: var(--space-4); }

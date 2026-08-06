@@ -17,7 +17,8 @@ The 46.15 MB QuickTime source was used only as conversion input and was not adde
 
 | Asset | Repository path | Production source | Dimensions | Rights/approval note | Usage |
 | --- | --- | --- | ---: | --- | --- |
-| Living Message Church logo | `public/images/brand/living-message-church-logo.png` | `https://www.livingmessagechurch.com/wp-content/uploads/2017/03/Living-Message-Logo-05.png` | 250 × 69 PNG, transparent | User explicitly directed reuse of the existing church logo on 2026-08-06. No ownership beyond that requested project use is inferred. | Responsive site header and footer via `next/image`; alt text “Living Message Church” |
+| Current Living Message Church logo | `public/images/brand/living-message-church-logo.svg` | User-supplied `Living Message Logo.svg` on 2026-08-06 | 288 × 91.19 viewBox SVG, native navy/brown vector artwork | User explicitly directed this uploaded master be used across the site. No ownership beyond that requested project use is inferred. | Header retains native colors; footer uses a high-contrast white CSS treatment; the message-player control isolates the tree from the same asset; header/footer use `next/image` with alt text “Living Message Church” |
+| Superseded production-site logo | `public/images/brand/living-message-church-logo.png` | `https://www.livingmessagechurch.com/wp-content/uploads/2017/03/Living-Message-Logo-05.png` | 250 × 69 PNG, transparent | Previously approved for reuse; retained to preserve repository history and not rendered after the uploaded vector replacement. | Archive only |
 
 ## Living Message Church photography
 
