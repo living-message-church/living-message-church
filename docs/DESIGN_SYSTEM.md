@@ -73,7 +73,7 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 
 ## Motion and reduced motion
 
-Default transitions are short and limited to color, border, and underline changes. Decorative floating, orbiting, and image-drift motion is not part of the shared system. Under `prefers-reduced-motion: reduce`, smooth scrolling is disabled and animation/transition duration is effectively removed. Essential content never depends on motion or scroll reveal.
+Default transitions are short and limited to color, border, and underline changes. Decorative floating and orbiting motion is not part of the shared system. The homepage Plan Your Visit photograph has one art-directed exception: a slow 20-second push-and-pan contained entirely within its fixed frame. Under `prefers-reduced-motion: reduce`, that image is static, smooth scrolling is disabled, and animation/transition duration is effectively removed. Essential content never depends on motion or scroll reveal.
 
 The homepage hero video is decorative, muted, and non-interactive. It is instantiated only above 768px when reduced motion is not requested. Mobile and reduced-motion presentations use the approved static poster, preserving hierarchy without downloading autoplay video.
 

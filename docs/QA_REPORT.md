@@ -11,6 +11,8 @@ No font files, font service request, package, route, content, layout, component 
 
 The subsequent Plan Your Visit refinement adds one content-defined accent phrase inside the existing semantic `h2`. Its three display lines remain one accessible heading, use fluid sizing from mobile through desktop, and rely only on local system font fallbacks. No other section matches the scoped selector.
 
+The section photograph now uses a GPU-composited, 20-second alternate transform between shallow scale and translation values. The media frame and document flow remain stationary, preventing layout shift. The reduced-motion media query removes both the animation and its transform, returning the approved source crop to a static presentation.
+
 ## Wide canvas and premium layout update
 
 The 2026-08-06 layout-confidence pass replaced the fixed `78rem` site canvas with semantic reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) containers. The header, footer, and photography-led homepage sections now select wider canvases intentionally; standard interior pages and long-form reading remain constrained.
