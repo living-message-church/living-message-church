@@ -24,10 +24,11 @@ Updated: 2026-08-06
 - HTTP route, metadata, no-index, structured-data, provider-fallback, sitemap, robots, and representative redirect smoke checks pass.
 - Design System Review completed with a presentation-only refinement pass: calmer type scale, tighter rhythm, warmer neutral-dominant palette, quieter cards/actions/navigation/placeholders, and reduced decorative motion.
 - Existing Living Message Church production logo added locally and used through `next/image` in the header and footer; source and approval recorded in `ASSET_REGISTER.md`.
+- Existing Living Message Church community promo video added as an optimized 720p H.264 hero background with a 204 KB poster fallback; the 46.15 MB source was reduced to 7.28 MB, stripped of audio, and gated off for mobile/reduced-motion visitors.
 
 ## In progress
 
-- The development foundation retains abstract local media placeholders; approved church photography has not yet been supplied.
+- The homepage hero now uses the user-approved current-site promo video; remaining section and ministry media retain abstract local placeholders pending additional approved church photography.
 - Legal routes preserve the current subjects but remain interim/no-index pending legal and processor review.
 - Interactive responsive/browser QA remains pending because no in-app or extension browser was connected. All five requested viewport checks are documented as not testable in `QA_REPORT.md`.
 

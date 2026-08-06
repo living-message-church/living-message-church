@@ -92,11 +92,15 @@ button, input, textarea, select { font: inherit; }
 .mobile-menu nav { position: absolute; top: calc(100% + 1.15rem); right: 0; width: min(20rem, calc(100vw - 2rem)); border: 1px solid var(--color-line); border-radius: var(--radius-md); background: var(--color-paper-bright); color: var(--color-ink); box-shadow: var(--shadow-card); padding: 0.75rem 1rem; }
 .mobile-menu nav a { display: block; border-bottom: 1px solid var(--color-line); padding: 0.85rem 0.5rem; font-weight: 800; text-decoration: none; }
 
-.hero { background: var(--color-ink); color: var(--color-paper-bright); padding-block: clamp(4rem, 8vw, 7.5rem); overflow: clip; }
-.hero-grid { display: grid; align-items: center; grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.68fr); gap: clamp(3rem, 6vw, 6rem); }
+.hero { position: relative; display: grid; min-height: clamp(42rem, 72vh, 56rem); align-items: center; isolation: isolate; overflow: clip; background: var(--color-ink); color: var(--color-paper-bright); padding-block: clamp(4rem, 8vw, 7.5rem); }
+.hero-media, .hero-scrim { position: absolute; inset: 0; }
+.hero-media { z-index: -2; background: var(--color-ink) url("/images/hero/living-message-church-community-poster.jpg") center 46% / cover no-repeat; }
+.hero-video { width: 100%; height: 100%; object-fit: cover; object-position: center 46%; }
+.hero-scrim { z-index: -1; background: linear-gradient(90deg, rgb(18 19 17 / 0.9) 0%, rgb(18 19 17 / 0.72) 52%, rgb(18 19 17 / 0.48) 100%); }
+.hero-grid { position: relative; display: grid; align-items: center; grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.48fr); gap: clamp(3rem, 6vw, 6rem); }
 .hero-copy .lede { margin: var(--space-5) 0 0; }
-.hero-visual { position: relative; padding: 0 0 3rem 3rem; }
-.hero-fact-card { position: absolute; bottom: 0; left: 0; display: grid; min-width: 17rem; border: 1px solid var(--color-line); border-radius: var(--radius-sm); background: var(--color-paper-bright); color: var(--color-ink); padding: 1.15rem; box-shadow: var(--shadow-card); }
+.hero-side { display: flex; align-self: end; justify-content: flex-end; }
+.hero-fact-card { display: grid; width: min(100%, 19rem); border: 1px solid rgb(255 255 255 / 0.28); border-radius: var(--radius-sm); background: rgb(251 250 247 / 0.94); color: var(--color-ink); padding: 1.15rem; box-shadow: var(--shadow-card); }
 .hero-fact-card span { font-size: var(--step--1); font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
 .hero-fact-card strong { font-size: var(--step-2); letter-spacing: -0.04em; }
 .hero-fact-card small { margin-top: 0.3rem; }
@@ -202,7 +206,7 @@ button, input, textarea, select { font: inherit; }
   :root { --step-5: clamp(3.3rem, 1.9rem + 4.6vw, 6.4rem); }
   .desktop-nav { display: none; }
   .mobile-menu { display: block; }
-  .hero-grid { grid-template-columns: 1fr 0.65fr; gap: var(--space-5); }
+  .hero-grid { grid-template-columns: 1fr 0.45fr; gap: var(--space-5); }
   .card-grid { grid-template-columns: repeat(2, 1fr); }
   .ministry-card:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
   .message-card-grid, .event-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -211,8 +215,7 @@ button, input, textarea, select { font: inherit; }
 @media (max-width: 56rem) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-copy { max-width: 46rem; }
-  .hero-visual { width: min(100%, 42rem); }
-  .hero-visual .media-portrait { aspect-ratio: 4 / 3; }
+  .hero-side { justify-content: flex-start; }
 }
 
 @media (max-width: 48rem) {
@@ -225,7 +228,8 @@ button, input, textarea, select { font: inherit; }
   .service-bar-inner { min-height: 3.5rem; align-items: flex-start; flex-direction: column; justify-content: center; gap: 0; }
   .header-inner { min-height: 4.8rem; }
   .hero-grid, .editorial-split, .feature-grid, .message-feature, .outreach-grid, .invitation-grid, .contact-grid, .footer-lead, .route-purpose { grid-template-columns: 1fr; }
-  .hero-visual { padding: 0 0 2.5rem 1rem; }
+  .hero { min-height: 0; }
+  .hero-scrim { background: rgb(18 19 17 / 0.76); }
   .section-heading-row { align-items: flex-start; flex-direction: column; }
   .section-intro { display: block; }
   .section-intro .heading { margin-bottom: var(--space-4); }
@@ -247,7 +251,7 @@ button, input, textarea, select { font: inherit; }
   .site-logo { width: 9.25rem; }
   .action-group { align-items: stretch; flex-direction: column; }
   .action-link:not(.action-text) { width: 100%; }
-  .hero-fact-card { width: min(17rem, 100%); min-width: 0; }
+  .hero-fact-card { width: min(19rem, 100%); }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-grid > div:first-child { grid-column: auto; }
   .empty-card { grid-template-columns: 1fr; }
@@ -256,10 +260,10 @@ button, input, textarea, select { font: inherit; }
 @media (max-width: 22.5rem) {
   :root { --gutter: 0.875rem; }
   .site-logo { width: 8.75rem; }
-  .hero-visual { padding-left: 0.75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .hero-video { display: none; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }

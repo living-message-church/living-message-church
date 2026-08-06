@@ -61,6 +61,8 @@ Color combinations must retain WCAG AA text contrast. Cobalt is used for focus o
 
 Default transitions are short and limited to color, underline, shadow, and small vertical movement. Under `prefers-reduced-motion: reduce`, smooth scrolling is disabled and animation/transition duration is effectively removed. Essential content never depends on motion or scroll reveal.
 
+The homepage hero video is decorative, muted, and non-interactive. It is instantiated only above 768px when reduced motion is not requested. Mobile and reduced-motion presentations use the approved static poster, preserving hierarchy without downloading autoplay video.
+
 ## Accessibility guardrails
 
 - Semantic landmarks, labelled navigation regions, one page-level heading, descriptive link text, and focus visibility are required.

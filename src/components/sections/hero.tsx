@@ -1,14 +1,48 @@
+import { useEffect, useState } from "react";
 import { homeSections, contactInformation, serviceTimes } from "@/content";
 import { ActionGroup } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import { Eyebrow, Heading } from "@/components/ui/typography";
-import { MediaFrame } from "@/components/ui/media-frame";
+
+function HeroBackgroundVideo() {
+  const [motionEnabled, setMotionEnabled] = useState(false);
+
+  useEffect(() => {
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 48rem)");
+    const updatePlayback = () => setMotionEnabled(!motionPreference.matches);
+
+    updatePlayback();
+    motionPreference.addEventListener("change", updatePlayback);
+    return () => motionPreference.removeEventListener("change", updatePlayback);
+  }, []);
+
+  if (!motionEnabled) return null;
+
+  return (
+    <video
+      className="hero-video"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      poster="/images/hero/living-message-church-community-poster.jpg"
+      aria-hidden="true"
+    >
+      <source src="/videos/living-message-church-community-promo.mp4" type="video/mp4" />
+    </video>
+  );
+}
 
 export function Hero() {
   const content = homeSections.hero;
   const inPerson = serviceTimes.filter((service) => service.format === "in-person");
   return (
     <section className="hero" aria-labelledby="home-title">
+      <div className="hero-media" aria-hidden="true">
+        <HeroBackgroundVideo />
+      </div>
+      <div className="hero-scrim" aria-hidden="true" />
       <Container className="hero-grid">
         <div className="hero-copy">
           <Eyebrow>{content.eyebrow}</Eyebrow>
@@ -16,8 +50,7 @@ export function Hero() {
           <p className="lede">{content.body}</p>
           {content.actions ? <ActionGroup actions={content.actions} /> : null}
         </div>
-        <div className="hero-visual">
-          <MediaFrame label="Reserved for approved Living Message Church community photography" ratio="portrait" tone="coral" />
+        <div className="hero-side">
           <div className="hero-fact-card">
             <span>Sundays</span>
             <strong>{inPerson.map((service) => service.time).join(" · ")}</strong>

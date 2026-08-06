@@ -2,13 +2,16 @@
 
 Updated: 2026-08-06
 
-## Approved photography
+## Approved visual media
 
-No Living Message Church photography has been approved or supplied to the repository. No production-site image was downloaded, copied, hotlinked, or inferred to be reusable. No Motivation Church asset was used.
+The project owner explicitly directed reuse of the current-site church promo video on 2026-08-06. The source is a Living Message Church production-site asset; this approval is recorded only for the requested website use. No Motivation Church asset was used.
 
-| Asset | Type | Rights/approval | Alt text | Usage | Status |
+| Asset | Repository path | Production source | Technical details | Rights/approval note | Usage |
 | --- | --- | --- | --- | --- | --- |
-| None | Photography | No approved files supplied | Not applicable | Not applicable | Blocked by verification |
+| Community promo video | `public/videos/living-message-church-community-promo.mp4` | `https://www.livingmessagechurch.com/wp-content/uploads/2023/03/Church-Promo-2-Website.mov` | 44.6 seconds; 1280 × 720; H.264 MP4; no audio; 6.9 MiB / 7.28 MB; network fast-start | User explicitly directed download, optimization, and reuse on 2026-08-06. Individual appearance/release records were not independently audited. | Decorative homepage hero background above 768px; muted, looping, inline, metadata preload |
+| Community video poster | `public/images/hero/living-message-church-community-poster.jpg` | Derived locally from the approved promo video | 1280 × 720 JPEG; 204 KB | Covered by the same requested site use as the source video. | Hero loading fallback and static presentation on mobile or when reduced motion is requested; decorative CSS background |
+
+The 46.15 MB QuickTime source was used only as conversion input and was not added to the repository. The selected MP4 removes its audio track and reduces payload by approximately 84% while retaining 720p resolution.
 
 ## Brand assets
 
@@ -22,12 +25,11 @@ The layout uses the code-native `MediaFrame` component rather than bitmap photog
 
 | Placeholder | Location | Intended future crop | Replacement requirement |
 | --- | --- | --- | --- |
-| Community hero | Home hero | 4:5 portrait | Approved recent community/worship photograph; subject consent; meaningful alt text; focal point |
 | First-visit welcome | Home visitor section | 4:3 landscape | Approved entrance, lobby, or welcome-team photograph; accessibility context |
 | Latest message | Home messages section | 16:9 wide | Verified message artwork or approved service still tied to a real message record |
 | Ministry cards | Home ministry grid | 4:3 landscape | Approved ministry-specific photographs with current representation and consent |
 
-No photographic placeholder file is stored under `public/images` because the current placeholders are code-native. Approved brand assets live under `public/images/brand`; future approved photography should use a separate descriptive folder and filenames such as `living-message-kids-check-in.webp`.
+Remaining photographic placeholders are code-native. Approved brand assets live under `public/images/brand`; the hero poster lives under `public/images/hero`; future approved photography should use separate descriptive folders and filenames such as `living-message-kids-check-in.webp`.
 
 ## Required asset metadata
 

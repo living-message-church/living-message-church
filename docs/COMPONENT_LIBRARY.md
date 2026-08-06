@@ -54,6 +54,8 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 Every section reads church content from `src/content/`; components contain layout and rendering logic rather than church records.
 
+`Hero` includes a decorative, muted background-video renderer that is hydration-gated by motion and viewport preferences. Mobile widths and `prefers-reduced-motion: reduce` receive the approved static poster without instantiating the video element.
+
 ## Extension rules
 
 1. Add or revise content in `src/content/` and its model in `src/types/content.ts` before placing church facts in a component.
