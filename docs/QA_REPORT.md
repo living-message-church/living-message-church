@@ -3,6 +3,12 @@
 QA date: 2026-08-06  
 Application: local Next.js development preview
 
+## Typography refinement
+
+The 2026-08-06 typography pass replaces the mixed Helvetica/system display stack with locally self-hosted Inter variable throughout the public site and message-admin prototype. Existing declared weights from 400–900 now resolve through one operating family. Cormorant Garamond is intentionally scoped to three CTA headlines only: Plan Your Visit, the final Sunday invitation, and the footer invitation. The previous generic Georgia event accent now uses Inter, so ordinary editorial hierarchy remains sans-serif.
+
+Both families use `font-display: swap`, Latin-subset WOFF2 files, local fallbacks, and local OFL license records. No route, content, layout, component, data structure, integration, or dependency changed. Optical browser review remains pending because no connected in-app browser was available; lint and production-build results are recorded below.
+
 ## Wide canvas and premium layout update
 
 The 2026-08-06 layout-confidence pass replaced the fixed `78rem` site canvas with semantic reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) containers. The header, footer, and photography-led homepage sections now select wider canvases intentionally; standard interior pages and long-form reading remain constrained.
