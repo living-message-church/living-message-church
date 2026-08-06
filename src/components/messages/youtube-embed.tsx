@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import type { Message } from "@/types/content";
 
@@ -54,14 +53,8 @@ export function YouTubeEmbed({ message }: { message: Message }) {
                 </textPath>
               </text>
             </svg>
-            <span className="youtube-tree-circle">
-              <Image
-                alt=""
-                className="youtube-tree-mark"
-                height={288}
-                src="/images/brand/living-message-tree.svg"
-                width={288}
-              />
+            <span className="youtube-play-circle">
+              <span className="youtube-play-icon" />
             </span>
           </span>
         </button>
