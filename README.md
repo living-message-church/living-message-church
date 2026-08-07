@@ -13,9 +13,10 @@ The current production website remains the source for church information. The au
 - Production-quality no-index route structures for About, beliefs, leadership, Connect and its child routes, Outreach, Give, Live, and Events
 - Provider-neutral message and event adapters; messages use the verified canonical YouTube feed with an approved local failure fallback, while events retain a safe unavailable-source fallback
 - Hourly revalidated canonical YouTube livestream feed powering the latest homepage player and searchable/category-filtered `/messages` library, plus a non-persistent no-index `/admin/messages` interface prototype
+- Official Supabase client foundation with browser/server helpers and a no-index `/admin/platform` health page; database, authentication, and forms remain deferred
 - 453 legacy 301 redirects generated from `docs/old-site-inventory.json`
 - Metadata, canonical, Open Graph/Twitter, Organization JSON-LD, sitemap, and robots foundations
-- No WordPress, Supabase, live forms, or new dependencies
+- No WordPress, database tables, authentication, or live forms
 
 ## Commands
 
@@ -53,3 +54,4 @@ See:
 - [`docs/ASSET_REGISTER.md`](./docs/ASSET_REGISTER.md)
 - [`docs/QA_REPORT.md`](./docs/QA_REPORT.md)
 - [`docs/MESSAGES_ARCHITECTURE.md`](./docs/MESSAGES_ARCHITECTURE.md)
+- [`docs/PLATFORM_FOUNDATION.md`](./docs/PLATFORM_FOUNDATION.md)
