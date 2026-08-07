@@ -51,6 +51,12 @@ Source-level responsive review confirms that the photography-led hero retains bo
 
 The route uses a unique Living Message Bible-study photograph, a restrained two-column foundation section, and native `details`/`summary` disclosures with visible hover, open, keyboard-focus, and plus/minus states. The disclosure index stacks below the introduction at 56rem, mobile rows retain 40px controls inside 5rem targets, long doctrine keeps a bounded reading measure, and the shared Sunday invitation closes the page. Rendered optical approval remains pending because no browser connection was available.
 
+## Our Pastor redesign
+
+The dedicated `/about/pastor` route now separates the current Broadway biography from the still-staged Team directory. It preserves the production page’s exact `IMG_0914-1.jpg` header photograph, current family portrait, New York and Long Island background, 2001 marriage, Grace and Hannah, mission travel, 2004 Clermont move, 2009 church start, and stated expository-teaching, discipleship, church-family, and outreach focus. The copy receives grammar and reading-rhythm cleanup without adding biography claims; the current page and user direction authorize temporary use while the Team page’s “Bishop” variant and final personal approval remain documented.
+
+The layout uses a full-width teaching hero, square family portrait with bounded biography copy, a three-point milestone list, a restrained navy-to-indigo ministry-focus moment, and the shared Sunday invitation. Profile, timeline, and focus grids collapse at 56rem; the portrait loses its sticky behavior, timeline labels stack, the hero receives a mobile vertical scrim, and type remains bounded below 48rem. Rendered optical approval remains pending because no browser connection was available.
+
 ## Plan Your Visit redesign
 
 The authoritative production `/plan-your-visit/` slug now remains a 200 destination instead of redirecting to `/new-here`; the superseded internal `/new-here` route returns a direct 301 to the preserved slug. The redesigned page uses a photography-led visitor hero, Sunday service card, three-column essentials summary, five-step arrival and connection guide, LMC Kids feature, and final invitation. Copy is limited to facts observable on the current production page: parking and greeters, hallway self check-in and pickup sticker, contemporary worship, Scripture-centered teaching, available pastors and elders, Connect Cards, current service times, and the current address. The disputed Kids starting age is intentionally omitted.

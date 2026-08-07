@@ -390,6 +390,39 @@ button, input, textarea, select { font: inherit; }
 .belief-content p { margin: 0 0 var(--space-4); color: var(--color-ink-soft); }
 .belief-content p:last-child { margin-bottom: 0; }
 
+.pastor-hero { position: relative; display: grid; min-height: clamp(36rem, 70svh, 49rem); isolation: isolate; overflow: hidden; background: var(--color-ink); color: white; }
+.pastor-hero-image { z-index: -3; object-fit: cover; object-position: center 43%; }
+.pastor-hero-scrim { position: absolute; z-index: -2; background: linear-gradient(90deg, rgb(8 9 8 / 0.94) 0%, rgb(8 9 8 / 0.72) 46%, rgb(8 9 8 / 0.22) 100%); inset: 0; }
+.pastor-hero-inner { display: grid; min-height: inherit; align-items: end; padding-block: clamp(4rem, 7vw, 6.5rem); }
+.pastor-hero-copy { max-width: 58rem; }
+.pastor-hero-copy h1 { max-width: 10ch; margin: 0; font-size: clamp(4.4rem, 3rem + 5vw, 7.8rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; text-wrap: balance; }
+.pastor-hero-copy > p:not(.eyebrow) { max-width: 40rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.82); font-size: var(--step-1); line-height: 1.45; }
+
+.pastor-profile-section { padding-block: clamp(5rem, 9vw, 9rem); }
+.pastor-profile-layout { display: grid; align-items: start; grid-template-columns: minmax(22rem, 0.82fr) minmax(28rem, 1.18fr); gap: clamp(3rem, 8vw, 8rem); }
+.pastor-profile-image { position: sticky; top: var(--space-5); overflow: hidden; width: 100%; border-radius: var(--radius-image); aspect-ratio: 1; background: var(--color-paper); }
+.pastor-profile-image img { object-fit: cover; }
+.pastor-profile-copy .heading { max-width: 12ch; }
+.pastor-profile-copy > p:not(.eyebrow, .pastor-profile-closing) { max-width: 43rem; margin: var(--space-4) 0 0; color: var(--color-ink-soft); }
+.pastor-profile-closing { max-width: 34rem; margin: var(--space-6) 0 0; border-left: 2px solid var(--color-coral); padding-left: var(--space-4); color: var(--color-ink); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.035em; line-height: 1.08; }
+
+.pastor-story-section { border-top: 1px solid var(--color-line); background: white; padding-block: clamp(5rem, 9vw, 9rem); }
+.pastor-story-layout { display: grid; align-items: start; grid-template-columns: minmax(20rem, 0.72fr) minmax(28rem, 1.28fr); gap: clamp(3rem, 9vw, 10rem); }
+.pastor-story-heading { position: sticky; top: var(--space-6); }
+.pastor-story-heading .heading { max-width: 10ch; }
+.pastor-timeline { border-top: 1px solid var(--color-ink); }
+.pastor-timeline article { display: grid; grid-template-columns: minmax(6.5rem, 0.3fr) minmax(0, 1fr); gap: var(--space-5); border-bottom: 1px solid var(--color-line); padding-block: clamp(1.75rem, 3vw, 2.5rem); }
+.pastor-timeline article > p { margin: 0; color: var(--color-coral); font-size: var(--step--1); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.pastor-timeline h3 { margin: 0; font-size: var(--step-1); letter-spacing: -0.025em; line-height: 1.15; }
+.pastor-timeline article div p { max-width: 36rem; margin: var(--space-2) 0 0; color: var(--color-ink-soft); }
+
+.pastor-focus-section { background: linear-gradient(120deg, color-mix(in srgb, var(--color-brand-navy) 78%, var(--color-ink)), color-mix(in srgb, var(--color-brand-indigo) 50%, var(--color-ink))); padding-block: clamp(5rem, 9vw, 9rem); }
+.pastor-focus-layout { display: grid; align-items: start; grid-template-columns: minmax(22rem, 1.05fr) minmax(25rem, 0.95fr); gap: clamp(3rem, 9vw, 10rem); }
+.pastor-focus-layout .heading { max-width: 13ch; }
+.pastor-focus-layout ol { margin: 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.35); list-style: none; }
+.pastor-focus-layout li { display: grid; min-height: 4.75rem; align-items: center; grid-template-columns: 3rem minmax(0, 1fr); border-bottom: 1px solid rgb(255 255 255 / 0.22); color: white; font-size: var(--step-1); font-weight: 700; letter-spacing: -0.02em; }
+.pastor-focus-layout li span { color: var(--color-gold); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
+
 .route-purpose { display: grid; grid-template-columns: minmax(13rem, 0.35fr) minmax(0, 1fr); gap: clamp(3rem, 6vw, 6rem); }
 .route-status { position: sticky; top: 2rem; align-self: start; border-top: 1px solid var(--color-line); padding-top: var(--space-4); }
 .route-status p { color: var(--color-ink-soft); }
@@ -582,12 +615,14 @@ button, input, textarea, select { font: inherit; }
   .visit-kids-layout .media-frame { max-width: 42rem; }
   .next-steps-overview > .container-shell, .next-steps-class-layout, .next-steps-final-layout { grid-template-columns: 1fr; }
   .next-steps-facts { max-width: 42rem; }
-  .about-family-layout, .about-name-layout, .about-community-layout, .about-church-final-layout, .beliefs-intro-layout, .beliefs-statements-layout { grid-template-columns: 1fr; }
+  .about-family-layout, .about-name-layout, .about-community-layout, .about-church-final-layout, .beliefs-intro-layout, .beliefs-statements-layout, .pastor-profile-layout, .pastor-story-layout, .pastor-focus-layout { grid-template-columns: 1fr; }
   .about-family-copy { max-width: 44rem; }
   .about-community-image { order: 2; }
   .about-community-copy { order: 1; }
   .beliefs-intro-layout > div:first-child { max-width: 42rem; }
   .beliefs-statements-intro { position: static; max-width: 42rem; }
+  .pastor-profile-image { position: relative; top: auto; max-width: 40rem; }
+  .pastor-story-heading { position: static; max-width: 42rem; }
   .footer-lead { grid-template-columns: 1fr; }
   .footer-lead .footer-facts { grid-column: 1; }
 }
@@ -655,6 +690,13 @@ button, input, textarea, select { font: inherit; }
   .belief-item summary { min-height: 5rem; grid-template-columns: 2rem minmax(0, 1fr) 2.5rem; gap: var(--space-2); }
   .belief-toggle { width: 2.5rem; height: 2.5rem; }
   .belief-content { padding: 0 0 var(--space-5) 2.75rem; }
+  .pastor-hero { min-height: auto; }
+  .pastor-hero-inner { min-height: clamp(36rem, 130vw, 46rem); align-content: end; padding-block: var(--space-7); }
+  .pastor-hero-copy h1 { font-size: clamp(3.6rem, 17vw, 5.25rem); }
+  .pastor-hero-scrim { background: linear-gradient(180deg, rgb(8 9 8 / 0.24) 0%, rgb(8 9 8 / 0.9) 68%, rgb(8 9 8 / 0.97) 100%); }
+  .pastor-hero-image { object-position: 52% center; }
+  .pastor-timeline article { grid-template-columns: 1fr; gap: var(--space-2); }
+  .pastor-focus-layout li { min-height: 4.5rem; }
   .footer-lead .footer-facts { grid-column: 1; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid > div:first-child { grid-column: 1 / -1; margin-bottom: var(--space-4); }

@@ -165,7 +165,7 @@ SEO titles and descriptions below are the values exposed by public Yoast metadat
 - **Purpose/content:** Brian and Allison Broadway biography; New York background, marriage/family, mission travel, 2004 move to Clermont, 2009 church founding, and ministry emphases.
 - **Major headings:** “MEET OUR LEAD PASTOR,” “Meet The Broadways,” “Pastor Brian & Allison Broadway.”
 - **Media/CTA:** Broadway family image; Plan Your Visit.
-- **Disposition:** **Keep + Rewrite + Verify** at `/about/leadership`; confirm titles, dates, family details, spelling, and whether Allison’s current role should match the team page.
+- **Disposition:** **Keep + Rewrite + Verify** at `/about/pastor`; retain the current biography and imagery while confirming final title, dates, family details, and whether Allison’s current role should match the team page.
 
 ### `/the-team/` — The Team
 
@@ -333,7 +333,7 @@ The URL-by-URL register is generated from the production sitemaps and appended b
 | `/so-glad-you-are-here-landing-page/` | Church Invite Landing Page | page | Merge / Rewrite | `/plan-your-visit` |
 | `/our-beliefs/` | Our Beliefs | page | Keep / Rewrite | `/about/beliefs` |
 | `/home/` | Home_OLD | page | Merge / Archive | `/` |
-| `/meet-our-pastor/` | Meet Our Pastor | page | Keep / Merge / Rewrite | `/about/leadership` |
+| `/meet-our-pastor/` | Meet Our Pastor | page | Keep / Rewrite | `/about/pastor` |
 | `/about-living-message-church-clermont/` | About Our Church | page | Keep / Rewrite | `/about-living-message-church-clermont` |
 | `/events-living-message-church-clermont/` | Events | page | Keep / Rewrite | `/events` |
 | `/contact-living-message-church-clermont/` | Contact | page | Keep / Rewrite | `/contact` |

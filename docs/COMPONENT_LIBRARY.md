@@ -31,6 +31,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 - `StagedPage` gives intentionally staged sitemap destinations useful content and `noindex` metadata.
 - `PriorityPage` provides a production-quality editorial structure for verification-gated About, Connect, Outreach, and Give routes without leaking unresolved facts.
 - `BeliefsPage` presents the sourced doctrinal introduction and six statement groups through a photography-led hero and native, keyboard-accessible disclosure rows.
+- `PastorPage` presents the sourced Broadway biography through the production-page hero, family portrait, restrained ministry timeline, focus list, and shared Sunday invitation.
 
 ## Integration components
 

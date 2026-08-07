@@ -20,7 +20,8 @@ Audit date: 2026-08-05
 | `/plan-your-visit` | Complete first-visit journey | `/plan-your-visit/`, useful reassurance from `/new-visitors/` and visitor landing page, kids/check-in details, contact/directions |
 | `/about-living-message-church-clermont` | Church-family philosophy, identity/name story, and gateway to current service/outreach information | `/about-living-message-church-clermont/` and approved `/home/` copy |
 | `/about/beliefs` | Teaching philosophy and doctrine | `/our-beliefs/` after pastoral edit |
-| `/about/leadership` | Pastors, elders, deacons, ministry leaders | `/meet-our-pastor/`, `/the-team/` |
+| `/about/pastor` | Brian and Allison Broadway biography and ministry story | `/meet-our-pastor/` |
+| `/about/leadership` | Elders, deacons, and ministry leaders | `/the-team/` |
 | `/about/gallery` | Curated, consent-cleared church-life gallery (optional but justified) | `/pictures/`, `/photo-gallery/` |
 | `/connect` | Ministry/group discovery and serving pathways | Group references from home/landing pages, `/ministries/`, ministry leader roles, Church Center signups |
 | `/connect/kids` | Kids and nursery details | Home and Plan Your Visit; requires age/safety verification |
@@ -47,7 +48,8 @@ Audit date: 2026-08-05
 | `/?page_id=10`, `/new-visitors/`, `/plan-your-visit/`, `/so-glad-you-are-here-landing-page/`, `/new-guest-follow/`, `/services/` | `/plan-your-visit` | Merge | Use Plan Your Visit as the strongest base; verify all logistics. |
 | `/about-living-message-church-clermont/` | `/about-living-message-church-clermont` | Keep/Rewrite | Preserve the user-supplied slug, family philosophy, name origin, and general service story; omit stale outreach claims. |
 | `/our-beliefs/` | `/about/beliefs` | Keep/Edit | Pastoral review; correct misleading SEO phrasing. |
-| `/meet-our-pastor/`, `/the-team/` | `/about/leadership` | Merge | Confirm 16 current people, names/titles, bios, portraits, permissions. |
+| `/meet-our-pastor/` | `/about/pastor` | Keep/Edit | Preserve the current Broadway biography and imagery; final title/history proofreading remains required. |
+| `/the-team/` | `/about/leadership` | Keep/Edit | Confirm the current roster, names, titles, bios, portraits, and permissions. |
 | `/pictures/`, `/photo-gallery/` | `/about/gallery` | Merge/Curate | No automatic asset migration; select church-owned, consent-cleared images and write alt text. |
 | `/ministries/` | `/connect` | Replace thin page | Build only from verified current ministries. |
 | `/nextsteps/` | `/connect/next-steps` | Keep/Rewrite | Confirm class timing and registration URL. |

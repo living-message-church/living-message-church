@@ -34,7 +34,7 @@ This ledger covers all **458 canonical public URLs** advertised by the productio
 | `/so-glad-you-are-here-landing-page/` | `/plan-your-visit` | Permanent (301) | Merge / Rewrite |
 | `/our-beliefs/` | `/about/beliefs` | Permanent (301) | Keep / Rewrite |
 | `/home/` | `/` | Permanent (301) | Merge / Archive |
-| `/meet-our-pastor/` | `/about/leadership` | Permanent (301) | Keep / Merge / Rewrite |
+| `/meet-our-pastor/` | `/about/pastor` | Permanent (301) | Keep / Rewrite |
 | `/about-living-message-church-clermont/` | `/about-living-message-church-clermont` | Keep (200) | Preserve the supplied Our Church slug and replace the legacy presentation in place. |
 | `/events-living-message-church-clermont/` | `/events` | Permanent (301) | Keep / Rewrite |
 | `/contact-living-message-church-clermont/` | `/contact` | Permanent (301) | Keep / Rewrite |

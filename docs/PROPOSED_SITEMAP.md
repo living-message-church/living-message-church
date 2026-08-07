@@ -10,6 +10,7 @@ The primary navigation should remain concise: **New Here, About, Connect, Messag
 ├── about-living-message-church-clermont
 ├── about
 │   ├── beliefs
+│   ├── pastor
 │   ├── leadership
 │   └── gallery (only if a curated, consent-cleared gallery is approved)
 ├── connect
