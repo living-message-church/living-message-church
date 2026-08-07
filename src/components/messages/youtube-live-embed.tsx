@@ -1,6 +1,7 @@
 "use client";
 
 import { type MouseEvent, useRef, useState } from "react";
+import Image from "next/image";
 import type { NormalizedYouTubeVideo, YouTubeResolutionStatus } from "@/lib/youtube/types";
 
 const channelLiveUrl = "https://www.youtube.com/@LivingMessageChurch/live";
@@ -74,10 +75,34 @@ export function YouTubeLiveEmbed({
             />
           ) : !cinemaOpen ? (
             <div className="online-live-offline" role="status">
-              <span className="online-live-offline-mark" aria-hidden="true"><span /></span>
-              <strong>The next broadcast will appear here.</strong>
-              <p>Living Message Church is not streaming right now.</p>
-              <a href={channelLiveUrl} target="_blank" rel="noreferrer">View the live channel <span aria-hidden="true">↗</span></a>
+              <svg className="online-live-offline-waves" aria-hidden="true" viewBox="0 0 960 540" preserveAspectRatio="none">
+                <path d="M-80 125C105 10 235 250 430 132S740 35 1040 166" />
+                <path d="M-100 224C90 86 258 348 466 211S778 104 1050 270" />
+                <path d="M-70 326C126 184 294 435 512 310S804 216 1038 372" />
+                <path d="M-110 421C116 291 312 506 538 410S826 322 1058 470" />
+              </svg>
+              <div className="online-live-offline-orbit" aria-hidden="true">
+                <svg className="online-live-offline-ring" viewBox="0 0 140 140">
+                  <defs>
+                    <path id="online-live-orbit-path" d="M70 70m-55 0a55 55 0 1 1 110 0a55 55 0 1 1-110 0" />
+                  </defs>
+                  <text>
+                    <textPath href="#online-live-orbit-path" startOffset="1%" textLength="338" lengthAdjust="spacing">
+                      LIVING MESSAGE CHURCH • NEXT BROADCAST •
+                    </textPath>
+                  </text>
+                </svg>
+                <span className="online-live-offline-logo">
+                  <Image alt="" height={92} src="/images/brand/living-message-tree.svg" width={92} />
+                </span>
+              </div>
+              <div className="online-live-offline-copy">
+                <div>
+                  <strong>The next broadcast will appear here.</strong>
+                  <p>Living Message Church is not streaming right now.</p>
+                </div>
+                <a href={channelLiveUrl} target="_blank" rel="noreferrer">Live channel <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
           ) : null}
           {liveEmbedUrl ? (
