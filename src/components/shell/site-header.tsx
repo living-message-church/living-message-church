@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 
 export function SiteHeader() {
   const { pathname } = useRouter();
-  const [newMenuOpen, setNewMenuOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
   const isCurrent = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
   return (
     <header className="site-header">
@@ -25,42 +25,44 @@ export function SiteHeader() {
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           {primaryNavigation.map((item) => {
-            const current = isCurrent(item.href) || item.children?.some((child) => isCurrent(child.href));
+            const current = isCurrent(item.href) || item.children?.some((child) => child.availability === "implemented" && isCurrent(child.href));
             if (item.children) {
+              const menuOpen = openMenu === item.href;
+              const menuId = `desktop-${item.label.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}-menu`;
               return (
                 <div
-                  className={`desktop-nav-group${newMenuOpen ? " is-open" : ""}`}
+                  className={`desktop-nav-group${menuOpen ? " is-open" : ""}`}
                   key={item.label}
                   onBlur={(event) => {
-                    if (!event.currentTarget.contains(event.relatedTarget)) setNewMenuOpen(false);
+                    if (!event.currentTarget.contains(event.relatedTarget)) setOpenMenu(null);
                   }}
-                  onFocus={() => setNewMenuOpen(true)}
-                  onMouseEnter={() => setNewMenuOpen(true)}
-                  onMouseLeave={() => setNewMenuOpen(false)}
+                  onFocus={() => setOpenMenu(item.href)}
+                  onMouseEnter={() => setOpenMenu(item.href)}
+                  onMouseLeave={() => setOpenMenu(null)}
                   onKeyDown={(event) => {
                     if (event.key === "Escape") {
-                      setNewMenuOpen(false);
+                      setOpenMenu(null);
                       event.currentTarget.querySelector("button")?.focus();
                     }
                   }}
                 >
                   <button
-                    aria-controls="desktop-im-new-menu"
+                    aria-controls={menuId}
                     aria-current={current ? "page" : undefined}
-                    aria-expanded={newMenuOpen}
+                    aria-expanded={menuOpen}
                     aria-haspopup="true"
-                    onClick={() => setNewMenuOpen((open) => !open)}
+                    onClick={() => setOpenMenu((active) => active === item.href ? null : item.href)}
                     type="button"
                   >
                     {item.label}<span className="nav-chevron" aria-hidden="true" />
                   </button>
-                  <div className="desktop-nav-dropdown" id="desktop-im-new-menu">
+                  <div className={`desktop-nav-dropdown${item.children.length > 4 ? " desktop-nav-dropdown-wide" : ""}`} id={menuId}>
                     {item.children.map((child) => (
                       <Link
-                        key={child.href}
+                        key={`${child.label}-${child.href}`}
                         href={child.href}
-                        aria-current={isCurrent(child.href) ? "page" : undefined}
-                        onClick={() => setNewMenuOpen(false)}
+                        aria-current={child.availability === "implemented" && isCurrent(child.href) ? "page" : undefined}
+                        onClick={() => setOpenMenu(null)}
                       >
                         {child.label}
                       </Link>
@@ -88,7 +90,7 @@ export function SiteHeader() {
               <div className="mobile-nav-group" key={item.label}>
                 <p>{item.label}</p>
                 {item.children.map((child) => (
-                  <Link key={child.href} href={child.href} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</Link>
+                  <Link key={`${child.label}-${child.href}`} href={child.href} aria-current={child.availability === "implemented" && isCurrent(child.href) ? "page" : undefined}>{child.label}</Link>
                 ))}
               </div>
             ) : (

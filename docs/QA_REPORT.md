@@ -31,6 +31,8 @@ The desktop primary navigation now uses a wider fluid item gap (`1.2rem` to `1.9
 
 “New Here” is now the “I’m New” navigation group. Its desktop disclosure exposes “Plan Your Visit” (`/plan-your-visit`) and “Next Steps Class” (`/connect/next-steps`) through a semantic button with `aria-expanded` and `aria-controls`. It opens on pointer hover, keyboard focus, or click; closes on link selection, pointer exit, focus exit, or Escape; and returns focus to its trigger after Escape. Mobile presents the same destinations as an always-visible subgroup inside the existing navigation disclosure.
 
+The same disclosure behavior now supports more than one primary-navigation group without opening sibling menus. About presents the requested Our Church, Our Beliefs, Our Pastor, Our Team, Our Outreach, and Our Missions labels in a wider desktop panel and a visible mobile subgroup. Until final slugs arrive, Pastor and Team share the existing staged leadership destination, while Outreach and Missions share the existing staged outreach destination; no speculative pages were created.
+
 ## Next Steps redesign
 
 The current production `/nextsteps/` page is now represented by the canonical `/connect/next-steps` route. The route preserves the observable one-class Sunday format, its 10:45 AM service timing, leadership-team host, Connect · Serve · Grow pathway, three Scripture references, and Church Center form `979623`. The source page and user direction authorize temporary publication; duration, childcare, recurrence dates, form recipient, retention, and Planning Center ownership remain explicit verification blockers.
