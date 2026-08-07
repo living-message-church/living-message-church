@@ -48,7 +48,7 @@ export function MessageLibrary({ messages }: { messages: Message[] }) {
             {(activeMessage.categories?.value ?? []).map((category) => <span key={category}>{category}</span>)}
           </div>
         </div>
-        <YouTubeEmbed message={activeMessage} />
+        <YouTubeEmbed message={activeMessage} presentation="cinema" />
       </section>
 
       <section className="message-library-browse" aria-labelledby="message-library-title">

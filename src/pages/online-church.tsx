@@ -7,8 +7,8 @@ import { ActionGroup } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/typography";
-import { getMessageFeed, youtubeChannel } from "@/lib/messages/message-source";
-import type { NormalizedYouTubeVideo, YouTubeLiveResolution } from "@/lib/youtube/types";
+import { youtubeChannel } from "@/lib/messages/message-source";
+import type { YouTubeLiveResolution } from "@/lib/youtube/types";
 
 function formatServiceDate(value: string) {
   return new Intl.DateTimeFormat("en-US", {
@@ -29,8 +29,7 @@ function formatServiceTime(value: string) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [feed, nextService, liveResolution] = await Promise.all([
-    getMessageFeed(),
+  const [nextService, liveResolution] = await Promise.all([
     import("@/lib/planning-center/events")
       .then(({ getNextScheduledOnlineService }) => getNextScheduledOnlineService())
       .catch(() => null),
@@ -46,7 +45,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      feed,
       liveResolution,
       nextService: nextService
         ? {
@@ -60,21 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default function OnlineChurchPage({ feed, liveResolution, nextService }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const newestMessage = feed.items[0];
-  const fallbackVideo: NormalizedYouTubeVideo | null = newestMessage?.youtubeVideoId
-    ? {
-        actualStartTime: null,
-        publishedAt: newestMessage.date?.value ?? liveResolution.checkedAt,
-        scheduledStartTime: null,
-        state: "offline",
-        thumbnailUrl: newestMessage.thumbnailUrl?.value ?? null,
-        title: newestMessage.title.value,
-        videoId: newestMessage.youtubeVideoId.value,
-      }
-    : null;
-  const playerVideo = liveResolution.video ?? fallbackVideo;
-
+export default function OnlineChurchPage({ liveResolution, nextService }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <SiteHead {...stagedPages.live.seo} />
@@ -120,14 +104,15 @@ export default function OnlineChurchPage({ feed, liveResolution, nextService }: 
             </aside>
           ) : null}
           <ActionGroup actions={[
-            { label: onlineChurchContent.live.channelAction, href: youtubeChannel.streamsUrl, style: "primary", external: true },
+            { label: onlineChurchContent.live.channelAction, href: youtubeChannel.liveUrl, style: "primary", external: true },
             { label: onlineChurchContent.live.archiveAction, href: "/messages", style: "secondary" },
           ]} />
           <p className="online-live-note">{onlineChurchContent.live.note}</p>
         </div>
         <YouTubeLiveEmbed
+          channelId={youtubeChannel.id}
           resolutionStatus={liveResolution.status}
-          video={playerVideo}
+          video={liveResolution.video}
         />
       </Section>
 

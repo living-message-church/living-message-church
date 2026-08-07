@@ -3,6 +3,7 @@ import { localMessages } from "@/content/messages";
 
 export const youtubeChannel = {
   id: "UC-YctizZq1wTbhgn3tQOJqA",
+  liveUrl: "https://www.youtube.com/@LivingMessageChurch/live",
   streamsUrl: "https://www.youtube.com/@livingmessagechurch/streams",
   feedUrl: "https://www.youtube.com/feeds/videos.xml?channel_id=UC-YctizZq1wTbhgn3tQOJqA",
 } as const;
