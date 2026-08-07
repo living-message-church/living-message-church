@@ -1,7 +1,10 @@
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Link from "next/link";
 import packageMetadata from "../../../package.json";
 import { SiteHead } from "@/components/seo/site-head";
 import { Container } from "@/components/ui/container";
+import { getPlanningCenterDiagnostics } from "@/lib/planning-center/diagnostics";
+import type { PlanningCenterEndpointStatus } from "@/lib/planning-center/types";
 import { checkSupabaseConnection, type SupabaseConnectionState } from "@/lib/supabase/health";
 import { getSupabasePublicEnvironmentStatus } from "@/lib/supabase/config";
 import { getSupabaseServerEnvironmentStatus } from "@/lib/supabase/server";
@@ -43,16 +46,52 @@ function connectionPresentation(state: SupabaseConnectionState, latencyMs: numbe
   };
 }
 
+function planningCenterPresentation(status: PlanningCenterEndpointStatus) {
+  if (status.state === "reachable") {
+    return {
+      detail: status.latencyMs === null ? "Planning Center responded." : `Planning Center responded in ${status.latencyMs} ms.`,
+      tone: "healthy" as const,
+      value: "Reachable",
+    };
+  }
+
+  if (status.state === "not-configured") {
+    return {
+      detail: "The server-only Planning Center credentials are not both present.",
+      tone: "warning" as const,
+      value: "Not checked",
+    };
+  }
+
+  const value = status.state === "unauthorized"
+    ? "Unauthorized"
+    : status.state === "forbidden"
+      ? "Forbidden"
+      : status.state === "rate-limited"
+        ? "Rate limited"
+        : "Unavailable";
+
+  return {
+    detail: "The endpoint did not return a successful response.",
+    tone: "unavailable" as const,
+    value,
+  };
+}
+
 export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async ({ res }) => {
   res.setHeader("Cache-Control", "private, no-store, max-age=0");
 
-  const connection = await checkSupabaseConnection();
+  const [connection, planningCenter] = await Promise.all([
+    checkSupabaseConnection(),
+    getPlanningCenterDiagnostics(0),
+  ]);
   const connectionCheck = connectionPresentation(connection.state, connection.latencyMs);
   const publicEnvironment = getSupabasePublicEnvironmentStatus();
   const serverEnvironment = getSupabaseServerEnvironmentStatus();
   const environmentReady = publicEnvironment.ready && serverEnvironment.serviceRoleKey === "configured";
   const commit = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7);
   const vercelEnvironment = process.env.VERCEL_ENV;
+  const planningCenterEnvironmentReady = planningCenter.environment.ready;
 
   return {
     props: {
@@ -88,6 +127,34 @@ export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async (
           label: "Vercel environment",
           tone: "healthy",
           value: vercelEnvironment ?? "Local development",
+        },
+        {
+          detail: planningCenterEnvironmentReady
+            ? "Both required server-only variables are present."
+            : "One or both required server-only variables are missing.",
+          label: "Planning Center environment",
+          tone: planningCenterEnvironmentReady ? "healthy" : "warning",
+          value: planningCenterEnvironmentReady ? "Configured" : "Missing",
+        },
+        {
+          label: "Planning Center API",
+          ...planningCenterPresentation(planningCenter.api),
+        },
+        {
+          label: "Planning Center organization",
+          ...planningCenterPresentation(planningCenter.organization),
+        },
+        {
+          label: "Planning Center Calendar",
+          ...planningCenterPresentation(planningCenter.calendar),
+        },
+        {
+          label: "Planning Center Registrations",
+          ...planningCenterPresentation(planningCenter.registrationsEndpoint),
+        },
+        {
+          label: "Planning Center Groups",
+          ...planningCenterPresentation(planningCenter.groupsEndpoint),
         },
       ],
     },
@@ -143,6 +210,9 @@ export default function PlatformPage({
           <p className="platform-security-note">
             Credential values, project identifiers, and connection details are never rendered on this page.
           </p>
+          <Link className="platform-back-link" href="/admin/platform/planning-center">
+            Open Planning Center diagnostics →
+          </Link>
         </Container>
       </div>
     </>

@@ -21,6 +21,7 @@ Updated: 2026-08-07
 - `/messages`, `/messages/live`, `/events`, and the homepage event section now consume normalized adapter results.
 - `/messages/live` is now the complete Church Online destination: a click-to-load verified YouTube live player, newest featured service, searchable/category-filtered recent archive, and online-to-in-person connection pathway. The unresolved online-service time is intentionally omitted.
 - The official Supabase client foundation, browser/server helpers, environment validation, and no-index `/admin/platform` health page are implemented without tables, authentication, forms, or content migration.
+- A read-only Planning Center foundation now provides a centralized server-only REST client, pinned product API versions, timeouts, safe errors, and normalized public projections for future Calendar events, signup opportunities, and listed Groups. `/admin/platform` includes sanitized provider checks, while `/admin/platform/planning-center` provides a private/no-store, no-index preview without people, members, giving, attendee, submitted-registration, contact, or organization data.
 - Editorial route panels, feed states, stronger page-hero treatment, card depth, and responsive compositions refined.
 - Asset register now records the approved-source photography library, its optimized local derivatives, page uses, and outstanding attribution/release checks.
 - HTTP route, metadata, no-index, structured-data, provider-fallback, sitemap, robots, and representative redirect smoke checks pass.
@@ -74,6 +75,7 @@ Updated: 2026-08-07
 - Final individual team active status, spelling/title approval, biography copy, and portrait release records; the current production roster is approved only for temporary use.
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
 - Authoritative event source and publishing/registration policy.
+- Live Planning Center credentials and product permissions are not configured in the validated local environment, so organization, Calendar, Registrations, and Groups reachability plus provider sample counts remain unverified. The adapters degrade safely to `Missing` / `Not checked` until configuration is supplied.
 - Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
 - Final pastoral proofreading of the temporarily approved doctrinal statement; final Broadway title, biography, history, and image approval; plus outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
@@ -81,6 +83,7 @@ Updated: 2026-08-07
 ## Deferred
 
 - Supabase persistence/auth/storage, native form submission, newsletter integration, prayer handling, analytics, and consent tooling.
+- Planning Center public activation, pagination/synchronization, webhooks, event-art association, and all write operations.
 - Full-history YouTube Data API or future Supabase editorial sync and the live event API. The credential-free YouTube feed currently supplies the newest 15 records; local records remain a failure fallback.
 - Dynamic message/event detail routes; public message search and category filtering are now implemented.
 - Full ministry, expanded leadership biographies, history, and gallery publication.
@@ -88,7 +91,7 @@ Updated: 2026-08-07
 
 ## Recommended next milestone
 
-Run a structured content-verification workshop with operations, pastoral leadership, ministry/safeguarding, communications, outreach, finance, legal, and technical owners. Resolve the remaining launch-critical registry rows, confirm release/attribution records for the migrated images, provide current Youth and event photography, and confirm event, Church Center, and giving ownership. Then populate the completed route structures, activate the remaining adapters, and run the deferred interactive 15-viewport browser QA.
+Configure a least-privilege Planning Center Personal Access Token in a controlled environment, verify Calendar/Registrations/Groups product permissions and public sample projections, then approve the authoritative event-source and publication policy. The next implementation milestone should add bounded server synchronization and editorial approval for public events only; webhooks, people data, giving data, and writes should remain deferred.
 
 ## Validation record
 
@@ -97,6 +100,8 @@ Run a structured content-verification workshop with operations, pastoral leaders
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed: 451 sources, 24 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
 | `npm run build` | Passed on Next.js 16.3.0 with the verified YouTube feed available during generation; all 25 generated pages plus the dynamic `/new-here` redirect, robots, sitemap, and API routes completed successfully. |
+| Planning Center diagnostics | `/admin/platform` and `/admin/platform/planning-center` returned 200 with private/no-store caching and noindex metadata. With local credentials absent, the pages correctly rendered `Missing` / `Not checked`, null counts, and no samples. |
+| Planning Center privacy scan | No Planning Center environment-variable names, Basic credential payloads, or Authorization logic were found in `.next/static`; rendered props contained status metadata only. No people, members, attendees, submitted registrations, giving, contacts, or organization records were present. |
 | Local HTTP smoke check | Home, Messages, Live, sitemap, and robots returned 200. Home and Messages rendered newest feed video `SGsP83hGEN8`; Messages was indexable, Live remained no-indexed, and the sitemap included `/messages`. |
 | Interactive browser QA | Not run: no connected browser was available |
 | Existing tests | No test command or test suite is currently configured |
