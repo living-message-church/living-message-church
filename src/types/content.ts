@@ -56,6 +56,7 @@ export interface NavigationItem {
   label: string;
   href: string;
   availability: "implemented" | "staged" | "external";
+  children?: NavigationItem[];
 }
 
 export interface FooterGroup {

@@ -76,7 +76,7 @@ export const priorityRouteContent = {
       { number: "02", title: "Youth", body: "A future guide to the verified youth ministry, audience, gatherings, and leadership.", href: "/connect/youth", linkLabel: "Open Youth" },
       { number: "03", title: "Young Adults", body: "A future guide to approved young-adult connection opportunities.", href: "/connect/young-adults", linkLabel: "Open Young Adults" },
       { number: "04", title: "Groups", body: "A future directory of current, approved groups and connection rhythms.", href: "/connect/groups", linkLabel: "Open Groups" },
-      { number: "05", title: "Next Steps", body: "A future guide to the confirmed connection, service, and growth pathway.", href: "/connect/next-steps", linkLabel: "Open Next Steps" },
+      { number: "05", title: "Next Steps Class", body: "A future guide to the confirmed connection, service, and growth pathway.", href: "/connect/next-steps", linkLabel: "Open Next Steps Class" },
     ],
     { label: "New Here", href: "/new-here", style: "primary" },
   ),
@@ -134,8 +134,8 @@ export const priorityRouteContent = {
   ),
   nextSteps: pending(
     "/connect/next-steps",
-    "Next Steps",
-    "Connect",
+    "Next Steps Class",
+    "I’m new",
     "A thoughtful next step.",
     "The legacy route describes a connection pathway, but its schedule and registration destination remain unverified.",
     [

@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container";
 
 export function SiteHeader() {
   const { pathname } = useRouter();
+  const isCurrent = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
   return (
     <header className="site-header">
       <Container className="header-inner" size="editorial">
@@ -22,7 +23,21 @@ export function SiteHeader() {
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           {primaryNavigation.map((item) => {
-            const current = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            const current = isCurrent(item.href) || item.children?.some((child) => isCurrent(child.href));
+            if (item.children) {
+              return (
+                <details className="desktop-nav-group" key={item.label}>
+                  <summary aria-current={current ? "page" : undefined}>
+                    {item.label}<span className="nav-chevron" aria-hidden="true" />
+                  </summary>
+                  <div className="desktop-nav-dropdown">
+                    {item.children.map((child) => (
+                      <Link key={child.href} href={child.href} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</Link>
+                    ))}
+                  </div>
+                </details>
+              );
+            }
             return <Link key={item.href} href={item.href} aria-current={current ? "page" : undefined}>{item.label}</Link>;
           })}
         </nav>
@@ -38,8 +53,15 @@ export function SiteHeader() {
             </span>
           </summary>
           <nav aria-label="Mobile navigation">
-            {primaryNavigation.map((item) => (
-              <Link key={item.href} href={item.href} aria-current={pathname === item.href ? "page" : undefined}>{item.label}</Link>
+            {primaryNavigation.map((item) => item.children ? (
+              <div className="mobile-nav-group" key={item.label}>
+                <p>{item.label}</p>
+                {item.children.map((child) => (
+                  <Link key={child.href} href={child.href} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</Link>
+                ))}
+              </div>
+            ) : (
+              <Link key={item.href} href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>{item.label}</Link>
             ))}
           </nav>
         </details>

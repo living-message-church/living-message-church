@@ -2,7 +2,15 @@ import type { FooterGroup, NavigationItem } from "@/types/content";
 
 export const primaryNavigation: NavigationItem[] = [
   { label: "Home", href: "/", availability: "implemented" },
-  { label: "New Here", href: "/new-here", availability: "implemented" },
+  {
+    label: "I’m New",
+    href: "/new-here",
+    availability: "implemented",
+    children: [
+      { label: "Plan Your Visit", href: "/new-here", availability: "implemented" },
+      { label: "Next Steps Class", href: "/connect/next-steps", availability: "staged" },
+    ],
+  },
   { label: "About", href: "/about", availability: "staged" },
   { label: "Connect", href: "/connect", availability: "staged" },
   { label: "Messages", href: "/messages", availability: "implemented" },

@@ -29,6 +29,8 @@ The desktop homepage hero now completes a full first-screen composition at every
 
 The desktop primary navigation now uses a wider fluid item gap (`1.2rem` to `1.9rem`), restrained positive tracking, and a slightly more generous active underline. The editorial header container and existing 70rem mobile-navigation breakpoint prevent the expanded rhythm from crowding intermediate widths.
 
+“New Here” is now the “I’m New” navigation group. Its desktop disclosure exposes “Plan Your Visit” (`/new-here`) and “Next Steps Class” (`/connect/next-steps`) through native `details`/`summary` semantics, visible on hover, focus, or activation. Mobile presents the same two destinations as an always-visible subgroup inside the existing navigation disclosure. Both destinations reuse the established routes, avoiding duplicate URLs; their page metadata and framing now match the new labels while unverified Next Steps details remain staged.
+
 The user-supplied `Living Message Logo.svg` now replaces the previous raster logo in the header and footer through `next/image` with explicit intrinsic dimensions. The header preserves its native navy/brown color while the dark footer applies a white high-contrast treatment. The message-player medallion uses the separately supplied standalone tree SVG. Every use preserves its source asset’s native proportions. The previous PNG remains in the repository but is no longer referenced by application code.
 
 ## Helvetica Neue typography test
