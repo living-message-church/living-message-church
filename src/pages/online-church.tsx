@@ -10,49 +10,64 @@ import { Heading } from "@/components/ui/typography";
 import { youtubeChannel } from "@/lib/messages/message-source";
 import type { YouTubeLiveResolution } from "@/lib/youtube/types";
 
-function formatServiceDate(value: string) {
-  return new Intl.DateTimeFormat("en-US", {
-    day: "numeric",
-    month: "long",
-    timeZone: "America/New_York",
-    weekday: "long",
-  }).format(new Date(value));
-}
+const easternTimeZone = "America/New_York";
+const sundayBroadcastTime = "10:45 AM EST";
 
-function formatServiceTime(value: string) {
-  return new Intl.DateTimeFormat("en-US", {
+function getNextSundayBroadcast(now = new Date()) {
+  const easternParts = new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
     hour: "numeric",
-    minute: "2-digit",
-    timeZone: "America/New_York",
-    timeZoneName: "short",
-  }).format(new Date(value));
+    hourCycle: "h23",
+    minute: "numeric",
+    month: "numeric",
+    timeZone: easternTimeZone,
+    weekday: "long",
+    year: "numeric",
+  }).formatToParts(now).reduce<Record<string, string>>((parts, part) => {
+    if (part.type !== "literal") parts[part.type] = part.value;
+    return parts;
+  }, {});
+  const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const weekdayIndex = weekdays.indexOf(easternParts.weekday);
+  const currentMinutes = Number(easternParts.hour) * 60 + Number(easternParts.minute);
+  let daysUntilSunday = (7 - weekdayIndex) % 7;
+
+  if (daysUntilSunday === 0 && currentMinutes > (12 * 60 + 30)) daysUntilSunday = 7;
+
+  const serviceDate = new Date(Date.UTC(
+    Number(easternParts.year),
+    Number(easternParts.month) - 1,
+    Number(easternParts.day) + daysUntilSunday,
+    12,
+  ));
+
+  return {
+    date: new Intl.DateTimeFormat("en-US", {
+      day: "numeric",
+      month: "long",
+      timeZone: "UTC",
+      weekday: "long",
+    }).format(serviceDate),
+    time: sundayBroadcastTime,
+    url: youtubeChannel.liveUrl,
+  };
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [nextService, liveResolution] = await Promise.all([
-    import("@/lib/planning-center/events")
-      .then(({ getNextScheduledOnlineService }) => getNextScheduledOnlineService())
-      .catch(() => null),
-    import("@/lib/youtube/live")
+  const liveResolution = await import("@/lib/youtube/live")
       .then(({ getCurrentLiveVideo }) => getCurrentLiveVideo())
       .catch(() => ({
         apiReachable: false,
         checkedAt: new Date().toISOString(),
         status: "unavailable",
         video: null,
-      } satisfies YouTubeLiveResolution)),
-  ]);
+      } satisfies YouTubeLiveResolution));
+  const nextService = getNextSundayBroadcast();
 
   return {
     props: {
       liveResolution,
-      nextService: nextService
-        ? {
-            date: formatServiceDate(nextService.startAt),
-            time: formatServiceTime(nextService.startAt),
-            url: nextService.publicUrl,
-          }
-        : null,
+      nextService,
     },
     revalidate: 60,
   };
@@ -70,7 +85,10 @@ export default function OnlineChurchPage({ liveResolution, nextService }: InferG
             <h1>{onlineChurchContent.hero.title}</h1>
           </div>
           <div className="online-hero-intro">
-            <p>{onlineChurchContent.hero.intro}</p>
+            <p>
+              {onlineChurchContent.hero.intro}{" "}
+              <Link href="/messages">{onlineChurchContent.hero.archiveReference}</Link>.
+            </p>
             <nav className="online-hero-nav" aria-label="Church Online page sections">
               <a href="#watch-live">{onlineChurchContent.hero.liveAction}<span aria-hidden="true">↓</span></a>
               <Link href="/messages">{onlineChurchContent.hero.archiveAction}<span aria-hidden="true">→</span></Link>
