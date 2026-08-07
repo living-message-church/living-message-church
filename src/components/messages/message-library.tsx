@@ -6,9 +6,10 @@ import { formatMessageDate } from "@/lib/messages/message-format";
 import { YouTubeEmbed } from "./youtube-embed";
 
 export function MessageLibrary({ messages }: { messages: Message[] }) {
-  const [activeMessage, setActiveMessage] = useState(messages.find((message) => message.featured) ?? messages[0]);
   const [activeCategory, setActiveCategory] = useState("All messages");
+  const [playingMessageId, setPlayingMessageId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  const featuredMessage = messages.find((message) => message.featured) ?? messages[0];
   const categories = useMemo(
     () => Array.from(new Set(messages.flatMap((message) => message.categories?.value ?? []))).sort(),
     [messages],
@@ -28,27 +29,29 @@ export function MessageLibrary({ messages }: { messages: Message[] }) {
     });
   }, [activeCategory, messages, query]);
 
-  function selectMessage(message: Message) {
-    setActiveMessage(message);
-    document.getElementById("message-player")?.scrollIntoView({ block: "start" });
-  }
+  if (!featuredMessage) return null;
 
-  if (!activeMessage) return null;
+  const featuredPlaybackId = `featured:${featuredMessage.id}`;
 
   return (
     <div className="message-library">
       <section className="message-library-feature" id="message-player" aria-labelledby="active-message-title">
         <div className="message-library-feature-copy">
           <p className="eyebrow">Featured message</p>
-          <h2 id="active-message-title">{activeMessage.title.value}</h2>
-          {activeMessage.date ? <p className="message-date">{formatMessageDate(activeMessage.date.value)}</p> : null}
-          {activeMessage.speaker ? <p className="message-speaker">{activeMessage.speaker.value}</p> : null}
-          <p>{activeMessage.summary.value}</p>
+          <h2 id="active-message-title">{featuredMessage.title.value}</h2>
+          {featuredMessage.date ? <p className="message-date">{formatMessageDate(featuredMessage.date.value)}</p> : null}
+          {featuredMessage.speaker ? <p className="message-speaker">{featuredMessage.speaker.value}</p> : null}
+          <p>{featuredMessage.summary.value}</p>
           <div className="message-category-list" aria-label="Message categories">
-            {(activeMessage.categories?.value ?? []).map((category) => <span key={category}>{category}</span>)}
+            {(featuredMessage.categories?.value ?? []).map((category) => <span key={category}>{category}</span>)}
           </div>
         </div>
-        <YouTubeEmbed message={activeMessage} presentation="cinema" />
+        <YouTubeEmbed
+          inlinePlaying={playingMessageId === featuredPlaybackId}
+          message={featuredMessage}
+          onInlinePlayingChange={(playing) => setPlayingMessageId(playing ? featuredPlaybackId : null)}
+          presentation="inline-with-cinema"
+        />
       </section>
 
       <section className="message-library-browse" aria-labelledby="message-library-title">
@@ -90,16 +93,12 @@ export function MessageLibrary({ messages }: { messages: Message[] }) {
           <div className="message-library-grid">
             {filteredMessages.map((message) => (
               <article className="message-library-card" key={message.id}>
-                <button
-                  className="message-thumbnail"
-                  onClick={() => selectMessage(message)}
-                  style={{ backgroundImage: message.thumbnailUrl ? `url(${message.thumbnailUrl.value})` : undefined }}
-                  type="button"
-                >
-                  <span className="message-thumbnail-shade" />
-                  <span className="message-play" aria-hidden="true">▶</span>
-                  <span className="sr-only">Play {message.title.value}</span>
-                </button>
+                <YouTubeEmbed
+                  inlinePlaying={playingMessageId === message.id}
+                  message={message}
+                  onInlinePlayingChange={(playing) => setPlayingMessageId(playing ? message.id : null)}
+                  presentation="inline-with-cinema"
+                />
                 <div className="message-library-card-copy">
                   <div className="message-category-list">
                     {(message.categories?.value ?? []).map((category) => <span key={category}>{category}</span>)}
@@ -107,9 +106,6 @@ export function MessageLibrary({ messages }: { messages: Message[] }) {
                   <h3>{message.title.value}</h3>
                   {message.date ? <p className="message-date">{formatMessageDate(message.date.value)}</p> : null}
                   {message.speaker ? <p>{message.speaker.value}</p> : null}
-                  <button className="message-watch-link" onClick={() => selectMessage(message)} type="button">
-                    Watch message <span aria-hidden="true">→</span>
-                  </button>
                 </div>
               </article>
             ))}

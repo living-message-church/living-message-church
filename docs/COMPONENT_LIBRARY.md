@@ -38,8 +38,8 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 | Component | Responsibility |
 | --- | --- |
-| `YouTubeEmbed` | Lightweight video facade using a verified thumbnail, a restrained rotating watch ring, and click-to-load privacy-enhanced YouTube playback; supports the default inline player and an optional dismissible cinema presentation, while disabling decorative motion for reduced-motion users |
-| `MessageLibrary` | Featured player, category chips, keyword search, cards, and empty state for normalized message records |
+| `YouTubeEmbed` | Lightweight video facade using a verified thumbnail, a restrained rotating watch ring, and click-to-load privacy-enhanced YouTube playback; supports inline playback, dismissible cinema presentation, or both controls together, while disabling decorative motion for reduced-motion users |
+| `MessageLibrary` | Newest featured player plus independently playable archive cards, Cinema controls, category chips, keyword search, single-active-inline-player coordination, and an empty state for normalized message records |
 | `MessageArchive` | Compact normalized-message collection or a truthful unavailable-source state used when the verified feed is unavailable |
 | `YouTubeLiveEmbed` | Resolved Live/Upcoming player with a polished offline state and accessible full-viewport cinema dialog |
 | `MessageAdminPrototype` | Non-persistent title/meta/category management preview; upload and save controls remain disabled pending Supabase/auth |
