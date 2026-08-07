@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/typography";
 import { getMessageFeed, youtubeChannel } from "@/lib/messages/message-source";
+import type { NormalizedYouTubeVideo, YouTubeLiveResolution } from "@/lib/youtube/types";
 
 function formatServiceDate(value: string) {
   return new Intl.DateTimeFormat("en-US", {
@@ -28,16 +29,25 @@ function formatServiceTime(value: string) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const [feed, nextService] = await Promise.all([
+  const [feed, nextService, liveResolution] = await Promise.all([
     getMessageFeed(),
     import("@/lib/planning-center/events")
       .then(({ getNextScheduledOnlineService }) => getNextScheduledOnlineService())
       .catch(() => null),
+    import("@/lib/youtube/live")
+      .then(({ getCurrentLiveVideo }) => getCurrentLiveVideo())
+      .catch(() => ({
+        apiReachable: false,
+        checkedAt: new Date().toISOString(),
+        status: "unavailable",
+        video: null,
+      } satisfies YouTubeLiveResolution)),
   ]);
 
   return {
     props: {
       feed,
+      liveResolution,
       nextService: nextService
         ? {
             date: formatServiceDate(nextService.startAt),
@@ -46,12 +56,24 @@ export const getStaticProps: GetStaticProps = async () => {
           }
         : null,
     },
-    revalidate: 3600,
+    revalidate: 60,
   };
 };
 
-export default function OnlineChurchPage({ feed, nextService }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function OnlineChurchPage({ feed, liveResolution, nextService }: InferGetStaticPropsType<typeof getStaticProps>) {
   const newestMessage = feed.items[0];
+  const fallbackVideo: NormalizedYouTubeVideo | null = newestMessage?.youtubeVideoId
+    ? {
+        actualStartTime: null,
+        publishedAt: newestMessage.date?.value ?? liveResolution.checkedAt,
+        scheduledStartTime: null,
+        state: "offline",
+        thumbnailUrl: newestMessage.thumbnailUrl?.value ?? null,
+        title: newestMessage.title.value,
+        videoId: newestMessage.youtubeVideoId.value,
+      }
+    : null;
+  const playerVideo = liveResolution.video ?? fallbackVideo;
 
   return (
     <>
@@ -85,7 +107,7 @@ export default function OnlineChurchPage({ feed, nextService }: InferGetStaticPr
           <p className="eyebrow">{onlineChurchContent.live.eyebrow}</p>
           <Heading as="h2" id="online-live-title" size="section">{onlineChurchContent.live.title}</Heading>
           <p>{onlineChurchContent.live.body}</p>
-          {nextService ? (
+          {nextService && liveResolution.video?.state !== "upcoming" ? (
             <aside className="online-next-service" aria-label="Next scheduled live service">
               <div>
                 <p>{onlineChurchContent.live.nextServiceEyebrow}</p>
@@ -104,8 +126,8 @@ export default function OnlineChurchPage({ feed, nextService }: InferGetStaticPr
           <p className="online-live-note">{onlineChurchContent.live.note}</p>
         </div>
         <YouTubeLiveEmbed
-          channelId={youtubeChannel.id}
-          thumbnailUrl={newestMessage?.thumbnailUrl?.value}
+          resolutionStatus={liveResolution.status}
+          video={playerVideo}
         />
       </Section>
 

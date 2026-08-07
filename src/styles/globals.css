@@ -578,6 +578,19 @@ button, input, textarea, select { font: inherit; }
 .online-live-copy > p:not(.eyebrow, .online-live-note) { max-width: 35rem; color: rgb(255 255 255 / 0.76); }
 .online-live-copy .heading { max-width: 12ch; }
 .online-live-copy .action-group { margin-top: var(--space-5); }
+.online-live-media { min-width: 0; }
+.online-live-media-heading { display: flex; min-height: 2.5rem; align-items: baseline; justify-content: space-between; gap: var(--space-3); padding: 0 var(--space-2) var(--space-3); }
+.online-live-media-heading span { color: white; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; }
+.online-live-media-heading span.is-live { display: inline-flex; align-items: center; gap: 0.55rem; }
+.online-live-media-heading span.is-live::before { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: #f04d3d; box-shadow: 0 0 0 0.22rem rgb(240 77 61 / 0.18); content: ""; }
+.online-live-media-heading time { color: rgb(255 255 255 / 0.66); font-size: var(--step--1); text-align: right; }
+.online-live-player > .youtube-player-empty { position: absolute; min-height: 0; inset: 0; }
+.online-live-player > .youtube-player-empty > div { display: grid; max-width: 28rem; gap: 0.5rem; }
+.online-live-player > .youtube-player-empty strong { color: white; font-size: var(--step-1); }
+.online-live-player > .youtube-player-empty span { color: rgb(255 255 255 / 0.66); }
+.online-live-fallback-note { margin: var(--space-3) var(--space-2) 0; color: rgb(255 255 255 / 0.58); font-size: 0.78rem; }
+.online-live-fallback-note a { color: white; font-weight: 800; text-decoration: none; }
+.online-live-fallback-note a:hover { color: var(--color-gold); }
 .online-next-service { display: flex; align-items: end; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-5); border-block: 1px solid rgb(255 255 255 / 0.2); padding-block: var(--space-4); }
 .online-next-service > div { display: grid; gap: 0.25rem; }
 .online-next-service p { margin: 0 0 0.25rem; color: var(--color-gold); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
@@ -854,6 +867,8 @@ button, input, textarea, select { font: inherit; }
   .online-hero { padding-block: var(--space-7); }
   .online-hero h1 { font-size: clamp(3.75rem, 18vw, 5.5rem); }
   .online-live-player { order: -1; }
+  .online-live-media-heading { align-items: flex-start; flex-direction: column; }
+  .online-live-media-heading time { text-align: left; }
   .online-next-service { align-items: flex-start; flex-direction: column; }
   .online-archive-intro { gap: var(--space-3); }
   .message-library-heading, .message-admin-header, .message-admin-panel-heading { align-items: flex-start; flex-direction: column; }

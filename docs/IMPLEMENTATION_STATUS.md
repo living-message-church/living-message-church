@@ -19,10 +19,11 @@ Updated: 2026-08-07
 - Priority route structures remain for About, Connect, Kids, Youth, Young Adults, Groups, Outreach, and Give. The materially incomplete routes remain no-indexed; Next Steps, Our Beliefs, Our Pastor, and Our Team now have complete indexable routes sourced from their current production pages.
 - Provider-neutral message and event adapters added with deterministic unavailable-source fallbacks and no fabricated records.
 - `/messages`, `/online-church`, `/events`, and the homepage event section now consume normalized adapter results.
-- `/online-church` is now the canonical Church Online destination: a click-to-load verified YouTube live player and online-to-in-person connection pathway, with past-message actions routed to the dedicated `/messages` archive. The unresolved online-service time is intentionally omitted; `/messages/live` redirects permanently to the production-authoritative slug.
+- `/online-church` is now the canonical Church Online destination: its existing media window renders an official privacy-enhanced YouTube player resolved server-side as Live, next Upcoming, or latest completed message. API failure retains the player area, latest verified-feed fallback, and channel link. Past-message actions route to `/messages`; `/messages/live` redirects permanently to the production-authoritative slug.
 - The official Supabase client foundation, browser/server helpers, environment validation, and no-index `/admin/platform` health page are implemented without tables, authentication, forms, or content migration.
 - A read-only Planning Center foundation now provides a centralized server-only REST client, pinned product API versions, timeouts, safe errors, and normalized public projections for future Calendar events, signup opportunities, and listed Groups. `/admin/platform` includes sanitized provider checks, while `/admin/platform/planning-center` provides a private/no-store, no-index preview without people, members, giving, attendee, submitted-registration, contact, or organization data.
 - `/online-church` now has a conservative Planning Center schedule projection: when credentials and Calendar permissions are available, it shows the earliest future public event explicitly named as an online, Sunday, or worship service. It exposes only the formatted date/time and public Church Center URL; all other events and all provider failures remain hidden.
+- The YouTube Data API foundation centralizes server-only authentication, timeouts, normalized errors, channel ownership checks, and Live → Upcoming → Offline selection under `src/lib/youtube`. Results are cached for 55 seconds, the page revalidates every minute, and `/admin/platform` exposes only safe configuration/reachability/state indicators.
 - Editorial route panels, feed states, stronger page-hero treatment, card depth, and responsive compositions refined.
 - Asset register now records the approved-source photography library, its optimized local derivatives, page uses, and outstanding attribution/release checks.
 - HTTP route, metadata, no-index, structured-data, provider-fallback, sitemap, robots, and representative redirect smoke checks pass.
@@ -77,6 +78,7 @@ Updated: 2026-08-07
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
 - Authoritative event source and publishing/registration policy.
 - Live Planning Center credentials and product permissions are not configured in the validated local environment, so organization, Calendar, Registrations, and Groups reachability plus provider sample counts remain unverified. The adapters degrade safely to `Missing` / `Not checked` until configuration is supplied.
+- `YOUTUBE_API_KEY` and `YOUTUBE_CHANNEL_ID` are not configured in the validated local environment, so a real Data API request and live-channel state could not be verified locally. The server resolver and UI degrade to the latest verified-feed message without exposing an error state.
 - Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
 - Final pastoral proofreading of the temporarily approved doctrinal statement; final Broadway title, biography, history, and image approval; plus outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
@@ -85,7 +87,7 @@ Updated: 2026-08-07
 
 - Supabase persistence/auth/storage, native form submission, newsletter integration, prayer handling, analytics, and consent tooling.
 - Planning Center public activation, pagination/synchronization, webhooks, event-art association, and all write operations.
-- Full-history YouTube Data API or future Supabase editorial sync and the live event API. The credential-free YouTube feed currently supplies the newest 15 records; local records remain a failure fallback.
+- Full-history YouTube/Supabase editorial synchronization, uploads, and webhook handling. The Data API live-status resolver is implemented; the credential-free feed remains the bounded archive and API-failure fallback.
 - Dynamic message/event detail routes; public message search and category filtering are now implemented.
 - Full ministry, expanded leadership biographies, history, and gallery publication.
 - Production deployment, DNS changes, and WordPress decommissioning.
@@ -100,7 +102,10 @@ Configure a least-privilege Planning Center Personal Access Token in a controlle
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed: 451 sources, 24 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
-| `npm run build` | Passed on Next.js 16.3.0 with the verified YouTube feed available during generation; all 25 generated pages plus the dynamic `/new-here` redirect, robots, sitemap, and API routes completed successfully. |
+| `npm run build` | Passed on Next.js 16.3.0; all 25 pages completed successfully and `/online-church` was emitted as a 60-second revalidated route. |
+| YouTube state selection | Passed deterministic fixtures for Live priority, Upcoming fallback, Offline fallback, and non-embeddable rejection. |
+| YouTube API failure | Passed with local credentials absent: the page retained the 16:9 player, embedded the latest verified-feed message as `Latest Message`, and rendered the supplied channel fallback. |
+| YouTube privacy scan | No API key, YouTube environment-variable names, or Data API endpoint logic was emitted in `.next/static`; `/admin/platform` shows status labels only. |
 | Planning Center diagnostics | `/admin/platform` and `/admin/platform/planning-center` returned 200 with private/no-store caching and noindex metadata. With local credentials absent, the pages correctly rendered `Missing` / `Not checked`, null counts, and no samples. |
 | Planning Center privacy scan | No Planning Center environment-variable names, Basic credential payloads, or Authorization logic were found in `.next/static`; rendered props contained status metadata only. No people, members, attendees, submitted registrations, giving, contacts, or organization records were present. |
 | Local HTTP smoke check | Home, Messages, Live, sitemap, and robots returned 200. Home and Messages rendered newest feed video `SGsP83hGEN8`; Messages was indexable, Live remained no-indexed, and the sitemap included `/messages`. |

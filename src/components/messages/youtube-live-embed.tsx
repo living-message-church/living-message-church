@@ -1,54 +1,65 @@
-"use client";
+import type { NormalizedYouTubeVideo, YouTubeResolutionStatus } from "@/lib/youtube/types";
 
-import { useState } from "react";
+const channelLiveUrl = "https://www.youtube.com/@LivingMessageChurch/live";
+
+function stateLabel(video: NormalizedYouTubeVideo | null) {
+  if (video?.state === "live") return "LIVE NOW";
+  if (video?.state === "upcoming") return "Next live service";
+  if (video) return "Latest Message";
+  return "Live stream";
+}
+
+function scheduledLabel(value: string | null) {
+  if (!value) return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Intl.DateTimeFormat("en-US", {
+    dateStyle: "full",
+    timeStyle: "short",
+    timeZone: "America/New_York",
+  }).format(date);
+}
 
 export function YouTubeLiveEmbed({
-  channelId,
-  thumbnailUrl,
+  resolutionStatus,
+  video,
 }: {
-  channelId: string;
-  thumbnailUrl?: string;
+  resolutionStatus: YouTubeResolutionStatus;
+  video: NormalizedYouTubeVideo | null;
 }) {
-  const [playing, setPlaying] = useState(false);
-  const ringId = "watch-living-message-live";
+  const schedule = video?.state === "upcoming" ? scheduledLabel(video.scheduledStartTime) : null;
+  const apiUnavailable = resolutionStatus !== "available";
 
   return (
-    <div className="youtube-player online-live-player">
-      {playing ? (
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/live_stream?channel=${encodeURIComponent(channelId)}&autoplay=1&rel=0`}
-          title="Living Message Church live stream"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
-      ) : (
-        <button
-          aria-label="Start the Living Message Church live player"
-          className="youtube-facade"
-          onClick={() => setPlaying(true)}
-          style={thumbnailUrl ? { backgroundImage: `url(${thumbnailUrl})` } : undefined}
-          type="button"
-        >
-          <span className="youtube-facade-shade online-live-shade" aria-hidden="true" />
-          <span className="online-live-label" aria-hidden="true">Live channel</span>
-          <span className="youtube-facade-control" aria-hidden="true">
-            <svg className="youtube-facade-ring" viewBox="0 0 120 120">
-              <defs>
-                <path id={ringId} d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
-              </defs>
-              <text>
-                <textPath href={`#${ringId}`} lengthAdjust="spacing" startOffset="1%" textLength="283">
-                  WATCH LIVE • LIVING MESSAGE CHURCH •
-                </textPath>
-              </text>
-            </svg>
-            <span className="youtube-play-circle">
-              <span className="youtube-play-icon" />
-            </span>
-          </span>
-        </button>
-      )}
+    <div className="online-live-media">
+      <div className="online-live-media-heading">
+        <span className={video?.state === "live" ? "is-live" : undefined}>{stateLabel(video)}</span>
+        {schedule ? <time dateTime={video?.scheduledStartTime ?? undefined}>{schedule}</time> : null}
+      </div>
+      <div className="youtube-player online-live-player">
+        {video ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.videoId)}?rel=0`}
+            title={`Living Message Church — ${video.title}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
+        ) : (
+          <div className="youtube-player-empty" role="status">
+            <div>
+              <strong>Church Online is temporarily unavailable here.</strong>
+              <span>You can still check the verified Living Message Church YouTube channel.</span>
+            </div>
+          </div>
+        )}
+      </div>
+      {apiUnavailable ? (
+        <p className="online-live-fallback-note">
+          Live status could not be refreshed. <a href={channelLiveUrl} target="_blank" rel="noreferrer">Check YouTube <span aria-hidden="true">↗</span></a>
+        </p>
+      ) : null}
     </div>
   );
 }

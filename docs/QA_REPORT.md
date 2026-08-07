@@ -19,6 +19,14 @@ The user-approved Streams source resolves to channel ID `UC-YctizZq1wTbhgn3tQOJq
 
 The public feed is intentionally a recent-history integration, not a claim of complete channel history. A full historical import requires the future authenticated Data API or editorial backend. If YouTube is unavailable during generation, the adapter retains the approved four-record local fallback instead of failing the page.
 
+## YouTube live-status integration
+
+The existing `/online-church` media window now receives a normalized server-side resolution from `src/lib/youtube`: active Live first, nearest Upcoming second, and newest public embeddable completed/uploaded video third. The provider client uses the configured channel uploads playlist plus `videos.list`, verifies channel ownership, applies a seven-second timeout, deduplicates concurrent requests, and caches results for 55 seconds. The page uses 60-second ISR and never serializes credentials or raw provider responses.
+
+The player is a responsive official `youtube-nocookie.com` iframe with fullscreen and picture-in-picture permission, no forced autoplay, a descriptive title, and state-specific `LIVE NOW`, `Next live service`, or `Latest Message` labeling. A provider outage or missing configuration keeps the same 16:9 media area, uses the newest verified feed record when available, and presents the supplied channel `/live` link as a secondary fallback rather than an error-looking empty state.
+
+Deterministic selection fixtures passed for all four requested logic paths: Live, Upcoming, Offline, and provider/failure fallback; a non-embeddable candidate was also rejected. The local environment does not contain `YOUTUBE_API_KEY` or `YOUTUBE_CHANNEL_ID`, so real API reachability and a current channel state remain pending configuration. The production build succeeded in this unconfigured state, which validates graceful degradation but does not claim a live credential test.
+
 The message player now renders a lightweight custom facade before YouTube loads. It uses the verified thumbnail as the photographic field and centers a high-contrast white play triangle inside the exact `#0E153D` to `#282C72` circular brand gradient. The medallion occupies 62% of the control while the label is distributed across 98% of the circular path, leaving a controlled seam instead of a visibly short text run. The 16-second ring surrounds the medallion without overlapping it. The complete facade is one keyboard-accessible play button; activation replaces it with the privacy-enhanced `youtube-nocookie.com` iframe and requests autoplay. Reduced-motion styling leaves the ring static.
 
 The homepage message section now carries a restrained 120-degree navy-to-indigo background wash derived from the same approved tokens. Both endpoints are mixed back into the existing ink surface, preserving white-text contrast and keeping the gradient subordinate to the message photography.
@@ -173,7 +181,7 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 | Metadata | Home emitted a unique title, canonical URL, Open Graph/Twitter metadata, and Organization JSON-LD. |
 | Structured-data restraint | Only the verified organization name and canonical URL are emitted; no address, phone, service, event, sermon, rating, or founding claims were fabricated. |
 | Messages source | Home, `/messages`, and `/online-church` consume the verified canonical YouTube feed through one normalized adapter, with approved local records retained only for feed failure. |
-| Message privacy/SEO restraint | Click-to-load message and live players use `youtube-nocookie.com`; Messages and Church Online are indexable after channel verification, Admin remains no-indexed, and no unapproved `VideoObject` claims are emitted. |
+| Message privacy/SEO restraint | Message facades and the always-present Church Online player use `youtube-nocookie.com`; Messages and Church Online are indexable after channel verification, Admin remains no-indexed, and no unapproved `VideoObject` claims are emitted. |
 | Admin safety boundary | `/admin/messages` has no API mutation, authentication claim, Supabase client, or enabled upload/save control; all prototype edits are browser-local. |
 | Events fallback | `/events` and Home rendered the unconfigured adapter state; historical WordPress events were not treated as upcoming. |
 | Redirects | Representative legacy routes return direct 301 responses to `/`, `/plan-your-visit`, and `/events`; the canonical `/plan-your-visit/` source remains a 200 page. Static validation found 452 redirect sources, no duplicates, no loops, no chains, and no missing destinations. |
@@ -219,6 +227,7 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 - Safari/iOS and Chromium rendering differences.
 - Public category/search behavior, selected-player scrolling, remote YouTube thumbnail crops, and iframe playback in a real browser.
 - Live-channel availability behavior when YouTube has an active stream, a scheduled stream, and no stream; the external channel fallback remains available in every state.
+- Real YouTube Data API reachability and the configured channel's current state after `YOUTUBE_API_KEY` and `YOUTUBE_CHANNEL_ID` are supplied locally or in the deployment environment.
 - Admin keyboard behavior for local title/meta fields, category add/remove actions, and narrow-screen row composition.
 
 ## Validation commands
@@ -233,4 +242,5 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 | Previous message milestone route smoke | Passed at that milestone; Home, Messages, Live, sitemap, and robots returned HTTP 200. The former Live no-index state is superseded by the Church Online milestone below. |
 | Church Online milestone | `npm run lint`, `npm run validate:redirects`, and `npm run build` passed. `/online-church` is the canonical 200 route, renders the live player without `noindex`, appears in the sitemap, and `/messages/live` returns a direct 301. The duplicate embedded archive was removed in favor of the dedicated `/messages` page. Interactive visual QA remains pending because no browser connection was available. |
 | Planning Center service schedule | The public projection is limited to the earliest future public Calendar record with an explicit online/Sunday/worship service title, formatted in Eastern time. The block degrades by omission. Current local and deployed diagnostics report Planning Center credentials as missing, so a live schedule record could not be rendered or verified. |
+| YouTube live resolver | `npm run lint` and `npm run build` passed. Live/Upcoming/Offline selection fixtures passed; the no-credentials failure path retained a playable latest-message iframe and fallback channel link. `/online-church` revalidates every 60 seconds. Real API reachability remains pending environment configuration. |
 | Existing automated tests | No test suite or test command is configured |

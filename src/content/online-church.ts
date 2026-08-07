@@ -16,7 +16,7 @@ export const onlineChurchContent = {
     nextServiceLabel: "Live begins",
     nextServiceAction: "View service details",
     note:
-      "If a live service is not active, YouTube may show the next scheduled stream or an unavailable message. Recent services are ready below.",
+      "When the church is not live, the player shows the next scheduled broadcast or the latest completed message.",
     channelAction: "Open live channel",
     archiveAction: "Browse past messages",
   },

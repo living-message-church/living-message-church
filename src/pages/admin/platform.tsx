@@ -8,6 +8,8 @@ import type { PlanningCenterEndpointStatus } from "@/lib/planning-center/types";
 import { checkSupabaseConnection, type SupabaseConnectionState } from "@/lib/supabase/health";
 import { getSupabasePublicEnvironmentStatus } from "@/lib/supabase/config";
 import { getSupabaseServerEnvironmentStatus } from "@/lib/supabase/server";
+import { getYouTubeEnvironmentStatus } from "@/lib/youtube/client";
+import { getCurrentLiveVideo } from "@/lib/youtube/live";
 
 type CheckTone = "healthy" | "unavailable" | "warning";
 
@@ -81,9 +83,10 @@ function planningCenterPresentation(status: PlanningCenterEndpointStatus) {
 export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async ({ res }) => {
   res.setHeader("Cache-Control", "private, no-store, max-age=0");
 
-  const [connection, planningCenter] = await Promise.all([
+  const [connection, planningCenter, youtube] = await Promise.all([
     checkSupabaseConnection(),
     getPlanningCenterDiagnostics(0),
+    getCurrentLiveVideo(),
   ]);
   const connectionCheck = connectionPresentation(connection.state, connection.latencyMs);
   const publicEnvironment = getSupabasePublicEnvironmentStatus();
@@ -92,6 +95,15 @@ export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async (
   const commit = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7);
   const vercelEnvironment = process.env.VERCEL_ENV;
   const planningCenterEnvironmentReady = planningCenter.environment.ready;
+  const youtubeEnvironment = getYouTubeEnvironmentStatus();
+  const youtubeApiValue = youtube.apiReachable === true
+    ? "Reachable"
+    : youtube.apiReachable === false
+      ? "Unavailable"
+      : "Not checked";
+  const youtubeState = youtube.video
+    ? youtube.video.state[0].toUpperCase() + youtube.video.state.slice(1)
+    : "Unavailable";
 
   return {
     props: {
@@ -155,6 +167,36 @@ export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async (
         {
           label: "Planning Center Groups",
           ...planningCenterPresentation(planningCenter.groupsEndpoint),
+        },
+        {
+          detail: "Server-only YouTube Data API credential presence.",
+          label: "YouTube API configured",
+          tone: youtubeEnvironment.apiKey === "configured" ? "healthy" : "warning",
+          value: youtubeEnvironment.apiKey === "configured" ? "Configured" : "Missing",
+        },
+        {
+          detail: "Server-only channel configuration presence.",
+          label: "YouTube channel configured",
+          tone: youtubeEnvironment.channelId === "configured" ? "healthy" : "warning",
+          value: youtubeEnvironment.channelId === "configured" ? "Configured" : "Missing",
+        },
+        {
+          detail: "YouTube Data API response status; no response body or key is displayed.",
+          label: "YouTube API reachable",
+          tone: youtube.apiReachable === true ? "healthy" : youtube.apiReachable === null ? "warning" : "unavailable",
+          value: youtubeApiValue,
+        },
+        {
+          detail: "Resolved from public, embeddable videos owned by the configured channel.",
+          label: "YouTube current state",
+          tone: youtube.video ? "healthy" : "warning",
+          value: youtubeState,
+        },
+        {
+          detail: "The identifier value is never displayed.",
+          label: "YouTube video ID",
+          tone: youtube.video ? "healthy" : "warning",
+          value: youtube.video ? "Resolved" : "Not resolved",
         },
       ],
     },
