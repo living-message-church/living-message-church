@@ -33,19 +33,15 @@ export function AboutChurchPage() {
         </Container>
       </section>
 
-      <Section className="about-family-section" tone="paper" labelledBy="about-family-title" containerClassName="about-family-layout" containerSize="hero">
-        <div className="about-family-intro">
-          <div className="about-family-copy">
-            <Eyebrow>{family.eyebrow}</Eyebrow>
-            <Heading as="h2" id="about-family-title">{family.title}</Heading>
-          </div>
-          <div className="about-family-story">
-            {family.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            <blockquote>{family.statement}</blockquote>
-          </div>
+      <Section className="about-family-section" tone="paper" labelledBy="about-family-title" containerClassName="about-family-layout" containerSize="editorial">
+        <div className="about-family-copy">
+          <Eyebrow>{family.eyebrow}</Eyebrow>
+          <Heading as="h2" id="about-family-title">{family.title}</Heading>
+          {family.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          <blockquote>{family.statement}</blockquote>
         </div>
         <div className="about-family-video">
-          <YouTubeEmbed message={family.video} />
+          <YouTubeEmbed message={family.video} presentation="cinema" />
           <div className="about-family-video-meta">
             <p>{family.video.title.value}</p>
             <ActionLink external href={family.videoUrl} label={family.videoLabel} style="text" />
