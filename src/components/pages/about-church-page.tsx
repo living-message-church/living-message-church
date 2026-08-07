@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { aboutChurchContent } from "@/content";
+import { YouTubeEmbed } from "@/components/messages/youtube-embed";
 import { SiteHead } from "@/components/seo/site-head";
 import { ActionLink } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
@@ -32,18 +33,23 @@ export function AboutChurchPage() {
         </Container>
       </section>
 
-      <Section className="about-family-section" tone="paper" labelledBy="about-family-title" containerClassName="about-family-layout" containerSize="editorial">
-        <div className="about-family-copy">
-          <Eyebrow>{family.eyebrow}</Eyebrow>
-          <Heading as="h2" id="about-family-title">{family.title}</Heading>
-          {family.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          <ActionLink external href={family.videoUrl} label={family.videoLabel} style="text" />
-        </div>
-        <div className="about-family-visual">
-          <div className="about-family-image">
-            <Image alt={family.image.alt} fill sizes="(max-width: 56rem) 100vw, 45vw" src={family.image.src} />
+      <Section className="about-family-section" tone="paper" labelledBy="about-family-title" containerClassName="about-family-layout" containerSize="hero">
+        <div className="about-family-intro">
+          <div className="about-family-copy">
+            <Eyebrow>{family.eyebrow}</Eyebrow>
+            <Heading as="h2" id="about-family-title">{family.title}</Heading>
           </div>
-          <blockquote>{family.statement}</blockquote>
+          <div className="about-family-story">
+            {family.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            <blockquote>{family.statement}</blockquote>
+          </div>
+        </div>
+        <div className="about-family-video">
+          <YouTubeEmbed message={family.video} />
+          <div className="about-family-video-meta">
+            <p>{family.video.title.value}</p>
+            <ActionLink external href={family.videoUrl} label={family.videoLabel} style="text" />
+          </div>
         </div>
       </Section>
 

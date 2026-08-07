@@ -314,7 +314,7 @@ button, input, textarea, select { font: inherit; }
 .next-steps-final-layout .lede { margin: 0; color: var(--color-ink-soft); }
 
 .about-church-hero { position: relative; display: grid; min-height: clamp(40rem, 76svh, 52rem); isolation: isolate; overflow: hidden; background: var(--color-ink); color: white; }
-.about-church-hero-image { z-index: -3; object-fit: cover; object-position: center 48%; }
+.about-church-hero-image { z-index: -3; object-fit: cover; object-position: center 42%; }
 .about-church-hero-scrim { position: absolute; z-index: -2; background: linear-gradient(90deg, rgb(8 9 8 / 0.92) 0%, rgb(8 9 8 / 0.64) 48%, rgb(8 9 8 / 0.22) 100%); inset: 0; }
 .about-church-hero-inner { display: grid; min-height: inherit; align-items: end; padding-block: clamp(4rem, 8vw, 7rem); }
 .about-church-hero-copy { max-width: 66rem; }
@@ -322,14 +322,16 @@ button, input, textarea, select { font: inherit; }
 .about-church-hero-copy > p:not(.eyebrow) { max-width: 38rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.82); font-size: var(--step-1); line-height: 1.45; }
 
 .about-family-section { padding-block: clamp(5rem, 9vw, 9rem); }
-.about-family-layout { display: grid; align-items: center; grid-template-columns: minmax(22rem, 0.85fr) minmax(0, 1.15fr); gap: clamp(3rem, 8vw, 9rem); }
+.about-family-layout { display: grid; gap: clamp(3rem, 6vw, 5.5rem); }
+.about-family-intro { display: grid; align-items: end; grid-template-columns: minmax(22rem, 0.92fr) minmax(22rem, 0.7fr); gap: clamp(3rem, 9vw, 10rem); }
 .about-family-copy .heading { max-width: 12ch; }
-.about-family-copy > p:not(.eyebrow) { max-width: 39rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); }
-.about-family-copy .action-link { margin-top: var(--space-4); }
-.about-family-visual { position: relative; padding-bottom: clamp(2rem, 5vw, 4rem); }
-.about-family-image { position: relative; overflow: hidden; border-radius: var(--radius-image); aspect-ratio: 4 / 3; background: var(--color-paper); }
-.about-family-image img { object-fit: cover; object-position: center 45%; }
-.about-family-visual blockquote { position: absolute; right: clamp(1rem, 4vw, 3rem); bottom: 0; width: min(82%, 30rem); margin: 0; border-radius: var(--radius-md); background: var(--color-paper); color: var(--color-ink); padding: clamp(1.5rem, 3vw, 2.5rem); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; box-shadow: var(--shadow-card); }
+.about-family-story > p { max-width: 41rem; margin: 0 0 var(--space-4); color: var(--color-ink-soft); }
+.about-family-story blockquote { max-width: 35rem; margin: var(--space-5) 0 0; border-left: 2px solid var(--color-clay); padding-left: var(--space-4); color: var(--color-ink); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.035em; line-height: 1.08; }
+.about-family-video { display: grid; gap: var(--space-3); }
+.about-family-video .youtube-player { border-color: var(--color-line); box-shadow: 0 1.25rem 4rem rgb(8 9 8 / 0.08); }
+.about-family-video-meta { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.about-family-video-meta p { margin: 0; color: var(--color-ink); font-size: var(--step--1); font-weight: 700; }
+.about-family-video-meta .action-link { flex: none; }
 
 .about-name-section { background: linear-gradient(120deg, color-mix(in srgb, var(--color-brand-navy) 78%, var(--color-ink)), color-mix(in srgb, var(--color-brand-indigo) 52%, var(--color-ink))); padding-block: clamp(5rem, 9vw, 9rem); }
 .about-name-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.7fr); gap: clamp(3rem, 8vw, 9rem); }
@@ -536,7 +538,7 @@ button, input, textarea, select { font: inherit; }
   .visit-kids-layout .media-frame { max-width: 42rem; }
   .next-steps-overview > .container-shell, .next-steps-class-layout, .next-steps-final-layout { grid-template-columns: 1fr; }
   .next-steps-facts { max-width: 42rem; }
-  .about-family-layout, .about-name-layout, .about-community-layout, .about-church-final-layout { grid-template-columns: 1fr; }
+  .about-family-intro, .about-name-layout, .about-community-layout, .about-church-final-layout { grid-template-columns: 1fr; }
   .about-family-copy { max-width: 44rem; }
   .about-community-image { order: 2; }
   .about-community-copy { order: 1; }
@@ -592,9 +594,8 @@ button, input, textarea, select { font: inherit; }
   .about-church-hero-inner { min-height: clamp(40rem, 145vw, 50rem); align-content: end; padding-block: var(--space-7); }
   .about-church-hero-copy h1 { font-size: clamp(3.5rem, 16vw, 5.1rem); }
   .about-church-hero-scrim { background: linear-gradient(180deg, rgb(8 9 8 / 0.28) 0%, rgb(8 9 8 / 0.9) 70%, rgb(8 9 8 / 0.96) 100%); }
-  .about-church-hero-image { object-position: 58% center; }
-  .about-family-visual { padding-bottom: 3rem; }
-  .about-family-visual blockquote { right: var(--space-3); width: calc(100% - (var(--space-3) * 2)); }
+  .about-church-hero-image { object-position: 52% center; }
+  .about-family-video-meta { align-items: flex-start; flex-direction: column; }
   .about-community-image { width: 100%; aspect-ratio: 16 / 11; }
   .footer-lead .footer-facts { grid-column: 1; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }

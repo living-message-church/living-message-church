@@ -1,6 +1,6 @@
 # Asset register
 
-Updated: 2026-08-06
+Updated: 2026-08-07
 
 ## Approved visual media
 
@@ -30,10 +30,11 @@ JPEG originals were normalized to descriptive names and recompressed at a restra
 
 | Original URL | New filename | Dimensions | Page/component used | Copyright status | Notes |
 | --- | --- | ---: | --- | --- | --- |
-| `https://www.livingmessagechurch.com/wp-content/uploads/2025/03/20230129_102456-scaled.jpg` | `public/images/general/living-message-worship-gathering.jpg` | 1800 × 1350 | Home first-visit section; About and Our Church page heroes | Approved production-site source; photographer/release records need verification | Current sanctuary congregation; energetic wide crop helps prospective visitors picture a Sunday gathering. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2025/03/20230129_102456-scaled.jpg` | `public/images/general/living-message-worship-gathering.jpg` | 1800 × 1350 | Home first-visit section; About page hero | Approved production-site source; photographer/release records need verification | Current sanctuary congregation; energetic wide crop helps prospective visitors picture a Sunday gathering. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2018/09/IMG_0827.jpg` | `public/images/general/living-message-worship-prayer.jpg` | 1800 × 1199 | Our Church page hero | Approved production-site source; photographer/release records need verification | Unique worship photograph selected for this route to prevent repeating the homepage first-visit image. Recompressed without upscaling. |
 | `https://www.livingmessagechurch.com/wp-content/uploads/2024/12/Screenshot-2024-12-17-140910.png` | `public/images/general/living-message-community-welcome.jpg` | 1600 × 1026 | Plan Your Visit hero; homepage final invitation | Approved production-site source; photographer/release records need verification | Converted from PNG to JPEG; warm welcome/community moment used as the emotional close of the homepage. |
 | `https://www.livingmessagechurch.com/wp-content/uploads/2023/03/Church-2.png` | `public/images/general/living-message-lobby-community.jpg` | 1800 × 1001 | Contact, gallery, and Next Steps page heroes | Approved production-site source; photographer/release records need verification | Converted from PNG to JPEG; church lobby connection scene selected for Next Steps because it communicates natural conversation and belonging. |
-| `https://www.livingmessagechurch.com/wp-content/uploads/2018/09/IMG_0764.jpg` | `public/images/ministries/living-message-prayer-and-connection.jpg` | 1600 × 1066 | Home identity statement, Next Steps card, and Our Church family feature | Approved production-site source; photographer/release records need verification | Warm connection moment; portrait-focused identity crop and landscape ministry crops. |
+| `https://www.livingmessagechurch.com/wp-content/uploads/2018/09/IMG_0764.jpg` | `public/images/ministries/living-message-prayer-and-connection.jpg` | 1600 × 1066 | Home identity statement and Next Steps card | Approved production-site source; photographer/release records need verification | Warm connection moment; portrait-focused identity crop and landscape ministry crops. |
 | `https://www.livingmessagechurch.com/wp-content/uploads/2024/08/Next-Steps-Class-image.jpg` | `public/images/ministries/living-message-next-steps-class.jpg` | 1600 × 900 | Next Steps class feature | Approved production-site source; original artwork/appearance permissions need verification | Current class artwork from the authoritative Next Steps page; recompressed from 1.3 MB to approximately 165 KB without upscaling. |
 | `https://www.livingmessagechurch.com/wp-content/uploads/2023/04/IMG_6420.jpg` | `public/images/groups/living-message-community-table.jpg` | 1600 × 1200 | Home Groups card; Connect and Groups heroes | Approved production-site source; photographer/release records need verification | Church community gathered around tables. |
 | `https://www.livingmessagechurch.com/wp-content/uploads/2024/12/Kids-Min-1-scaled.jpg` | `public/images/kids/living-message-kids-room.jpg` | 1800 × 1350 | Home Kids card; Kids hero; Plan Your Visit Kids section | Approved production-site source; minor release and safeguarding records need verification | Real kids-room activity; do not reuse beyond the approved website scope without release review. |

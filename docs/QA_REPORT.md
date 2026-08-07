@@ -1,6 +1,6 @@
 # QA report
 
-QA date: 2026-08-06  
+QA date: 2026-08-07  
 Application: local Next.js development preview
 
 ## Mobile spacing and navigation refinement
@@ -41,7 +41,7 @@ The redesigned route uses a natural Living Message lobby-connection photograph f
 
 ## Our Church redesign
 
-The supplied `/about-living-message-church-clermont/` slug is preserved as a direct 200 route and the former redirect to `/about` is removed. The page uses the current production source for its church-family philosophy, living-stones name story, general service emphasis, and church-video handoff. Historical outreach counts and changing class/program claims are intentionally excluded. The About dropdown and footer now point to the preserved canonical route, and the XML sitemap includes it.
+The supplied `/about-living-message-church-clermont/` slug is preserved as a direct 200 route and the former redirect to `/about` is removed. The page uses the current production source for its church-family philosophy, living-stones name story, general service emphasis, and church video. The hero now uses a route-specific production-site worship photograph rather than repeating the homepage image. The user-supplied “Living Message Church. This Is Us!” YouTube video is the primary media feature and uses the same click-to-load facade as the homepage message player. Historical outreach counts and changing class/program claims are intentionally excluded. The About dropdown and footer point to the preserved canonical route, and the XML sitemap includes it.
 
 Source-level responsive review confirms that the photography-led hero retains bounded type, family and service splits collapse below 56rem, the family statement remains inside the image composition, the name-story columns stack, and all actions retain the shared target sizing. Final rendered optical approval remains pending because no browser connection was available.
 

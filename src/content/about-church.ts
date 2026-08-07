@@ -1,4 +1,4 @@
-import type { ContentImage, SeoContent } from "@/types/content";
+import type { ContentImage, Message, SeoContent } from "@/types/content";
 
 const source = "https://www.livingmessagechurch.com/about-living-message-church-clermont/";
 
@@ -23,8 +23,8 @@ export const aboutChurchContent = {
     title: "A church that calls people family.",
     body: "Living Message Church describes belonging as a relationship—not simply a membership status or a place someone attends.",
     image: approvedImage(
-      "/images/general/living-message-worship-gathering.jpg",
-      "The Living Message Church congregation gathered for worship.",
+      "/images/general/living-message-worship-prayer.jpg",
+      "Living Message Church attendees worshipping together during a service.",
     ),
   },
   family: {
@@ -35,11 +35,36 @@ export const aboutChurchContent = {
       "Living Message wants people to find a church home where they can grow. If Living Message is not the right fit, the church’s stated desire is still to help people connect with another local church.",
     ],
     statement: "At Living Message Church, you are family.",
-    image: approvedImage(
-      "/images/ministries/living-message-prayer-and-connection.jpg",
-      "Two people embracing during a Living Message Church gathering.",
-    ),
-    videoUrl: "https://youtu.be/MnBGBUYZ0hI",
+    video: {
+      id: "living-message-this-is-us",
+      title: {
+        value: "Living Message Church. This Is Us!",
+        status: "approved-temporary",
+        source: "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=MnBGBUYZ0hI&format=json",
+      },
+      summary: {
+        value: "A video introduction to the people and story of Living Message Church.",
+        status: "approved-temporary",
+        source,
+      },
+      mediaUrl: {
+        value: "https://www.youtube.com/watch?v=MnBGBUYZ0hI",
+        status: "approved-temporary",
+        source,
+      },
+      youtubeVideoId: {
+        value: "MnBGBUYZ0hI",
+        status: "approved-temporary",
+        source,
+      },
+      thumbnailUrl: {
+        value: "https://i.ytimg.com/vi/MnBGBUYZ0hI/maxresdefault.jpg",
+        status: "approved-temporary",
+        source: "YouTube thumbnail endpoint for the user-supplied video ID",
+      },
+      availability: "published",
+    } satisfies Message,
+    videoUrl: "https://www.youtube.com/watch?v=MnBGBUYZ0hI",
     videoLabel: "Watch our church video",
   },
   nameStory: {
