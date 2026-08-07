@@ -31,9 +31,11 @@ The desktop primary navigation now uses a wider fluid item gap (`1.2rem` to `1.9
 
 “New Here” is now the “I’m New” navigation group. Its desktop disclosure exposes “Plan Your Visit” (`/plan-your-visit`) and “Next Steps Class” (`/connect/next-steps`) through a semantic button with `aria-expanded` and `aria-controls`. It opens on pointer hover, keyboard focus, or click; closes on link selection, pointer exit, focus exit, or Escape; and returns focus to its trigger after Escape. Mobile presents the same destinations as an always-visible subgroup inside the existing navigation disclosure.
 
-The same disclosure behavior now supports more than one primary-navigation group without opening sibling menus. About presents Our Church, Our Beliefs, Our Pastor, and Our Team as separate implemented destinations, Our Outreach as an external handoff, and Our Missions as a staged destination. Desktop and mobile use the same route labels without inventing unresolved missions content.
+The same disclosure behavior now supports more than one primary-navigation group without opening sibling menus. About presents Our Church, Our Beliefs, Our Pastor, and Our Team as separate implemented destinations, Our Outreach as an external handoff, and Our Missions as a nested partner-link group. Desktop and mobile use the same route labels without inventing mission descriptions.
 
 Our Outreach now resolves directly to `https://www.findfeedrestore.com/` from both submenu presentations. The link uses a visible external-link icon, `target="_blank"`, and `rel="noreferrer"`; the standalone primary Outreach item remains an internal staged route rather than being silently repurposed.
+
+Our Missions now uses a second-level desktop flyout and a nested native mobile disclosure. The six links match the current production menu: Radius International, Life’s Choices, SLPFCC, Ligonier Ministries, Radical, and Campus Outreach Central Florida. Each renders a visible external-link icon with protected new-tab behavior. Desktop supports hover, focus, and click opening plus Escape close/focus return; mobile uses native `details`/`summary` semantics.
 
 ## Next Steps redesign
 

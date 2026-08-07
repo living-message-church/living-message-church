@@ -7,15 +7,19 @@ import { Container } from "@/components/ui/container";
 
 function ExternalLinkIcon() {
   return (
-    <svg className="nav-external-icon" aria-hidden="true" viewBox="0 0 16 16">
-      <path d="M6 3H3.75A1.75 1.75 0 0 0 2 4.75v7.5C2 13.216 2.784 14 3.75 14h7.5A1.75 1.75 0 0 0 13 12.25V10M9 2h5v5M14 2 7.5 8.5" />
-    </svg>
+    <>
+      <svg className="nav-external-icon" aria-hidden="true" viewBox="0 0 16 16">
+        <path d="M6 3H3.75A1.75 1.75 0 0 0 2 4.75v7.5C2 13.216 2.784 14 3.75 14h7.5A1.75 1.75 0 0 0 13 12.25V10M9 2h5v5M14 2 7.5 8.5" />
+      </svg>
+      <span className="sr-only"> (opens in a new tab)</span>
+    </>
   );
 }
 
 export function SiteHeader() {
   const { pathname } = useRouter();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const isCurrent = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
   return (
     <header className="site-header">
@@ -42,14 +46,21 @@ export function SiteHeader() {
                   className={`desktop-nav-group${menuOpen ? " is-open" : ""}`}
                   key={item.label}
                   onBlur={(event) => {
-                    if (!event.currentTarget.contains(event.relatedTarget)) setOpenMenu(null);
+                    if (!event.currentTarget.contains(event.relatedTarget)) {
+                      setOpenMenu(null);
+                      setOpenSubmenu(null);
+                    }
                   }}
                   onFocus={() => setOpenMenu(item.href)}
                   onMouseEnter={() => setOpenMenu(item.href)}
-                  onMouseLeave={() => setOpenMenu(null)}
+                  onMouseLeave={() => {
+                    setOpenMenu(null);
+                    setOpenSubmenu(null);
+                  }}
                   onKeyDown={(event) => {
                     if (event.key === "Escape") {
                       setOpenMenu(null);
+                      setOpenSubmenu(null);
                       event.currentTarget.querySelector("button")?.focus();
                     }
                   }}
@@ -65,11 +76,61 @@ export function SiteHeader() {
                     {item.label}<span className="nav-chevron" aria-hidden="true" />
                   </button>
                   <div className={`desktop-nav-dropdown${item.children.length > 4 ? " desktop-nav-dropdown-wide" : ""}`} id={menuId}>
-                    {item.children.map((child) => child.availability === "external" ? (
+                    {item.children.map((child) => child.children ? (
+                      <div
+                        className={`desktop-nav-subgroup${openSubmenu === child.href ? " is-open" : ""}`}
+                        key={`${child.label}-${child.href}`}
+                        onBlur={(event) => {
+                          if (!event.currentTarget.contains(event.relatedTarget)) setOpenSubmenu(null);
+                        }}
+                        onFocus={() => setOpenSubmenu(child.href)}
+                        onMouseEnter={() => setOpenSubmenu(child.href)}
+                        onMouseLeave={() => setOpenSubmenu(null)}
+                        onKeyDown={(event) => {
+                          if (event.key === "Escape") {
+                            event.stopPropagation();
+                            setOpenSubmenu(null);
+                            event.currentTarget.querySelector("button")?.focus();
+                          }
+                        }}
+                      >
+                        <button
+                          aria-controls={`${menuId}-${child.label.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}`}
+                          aria-expanded={openSubmenu === child.href}
+                          aria-haspopup="true"
+                          onClick={() => setOpenSubmenu((active) => active === child.href ? null : child.href)}
+                          type="button"
+                        >
+                          <span>{child.label}</span><span className="nav-chevron nav-chevron-right" aria-hidden="true" />
+                        </button>
+                        <div
+                          className="desktop-nav-submenu"
+                          id={`${menuId}-${child.label.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}`}
+                        >
+                          {child.children.map((grandchild) => (
+                            <a
+                              key={`${grandchild.label}-${grandchild.href}`}
+                              href={grandchild.href}
+                              onClick={() => {
+                                setOpenSubmenu(null);
+                                setOpenMenu(null);
+                              }}
+                              rel="noreferrer"
+                              target="_blank"
+                            >
+                              <span>{grandchild.label}</span><ExternalLinkIcon />
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ) : child.availability === "external" ? (
                       <a
                         key={`${child.label}-${child.href}`}
                         href={child.href}
-                        onClick={() => setOpenMenu(null)}
+                        onClick={() => {
+                          setOpenSubmenu(null);
+                          setOpenMenu(null);
+                        }}
                         rel="noreferrer"
                         target="_blank"
                       >
@@ -107,7 +168,20 @@ export function SiteHeader() {
             {primaryNavigation.map((item) => item.children ? (
               <div className="mobile-nav-group" key={item.label}>
                 <p>{item.label}</p>
-                {item.children.map((child) => child.availability === "external" ? (
+                {item.children.map((child) => child.children ? (
+                  <details className="mobile-nav-subgroup" key={`${child.label}-${child.href}`}>
+                    <summary>
+                      <span>{child.label}</span><span className="nav-chevron" aria-hidden="true" />
+                    </summary>
+                    <div className="mobile-nav-submenu">
+                      {child.children.map((grandchild) => (
+                        <a key={`${grandchild.label}-${grandchild.href}`} href={grandchild.href} rel="noreferrer" target="_blank">
+                          <span>{grandchild.label}</span><ExternalLinkIcon />
+                        </a>
+                      ))}
+                    </div>
+                  </details>
+                ) : child.availability === "external" ? (
                   <a key={`${child.label}-${child.href}`} href={child.href} rel="noreferrer" target="_blank">
                     <span>{child.label}</span><ExternalLinkIcon />
                   </a>
