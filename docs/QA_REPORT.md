@@ -27,6 +27,8 @@ The homepage ministry section now presents its three available pathways as equal
 
 The desktop homepage hero now completes a full first-screen composition at every desktop aspect ratio: its minimum height is the small viewport height minus the 6.5rem main navigation. This replaces the previous 16:10-only condition, which left the following section visible on wider laptop and browser-window ratios. Tablet and mobile retain their existing dedicated height rules.
 
+The desktop primary navigation now uses a wider fluid item gap (`1.2rem` to `1.9rem`), restrained positive tracking, and a slightly more generous active underline. The editorial header container and existing 70rem mobile-navigation breakpoint prevent the expanded rhythm from crowding intermediate widths.
+
 The user-supplied `Living Message Logo.svg` now replaces the previous raster logo in the header and footer through `next/image` with explicit intrinsic dimensions. The header preserves its native navy/brown color while the dark footer applies a white high-contrast treatment. The message-player medallion uses the separately supplied standalone tree SVG. Every use preserves its source asset’s native proportions. The previous PNG remains in the repository but is no longer referenced by application code.
 
 ## Helvetica Neue typography test
