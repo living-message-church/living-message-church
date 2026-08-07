@@ -110,6 +110,7 @@ button, input, textarea, select { font: inherit; }
 .desktop-nav-dropdown-wide { width: 18rem; padding: 0.8rem; }
 .desktop-nav-dropdown::before { position: absolute; right: 0; bottom: 100%; left: 0; height: 0.8rem; content: ""; }
 .desktop-nav-dropdown a { display: flex; min-height: 3rem; align-items: center; border-radius: 0.35rem; padding-inline: 0.9rem; font-size: var(--step--1); font-weight: 700; letter-spacing: 0.04em; text-decoration: none; text-transform: uppercase; }
+.nav-external-icon { width: 0.95rem; height: 0.95rem; flex: 0 0 auto; margin-left: auto; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
 .desktop-nav-dropdown a:hover, .desktop-nav-dropdown a[aria-current="page"] { background: var(--color-paper); }
 .desktop-nav-group.is-open .desktop-nav-dropdown { visibility: visible; opacity: 1; transform: translate(-50%, 0); }
 .mobile-menu { display: none; position: relative; }

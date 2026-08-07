@@ -20,7 +20,7 @@ export const primaryNavigation: NavigationItem[] = [
       { label: "Our Beliefs", href: "/about/beliefs", availability: "implemented" },
       { label: "Our Pastor", href: "/about/pastor", availability: "implemented" },
       { label: "Our Team", href: "/about/leadership", availability: "implemented" },
-      { label: "Our Outreach", href: "/outreach", availability: "staged" },
+      { label: "Our Outreach", href: "https://www.findfeedrestore.com/", availability: "external" },
       { label: "Our Missions", href: "/outreach", availability: "staged" },
     ],
   },

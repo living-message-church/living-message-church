@@ -5,6 +5,14 @@ import { useState } from "react";
 import { primaryNavigation, siteIdentity } from "@/content";
 import { Container } from "@/components/ui/container";
 
+function ExternalLinkIcon() {
+  return (
+    <svg className="nav-external-icon" aria-hidden="true" viewBox="0 0 16 16">
+      <path d="M6 3H3.75A1.75 1.75 0 0 0 2 4.75v7.5C2 13.216 2.784 14 3.75 14h7.5A1.75 1.75 0 0 0 13 12.25V10M9 2h5v5M14 2 7.5 8.5" />
+    </svg>
+  );
+}
+
 export function SiteHeader() {
   const { pathname } = useRouter();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -57,7 +65,17 @@ export function SiteHeader() {
                     {item.label}<span className="nav-chevron" aria-hidden="true" />
                   </button>
                   <div className={`desktop-nav-dropdown${item.children.length > 4 ? " desktop-nav-dropdown-wide" : ""}`} id={menuId}>
-                    {item.children.map((child) => (
+                    {item.children.map((child) => child.availability === "external" ? (
+                      <a
+                        key={`${child.label}-${child.href}`}
+                        href={child.href}
+                        onClick={() => setOpenMenu(null)}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <span>{child.label}</span><ExternalLinkIcon />
+                      </a>
+                    ) : (
                       <Link
                         key={`${child.label}-${child.href}`}
                         href={child.href}
@@ -89,7 +107,11 @@ export function SiteHeader() {
             {primaryNavigation.map((item) => item.children ? (
               <div className="mobile-nav-group" key={item.label}>
                 <p>{item.label}</p>
-                {item.children.map((child) => (
+                {item.children.map((child) => child.availability === "external" ? (
+                  <a key={`${child.label}-${child.href}`} href={child.href} rel="noreferrer" target="_blank">
+                    <span>{child.label}</span><ExternalLinkIcon />
+                  </a>
+                ) : (
                   <Link key={`${child.label}-${child.href}`} href={child.href} aria-current={child.availability === "implemented" && isCurrent(child.href) ? "page" : undefined}>{child.label}</Link>
                 ))}
               </div>

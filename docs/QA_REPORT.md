@@ -31,7 +31,9 @@ The desktop primary navigation now uses a wider fluid item gap (`1.2rem` to `1.9
 
 “New Here” is now the “I’m New” navigation group. Its desktop disclosure exposes “Plan Your Visit” (`/plan-your-visit`) and “Next Steps Class” (`/connect/next-steps`) through a semantic button with `aria-expanded` and `aria-controls`. It opens on pointer hover, keyboard focus, or click; closes on link selection, pointer exit, focus exit, or Escape; and returns focus to its trigger after Escape. Mobile presents the same destinations as an always-visible subgroup inside the existing navigation disclosure.
 
-The same disclosure behavior now supports more than one primary-navigation group without opening sibling menus. About presents Our Church, Our Beliefs, Our Pastor, and Our Team as separate implemented destinations, with Our Outreach and Our Missions still sharing the staged outreach destination. Desktop and mobile use the same route labels without opening sibling menus or inventing unresolved outreach content.
+The same disclosure behavior now supports more than one primary-navigation group without opening sibling menus. About presents Our Church, Our Beliefs, Our Pastor, and Our Team as separate implemented destinations, Our Outreach as an external handoff, and Our Missions as a staged destination. Desktop and mobile use the same route labels without inventing unresolved missions content.
+
+Our Outreach now resolves directly to `https://www.findfeedrestore.com/` from both submenu presentations. The link uses a visible external-link icon, `target="_blank"`, and `rel="noreferrer"`; the standalone primary Outreach item remains an internal staged route rather than being silently repurposed.
 
 ## Next Steps redesign
 
