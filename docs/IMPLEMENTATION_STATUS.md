@@ -78,7 +78,6 @@ Updated: 2026-08-07
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
 - Authoritative event source and publishing/registration policy.
 - Live Planning Center credentials and product permissions are not configured in the validated local environment, so organization, Calendar, Registrations, and Groups reachability plus provider sample counts remain unverified. The adapters degrade safely to `Missing` / `Not checked` until configuration is supplied.
-- `YOUTUBE_API_KEY` and `YOUTUBE_CHANNEL_ID` are not configured in the validated local environment, so a real Data API request and live-channel state could not be verified locally. The server resolver and UI degrade to the latest verified-feed message without exposing an error state.
 - Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
 - Final pastoral proofreading of the temporarily approved doctrinal statement; final Broadway title, biography, history, and image approval; plus outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
@@ -102,10 +101,11 @@ Configure a least-privilege Planning Center Personal Access Token in a controlle
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed: 451 sources, 24 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
-| `npm run build` | Passed on Next.js 16.3.0; all 25 pages completed successfully and `/online-church` was emitted as a 60-second revalidated route. |
+| Production build | Default `npm run build` completed TypeScript and then hit the environment-level Turbopack worker-port `EPERM`; `npm run build -- --webpack` passed all 25 pages and emitted `/online-church` as a 60-second revalidated route. |
 | YouTube state selection | Passed deterministic fixtures for Live priority, Upcoming fallback, Offline fallback, and non-embeddable rejection. |
 | YouTube API failure | Passed with local credentials absent: the page retained the 16:9 player, embedded the latest verified-feed message as `Latest Message`, and rendered the supplied channel fallback. |
 | YouTube privacy scan | No API key, YouTube environment-variable names, or Data API endpoint logic was emitted in `.next/static`; `/admin/platform` shows status labels only. |
+| YouTube authenticated discovery | Passed after sending the API key's approved development referrer. `channels.list`, `playlistItems.list`, and `videos.list` all succeed; 25 public embeddable candidates were found. Six stale `upcoming` records have past scheduled times and are rejected, allowing the latest completed message to resolve. |
 | Planning Center diagnostics | `/admin/platform` and `/admin/platform/planning-center` returned 200 with private/no-store caching and noindex metadata. With local credentials absent, the pages correctly rendered `Missing` / `Not checked`, null counts, and no samples. |
 | Planning Center privacy scan | No Planning Center environment-variable names, Basic credential payloads, or Authorization logic were found in `.next/static`; rendered props contained status metadata only. No people, members, attendees, submitted registrations, giving, contacts, or organization records were present. |
 | Local HTTP smoke check | Home, Messages, Live, sitemap, and robots returned 200. Home and Messages rendered newest feed video `SGsP83hGEN8`; Messages was indexable, Live remained no-indexed, and the sitemap included `/messages`. |

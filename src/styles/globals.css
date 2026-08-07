@@ -564,7 +564,7 @@ button, input, textarea, select { font: inherit; }
 .message-library-empty h3 { margin: 0; }
 .message-library-empty button { min-height: 2.75rem; border: 0; background: transparent; color: var(--color-coral); font-weight: 800; cursor: pointer; }
 
-.online-hero { background: var(--color-paper-bright); padding-block: clamp(5rem, 9vw, 9rem); }
+.online-hero { background: var(--color-paper-bright); padding-block: clamp(4.75rem, 8vw, 7.75rem); }
 .online-hero-layout { display: grid; align-items: end; grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.75fr); gap: clamp(3rem, 8vw, 9rem); }
 .online-hero .eyebrow { color: var(--color-coral); }
 .online-hero h1 { max-width: 9ch; margin: 0; font-size: clamp(4.5rem, 3rem + 5.5vw, 8.5rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.86; text-wrap: balance; }

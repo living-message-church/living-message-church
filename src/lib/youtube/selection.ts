@@ -52,7 +52,9 @@ export function selectCurrentYouTubeVideo(
     .filter((resource) => {
       const scheduled = timestamp(resource.liveStreamingDetails?.scheduledStartTime);
       return !resource.liveStreamingDetails?.actualEndTime
-        && (resource.snippet?.liveBroadcastContent === "upcoming" || (Number.isFinite(scheduled) && scheduled > now));
+        && resource.snippet?.liveBroadcastContent === "upcoming"
+        && Number.isFinite(scheduled)
+        && scheduled > now;
     })
     .sort((first, second) => timestamp(first.liveStreamingDetails?.scheduledStartTime) - timestamp(second.liveStreamingDetails?.scheduledStartTime))[0];
   if (upcoming) return normalized(upcoming, "upcoming");

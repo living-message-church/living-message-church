@@ -59,6 +59,8 @@ YouTube adds the following non-sensitive checks to `/admin/platform`:
 
 `src/lib/youtube` owns the server-only client, provider wire types, normalized video model, and deterministic Live → Upcoming → latest completed selection. The resolver reads the configured channel's uploads playlist, hydrates candidate video resources, rejects records from other channels or videos that are private or not embeddable, and caches its result for 55 seconds. `/online-church` revalidates every 60 seconds and receives only the normalized safe projection.
 
+The Google API key is currently restricted to the approved development origin. Server-side Data API requests therefore send `https://dev.livingmessagechurch.com/` as their `Referer`. Without it, Google returns HTTP 403 before the channel resource is read. Before the production hostname becomes authoritative, `https://livingmessagechurch.com/` must also be added to the key's allowed website restrictions; the key itself remains server-only.
+
 ## Middleware decision
 
 No `middleware.ts` or root `proxy.ts` was added. Next.js 16 reserves Proxy for request-time rewriting and optimistic authorization, and Supabase needs it primarily to refresh cookie-backed authentication sessions. Authentication is explicitly outside this milestone, so adding Proxy now would create an unused request interception layer. Revisit this decision when the authentication architecture is approved.
@@ -100,6 +102,7 @@ Validated locally on August 7, 2026:
 - YouTube state selection — fixture coverage passed for Live priority, Upcoming fallback, Offline fallback, and rejection of a non-embeddable candidate
 - YouTube failure behavior — with local YouTube credentials absent, `/online-church` retains its media window, embeds the latest verified feed message, labels it `Latest Message`, and provides the channel fallback
 - YouTube client-bundle scan — no API key, YouTube environment-variable names, or Data API request logic found in `.next/static`
+- Authenticated discovery — the initial request formerly failed at `channels.list(part=contentDetails)` with HTTP 403 `forbidden` because Google received an empty referrer. Adding the approved development referrer resolves the channel and uploads playlist. The next 25 records currently include 25 public, embeddable videos and a playable completed-message fallback. Six records carry stale `upcoming` markers with past scheduled dates; the resolver now rejects those instead of treating them as future services.
 - Production HTTP smoke check — `200 OK`
 - Cache policy — `private, no-store, max-age=0`
 - Supabase health — connected

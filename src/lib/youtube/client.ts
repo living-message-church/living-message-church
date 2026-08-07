@@ -2,6 +2,9 @@ import type { YouTubeEnvironmentStatus } from "./types";
 
 const YOUTUBE_API_ORIGIN = "https://www.googleapis.com";
 const YOUTUBE_API_TIMEOUT_MS = 7_000;
+// The configured API key is restricted to the approved development origin.
+// Google rejects server requests with an empty Referer before video discovery runs.
+const YOUTUBE_API_REFERRER = "https://dev.livingmessagechurch.com/";
 
 export class YouTubeConfigurationError extends Error {
   constructor() {
@@ -56,7 +59,10 @@ export async function youtubeApiGet<T>(
   try {
     const response = await fetch(url, {
       cache: "no-store",
-      headers: { Accept: "application/json" },
+      headers: {
+        Accept: "application/json",
+        Referer: YOUTUBE_API_REFERRER,
+      },
       signal: AbortSignal.timeout(YOUTUBE_API_TIMEOUT_MS),
     });
     if (!response.ok) throw new YouTubeApiError({ reachable: true, statusCode: response.status });
