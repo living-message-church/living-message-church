@@ -20,6 +20,12 @@ interface CalendarEventInstanceAttributes {
 }
 
 const PAGE_SIZE = 100;
+const ONLINE_SERVICE_TITLE_PATTERNS = [
+  /\bchurch\s+online\b/i,
+  /\bonline\s+(?:church\s+)?services?\b/i,
+  /\bsunday\s+(?:morning\s+)?(?:worship|services?|gatherings?)\b/i,
+  /\bworship\s+services?\b/i,
+];
 
 export async function getUpcomingEvents(): Promise<PlanningCenterAdapterResult<NormalizedEvent>> {
   const response = await planningCenterGet<PlanningCenterCollectionResponse<CalendarEventInstanceAttributes>>(
@@ -62,4 +68,23 @@ export async function getUpcomingEvents(): Promise<PlanningCenterAdapterResult<N
     totalDiscovered: items.length,
     truncated: (response.data.meta?.total_count ?? 0) > PAGE_SIZE,
   };
+}
+
+/**
+ * Returns only an explicitly service-named public event. This avoids treating
+ * the next generic Calendar event as the next livestream.
+ */
+export async function getNextScheduledOnlineService(): Promise<NormalizedEvent | null> {
+  const result = await getUpcomingEvents();
+  const now = Date.now();
+
+  return result.items
+    .filter((event) => {
+      const startsAt = new Date(event.startAt).getTime();
+      return !event.allDay
+        && Number.isFinite(startsAt)
+        && startsAt > now
+        && ONLINE_SERVICE_TITLE_PATTERNS.some((pattern) => pattern.test(event.title));
+    })
+    .sort((first, second) => new Date(first.startAt).getTime() - new Date(second.startAt).getTime())[0] ?? null;
 }

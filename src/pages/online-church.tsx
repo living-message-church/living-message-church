@@ -9,12 +9,48 @@ import { Section } from "@/components/ui/section";
 import { Heading } from "@/components/ui/typography";
 import { getMessageFeed, youtubeChannel } from "@/lib/messages/message-source";
 
-export const getStaticProps: GetStaticProps = async () => ({
-  props: { feed: await getMessageFeed() },
-  revalidate: 3600,
-});
+function formatServiceDate(value: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "long",
+    timeZone: "America/New_York",
+    weekday: "long",
+  }).format(new Date(value));
+}
 
-export default function OnlineChurchPage({ feed }: InferGetStaticPropsType<typeof getStaticProps>) {
+function formatServiceTime(value: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone: "America/New_York",
+    timeZoneName: "short",
+  }).format(new Date(value));
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const [feed, nextService] = await Promise.all([
+    getMessageFeed(),
+    import("@/lib/planning-center/events")
+      .then(({ getNextScheduledOnlineService }) => getNextScheduledOnlineService())
+      .catch(() => null),
+  ]);
+
+  return {
+    props: {
+      feed,
+      nextService: nextService
+        ? {
+            date: formatServiceDate(nextService.startAt),
+            time: formatServiceTime(nextService.startAt),
+            url: nextService.publicUrl,
+          }
+        : null,
+    },
+    revalidate: 3600,
+  };
+};
+
+export default function OnlineChurchPage({ feed, nextService }: InferGetStaticPropsType<typeof getStaticProps>) {
   const newestMessage = feed.items[0];
 
   return (
@@ -49,6 +85,18 @@ export default function OnlineChurchPage({ feed }: InferGetStaticPropsType<typeo
           <p className="eyebrow">{onlineChurchContent.live.eyebrow}</p>
           <Heading as="h2" id="online-live-title" size="section">{onlineChurchContent.live.title}</Heading>
           <p>{onlineChurchContent.live.body}</p>
+          {nextService ? (
+            <aside className="online-next-service" aria-label="Next scheduled live service">
+              <div>
+                <p>{onlineChurchContent.live.nextServiceEyebrow}</p>
+                <strong>{nextService.date}</strong>
+                <span>{onlineChurchContent.live.nextServiceLabel} {nextService.time}</span>
+              </div>
+              <a href={nextService.url} target="_blank" rel="noreferrer">
+                {onlineChurchContent.live.nextServiceAction}<span aria-hidden="true">↗</span>
+              </a>
+            </aside>
+          ) : null}
           <ActionGroup actions={[
             { label: onlineChurchContent.live.channelAction, href: youtubeChannel.streamsUrl, style: "primary", external: true },
             { label: onlineChurchContent.live.archiveAction, href: "/messages", style: "secondary" },

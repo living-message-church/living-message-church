@@ -2,7 +2,7 @@
 
 ## Status
 
-The project now has a read-only, server-side Planning Center provider boundary. It is a diagnostics foundation only: no Planning Center data is activated on the homepage, `/events`, or public Groups experiences, and no data is persisted to Supabase.
+The project now has a read-only, server-side Planning Center provider boundary. The only public activation is a narrowly scoped next-service schedule on `/online-church`; no Planning Center data is activated on the homepage, `/events`, or public Groups experiences, and no data is persisted to Supabase.
 
 Local credentials were not present when this milestone was validated on August 7, 2026. The code therefore proves graceful missing-configuration behavior locally; live organization/product reachability and record counts remain unverified until the two server-only variables are supplied.
 
@@ -31,6 +31,10 @@ The client uses Planning Center’s official REST/JSON:API surface and sends a p
 | Groups | `GET /groups/v2/groups` | Discover groups explicitly listed on Church Center | `2023-07-10` |
 
 The Calendar adapter retains only records with a public Church Center URL. The Groups adapter retains only unarchived records with `listed: true` and a public Church Center URL. The Registrations adapter calls the public `Signup` resource and never calls Registration, Attendee, Emergency Contact, or Person endpoints. See the official [EventInstance](https://api.planningcenteronline.com/docs/apps/calendar/versions/2022-07-07/vertices/event_instance), [Signup](https://api.planningcenteronline.com/docs/apps/registrations/versions/2025-05-01/vertices/signup), and [Group](https://api.planningcenteronline.com/docs/apps/groups/versions/2023-07-10/vertices/group) references.
+
+### Online Church schedule projection
+
+`/online-church` requests the same normalized future Calendar collection during static generation and hourly revalidation. It publishes only the earliest non-all-day record whose public title explicitly identifies it as Church Online, an online service, a Sunday service/worship/gathering, or a worship service. This conservative title rule prevents a generic class, group, or event from being presented as the next livestream. The public projection contains only a formatted date, Eastern time, and the event’s public Church Center URL. If credentials, Calendar access, a public URL, or a matching service record is absent, the schedule block is omitted without changing the rest of the page.
 
 ## Internal normalized types
 
@@ -101,6 +105,7 @@ Planning Center should remain the source for event identity, timing, and registr
 
 ## Deferred public activation
 
+- No public activation beyond the scoped `/online-church` next-service projection
 - No homepage event replacement
 - No `/events` replacement
 - No public Groups replacement
