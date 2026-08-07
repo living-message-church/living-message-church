@@ -313,6 +313,43 @@ button, input, textarea, select { font: inherit; }
 .next-steps-final-layout .heading { max-width: 13ch; }
 .next-steps-final-layout .lede { margin: 0; color: var(--color-ink-soft); }
 
+.about-church-hero { position: relative; display: grid; min-height: clamp(40rem, 76svh, 52rem); isolation: isolate; overflow: hidden; background: var(--color-ink); color: white; }
+.about-church-hero-image { z-index: -3; object-fit: cover; object-position: center 48%; }
+.about-church-hero-scrim { position: absolute; z-index: -2; background: linear-gradient(90deg, rgb(8 9 8 / 0.92) 0%, rgb(8 9 8 / 0.64) 48%, rgb(8 9 8 / 0.22) 100%); inset: 0; }
+.about-church-hero-inner { display: grid; min-height: inherit; align-items: end; padding-block: clamp(4rem, 8vw, 7rem); }
+.about-church-hero-copy { max-width: 66rem; }
+.about-church-hero-copy h1 { max-width: 11ch; margin: 0; font-size: clamp(4.5rem, 3rem + 5.2vw, 8.25rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.87; text-wrap: balance; }
+.about-church-hero-copy > p:not(.eyebrow) { max-width: 38rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.82); font-size: var(--step-1); line-height: 1.45; }
+
+.about-family-section { padding-block: clamp(5rem, 9vw, 9rem); }
+.about-family-layout { display: grid; align-items: center; grid-template-columns: minmax(22rem, 0.85fr) minmax(0, 1.15fr); gap: clamp(3rem, 8vw, 9rem); }
+.about-family-copy .heading { max-width: 12ch; }
+.about-family-copy > p:not(.eyebrow) { max-width: 39rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); }
+.about-family-copy .action-link { margin-top: var(--space-4); }
+.about-family-visual { position: relative; padding-bottom: clamp(2rem, 5vw, 4rem); }
+.about-family-image { position: relative; overflow: hidden; border-radius: var(--radius-image); aspect-ratio: 4 / 3; background: var(--color-paper); }
+.about-family-image img { object-fit: cover; object-position: center 45%; }
+.about-family-visual blockquote { position: absolute; right: clamp(1rem, 4vw, 3rem); bottom: 0; width: min(82%, 30rem); margin: 0; border-radius: var(--radius-md); background: var(--color-paper); color: var(--color-ink); padding: clamp(1.5rem, 3vw, 2.5rem); font-size: var(--step-2); font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; box-shadow: var(--shadow-card); }
+
+.about-name-section { background: linear-gradient(120deg, color-mix(in srgb, var(--color-brand-navy) 78%, var(--color-ink)), color-mix(in srgb, var(--color-brand-indigo) 52%, var(--color-ink))); padding-block: clamp(5rem, 9vw, 9rem); }
+.about-name-layout { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.7fr); gap: clamp(3rem, 8vw, 9rem); }
+.about-name-layout .heading { max-width: 13ch; }
+.about-name-copy > p { max-width: 40rem; margin: 0 0 var(--space-4); color: rgb(255 255 255 / 0.78); }
+.about-name-copy ul { display: flex; flex-wrap: wrap; gap: 0.65rem; margin: var(--space-5) 0 0; padding: 0; list-style: none; }
+.about-name-copy li { border: 1px solid rgb(255 255 255 / 0.3); border-radius: 999px; padding: 0.55rem 0.9rem; color: var(--color-gold); font-size: var(--step--1); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.about-community-section { padding-block: clamp(5rem, 9vw, 9rem); }
+.about-community-layout { display: grid; align-items: center; grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr); gap: clamp(3rem, 8vw, 9rem); }
+.about-community-image { position: relative; overflow: hidden; border-radius: var(--radius-image); aspect-ratio: 16 / 10; background: var(--color-paper); }
+.about-community-image img { object-fit: cover; }
+.about-community-copy .heading { max-width: 12ch; }
+.about-community-copy > p:not(.eyebrow) { max-width: 38rem; margin: var(--space-5) 0; color: var(--color-ink-soft); }
+
+.about-church-final { padding-block: clamp(5rem, 9vw, 9rem); }
+.about-church-final-layout { display: grid; align-items: end; grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.7fr); gap: clamp(3rem, 8vw, 9rem); }
+.about-church-final-layout .heading { max-width: 13ch; }
+.about-church-final-layout .lede { margin: 0; color: var(--color-ink-soft); }
+
 .route-purpose { display: grid; grid-template-columns: minmax(13rem, 0.35fr) minmax(0, 1fr); gap: clamp(3rem, 6vw, 6rem); }
 .route-status { position: sticky; top: 2rem; align-self: start; border-top: 1px solid var(--color-line); padding-top: var(--space-4); }
 .route-status p { color: var(--color-ink-soft); }
@@ -499,6 +536,10 @@ button, input, textarea, select { font: inherit; }
   .visit-kids-layout .media-frame { max-width: 42rem; }
   .next-steps-overview > .container-shell, .next-steps-class-layout, .next-steps-final-layout { grid-template-columns: 1fr; }
   .next-steps-facts { max-width: 42rem; }
+  .about-family-layout, .about-name-layout, .about-community-layout, .about-church-final-layout { grid-template-columns: 1fr; }
+  .about-family-copy { max-width: 44rem; }
+  .about-community-image { order: 2; }
+  .about-community-copy { order: 1; }
   .footer-lead { grid-template-columns: 1fr; }
   .footer-lead .footer-facts { grid-column: 1; }
 }
@@ -547,6 +588,14 @@ button, input, textarea, select { font: inherit; }
   .next-steps-pathway-grid h3 { margin: var(--space-5) 0 var(--space-3); }
   .next-steps-principles-grid article { border-bottom: 1px solid rgb(255 255 255 / 0.24); padding: var(--space-5) 0; }
   .next-steps-principles-grid article + article { border-left: 0; padding-left: 0; }
+  .about-church-hero { min-height: auto; }
+  .about-church-hero-inner { min-height: clamp(40rem, 145vw, 50rem); align-content: end; padding-block: var(--space-7); }
+  .about-church-hero-copy h1 { font-size: clamp(3.5rem, 16vw, 5.1rem); }
+  .about-church-hero-scrim { background: linear-gradient(180deg, rgb(8 9 8 / 0.28) 0%, rgb(8 9 8 / 0.9) 70%, rgb(8 9 8 / 0.96) 100%); }
+  .about-church-hero-image { object-position: 58% center; }
+  .about-family-visual { padding-bottom: 3rem; }
+  .about-family-visual blockquote { right: var(--space-3); width: calc(100% - (var(--space-3) * 2)); }
+  .about-community-image { width: 100%; aspect-ratio: 16 / 11; }
   .footer-lead .footer-facts { grid-column: 1; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid > div:first-child { grid-column: 1 / -1; margin-bottom: var(--space-4); }

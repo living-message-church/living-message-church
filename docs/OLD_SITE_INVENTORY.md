@@ -150,7 +150,7 @@ SEO titles and descriptions below are the values exposed by public Yoast metadat
 - **Major headings:** “ABOUT OUR CHURCH,” “A Church Without Membership,” “Serving our Community.”
 - **CTA/embed:** church video; Plan Your Visit.
 - **Stale claim:** says the outreach feeds over 70 people per month and teaches shelter/job/Microsoft Office classes; this differs from the newer housing-first description.
-- **Disposition:** **Keep + Rewrite + Verify** at `/about`; retain history and philosophy after pastoral/outreach approval.
+- **Disposition:** **Keep + Rewrite + Verify** at `/about-living-message-church-clermont`; retain the family philosophy and name story while withholding stale outreach claims.
 
 ### `/our-beliefs/` — Our Beliefs
 
@@ -334,7 +334,7 @@ The URL-by-URL register is generated from the production sitemaps and appended b
 | `/our-beliefs/` | Our Beliefs | page | Keep / Rewrite | `/about/beliefs` |
 | `/home/` | Home_OLD | page | Merge / Archive | `/` |
 | `/meet-our-pastor/` | Meet Our Pastor | page | Keep / Merge / Rewrite | `/about/leadership` |
-| `/about-living-message-church-clermont/` | About Our Church | page | Keep / Rewrite | `/about` |
+| `/about-living-message-church-clermont/` | About Our Church | page | Keep / Rewrite | `/about-living-message-church-clermont` |
 | `/events-living-message-church-clermont/` | Events | page | Keep / Rewrite | `/events` |
 | `/contact-living-message-church-clermont/` | Contact | page | Keep / Rewrite | `/contact` |
 | `/home2/` | Home2 | page | Merge / Archive | `/` |

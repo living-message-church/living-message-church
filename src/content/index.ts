@@ -1,3 +1,4 @@
+export * from "./about-church";
 export * from "./events";
 export * from "./home";
 export * from "./images";

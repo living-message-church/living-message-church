@@ -7,6 +7,7 @@ The primary navigation should remain concise: **New Here, About, Connect, Messag
 ```text
 /
 ├── plan-your-visit
+├── about-living-message-church-clermont
 ├── about
 │   ├── beliefs
 │   ├── leadership

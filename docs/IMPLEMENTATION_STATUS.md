@@ -9,13 +9,13 @@ Updated: 2026-08-06
 - Project-native design tokens and responsive editorial component foundation.
 - Shared primary header, accessible mobile navigation, skip link, main landmark, and footer.
 - Required homepage sections with content separated from components.
-- Implemented foundation routes: `/`, `/plan-your-visit`, `/contact`, `/privacy-policy`, `/photo-release`; `/new-here` permanently redirects to `/plan-your-visit` for backward compatibility.
+- Implemented foundation routes: `/`, `/plan-your-visit`, `/about-living-message-church-clermont`, `/contact`, `/privacy-policy`, `/photo-release`; `/new-here` permanently redirects to `/plan-your-visit` for backward compatibility.
 - Deliberate no-index staged destinations for About, beliefs, leadership, gallery, Connect, live, Events, Outreach, and Give so the full redirect ledger has valid destinations; `/messages`, `/plan-your-visit`, and `/connect/next-steps` are published from current approved sources.
 - Sitewide metadata component, canonical URLs, Open Graph/Twitter defaults, minimal verified Organization JSON-LD, XML sitemap, and robots route.
 - 452 audited 301 redirect rules sourced from the machine-readable inventory, including one query-qualified legacy route; the production `/plan-your-visit/` slug is now preserved as a 200 route.
 - Redirect validator for duplicate sources, statically missing destinations, loops, chains, ledger counts, and invalid status assumptions.
 - Lint, redirect validation, and production build pass.
-- Verification reconciliation completed: the public church name is the sole verified fact; no unresolved value was promoted.
+- Verification reconciliation remains explicit: the public church name and canonical YouTube source are verified; Next Steps and the user-directed Our Church identity story are approved for temporary use with their remaining blockers documented.
 - Priority route structures completed for About, beliefs, leadership, Connect, Kids, Youth, Young Adults, Groups, Outreach, and Give; all remain no-indexed while materially incomplete. Next Steps now has a complete indexable route sourced from the current production page.
 - Provider-neutral message and event adapters added with deterministic unavailable-source fallbacks and no fabricated records.
 - `/messages`, `/messages/live`, `/events`, and the homepage event section now consume normalized adapter results.
@@ -50,9 +50,10 @@ Updated: 2026-08-06
 - The mobile header now uses an accessible 48px icon-only navigation trigger with a larger 30px hamburger, open/close labels, gutter-aligned dropdown, and 52px navigation rows; the visible “Menu” label was removed.
 - The user-supplied `Living Message Logo.svg` is now the shared brand master across the header and footer. Header rendering preserves its native navy/brown palette, while the dark footer uses a high-contrast treatment; the superseded PNG remains archived. The message player uses a separate circular play control.
 - The “I’m New” desktop navigation group opens on hover, focus, or click and provides Plan Your Visit and Next Steps Class destinations; the mobile menu presents both links in a visible subgroup.
-- The About navigation now uses the same accessible multi-menu disclosure behavior and presents Our Church, Our Beliefs, Our Pastor, Our Team, Our Outreach, and Our Missions. Existing staged routes are temporary destinations until the user supplies each final slug and approved page content.
+- The About navigation now uses the same accessible multi-menu disclosure behavior and presents Our Church, Our Beliefs, Our Pastor, Our Team, Our Outreach, and Our Missions. Our Church now uses its supplied canonical slug; the remaining staged destinations are temporary until the user supplies their final slugs and approved page content.
 - `/plan-your-visit` now provides a complete photography-led visitor journey using only current-site facts and approved Living Message imagery. It preserves the production slug, omits the disputed Kids starting age, and keeps visitor form submission with the observed Church Center provider.
 - `/connect/next-steps` now preserves the current Connect · Serve · Grow pathway, one-class Sunday format, 10:45 AM timing, leadership-team host, Scripture references, and Church Center registration handoff in a complete responsive presentation. Unconfirmed duration, childcare, recurrence dates, and form governance remain documented rather than invented.
+- `/about-living-message-church-clermont` now preserves the user-supplied Our Church slug, family-not-membership philosophy, “Living Message” name story, general commitment to serving people, source video handoff, and visitor pathway. Stale outreach figures and changing program claims remain excluded.
 
 ## In progress
 
@@ -87,8 +88,8 @@ Run a structured content-verification workshop with operations, pastoral leaders
 | Check | Result |
 | --- | --- |
 | `npm run lint` | Passed |
-| `npm run validate:redirects` | Passed: 452 sources, 22 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
-| `npm run build` | Passed on Next.js 16.3.0 with the verified YouTube feed available during generation; all 23 generated pages plus the dynamic `/new-here` redirect, robots, sitemap, and API routes completed successfully. |
+| `npm run validate:redirects` | Passed: 451 sources, 23 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
+| `npm run build` | Passed on Next.js 16.3.0 with the verified YouTube feed available during generation; all 24 generated pages plus the dynamic `/new-here` redirect, robots, sitemap, and API routes completed successfully. |
 | Local HTTP smoke check | Home, Messages, Live, sitemap, and robots returned 200. Home and Messages rendered newest feed video `SGsP83hGEN8`; Messages was indexable, Live remained no-indexed, and the sitemap included `/messages`. |
 | Interactive browser QA | Not run: no connected browser was available |
 | Existing tests | No test command or test suite is currently configured |

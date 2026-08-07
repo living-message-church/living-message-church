@@ -13,10 +13,10 @@ export const primaryNavigation: NavigationItem[] = [
   },
   {
     label: "About",
-    href: "/about",
-    availability: "staged",
+    href: "/about-living-message-church-clermont",
+    availability: "implemented",
     children: [
-      { label: "Our Church", href: "/about", availability: "staged" },
+      { label: "Our Church", href: "/about-living-message-church-clermont", availability: "implemented" },
       { label: "Our Beliefs", href: "/about/beliefs", availability: "staged" },
       { label: "Our Pastor", href: "/about/leadership", availability: "staged" },
       { label: "Our Team", href: "/about/leadership", availability: "staged" },
@@ -44,7 +44,7 @@ export const footerGroups: FooterGroup[] = [
   {
     title: "Explore",
     links: [
-      { label: "About", href: "/about", availability: "staged" },
+      { label: "About", href: "/about-living-message-church-clermont", availability: "implemented" },
       { label: "Connect", href: "/connect", availability: "staged" },
       { label: "Messages", href: "/messages", availability: "implemented" },
       { label: "Outreach", href: "/outreach", availability: "staged" },

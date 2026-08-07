@@ -18,7 +18,7 @@ Audit date: 2026-08-05
 | --- | --- | --- |
 | `/` | Welcome, current service invitation, core identity, next event, latest message, ministries/outreach gateway | Current `/`, approved `/home/` welcome language, current address/times, curated church-owned photography |
 | `/plan-your-visit` | Complete first-visit journey | `/plan-your-visit/`, useful reassurance from `/new-visitors/` and visitor landing page, kids/check-in details, contact/directions |
-| `/about` | Story, family philosophy, mission/values, church history/name origin | `/about-living-message-church-clermont/`, `/meet-our-pastor/`, approved `/home/` copy |
+| `/about-living-message-church-clermont` | Church-family philosophy, identity/name story, and gateway to current service/outreach information | `/about-living-message-church-clermont/` and approved `/home/` copy |
 | `/about/beliefs` | Teaching philosophy and doctrine | `/our-beliefs/` after pastoral edit |
 | `/about/leadership` | Pastors, elders, deacons, ministry leaders | `/meet-our-pastor/`, `/the-team/` |
 | `/about/gallery` | Curated, consent-cleared church-life gallery (optional but justified) | `/pictures/`, `/photo-gallery/` |
@@ -45,7 +45,7 @@ Audit date: 2026-08-05
 | `/` | `/` | Keep/Rewrite | Preserve current times, address, teaching/family/outreach identity, visitor CTA. |
 | `/home/`, `/home2/` | `/` | Merge/Archive | Migrate only approved evergreen copy; remove spam, old dates/times, builder artifacts. |
 | `/?page_id=10`, `/new-visitors/`, `/plan-your-visit/`, `/so-glad-you-are-here-landing-page/`, `/new-guest-follow/`, `/services/` | `/plan-your-visit` | Merge | Use Plan Your Visit as the strongest base; verify all logistics. |
-| `/about-living-message-church-clermont/` | `/about` | Rewrite | Preserve family philosophy, history/name origin, community/outreach story. |
+| `/about-living-message-church-clermont/` | `/about-living-message-church-clermont` | Keep/Rewrite | Preserve the user-supplied slug, family philosophy, name origin, and general service story; omit stale outreach claims. |
 | `/our-beliefs/` | `/about/beliefs` | Keep/Edit | Pastoral review; correct misleading SEO phrasing. |
 | `/meet-our-pastor/`, `/the-team/` | `/about/leadership` | Merge | Confirm 16 current people, names/titles, bios, portraits, permissions. |
 | `/pictures/`, `/photo-gallery/` | `/about/gallery` | Merge/Curate | No automatic asset migration; select church-owned, consent-cleared images and write alt text. |

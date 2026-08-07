@@ -39,6 +39,12 @@ The current production `/nextsteps/` page is now represented by the canonical `/
 
 The redesigned route uses a natural Living Message lobby-connection photograph for its hero, concise class facts, a three-part pathway, locally optimized current Next Steps artwork, a restrained Scripture-reference moment, and a direct final registration invitation. The Church Center form opens as an external specialist handoff; no registration data is collected by this application. Source review confirms single-column collapse below 56rem and 48rem, bounded mobile headline sizing, stacked facts and pathway content, responsive 16:9 imagery, and shared accessible action targets. Rendered browser review remains pending because no browser connection was available.
 
+## Our Church redesign
+
+The supplied `/about-living-message-church-clermont/` slug is preserved as a direct 200 route and the former redirect to `/about` is removed. The page uses the current production source for its church-family philosophy, living-stones name story, general service emphasis, and church-video handoff. Historical outreach counts and changing class/program claims are intentionally excluded. The About dropdown and footer now point to the preserved canonical route, and the XML sitemap includes it.
+
+Source-level responsive review confirms that the photography-led hero retains bounded type, family and service splits collapse below 56rem, the family statement remains inside the image composition, the name-story columns stack, and all actions retain the shared target sizing. Final rendered optical approval remains pending because no browser connection was available.
+
 ## Plan Your Visit redesign
 
 The authoritative production `/plan-your-visit/` slug now remains a 200 destination instead of redirecting to `/new-here`; the superseded internal `/new-here` route returns a direct 301 to the preserved slug. The redesigned page uses a photography-led visitor hero, Sunday service card, three-column essentials summary, five-step arrival and connection guide, LMC Kids feature, and final invitation. Copy is limited to facts observable on the current production page: parking and greeters, hallway self check-in and pickup sticker, contemporary worship, Scripture-centered teaching, available pastors and elders, Connect Cards, current service times, and the current address. The disputed Kids starting age is intentionally omitted.
