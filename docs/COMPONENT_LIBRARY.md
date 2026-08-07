@@ -38,10 +38,10 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 
 | Component | Responsibility |
 | --- | --- |
-| `YouTubeEmbed` | Lightweight video facade using a verified thumbnail, a restrained rotating watch ring, and click-to-load privacy-enhanced YouTube playback; supports inline playback, dismissible cinema presentation, or both controls together, while disabling decorative motion for reduced-motion users |
-| `MessageLibrary` | Newest featured player plus independently playable archive cards, Cinema controls, category chips, keyword search, single-active-inline-player coordination, and an empty state for normalized message records |
+| `YouTubeEmbed` | Lightweight video facade with privacy-enhanced YouTube playback; supports a featured rotating watch ring or quiet transparent play control, inline playback, and a continuous Cinema presentation that preserves the mounted iframe and playback position |
+| `MessageLibrary` | Newest featured player with the signature rotating control, independently playable archive cards with restrained play controls, Cinema controls, category chips, keyword search, single-active-inline-player coordination, and an empty state |
 | `MessageArchive` | Compact normalized-message collection or a truthful unavailable-source state used when the verified feed is unavailable |
-| `YouTubeLiveEmbed` | Resolved Live/Upcoming player with a polished offline state and accessible full-viewport cinema dialog |
+| `YouTubeLiveEmbed` | Resolved Live/Upcoming player with a polished offline state, lower-left recurring-service schedule, and continuous full-viewport Cinema presentation that does not replace or restart the iframe |
 | `MessageAdminPrototype` | Non-persistent title/meta/category management preview; upload and save controls remain disabled pending Supabase/auth |
 | `EventCollection` | Renders normalized events as image-led editorial rows with date, location, and optional registration action, or the same layout as a truthful unavailable-source state; historical events are excluded |
 | `messageSource` adapter | Provider-neutral message boundary; fetches and normalizes the verified canonical YouTube Atom feed, derives only evidence-backed categories, and falls back to approved local records when the feed is unavailable |

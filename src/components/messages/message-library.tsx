@@ -94,6 +94,7 @@ export function MessageLibrary({ messages }: { messages: Message[] }) {
             {filteredMessages.map((message) => (
               <article className="message-library-card" key={message.id}>
                 <YouTubeEmbed
+                  controlStyle="simple"
                   inlinePlaying={playingMessageId === message.id}
                   message={message}
                   onInlinePlayingChange={(playing) => setPlayingMessageId(playing ? message.id : null)}

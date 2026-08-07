@@ -109,18 +109,6 @@ export default function OnlineChurchPage({ liveResolution, nextService }: InferG
           <p className="eyebrow">{onlineChurchContent.live.eyebrow}</p>
           <Heading as="h2" id="online-live-title" size="section">{onlineChurchContent.live.title}</Heading>
           <p>{onlineChurchContent.live.body}</p>
-          {nextService && liveResolution.video?.state !== "upcoming" ? (
-            <aside className="online-next-service" aria-label="Next scheduled live service">
-              <div>
-                <p>{onlineChurchContent.live.nextServiceEyebrow}</p>
-                <strong>{nextService.date}</strong>
-                <span>{onlineChurchContent.live.nextServiceLabel} {nextService.time}</span>
-              </div>
-              <a href={nextService.url} target="_blank" rel="noreferrer">
-                {onlineChurchContent.live.nextServiceAction}<span aria-hidden="true">↗</span>
-              </a>
-            </aside>
-          ) : null}
           <ActionGroup actions={[
             { label: onlineChurchContent.live.channelAction, href: youtubeChannel.liveUrl, style: "primary", external: true },
             { label: onlineChurchContent.live.archiveAction, href: "/messages", style: "secondary" },
@@ -128,6 +116,12 @@ export default function OnlineChurchPage({ liveResolution, nextService }: InferG
           <p className="online-live-note">{onlineChurchContent.live.note}</p>
         </div>
         <YouTubeLiveEmbed
+          nextService={{
+            date: nextService.date,
+            eyebrow: onlineChurchContent.live.nextServiceEyebrow,
+            label: onlineChurchContent.live.nextServiceLabel,
+            time: nextService.time,
+          }}
           resolutionStatus={liveResolution.status}
           video={liveResolution.video}
         />

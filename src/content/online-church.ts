@@ -15,7 +15,6 @@ export const onlineChurchContent = {
       "The player connects directly to Living Message Church’s verified YouTube channel. Start the player when a service is streaming, or open the channel in a new tab.",
     nextServiceEyebrow: "Next live service",
     nextServiceLabel: "Live begins",
-    nextServiceAction: "Open live channel",
     note:
       "A live or scheduled broadcast appears here automatically. When the church is offline, return when the next service begins.",
     channelAction: "Open live channel",

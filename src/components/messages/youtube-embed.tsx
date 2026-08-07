@@ -1,14 +1,16 @@
 "use client";
 
-import { type MouseEvent, useId, useRef, useState } from "react";
+import { type MouseEvent, useEffect, useId, useRef, useState } from "react";
 import type { Message } from "@/types/content";
 
 export function YouTubeEmbed({
+  controlStyle = "ring",
   inlinePlaying,
   message,
   onInlinePlayingChange,
   presentation = "inline",
 }: {
+  controlStyle?: "ring" | "simple";
   inlinePlaying?: boolean;
   message: Message;
   onInlinePlayingChange?: (playing: boolean) => void;
@@ -16,16 +18,38 @@ export function YouTubeEmbed({
 }) {
   const [internalInlinePlaying, setInternalInlinePlaying] = useState(false);
   const [cinemaOpen, setCinemaOpen] = useState(false);
+  const cinemaTriggerRef = useRef<HTMLButtonElement>(null);
+  const cinemaCloseRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const instanceId = useId().replaceAll(":", "");
   const videoId = message.youtubeVideoId?.value;
   const isInlinePlaying = inlinePlaying ?? internalInlinePlaying;
-  const supportsCinema = presentation !== "inline";
 
   const setInlinePlaying = (playing: boolean) => {
     if (inlinePlaying === undefined) setInternalInlinePlaying(playing);
     onInlinePlayingChange?.(playing);
   };
+
+  useEffect(() => {
+    if (!cinemaOpen || presentation !== "inline-with-cinema") return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setCinemaOpen(false);
+        window.requestAnimationFrame(() => cinemaTriggerRef.current?.focus());
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", closeOnEscape);
+    cinemaCloseRef.current?.focus();
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [cinemaOpen, presentation]);
 
   if (!videoId) {
     return (
@@ -38,6 +62,12 @@ export function YouTubeEmbed({
   const thumbnail = message.thumbnailUrl?.value ?? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
   const ringId = `watch-message-${videoId}-${instanceId}`;
   const openCinema = () => {
+    if (presentation === "inline-with-cinema") {
+      if (!isInlinePlaying) setInlinePlaying(true);
+      setCinemaOpen(true);
+      return;
+    }
+
     setInlinePlaying(false);
     setCinemaOpen(true);
     dialogRef.current?.showModal();
@@ -49,6 +79,7 @@ export function YouTubeEmbed({
   const closeVideo = () => {
     setCinemaOpen(false);
     dialogRef.current?.close();
+    window.requestAnimationFrame(() => cinemaTriggerRef.current?.focus());
   };
   const closeFromVeil = (event: MouseEvent<HTMLDialogElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -62,7 +93,15 @@ export function YouTubeEmbed({
 
   return (
     <>
-      <div className="youtube-player">
+      {cinemaOpen && presentation === "inline-with-cinema" ? (
+        <button aria-label="Exit cinema mode" className="youtube-cinema-veil" onClick={closeVideo} type="button" />
+      ) : null}
+      <div
+        aria-label={cinemaOpen ? `${message.title.value} cinema player` : undefined}
+        aria-modal={cinemaOpen || undefined}
+        className={`youtube-player${cinemaOpen && presentation === "inline-with-cinema" ? " youtube-player-cinema" : ""}`}
+        role={cinemaOpen ? "dialog" : undefined}
+      >
         {isInlinePlaying && presentation !== "cinema" ? (
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`}
@@ -80,30 +119,35 @@ export function YouTubeEmbed({
             type="button"
           >
             <span className="youtube-facade-shade" aria-hidden="true" />
-            <span className="youtube-facade-control" aria-hidden="true">
-              <svg className="youtube-facade-ring" viewBox="0 0 120 120">
-                <defs>
-                  <path id={ringId} d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
-                </defs>
-                <text>
-                  <textPath
-                    href={`#${ringId}`}
-                    lengthAdjust="spacing"
-                    startOffset="1%"
-                    textLength="283"
-                  >
-                    WATCH MESSAGE • LIVING MESSAGE CHURCH •
-                  </textPath>
-                </text>
-              </svg>
-              <span className="youtube-play-circle">
+            {controlStyle === "ring" ? (
+              <span className="youtube-facade-control" aria-hidden="true">
+                <svg className="youtube-facade-ring" viewBox="0 0 120 120">
+                  <defs>
+                    <path id={ringId} d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
+                  </defs>
+                  <text>
+                    <textPath href={`#${ringId}`} lengthAdjust="spacing" startOffset="1%" textLength="283">
+                      WATCH MESSAGE • LIVING MESSAGE CHURCH •
+                    </textPath>
+                  </text>
+                </svg>
+                <span className="youtube-play-circle">
+                  <span className="youtube-play-icon" />
+                </span>
+              </span>
+            ) : (
+              <span className="youtube-simple-play" aria-hidden="true">
                 <span className="youtube-play-icon" />
               </span>
-            </span>
+            )}
           </button>
         )}
-        {presentation === "inline-with-cinema" ? (
-          <button aria-label={`Open ${message.title.value} in cinema mode`} className="youtube-cinema-trigger" onClick={openCinema} type="button">
+        {presentation === "inline-with-cinema" ? cinemaOpen ? (
+          <button aria-label="Exit cinema mode" className="youtube-cinema-close" onClick={closeVideo} ref={cinemaCloseRef} type="button">
+            <span aria-hidden="true">Close</span>
+          </button>
+        ) : (
+          <button aria-label={`Open ${message.title.value} in cinema mode`} className="youtube-cinema-trigger" onClick={openCinema} ref={cinemaTriggerRef} type="button">
             <svg aria-hidden="true" viewBox="0 0 24 24">
               <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" />
             </svg>
@@ -111,7 +155,7 @@ export function YouTubeEmbed({
           </button>
         ) : null}
       </div>
-      {supportsCinema ? (
+      {presentation === "cinema" ? (
         <dialog className="youtube-cinema" onClick={closeFromVeil} onClose={() => setCinemaOpen(false)} ref={dialogRef}>
           <button aria-label="Close cinema player" className="youtube-cinema-close" onClick={closeVideo} type="button">
             <span aria-hidden="true">Close</span>
