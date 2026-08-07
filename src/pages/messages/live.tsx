@@ -1,7 +1,6 @@
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import Link from "next/link";
 import { onlineChurchContent, stagedPages } from "@/content";
-import { MessageArchive } from "@/components/messages/message-archive";
-import { MessageLibrary } from "@/components/messages/message-library";
 import { YouTubeLiveEmbed } from "@/components/messages/youtube-live-embed";
 import { SiteHead } from "@/components/seo/site-head";
 import { ActionGroup } from "@/components/ui/action-link";
@@ -32,7 +31,7 @@ export default function LivePage({ feed }: InferGetStaticPropsType<typeof getSta
             <p>{onlineChurchContent.hero.intro}</p>
             <nav className="online-hero-nav" aria-label="Church Online page sections">
               <a href="#watch-live">{onlineChurchContent.hero.liveAction}<span aria-hidden="true">↓</span></a>
-              <a href="#past-messages">{onlineChurchContent.hero.archiveAction}<span aria-hidden="true">↓</span></a>
+              <Link href="/messages">{onlineChurchContent.hero.archiveAction}<span aria-hidden="true">→</span></Link>
             </nav>
           </div>
         </Container>
@@ -52,7 +51,7 @@ export default function LivePage({ feed }: InferGetStaticPropsType<typeof getSta
           <p>{onlineChurchContent.live.body}</p>
           <ActionGroup actions={[
             { label: onlineChurchContent.live.channelAction, href: youtubeChannel.streamsUrl, style: "primary", external: true },
-            { label: onlineChurchContent.live.archiveAction, href: "#past-messages", style: "secondary" },
+            { label: onlineChurchContent.live.archiveAction, href: "/messages", style: "secondary" },
           ]} />
           <p className="online-live-note">{onlineChurchContent.live.note}</p>
         </div>
@@ -60,27 +59,6 @@ export default function LivePage({ feed }: InferGetStaticPropsType<typeof getSta
           channelId={youtubeChannel.id}
           thumbnailUrl={newestMessage?.thumbnailUrl?.value}
         />
-      </Section>
-
-      <Section
-        id="past-messages"
-        className="online-archive-section"
-        tone="paper"
-        labelledBy="online-archive-title"
-        containerSize="editorial"
-      >
-        <div className="online-archive-intro">
-          <p className="eyebrow">{onlineChurchContent.archive.eyebrow}</p>
-          <div>
-            <Heading as="h2" id="online-archive-title" size="section">{onlineChurchContent.archive.title}</Heading>
-            <p>{onlineChurchContent.archive.body}</p>
-          </div>
-        </div>
-        {feed.status === "available" && feed.items.length ? (
-          <MessageLibrary messages={feed.items} />
-        ) : (
-          <MessageArchive feed={feed} />
-        )}
       </Section>
 
       <Section
