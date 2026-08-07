@@ -76,7 +76,10 @@ export const pagePhotography: Record<string, ContentImage> = {
   ),
   "/connect/kids": homePhotography.ministries.kids,
   "/connect/groups": homePhotography.ministries.groups,
-  "/connect/next-steps": homePhotography.ministries["next-steps"],
+  "/connect/next-steps": approved(
+    "/images/general/living-message-lobby-community.jpg",
+    "People connecting in the lobby at Living Message Church.",
+  ),
   "/messages": homePhotography.message,
   "/messages/live": homePhotography.message,
   "/outreach": approved(
