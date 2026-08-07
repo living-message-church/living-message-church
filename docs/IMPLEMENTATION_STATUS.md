@@ -10,13 +10,13 @@ Updated: 2026-08-06
 - Shared primary header, accessible mobile navigation, skip link, main landmark, and footer.
 - Required homepage sections with content separated from components.
 - Implemented foundation routes: `/`, `/plan-your-visit`, `/contact`, `/privacy-policy`, `/photo-release`; `/new-here` permanently redirects to `/plan-your-visit` for backward compatibility.
-- Deliberate no-index staged destinations for About, beliefs, leadership, gallery, Connect, Next Steps, live, Events, Outreach, and Give so the full redirect ledger has valid destinations; `/messages` is published from its verified source.
+- Deliberate no-index staged destinations for About, beliefs, leadership, gallery, Connect, live, Events, Outreach, and Give so the full redirect ledger has valid destinations; `/messages`, `/plan-your-visit`, and `/connect/next-steps` are published from current approved sources.
 - Sitewide metadata component, canonical URLs, Open Graph/Twitter defaults, minimal verified Organization JSON-LD, XML sitemap, and robots route.
 - 452 audited 301 redirect rules sourced from the machine-readable inventory, including one query-qualified legacy route; the production `/plan-your-visit/` slug is now preserved as a 200 route.
 - Redirect validator for duplicate sources, statically missing destinations, loops, chains, ledger counts, and invalid status assumptions.
 - Lint, redirect validation, and production build pass.
 - Verification reconciliation completed: the public church name is the sole verified fact; no unresolved value was promoted.
-- Priority route structures completed for About, beliefs, leadership, Connect, Kids, Youth, Young Adults, Groups, Next Steps, Outreach, and Give; all remain no-indexed while materially incomplete.
+- Priority route structures completed for About, beliefs, leadership, Connect, Kids, Youth, Young Adults, Groups, Outreach, and Give; all remain no-indexed while materially incomplete. Next Steps now has a complete indexable route sourced from the current production page.
 - Provider-neutral message and event adapters added with deterministic unavailable-source fallbacks and no fabricated records.
 - `/messages`, `/messages/live`, `/events`, and the homepage event section now consume normalized adapter results.
 - Editorial route panels, feed states, stronger page-hero treatment, card depth, and responsive compositions refined.
@@ -51,6 +51,7 @@ Updated: 2026-08-06
 - The user-supplied `Living Message Logo.svg` is now the shared brand master across the header and footer. Header rendering preserves its native navy/brown palette, while the dark footer uses a high-contrast treatment; the superseded PNG remains archived. The message player uses a separate circular play control.
 - The “I’m New” desktop navigation group opens on hover, focus, or click and provides Plan Your Visit and Next Steps Class destinations; the mobile menu presents both links in a visible subgroup.
 - `/plan-your-visit` now provides a complete photography-led visitor journey using only current-site facts and approved Living Message imagery. It preserves the production slug, omits the disputed Kids starting age, and keeps visitor form submission with the observed Church Center provider.
+- `/connect/next-steps` now preserves the current Connect · Serve · Grow pathway, one-class Sunday format, 10:45 AM timing, leadership-team host, Scripture references, and Church Center registration handoff in a complete responsive presentation. Unconfirmed duration, childcare, recurrence dates, and form governance remain documented rather than invented.
 
 ## In progress
 
@@ -64,7 +65,7 @@ Updated: 2026-08-06
 - Leadership roster, spellings, titles, biographies, and portraits.
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
 - Authoritative event source and publishing/registration policy.
-- Church Center namespaces, giving destination, visit form, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
+- Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
 - Outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
 

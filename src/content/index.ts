@@ -5,6 +5,7 @@ export * from "./leadership";
 export * from "./messages";
 export * from "./ministries";
 export * from "./navigation";
+export * from "./next-steps";
 export * from "./outreach";
 export * from "./pages";
 export * from "./priority-routes";

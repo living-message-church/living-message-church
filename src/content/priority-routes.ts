@@ -132,19 +132,6 @@ export const priorityRouteContent = {
     ],
     { label: "Explore Connect", href: "/connect", style: "secondary" },
   ),
-  nextSteps: pending(
-    "/connect/next-steps",
-    "Next Steps Class",
-    "I’m new",
-    "A thoughtful next step.",
-    "The legacy route describes a connection pathway, but its schedule and registration destination remain unverified.",
-    [
-      { number: "01", title: "Connect", body: "Approved orientation and church-connection details will be presented here." },
-      { number: "02", title: "Serve", body: "Volunteer interest will hand off to the approved operational workflow without collecting screening data here." },
-      { number: "03", title: "Grow", body: "Approved discipleship and follow-up expectations will complete the pathway." },
-    ],
-    { label: "Contact the church", href: "/contact", style: "primary" },
-  ),
   outreach: pending(
     "/outreach",
     "Outreach",

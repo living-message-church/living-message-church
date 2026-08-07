@@ -8,7 +8,7 @@ export const primaryNavigation: NavigationItem[] = [
     availability: "implemented",
     children: [
       { label: "Plan Your Visit", href: "/plan-your-visit", availability: "implemented" },
-      { label: "Next Steps Class", href: "/connect/next-steps", availability: "staged" },
+      { label: "Next Steps Class", href: "/connect/next-steps", availability: "implemented" },
     ],
   },
   { label: "About", href: "/about", availability: "staged" },

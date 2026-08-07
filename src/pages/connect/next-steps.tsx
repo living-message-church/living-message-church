@@ -1,3 +1,1 @@
-import { priorityRouteContent } from "@/content";
-import { PriorityPage } from "@/components/pages/priority-page";
-export default function NextStepsPage() { return <PriorityPage content={priorityRouteContent.nextSteps} />; }
+export { NextStepsPage as default } from "@/components/pages/next-steps-page";

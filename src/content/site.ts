@@ -163,4 +163,16 @@ export const externalServiceLinks: ExternalServiceLink[] = [
       note: "Form fields, recipient, automation, retention, and account owner are pending verification.",
     },
   },
+  {
+    id: "next-steps-registration",
+    label: "Register for Next Steps",
+    provider: "Planning Center / Church Center",
+    purpose: "registration",
+    url: {
+      value: "https://livingmessagechurch.churchcenter.com/people/forms/979623",
+      status: "approved-temporary",
+      source: `${productionSource}nextsteps/`,
+      note: "Current production-page destination; user directed reuse of this page on 2026-08-06. Provider ownership still requires operational verification.",
+    },
+  },
 ];

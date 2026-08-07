@@ -29,7 +29,13 @@ The desktop homepage hero now completes a full first-screen composition at every
 
 The desktop primary navigation now uses a wider fluid item gap (`1.2rem` to `1.9rem`), restrained positive tracking, and a slightly more generous active underline. The editorial header container and existing 70rem mobile-navigation breakpoint prevent the expanded rhythm from crowding intermediate widths.
 
-“New Here” is now the “I’m New” navigation group. Its desktop disclosure exposes “Plan Your Visit” (`/plan-your-visit`) and “Next Steps Class” (`/connect/next-steps`) through a semantic button with `aria-expanded` and `aria-controls`. It opens on pointer hover, keyboard focus, or click; closes on pointer exit, focus exit, or Escape; and returns focus to its trigger after Escape. Mobile presents the same destinations as an always-visible subgroup inside the existing navigation disclosure. Unverified Next Steps details remain staged.
+“New Here” is now the “I’m New” navigation group. Its desktop disclosure exposes “Plan Your Visit” (`/plan-your-visit`) and “Next Steps Class” (`/connect/next-steps`) through a semantic button with `aria-expanded` and `aria-controls`. It opens on pointer hover, keyboard focus, or click; closes on link selection, pointer exit, focus exit, or Escape; and returns focus to its trigger after Escape. Mobile presents the same destinations as an always-visible subgroup inside the existing navigation disclosure.
+
+## Next Steps redesign
+
+The current production `/nextsteps/` page is now represented by the canonical `/connect/next-steps` route. The route preserves the observable one-class Sunday format, its 10:45 AM service timing, leadership-team host, Connect · Serve · Grow pathway, three Scripture references, and Church Center form `979623`. The source page and user direction authorize temporary publication; duration, childcare, recurrence dates, form recipient, retention, and Planning Center ownership remain explicit verification blockers.
+
+The redesigned route uses a human photography-led hero, concise class facts, a three-part pathway, locally optimized current Next Steps artwork, a restrained Scripture-reference moment, and a direct final registration invitation. The Church Center form opens as an external specialist handoff; no registration data is collected by this application. Source review confirms single-column collapse below 56rem and 48rem, bounded mobile headline sizing, stacked facts and pathway content, responsive 16:9 imagery, and shared accessible action targets. Rendered browser review remains pending because no browser connection was available.
 
 ## Plan Your Visit redesign
 

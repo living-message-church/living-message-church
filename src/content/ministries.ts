@@ -49,6 +49,6 @@ export const ministries: Ministry[] = [
       source: "https://www.livingmessagechurch.com/nextsteps/",
     },
     href: "/connect/next-steps",
-    availability: "staged",
+    availability: "published",
   },
 ];
