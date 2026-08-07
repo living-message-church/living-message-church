@@ -32,6 +32,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 - `PriorityPage` provides a production-quality editorial structure for verification-gated About, Connect, Outreach, and Give routes without leaking unresolved facts.
 - `BeliefsPage` presents the sourced doctrinal introduction and six statement groups through a photography-led hero and native, keyboard-accessible disclosure rows.
 - `PastorPage` presents the sourced Broadway biography through the production-page hero, family portrait, restrained ministry timeline, focus list, and shared Sunday invitation.
+- `TeamPage` renders the approved-temporary team collection as an image-led directory with exact Executive Team, Deacon, and Ministry Leader tiers. Its private `TeamCard` consumes only normalized `TeamMember` records, allowing a future authenticated adapter to replace the local source without changing presentation.
 
 ## Integration components
 

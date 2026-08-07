@@ -35,22 +35,9 @@ export const priorityRouteContent = {
     [
       { number: "01", title: "Story and identity", body: "The approved history, name origin, and church-family language will live here after pastoral review." },
       { number: "02", title: "Beliefs", body: "Read the church’s complete current doctrinal statement and Scripture references.", href: "/about/beliefs", linkLabel: "Open beliefs" },
-      { number: "03", title: "Leadership", body: "The leadership route is prepared for an approved roster, titles, biographies, and portraits.", href: "/about/leadership", linkLabel: "Open leadership" },
+      { number: "03", title: "Leadership", body: "Meet the pastors, elders, deacons, and ministry leaders serving Living Message Church.", href: "/about/leadership", linkLabel: "Meet our team" },
     ],
     { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
-  ),
-  leadership: pending(
-    "/about/leadership",
-    "Leadership",
-    "About",
-    "Leadership, clearly represented.",
-    "The route is ready for verified people records without exposing the disputed names, titles, or outdated portraits found in the legacy site.",
-    [
-      { number: "01", title: "Pastoral leadership", body: "Names, titles, biographies, and display order require individual and pastoral approval." },
-      { number: "02", title: "Elders and deacons", body: "The audited roster remains withheld until active status and spelling are confirmed." },
-      { number: "03", title: "Ministry leaders", body: "Approved roles and responsibility summaries will connect people to the right ministry pages." },
-    ],
-    { label: "Contact the church", href: "/contact", style: "primary" },
   ),
   connect: pending(
     "/connect",

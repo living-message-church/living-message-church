@@ -423,6 +423,35 @@ button, input, textarea, select { font: inherit; }
 .pastor-focus-layout li { display: grid; min-height: 4.75rem; align-items: center; grid-template-columns: 3rem minmax(0, 1fr); border-bottom: 1px solid rgb(255 255 255 / 0.22); color: white; font-size: var(--step-1); font-weight: 700; letter-spacing: -0.02em; }
 .pastor-focus-layout li span { color: var(--color-gold); font-size: var(--step--1); font-variant-numeric: tabular-nums; }
 
+.team-hero { position: relative; display: grid; min-height: clamp(38rem, 72svh, 51rem); isolation: isolate; overflow: hidden; background: var(--color-ink); color: white; }
+.team-hero-image { z-index: -3; object-fit: cover; object-position: center 46%; }
+.team-hero-scrim { position: absolute; z-index: -2; background: linear-gradient(90deg, rgb(8 9 8 / 0.92) 0%, rgb(8 9 8 / 0.62) 48%, rgb(8 9 8 / 0.18) 100%); inset: 0; }
+.team-hero-inner { display: grid; min-height: inherit; align-items: end; padding-block: clamp(4rem, 7vw, 6.5rem); }
+.team-hero-copy { max-width: 60rem; }
+.team-hero-copy h1 { max-width: 10ch; margin: 0; font-size: clamp(4.3rem, 2.9rem + 5vw, 7.8rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; text-wrap: balance; }
+.team-hero-copy > p:not(.eyebrow) { max-width: 38rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.84); font-size: var(--step-1); line-height: 1.45; }
+
+.team-directory { background: white; padding-block: clamp(5rem, 9vw, 9rem); }
+.team-directory-intro { display: grid; grid-template-columns: minmax(12rem, 0.32fr) minmax(24rem, 0.9fr) minmax(20rem, 0.66fr); gap: clamp(2rem, 5vw, 6rem); align-items: start; }
+.team-directory-intro .heading { max-width: 11ch; }
+.team-directory-intro > p:last-child { max-width: 34rem; margin: 0; color: var(--color-ink-soft); font-size: var(--step-1); }
+.team-tier-list { margin-top: clamp(5rem, 10vw, 10rem); }
+.team-tier { border-top: 1px solid var(--color-ink); padding-top: var(--space-4); }
+.team-tier + .team-tier { margin-top: clamp(5rem, 9vw, 9rem); }
+.team-tier-heading { display: grid; align-items: start; grid-template-columns: 3.5rem minmax(0, 1fr); gap: var(--space-4); margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.team-tier-heading > span { padding-top: 0.35rem; color: var(--color-coral); font-size: var(--step--1); font-weight: 700; font-variant-numeric: tabular-nums; }
+.team-tier-heading h2 { margin: 0; font-size: var(--step-3); font-weight: 700; letter-spacing: -0.045em; line-height: 0.98; }
+.team-tier-heading p { max-width: 37rem; margin: var(--space-2) 0 0; color: var(--color-ink-soft); }
+.team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 3.25rem); }
+.team-grid-ministry-leaders { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.team-card { min-width: 0; }
+.team-card-image { position: relative; overflow: hidden; width: 100%; border-radius: var(--radius-image); aspect-ratio: 7 / 10; background: var(--color-paper); }
+.team-card-image img { object-fit: cover; transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+.team-card:hover .team-card-image img { transform: scale(1.018); }
+.team-card-copy { padding: var(--space-3) 0 0; }
+.team-card-copy h3 { margin: 0; font-size: var(--step-1); font-weight: 700; letter-spacing: -0.025em; line-height: 1.08; }
+.team-card-copy p { margin: 0.4rem 0 0; color: var(--color-ink-soft); font-size: var(--step--1); }
+
 .route-purpose { display: grid; grid-template-columns: minmax(13rem, 0.35fr) minmax(0, 1fr); gap: clamp(3rem, 6vw, 6rem); }
 .route-status { position: sticky; top: 2rem; align-self: start; border-top: 1px solid var(--color-line); padding-top: var(--space-4); }
 .route-status p { color: var(--color-ink-soft); }
@@ -623,6 +652,9 @@ button, input, textarea, select { font: inherit; }
   .beliefs-statements-intro { position: static; max-width: 42rem; }
   .pastor-profile-image { position: relative; top: auto; max-width: 40rem; }
   .pastor-story-heading { position: static; max-width: 42rem; }
+  .team-directory-intro { grid-template-columns: minmax(10rem, 0.32fr) minmax(0, 1fr); }
+  .team-directory-intro > p:last-child { grid-column: 2; }
+  .team-grid, .team-grid-ministry-leaders { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-lead { grid-template-columns: 1fr; }
   .footer-lead .footer-facts { grid-column: 1; }
 }
@@ -697,6 +729,17 @@ button, input, textarea, select { font: inherit; }
   .pastor-hero-image { object-position: 52% center; }
   .pastor-timeline article { grid-template-columns: 1fr; gap: var(--space-2); }
   .pastor-focus-layout li { min-height: 4.5rem; }
+  .team-hero { min-height: auto; }
+  .team-hero-inner { min-height: clamp(38rem, 138vw, 48rem); align-content: end; padding-block: var(--space-7); }
+  .team-hero-copy h1 { font-size: clamp(3.6rem, 17vw, 5.25rem); }
+  .team-hero-scrim { background: linear-gradient(180deg, rgb(8 9 8 / 0.24) 0%, rgb(8 9 8 / 0.9) 68%, rgb(8 9 8 / 0.97) 100%); }
+  .team-hero-image { object-position: 56% center; }
+  .team-directory-intro { grid-template-columns: 1fr; gap: var(--space-3); }
+  .team-directory-intro > p:last-child { grid-column: auto; margin-top: var(--space-2); }
+  .team-tier-heading { grid-template-columns: 2.25rem minmax(0, 1fr); gap: var(--space-3); }
+  .team-grid, .team-grid-ministry-leaders { grid-template-columns: 1fr; gap: var(--space-6); }
+  .team-card { width: min(100%, 31rem); }
+  .team-card-copy { padding-top: var(--space-3); }
   .footer-lead .footer-facts { grid-column: 1; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid > div:first-child { grid-column: 1 / -1; margin-bottom: var(--space-4); }

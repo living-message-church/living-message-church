@@ -73,6 +73,22 @@ export interface LeadershipPerson {
   image?: ContentImage;
 }
 
+export type TeamTierId = "executive" | "deacons" | "ministry-leaders";
+
+export interface TeamMember extends LeadershipPerson {
+  tier: TeamTierId;
+  order: number;
+  active: boolean;
+  image: ContentImage;
+}
+
+export interface TeamTier {
+  id: TeamTierId;
+  label: string;
+  summary: string;
+  members: TeamMember[];
+}
+
 export interface Ministry {
   id: string;
   name: SourcedValue<string>;

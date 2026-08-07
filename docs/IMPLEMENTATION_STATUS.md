@@ -9,14 +9,14 @@ Updated: 2026-08-07
 - Project-native design tokens and responsive editorial component foundation.
 - Shared primary header, accessible mobile navigation, skip link, main landmark, and footer.
 - Required homepage sections with content separated from components.
-- Implemented foundation routes: `/`, `/plan-your-visit`, `/about-living-message-church-clermont`, `/about/beliefs`, `/about/pastor`, `/contact`, `/privacy-policy`, `/photo-release`; `/new-here` permanently redirects to `/plan-your-visit` for backward compatibility.
-- Deliberate no-index staged destinations for About, leadership, gallery, Connect, live, Events, Outreach, and Give keep the full redirect ledger valid; `/messages`, `/plan-your-visit`, `/connect/next-steps`, and `/about/beliefs` are published from current approved sources.
+- Implemented foundation routes: `/`, `/plan-your-visit`, `/about-living-message-church-clermont`, `/about/beliefs`, `/about/pastor`, `/about/leadership`, `/contact`, `/privacy-policy`, `/photo-release`; `/new-here` permanently redirects to `/plan-your-visit` for backward compatibility.
+- Deliberate no-index staged destinations for About, gallery, Connect, live, Events, Outreach, and Give keep the full redirect ledger valid; `/messages`, `/plan-your-visit`, `/connect/next-steps`, `/about/beliefs`, `/about/pastor`, and `/about/leadership` are published from current approved sources.
 - Sitewide metadata component, canonical URLs, Open Graph/Twitter defaults, minimal verified Organization JSON-LD, XML sitemap, and robots route.
 - 452 audited 301 redirect rules sourced from the machine-readable inventory, including one query-qualified legacy route; the production `/plan-your-visit/` slug is now preserved as a 200 route.
 - Redirect validator for duplicate sources, statically missing destinations, loops, chains, ledger counts, and invalid status assumptions.
 - Lint, redirect validation, and production build pass.
 - Verification reconciliation remains explicit: the public church name and canonical YouTube source are verified; Next Steps, the user-directed Our Church identity story, the current doctrinal statement, and the current Pastor biography/history are approved for temporary use with their remaining blockers documented.
-- Priority route structures remain for About, leadership, Connect, Kids, Youth, Young Adults, Groups, Outreach, and Give. The materially incomplete routes remain no-indexed; Next Steps and Our Beliefs now have complete indexable routes sourced from their current production pages.
+- Priority route structures remain for About, Connect, Kids, Youth, Young Adults, Groups, Outreach, and Give. The materially incomplete routes remain no-indexed; Next Steps, Our Beliefs, Our Pastor, and Our Team now have complete indexable routes sourced from their current production pages.
 - Provider-neutral message and event adapters added with deterministic unavailable-source fallbacks and no fabricated records.
 - `/messages`, `/messages/live`, `/events`, and the homepage event section now consume normalized adapter results.
 - Editorial route panels, feed states, stronger page-hero treatment, card depth, and responsive compositions refined.
@@ -25,7 +25,7 @@ Updated: 2026-08-07
 - Design System Review completed with a presentation-only refinement pass: calmer type scale, tighter rhythm, warmer neutral-dominant palette, quieter cards/actions/navigation/placeholders, and reduced decorative motion.
 - Existing Living Message Church production logo added locally and used through `next/image` in the header and footer; source and approval recorded in `ASSET_REGISTER.md`.
 - Existing Living Message Church community promo video added as an optimized 720p H.264 hero background with a 204 KB poster fallback; the 46.15 MB source was reduced to 7.28 MB, stripped of audio, and gated off for mobile/reduced-motion visitors.
-- Ten production-site Living Message Church photographs were audited, locally optimized, registered, and integrated across the homepage and priority page heroes; no reference-site assets were used.
+- The production-site Living Message Church photography library—including the unique Team hero and all 16 current roster portraits—was audited, locally optimized, registered, and integrated; no reference-site assets were used.
 - Homepage first-visit, latest-message, Kids, Groups, Next Steps, and outreach visual placeholders were replaced with church-specific photography using the existing `MediaFrame` and typed content foundation.
 - New Here, Contact, About, Leadership, Connect, Kids, Groups, Next Steps, Messages, Live, and Outreach now use restrained photography-led page heroes without changing routes or page structures.
 - Homepage hero copy was refined to “Come as you are. Grow in truth. Find community.” with deliberate line breaks, a roughly 9% smaller desktop cap, tighter line-height, narrower measure, and desktop-only compositional offset.
@@ -56,6 +56,7 @@ Updated: 2026-08-07
 - `/about-living-message-church-clermont` now preserves the user-supplied Our Church slug, family-not-membership philosophy, “Living Message” name story, general commitment to serving people, and visitor pathway. Its supplied YouTube story uses a compact poster and an optional cinema-mode player, and its hero uses a unique production-site worship image. Stale outreach figures and changing program claims remain excluded.
 - `/about/beliefs` now preserves the current Why Beliefs Matter introduction, historic-confession note, six doctrinal statement groups, and Scripture references in a premium native accordion. It uses neutral SEO, a unique production-site Bible-study image, and remains explicitly subject to final pastoral proofreading.
 - `/about/pastor` now preserves the current Broadway biography, the exact production-page header photograph, current family portrait, sourced 2004/2009 history, and ministry focus in a dedicated premium route. The old Pastor URL now redirects directly to it instead of the staged Team page.
+- `/about/leadership` now preserves the current 6-person Executive Team, 6 Deacons, and 4 Ministry Leaders with their published order, titles, and individual portraits. The page uses a quieter image-led directory, responsive 3/4/2/1-column compositions, and typed `TeamMember`/`TeamTier` records ready for a future authenticated admin adapter without adding a backend now.
 
 ## In progress
 
@@ -66,7 +67,7 @@ Updated: 2026-08-07
 ## Blocked by verification
 
 - Service/online times, address/map/entrance, phone, email, accessibility, service duration, and kids ages/safety.
-- Leadership roster, spellings, titles, biographies, and portraits.
+- Final individual team active status, spelling/title approval, biography copy, and portrait release records; the current production roster is approved only for temporary use.
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
 - Authoritative event source and publishing/registration policy.
 - Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
@@ -78,7 +79,7 @@ Updated: 2026-08-07
 - Supabase persistence/auth/storage, native form submission, newsletter integration, prayer handling, analytics, and consent tooling.
 - Full-history YouTube Data API or future Supabase editorial sync and the live event API. The credential-free YouTube feed currently supplies the newest 15 records; local records remain a failure fallback.
 - Dynamic message/event detail routes; public message search and category filtering are now implemented.
-- Full ministry, leadership, history, and gallery publication.
+- Full ministry, expanded leadership biographies, history, and gallery publication.
 - Production deployment, DNS changes, and WordPress decommissioning.
 
 ## Recommended next milestone

@@ -14,7 +14,7 @@ This document recommends responsibilities, not an immediate implementation. No p
 | --- | --- | --- | --- |
 | Stable page copy: About, beliefs, history, policies, visitor logistics | Next repository initially | **Static Content** | Versioned, reviewable, fast, and appropriate for low-frequency content. Use typed content/MDX or equivalent; exact approach follows the Next 16 architecture decision. |
 | Navigation, footer, service facts, contact details | One typed global content record | **Static Content** | Prevent contradictory copies. Include an explicit last-verified date and content owner. |
-| Ministries and leadership | Typed structured records; optional editor store later | **Static Content**, potentially **Supabase** after editorial workflow is justified | Start simple. Add a protected editor/database only if staff cannot maintain repo-reviewed content; do not build an admin merely by assumption. |
+| Ministries and leadership | Typed structured records; protected editor store when authorized | **Static Content** now; planned **Supabase** adapter after admin/auth governance is approved | The project owner requested a future Team admin on 2026-08-07. Preserve the current normalized content boundary now; add persistence only with approved authentication, roles, image-storage ownership, audit history, and publishing workflow. |
 | Messages/sermons | YouTube as media host; native metadata/index | **Third-party API** plus cached/static records | Fetch only verified channel/playlist metadata server-side and cache/revalidate it. Allow curated corrections for title, speaker, scripture, series, summary, and transcript. Keep live and on-demand distinct. |
 | Podcast/audio | Podbean if active | **Third-party API/feed** or external link | Confirm ownership/activity first. Do not create a second sermon archive with conflicting metadata. |
 | Upcoming events | Planning Center/Church Center if staff confirms it as source of truth | **Third-party API** or native summaries with external registration | Keep registration, payment, capacity, and check-in external. Cache public event data and provide accessible direct links. If no suitable approved API/workflow exists, use reviewed static event records rather than scraping. |
@@ -64,6 +64,12 @@ Supabase is a suitable future option for native submissions and structured edito
 - never store giving card/bank data, background-check data, or Planning Center credentials.
 
 If staff does not need an editor workflow, stable public content should remain version-controlled rather than adding a database.
+
+### Planned Team admin boundary
+
+The public Team directory now consumes normalized `TeamMember` and `TeamTier` records rather than embedding people inside components. A future authenticated adapter may replace the local collection without changing the public page. Its minimum record should preserve a stable ID, tier, display order, active state, approved display name, approved title, portrait path, alt text, verification status, source/approval note, and updated timestamp.
+
+Before implementation, approve staff roles, sign-in and recovery, draft/publish behavior, image ownership and deletion, change history, rollback/export, and who can mark a record public. Public reads may expose only published records. Service-role keys stay server-only; anonymous writes and direct client-side Storage mutation are prohibited. This milestone does not authorize Supabase, authentication, uploads, or mutations.
 
 ## Integration principles
 

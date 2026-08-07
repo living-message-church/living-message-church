@@ -31,7 +31,7 @@ The desktop primary navigation now uses a wider fluid item gap (`1.2rem` to `1.9
 
 “New Here” is now the “I’m New” navigation group. Its desktop disclosure exposes “Plan Your Visit” (`/plan-your-visit`) and “Next Steps Class” (`/connect/next-steps`) through a semantic button with `aria-expanded` and `aria-controls`. It opens on pointer hover, keyboard focus, or click; closes on link selection, pointer exit, focus exit, or Escape; and returns focus to its trigger after Escape. Mobile presents the same destinations as an always-visible subgroup inside the existing navigation disclosure.
 
-The same disclosure behavior now supports more than one primary-navigation group without opening sibling menus. About presents the requested Our Church, Our Beliefs, Our Pastor, Our Team, Our Outreach, and Our Missions labels in a wider desktop panel and a visible mobile subgroup. Until final slugs arrive, Pastor and Team share the existing staged leadership destination, while Outreach and Missions share the existing staged outreach destination; no speculative pages were created.
+The same disclosure behavior now supports more than one primary-navigation group without opening sibling menus. About presents Our Church, Our Beliefs, Our Pastor, and Our Team as separate implemented destinations, with Our Outreach and Our Missions still sharing the staged outreach destination. Desktop and mobile use the same route labels without opening sibling menus or inventing unresolved outreach content.
 
 ## Next Steps redesign
 
@@ -53,7 +53,7 @@ The route uses a unique Living Message Bible-study photograph, a restrained two-
 
 ## Our Pastor redesign
 
-The dedicated `/about/pastor` route now separates the current Broadway biography from the still-staged Team directory. It preserves the production page’s exact `IMG_0914-1.jpg` header photograph, current family portrait, New York and Long Island background, 2001 marriage, Grace and Hannah, mission travel, 2004 Clermont move, 2009 church start, and stated expository-teaching, discipleship, church-family, and outreach focus. The copy receives grammar and reading-rhythm cleanup without adding biography claims; the current page and user direction authorize temporary use while the Team page’s “Bishop” variant and final personal approval remain documented.
+The dedicated `/about/pastor` route separates the current Broadway biography from the team directory. It preserves the production page’s exact `IMG_0914-1.jpg` header photograph, current family portrait, New York and Long Island background, 2001 marriage, Grace and Hannah, mission travel, 2004 Clermont move, 2009 church start, and stated expository-teaching, discipleship, church-family, and outreach focus. The copy receives grammar and reading-rhythm cleanup without adding biography claims; the current page and user direction authorize temporary use while the Team page’s “Bishop” variant and final personal approval remain documented.
 
 The layout uses a full-width teaching hero, square family portrait with bounded biography copy, a three-point milestone list, a restrained navy-to-indigo ministry-focus moment, and the shared Sunday invitation. Profile, timeline, and focus grids collapse at 56rem; the portrait loses its sticky behavior, timeline labels stack, the hero receives a mobile vertical scrim, and type remains bounded below 48rem. Rendered optical approval remains pending because no browser connection was available.
 
@@ -132,6 +132,14 @@ The browser-control runtime again reported no connected in-app or extension brow
 
 HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoints, provider fallbacks, redirects, lint, and the production build were tested directly.
 
+## Our Team directory update
+
+The production `/the-team/` page modified 2026-07-31 was reconciled into the canonical `/about/leadership` route. The route preserves its three tiers and source order: 6 Executive Team members, 6 Deacons, and 4 Ministry Leaders. All 16 production portraits and the source page’s unique worship hero were locally optimized and rendered through `next/image`; incorrect legacy alt labels were replaced with meaningful person-and-role descriptions.
+
+Source review confirms a 3-column portrait grid for Executive Team and Deacons, a 4-column Ministry Leader grid on wide screens, a 2-column tablet composition, and one bounded portrait card per row below 48rem. Cards use a stable 7:10 frame, natural document-height copy, quiet spacing, no large shadow, and only a restrained crop transition that is suppressed by the global reduced-motion rule. The page has one `h1`, tier `h2` headings, person `h3` headings, indexable metadata, and no interactive card behavior requiring a keyboard target.
+
+Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 16 card records and all three tier labels, emitted no `noindex`, and appeared in the XML sitemap. Legacy `/the-team/` returned one direct 301 to `/about/leadership`. Browser-level optical crop approval remains pending because no connected browser is available.
+
 ## Viewport matrix
 
 | Viewport | Status | Result |
@@ -157,7 +165,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | Area | Evidence |
 | --- | --- |
 | Primary and priority routes | Existing public routes plus the new no-index `/admin/messages` prototype build successfully; representative Home, Messages, Live, and Admin routes returned HTTP 200 locally. |
-| Staged/no-index handling | About, beliefs, leadership, all Connect routes, Live, Events, Outreach, and Give emitted `noindex, nofollow`; the verified `/messages` archive is indexable. |
+| Staged/no-index handling | About, Gallery, most Connect routes, Live, Events, Outreach, and Give retain deliberate `noindex, nofollow`; Beliefs, Pastor, Team, Next Steps, and the verified `/messages` archive are indexable. |
 | Metadata | Home emitted a unique title, canonical URL, Open Graph/Twitter metadata, and Organization JSON-LD. |
 | Structured-data restraint | Only the verified organization name and canonical URL are emitted; no address, phone, service, event, sermon, rating, or founding claims were fabricated. |
 | Messages source | Home, `/messages`, and `/messages/live` consume the verified canonical YouTube feed through one normalized adapter, with approved local records retained only for feed failure. |
@@ -172,7 +180,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | Button sizing | Action links have a 3rem minimum height and responsive wrapping. |
 | Reduced-motion code path | `prefers-reduced-motion: reduce` disables smooth scrolling and minimizes animation/transition duration. |
 | Photography crops | Local approved-source images render within defined 4:3 and 16:9 frames using `next/image`, responsive `sizes`, and `object-fit: cover`; page-hero backgrounds use capped cover crops. |
-| Sitemap/robots | Both returned HTTP 200; the sitemap contains the published Home, New Here, Contact, and Messages routes. |
+| Sitemap/robots | Both returned HTTP 200; the sitemap contains the published Home, Plan Your Visit, About, Beliefs, Pastor, Team, Next Steps, Messages, and Contact routes. |
 
 ## Failed and fixed
 
@@ -192,6 +200,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 - Increased image allocation in identity, visit, message, and outreach compositions while preserving their existing text measures.
 - Bounded supporting ministry cards within the wider editorial grid instead of stretching them to fill every available pixel.
 - Rebalanced the footer into three intentional lead columns and added an earlier tablet collapse to avoid minimum-track overflow.
+- Replaced the staged Leadership placeholder with a complete 16-person, source-ordered Team directory; normalized every portrait to a stable 7:10 card crop and collapsed its 3/4-column desktop grids safely through two columns to one.
 
 ## Pending manual verification
 
@@ -213,7 +222,8 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | --- | --- |
 | `npm run lint` | Passed |
 | `npm run validate:redirects` | Passed |
-| `npm run build` | Passed on Next.js 16.3.0 with the verified public YouTube feed available during generation; all 23 pages plus robots, sitemap, and API route generated successfully |
-| Current message-control refinement | `npm run lint` passed. The default Turbopack build reached TypeScript and then hit an environment-level internal port restriction; `npm run build -- --webpack` completed successfully and generated all 23 pages. |
+| `npm run build -- --webpack` | Passed on Next.js 16.3.0 with the verified public YouTube feed available during generation; all 25 pages plus robots, sitemap, and API routes generated successfully |
+| Our Team route smoke | Passed; `/about/leadership` returned 200 with 16 cards and 3 tiers, remained indexable, appeared in the sitemap, and `/the-team/` returned a direct 301 to it. |
+| Current message-control refinement | `npm run lint` passed. The default Turbopack build reached TypeScript and then hit an environment-level internal port restriction; the webpack production path remains the validated build command. |
 | Message milestone route smoke | Passed; Home, Messages, Live, sitemap, and robots returned HTTP 200. Home and Messages contained newest video `SGsP83hGEN8`; Messages was indexable, Live retained no-index, and the sitemap contained `/messages`. |
 | Existing automated tests | No test suite or test command is configured |
