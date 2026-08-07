@@ -8,13 +8,17 @@ import { Eyebrow, Heading } from "@/components/ui/typography";
 import type { TeamMember } from "@/types/content";
 
 function TeamCard({ member }: { member: TeamMember }) {
+  const isFeatured = member.id === "brian-broadway" || member.id === "allison-broadway";
+
   return (
-    <article className="team-card">
+    <article className={`team-card${isFeatured ? " team-card-featured" : ""}`}>
       <div className="team-card-image">
         <Image
           alt={member.image.alt}
           fill
-          sizes="(max-width: 48rem) 82vw, (max-width: 72rem) 42vw, 22vw"
+          sizes={isFeatured
+            ? "(max-width: 48rem) 82vw, (max-width: 72rem) 42vw, 28rem"
+            : "(max-width: 48rem) 82vw, (max-width: 72rem) 42vw, 21vw"}
           src={member.image.src}
         />
       </div>
