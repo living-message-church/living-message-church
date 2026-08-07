@@ -18,7 +18,7 @@ export const ministries: Ministry[] = [
       status: "needs-verification",
       source: "docs/CONTENT_GAPS.md",
     },
-    href: "/new-here#kids",
+    href: "/plan-your-visit#kids",
     availability: "staged",
   },
   {

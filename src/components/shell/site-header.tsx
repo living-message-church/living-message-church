@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { primaryNavigation, siteIdentity } from "@/content";
 import { Container } from "@/components/ui/container";
 
 export function SiteHeader() {
   const { pathname } = useRouter();
+  const [newMenuOpen, setNewMenuOpen] = useState(false);
   const isCurrent = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
   return (
     <header className="site-header">
@@ -26,16 +28,38 @@ export function SiteHeader() {
             const current = isCurrent(item.href) || item.children?.some((child) => isCurrent(child.href));
             if (item.children) {
               return (
-                <details className="desktop-nav-group" key={item.label}>
-                  <summary aria-current={current ? "page" : undefined}>
+                <div
+                  className={`desktop-nav-group${newMenuOpen ? " is-open" : ""}`}
+                  key={item.label}
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget)) setNewMenuOpen(false);
+                  }}
+                  onFocus={() => setNewMenuOpen(true)}
+                  onMouseEnter={() => setNewMenuOpen(true)}
+                  onMouseLeave={() => setNewMenuOpen(false)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Escape") {
+                      setNewMenuOpen(false);
+                      event.currentTarget.querySelector("button")?.focus();
+                    }
+                  }}
+                >
+                  <button
+                    aria-controls="desktop-im-new-menu"
+                    aria-current={current ? "page" : undefined}
+                    aria-expanded={newMenuOpen}
+                    aria-haspopup="true"
+                    onClick={() => setNewMenuOpen((open) => !open)}
+                    type="button"
+                  >
                     {item.label}<span className="nav-chevron" aria-hidden="true" />
-                  </summary>
-                  <div className="desktop-nav-dropdown">
+                  </button>
+                  <div className="desktop-nav-dropdown" id="desktop-im-new-menu">
                     {item.children.map((child) => (
                       <Link key={child.href} href={child.href} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</Link>
                     ))}
                   </div>
-                </details>
+                </div>
               );
             }
             return <Link key={item.href} href={item.href} aria-current={current ? "page" : undefined}>{item.label}</Link>;

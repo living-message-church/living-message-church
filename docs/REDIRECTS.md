@@ -18,8 +18,8 @@ This ledger covers all **458 canonical public URLs** advertised by the productio
 | Old route | Proposed route | HTTP action | Rationale |
 | --- | --- | --- | --- |
 | `/` | `/` | Keep (200) | Canonical route remains; normalize trailing slash per framework policy. |
-| `/new-guest-follow/` | `/new-here` | Permanent (301) | Remove |
-| `/services/` | `/new-here` | Permanent (301) | Merge / Rewrite |
+| `/new-guest-follow/` | `/plan-your-visit` | Permanent (301) | Remove |
+| `/services/` | `/plan-your-visit` | Permanent (301) | Merge / Rewrite |
 | `/outreach/` | `/outreach` | Keep (200) | Canonical route remains; normalize trailing slash per framework policy. |
 | `/sermons-living-message-church-clermont/` | `/messages` | Permanent (301) | Merge / Rewrite |
 | `/living-message-bible-training-school/` | `/connect` | Permanent (301) | Archive |
@@ -31,7 +31,7 @@ This ledger covers all **458 canonical public URLs** advertised by the productio
 | `/privacy-policy/` | `/privacy-policy` | Keep (200) | Canonical route remains; normalize trailing slash per framework policy. |
 | `/2025-resurrection-sunday/` | `/events` | Permanent (301) | Archive |
 | `/photo-release/` | `/photo-release` | Keep (200) | Canonical route remains; normalize trailing slash per framework policy. |
-| `/so-glad-you-are-here-landing-page/` | `/new-here` | Permanent (301) | Merge / Rewrite |
+| `/so-glad-you-are-here-landing-page/` | `/plan-your-visit` | Permanent (301) | Merge / Rewrite |
 | `/our-beliefs/` | `/about/beliefs` | Permanent (301) | Keep / Rewrite |
 | `/home/` | `/` | Permanent (301) | Merge / Archive |
 | `/meet-our-pastor/` | `/about/leadership` | Permanent (301) | Keep / Merge / Rewrite |
@@ -40,11 +40,11 @@ This ledger covers all **458 canonical public URLs** advertised by the productio
 | `/contact-living-message-church-clermont/` | `/contact` | Permanent (301) | Keep / Rewrite |
 | `/home2/` | `/` | Permanent (301) | Merge / Archive |
 | `/online-church/` | `/messages/live` | Permanent (301) | Keep / Rewrite |
-| `/new-visitors/` | `/new-here` | Permanent (301) | Merge / Rewrite |
-| `/plan-your-visit/` | `/new-here` | Permanent (301) | Merge / Rewrite |
+| `/new-visitors/` | `/plan-your-visit` | Permanent (301) | Merge / Rewrite |
+| `/plan-your-visit/` | `/plan-your-visit` | Keep (200) | Preserve the authoritative visitor slug and replace the legacy presentation in place. |
 | `/nextsteps/` | `/connect/next-steps` | Permanent (301) | Keep / Rewrite |
 | `/the-team/` | `/about/leadership` | Permanent (301) | Keep / Merge / Rewrite |
-| `/?page_id=10` | `/new-here` | Permanent (301) | Merge / Remove |
+| `/?page_id=10` | `/plan-your-visit` | Permanent (301) | Merge / Remove |
 | `/the-power-of-a-dream/` | `/messages` | Permanent (301) | Archive / Merge |
 | `/a-touch-of-faith/` | `/messages` | Permanent (301) | Archive / Merge |
 | `/trends-vs-friends/` | `/messages` | Permanent (301) | Archive / Merge |

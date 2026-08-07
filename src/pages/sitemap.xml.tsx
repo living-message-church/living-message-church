@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from "next";
 
 const canonical = "https://livingmessagechurch.com";
-const publishedRoutes = ["/", "/new-here", "/messages", "/contact"];
+const publishedRoutes = ["/", "/plan-your-visit", "/messages", "/contact"];
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const urls = publishedRoutes.map((route) => `<url><loc>${canonical}${route}</loc></url>`).join("");

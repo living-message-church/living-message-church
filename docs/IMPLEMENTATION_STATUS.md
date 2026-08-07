@@ -9,10 +9,10 @@ Updated: 2026-08-06
 - Project-native design tokens and responsive editorial component foundation.
 - Shared primary header, accessible mobile navigation, skip link, main landmark, and footer.
 - Required homepage sections with content separated from components.
-- Implemented foundation routes: `/`, `/new-here`, `/contact`, `/privacy-policy`, `/photo-release`.
+- Implemented foundation routes: `/`, `/plan-your-visit`, `/contact`, `/privacy-policy`, `/photo-release`; `/new-here` permanently redirects to `/plan-your-visit` for backward compatibility.
 - Deliberate no-index staged destinations for About, beliefs, leadership, gallery, Connect, Next Steps, live, Events, Outreach, and Give so the full redirect ledger has valid destinations; `/messages` is published from its verified source.
 - Sitewide metadata component, canonical URLs, Open Graph/Twitter defaults, minimal verified Organization JSON-LD, XML sitemap, and robots route.
-- 453 audited 301 redirect rules sourced from the machine-readable inventory, including one query-qualified legacy route.
+- 452 audited 301 redirect rules sourced from the machine-readable inventory, including one query-qualified legacy route; the production `/plan-your-visit/` slug is now preserved as a 200 route.
 - Redirect validator for duplicate sources, statically missing destinations, loops, chains, ledger counts, and invalid status assumptions.
 - Lint, redirect validation, and production build pass.
 - Verification reconciliation completed: the public church name is the sole verified fact; no unresolved value was promoted.
@@ -48,7 +48,9 @@ Updated: 2026-08-06
 - The Plan Your Visit photograph now receives a section-scoped 20-second cinematic push-and-pan within its existing crop. It causes no layout movement, introduces no dependency, and is explicitly disabled for reduced-motion visitors.
 - Mobile spacing now uses a consistent 5–5.5% gutter and a minimum 4rem section rhythm. Identity, ministry-introduction, and final-invitation moments center deliberately while scan-heavy sections remain left-aligned.
 - The mobile header now uses an accessible 48px icon-only navigation trigger with a larger 30px hamburger, open/close labels, gutter-aligned dropdown, and 52px navigation rows; the visible “Menu” label was removed.
-- The user-supplied `Living Message Logo.svg` is now the shared brand master across the site. Header rendering preserves its native navy/brown palette, while the dark footer and animated message-player tree use high-contrast treatments of the same local vector asset; the superseded PNG remains archived.
+- The user-supplied `Living Message Logo.svg` is now the shared brand master across the header and footer. Header rendering preserves its native navy/brown palette, while the dark footer uses a high-contrast treatment; the superseded PNG remains archived. The message player uses a separate circular play control.
+- The “I’m New” desktop navigation group opens on hover, focus, or click and provides Plan Your Visit and Next Steps Class destinations; the mobile menu presents both links in a visible subgroup.
+- `/plan-your-visit` now provides a complete photography-led visitor journey using only current-site facts and approved Living Message imagery. It preserves the production slug, omits the disputed Kids starting age, and keeps visitor form submission with the observed Church Center provider.
 
 ## In progress
 
@@ -83,8 +85,8 @@ Run a structured content-verification workshop with operations, pastoral leaders
 | Check | Result |
 | --- | --- |
 | `npm run lint` | Passed |
-| `npm run validate:redirects` | Passed: 453 sources, 21 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
-| `npm run build` | Passed on Next.js 16.3.0 with the verified YouTube feed available during generation; all 23 pages plus robots/sitemap/API routes generated successfully. |
+| `npm run validate:redirects` | Passed: 452 sources, 22 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
+| `npm run build` | Passed on Next.js 16.3.0 with the verified YouTube feed available during generation; all 23 generated pages plus the dynamic `/new-here` redirect, robots, sitemap, and API routes completed successfully. |
 | Local HTTP smoke check | Home, Messages, Live, sitemap, and robots returned 200. Home and Messages rendered newest feed video `SGsP83hGEN8`; Messages was indexable, Live remained no-indexed, and the sitemap included `/messages`. |
 | Interactive browser QA | Not run: no connected browser was available |
 | Existing tests | No test command or test suite is currently configured |

@@ -29,7 +29,15 @@ The desktop homepage hero now completes a full first-screen composition at every
 
 The desktop primary navigation now uses a wider fluid item gap (`1.2rem` to `1.9rem`), restrained positive tracking, and a slightly more generous active underline. The editorial header container and existing 70rem mobile-navigation breakpoint prevent the expanded rhythm from crowding intermediate widths.
 
-“New Here” is now the “I’m New” navigation group. Its desktop disclosure exposes “Plan Your Visit” (`/new-here`) and “Next Steps Class” (`/connect/next-steps`) through native `details`/`summary` semantics, visible on hover, focus, or activation. Mobile presents the same two destinations as an always-visible subgroup inside the existing navigation disclosure. Both destinations reuse the established routes, avoiding duplicate URLs; their page metadata and framing now match the new labels while unverified Next Steps details remain staged.
+“New Here” is now the “I’m New” navigation group. Its desktop disclosure exposes “Plan Your Visit” (`/plan-your-visit`) and “Next Steps Class” (`/connect/next-steps`) through a semantic button with `aria-expanded` and `aria-controls`. It opens on pointer hover, keyboard focus, or click; closes on pointer exit, focus exit, or Escape; and returns focus to its trigger after Escape. Mobile presents the same destinations as an always-visible subgroup inside the existing navigation disclosure. Unverified Next Steps details remain staged.
+
+## Plan Your Visit redesign
+
+The authoritative production `/plan-your-visit/` slug now remains a 200 destination instead of redirecting to `/new-here`; the superseded internal `/new-here` route returns a direct 301 to the preserved slug. The redesigned page uses a photography-led visitor hero, Sunday service card, three-column essentials summary, five-step arrival and connection guide, LMC Kids feature, and final invitation. Copy is limited to facts observable on the current production page: parking and greeters, hallway self check-in and pickup sticker, contemporary worship, Scripture-centered teaching, available pastors and elders, Connect Cards, current service times, and the current address. The disputed Kids starting age is intentionally omitted.
+
+The page uses approved local Living Message photography only. Its primary “Tell us you’re coming” action remains a direct handoff to the currently observed Church Center form; the site does not collect visitor data. The form’s ownership, recipient, retention, and automation remain verification blockers.
+
+Source-level responsive review confirms the hero and Sunday card collapse below 56rem; essentials become one column below 48rem; expectation rows simplify to one text column; the Kids image becomes a 16:11 landscape crop; and all actions retain the shared 3rem minimum height. Rendered browser review remains pending because no browser connection was available.
 
 The user-supplied `Living Message Logo.svg` now replaces the previous raster logo in the header and footer through `next/image` with explicit intrinsic dimensions. The header preserves its native navy/brown color while the dark footer applies a white high-contrast treatment. The message-player medallion uses the separately supplied standalone tree SVG. Every use preserves its source asset’s native proportions. The previous PNG remains in the repository but is no longer referenced by application code.
 
@@ -130,7 +138,7 @@ HTTP responses, rendered HTML metadata, semantic source structure, CSS breakpoin
 | Message privacy/SEO restraint | The iframe uses `youtube-nocookie.com`; Messages is indexable after source verification, Admin remains no-indexed, and no unapproved `VideoObject` claims are emitted. |
 | Admin safety boundary | `/admin/messages` has no API mutation, authentication claim, Supabase client, or enabled upload/save control; all prototype edits are browser-local. |
 | Events fallback | `/events` and Home rendered the unconfigured adapter state; historical WordPress events were not treated as upcoming. |
-| Redirects | Representative trailing-slash legacy routes returned a direct 301 to `/`, `/new-here`, and `/events`. Static validation found 453 sources, no duplicates, no loops, no chains, and no missing destinations. |
+| Redirects | Representative legacy routes return direct 301 responses to `/`, `/plan-your-visit`, and `/events`; the canonical `/plan-your-visit/` source remains a 200 page. Static validation found 452 redirect sources, no duplicates, no loops, no chains, and no missing destinations. |
 | Skip link | The first shared-shell link targets `#main-content`; the main landmark is programmatically focusable. |
 | Navigation semantics | Desktop and mobile navigation have accessible labels; mobile uses native `details`/`summary`; current-page state uses `aria-current`. |
 | Heading structure | Page templates use one `h1` through `PageHero`/Hero and hierarchical `h2`/`h3` section/card headings. |

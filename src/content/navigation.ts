@@ -4,10 +4,10 @@ export const primaryNavigation: NavigationItem[] = [
   { label: "Home", href: "/", availability: "implemented" },
   {
     label: "I’m New",
-    href: "/new-here",
+    href: "/plan-your-visit",
     availability: "implemented",
     children: [
-      { label: "Plan Your Visit", href: "/new-here", availability: "implemented" },
+      { label: "Plan Your Visit", href: "/plan-your-visit", availability: "implemented" },
       { label: "Next Steps Class", href: "/connect/next-steps", availability: "staged" },
     ],
   },
@@ -24,7 +24,7 @@ export const footerGroups: FooterGroup[] = [
   {
     title: "Visit",
     links: [
-      { label: "New Here", href: "/new-here", availability: "implemented" },
+      { label: "Plan Your Visit", href: "/plan-your-visit", availability: "implemented" },
       { label: "Contact", href: "/contact", availability: "implemented" },
       { label: "Events", href: "/events", availability: "staged" },
     ],

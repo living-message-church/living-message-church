@@ -5,7 +5,7 @@ Audit date: 2026-08-05
 ## Migration principles
 
 1. Treat the current production site as the factual source, but treat contradictions as unresolved—not permission to choose a convenient answer.
-2. Build the visitor journey around a single `/new-here` route with service times, address, kids, parking, worship/teaching expectations, accessibility, directions, and a low-friction visit form.
+2. Build the visitor journey around a single `/plan-your-visit` route with service times, address, kids, parking, worship/teaching expectations, accessibility, directions, and a low-friction visit form.
 3. Keep current/upcoming events separate from historical records. Do not import 415 expired event detail/recurrence URLs as live events.
 4. Give sermons a structured content model (title, date, speaker, series, scripture, summary, video/audio, optional transcript) rather than fixed embeds.
 5. Consolidate duplicate home, visitor, media, gallery, and seasonal pages.
@@ -17,7 +17,7 @@ Audit date: 2026-08-05
 | New route | Purpose | Source content |
 | --- | --- | --- |
 | `/` | Welcome, current service invitation, core identity, next event, latest message, ministries/outreach gateway | Current `/`, approved `/home/` welcome language, current address/times, curated church-owned photography |
-| `/new-here` | Complete first-visit journey | `/plan-your-visit/`, useful reassurance from `/new-visitors/` and visitor landing page, kids/check-in details, contact/directions |
+| `/plan-your-visit` | Complete first-visit journey | `/plan-your-visit/`, useful reassurance from `/new-visitors/` and visitor landing page, kids/check-in details, contact/directions |
 | `/about` | Story, family philosophy, mission/values, church history/name origin | `/about-living-message-church-clermont/`, `/meet-our-pastor/`, approved `/home/` copy |
 | `/about/beliefs` | Teaching philosophy and doctrine | `/our-beliefs/` after pastoral edit |
 | `/about/leadership` | Pastors, elders, deacons, ministry leaders | `/meet-our-pastor/`, `/the-team/` |
@@ -44,7 +44,7 @@ Audit date: 2026-08-05
 | --- | --- | --- | --- |
 | `/` | `/` | Keep/Rewrite | Preserve current times, address, teaching/family/outreach identity, visitor CTA. |
 | `/home/`, `/home2/` | `/` | Merge/Archive | Migrate only approved evergreen copy; remove spam, old dates/times, builder artifacts. |
-| `/?page_id=10`, `/new-visitors/`, `/plan-your-visit/`, `/so-glad-you-are-here-landing-page/`, `/new-guest-follow/`, `/services/` | `/new-here` | Merge | Use Plan Your Visit as the strongest base; verify all logistics. |
+| `/?page_id=10`, `/new-visitors/`, `/plan-your-visit/`, `/so-glad-you-are-here-landing-page/`, `/new-guest-follow/`, `/services/` | `/plan-your-visit` | Merge | Use Plan Your Visit as the strongest base; verify all logistics. |
 | `/about-living-message-church-clermont/` | `/about` | Rewrite | Preserve family philosophy, history/name origin, community/outreach story. |
 | `/our-beliefs/` | `/about/beliefs` | Keep/Edit | Pastoral review; correct misleading SEO phrasing. |
 | `/meet-our-pastor/`, `/the-team/` | `/about/leadership` | Merge | Confirm 16 current people, names/titles, bios, portraits, permissions. |

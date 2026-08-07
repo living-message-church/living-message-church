@@ -15,7 +15,7 @@ export function StagedPage({ content }: { content: PageContent }) {
         <p>{content.intro}</p>
         <p>For current help, service details, or directions, use the visitor and contact pages.</p>
         <div className="action-group">
-          <ActionLink label="New Here" href="/new-here" style="primary" />
+          <ActionLink label="Plan Your Visit" href="/plan-your-visit" style="primary" />
           <ActionLink label="Contact" href="/contact" style="secondary" />
         </div>
       </Section>

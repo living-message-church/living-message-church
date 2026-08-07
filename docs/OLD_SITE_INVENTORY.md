@@ -110,7 +110,7 @@ SEO titles and descriptions below are the values exposed by public Yoast metadat
 - **Major headings:** “YOU’RE GOING TO LOVE IT HERE,” “You Won’t Feel Alone Here,” “We Are Ready To Greet You,” “WE CAN’T WAIT TO MEET YOU.”
 - **CTA/media:** Plan Your Visit; two church/community images with missing alt text.
 - **Conflict:** says there are three services at 8:00, 9:30, and 11:15, contradicting current 9:00/10:45 information.
-- **Disposition:** **Merge + Rewrite + Verify** into `/new-here`; preserve the reassuring tone, not the stale times.
+- **Disposition:** **Merge + Rewrite + Verify** into `/plan-your-visit`; preserve the reassuring tone, not the stale times.
 
 ### `/plan-your-visit/` — Plan Your Visit
 
@@ -119,23 +119,23 @@ SEO titles and descriptions below are the values exposed by public Yoast metadat
 - **Important copy:** easy parking around the building; lobby self-check-in stations; Church Center preregistration; contemporary worship; 60–70-minute service; teaching described as expository/line by line; LMC Kids information; Next Steps connection path.
 - **CTA/media/forms:** Plan Your Visit/visitor form, directions, multiple church and kids images.
 - **Verification:** age range conflicts—home says birth through fifth grade; search-visible visit copy says one year through fifth grade. Confirm nursery availability, check-in flow, service duration, and accessibility.
-- **Disposition:** **Keep route concept, rewrite at `/new-here`.** This is the strongest base for the new visitor page.
+- **Disposition:** **Keep route concept, rewrite at `/plan-your-visit`.** This is the strongest base for the new visitor page.
 
 ### `/so-glad-you-are-here-landing-page/` — Church Invite Landing Page
 
 - **Purpose/content:** visitor campaign landing page; family, faith, community, line-by-line Bible teaching, groups, social activities, a short video, form, and directions.
 - **Conflict:** invites visitors to 8:00, 9:30, or 11:15.
-- **Disposition:** **Merge + Archive.** Preserve approved activity examples and the simple three-step journey; replace the route with `/new-here`.
+- **Disposition:** **Merge + Archive.** Preserve approved activity examples and the simple three-step journey; replace the route with `/plan-your-visit`.
 
 ### `/new-guest-follow/` — New Guest Follow Up
 
 - **Purpose/content:** effectively empty (207 characters of builder/shortcode data; no useful public copy).
-- **Disposition:** **Remove** the public page and redirect to `/new-here`; verify whether an internal follow-up workflow depends on the slug.
+- **Disposition:** **Remove** the public page and redirect to `/plan-your-visit`; verify whether an internal follow-up workflow depends on the slug.
 
 ### `/services/` — Services
 
 - **Purpose/content:** thin legacy page containing only “Two different services, two different styles.”
-- **Disposition:** **Merge + Remove** into `/new-here`; do not preserve the unsupported claim unless leaders confirm distinct service styles.
+- **Disposition:** **Merge + Remove** into `/plan-your-visit`; do not preserve the unsupported claim unless leaders confirm distinct service styles.
 
 ### `/nextsteps/` — Next Steps
 
@@ -267,7 +267,7 @@ SEO titles and descriptions below are the values exposed by public Yoast metadat
 
 | Old URL | Title/purpose | Content/media | Disposition |
 | --- | --- | --- | --- |
-| `/?page_id=10` | Search-canonicalized posts index titled “I’m New” | Confusingly uses visitor SEO/title metadata for a post collection. | **Remove/Merge** to `/new-here`. |
+| `/?page_id=10` | Search-canonicalized posts index titled “I’m New” | Confusingly uses visitor SEO/title metadata for a post collection. | **Remove/Merge** to `/plan-your-visit`. |
 | `/the-power-of-a-dream/` | 2018 article, “The Power of a Dream” | Two article images; categorized as Bible Study/Thoughts. | **Archive** to `/messages`; review content before any republication. |
 | `/a-touch-of-faith/` | 2018 article, “A Touch of Faith” | Two article images. | **Archive** to `/messages`; review content before any republication. |
 | `/trends-vs-friends/` | 2018 article, “Trends vs Friends” | Two article images. | **Archive** to `/messages`; review content before any republication. |
@@ -317,8 +317,8 @@ The URL-by-URL register is generated from the production sitemaps and appended b
 | Old route | Title | Type | Disposition | New route |
 | --- | --- | --- | --- | --- |
 | `/` | Home | page | Keep / Rewrite | `/` |
-| `/new-guest-follow/` | New Guest Follow Up | page | Remove | `/new-here` |
-| `/services/` | Services | page | Merge / Rewrite | `/new-here` |
+| `/new-guest-follow/` | New Guest Follow Up | page | Remove | `/plan-your-visit` |
+| `/services/` | Services | page | Merge / Rewrite | `/plan-your-visit` |
 | `/outreach/` | Outreach | page | Keep / Rewrite | `/outreach` |
 | `/sermons-living-message-church-clermont/` | Sermons | page | Merge / Rewrite | `/messages` |
 | `/living-message-bible-training-school/` | Living Message Bible Training School | page | Archive | `/connect` |
@@ -330,7 +330,7 @@ The URL-by-URL register is generated from the production sitemaps and appended b
 | `/privacy-policy/` | LMC Privacy Policy | page | Keep / Rewrite | `/privacy-policy` |
 | `/2025-resurrection-sunday/` | 2025 Resurrection Sunday | page | Archive | `/events` |
 | `/photo-release/` | LMC Photo Release | page | Keep / Rewrite | `/photo-release` |
-| `/so-glad-you-are-here-landing-page/` | Church Invite Landing Page | page | Merge / Rewrite | `/new-here` |
+| `/so-glad-you-are-here-landing-page/` | Church Invite Landing Page | page | Merge / Rewrite | `/plan-your-visit` |
 | `/our-beliefs/` | Our Beliefs | page | Keep / Rewrite | `/about/beliefs` |
 | `/home/` | Home_OLD | page | Merge / Archive | `/` |
 | `/meet-our-pastor/` | Meet Our Pastor | page | Keep / Merge / Rewrite | `/about/leadership` |
@@ -339,11 +339,11 @@ The URL-by-URL register is generated from the production sitemaps and appended b
 | `/contact-living-message-church-clermont/` | Contact | page | Keep / Rewrite | `/contact` |
 | `/home2/` | Home2 | page | Merge / Archive | `/` |
 | `/online-church/` | Online Church | page | Keep / Rewrite | `/messages/live` |
-| `/new-visitors/` | I’m New | page | Merge / Rewrite | `/new-here` |
-| `/plan-your-visit/` | Plan Your Visit | page | Merge / Rewrite | `/new-here` |
+| `/new-visitors/` | I’m New | page | Merge / Rewrite | `/plan-your-visit` |
+| `/plan-your-visit/` | Plan Your Visit | page | Merge / Rewrite | `/plan-your-visit` |
 | `/nextsteps/` | Next Steps | page | Keep / Rewrite | `/connect/next-steps` |
 | `/the-team/` | The Team | page | Keep / Merge / Rewrite | `/about/leadership` |
-| `/?page_id=10` | Posts index (canonical metadata: I’m New) | post_index | Merge / Remove | `/new-here` |
+| `/?page_id=10` | Posts index (canonical metadata: I’m New) | post_index | Merge / Remove | `/plan-your-visit` |
 | `/the-power-of-a-dream/` | The Power of a Dream | post | Archive / Merge | `/messages` |
 | `/a-touch-of-faith/` | A Touch of Faith | post | Archive / Merge | `/messages` |
 | `/trends-vs-friends/` | Trends vs. Friends | post | Archive / Merge | `/messages` |

@@ -18,7 +18,7 @@ The browser-control environment reported no connected browser after its required
 | Homepage | `/` | Hero, editorial splits, media ratios, empty event/message states, ministry cards, outreach, invitation |
 | Priority template | `/about`, `/about/beliefs`, `/about/leadership`, `/connect` and children, `/outreach`, `/give` | Page hero, sticky status rail, panel grid, staged action |
 | Staged template | Staged message/event and supporting routes | Page hero, reading measure, empty states, actions |
-| Visitor pages | `/new-here`, `/contact` | Facts, visit cards, address/contact wrapping, non-form contact state |
+| Visitor pages | `/plan-your-visit`, `/contact` | Facts, visit cards, address/contact wrapping, non-form contact state |
 | Legal pages | `/privacy-policy`, `/photo-release` | Long-form measure, heading rhythm, paragraph readability |
 | Feed pages | `/messages`, `/messages/live`, `/events` | Empty and populated card-grid rules, metadata wrapping |
 

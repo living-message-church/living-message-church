@@ -23,7 +23,7 @@ export const pageContent = {
     path: "/",
   } satisfies SeoContent,
   newHere: page(
-    "/new-here",
+    "/plan-your-visit",
     "Plan Your Visit | Living Message Church",
     "Find Sunday times, location, parking, children’s check-in, and what to expect at Living Message Church.",
     "I’m new",
@@ -98,17 +98,21 @@ export const legalContent = {
 };
 
 export const newHereDetails = {
-  essentialsTitle: "The essentials",
+  essentialsTitle: "Everything you need for Sunday.",
   expectationsEyebrow: "What to expect",
   expectationsTitle: "Arrive with confidence.",
   expectationsIntro:
-    "The current site provides these practical expectations. Church operations and ministry owners still need to approve the details before production launch.",
+    "A first visit is a meaningful step. Here is what the current Living Message visitor guide says you can expect when you arrive.",
   details: [
-    { title: "Parking", body: "The current visitor page describes easy parking around the building." },
-    { title: "Children’s check-in", body: "The current visitor page describes lobby self-check-in stations. Exact ages and safety details are still being confirmed." },
-    { title: "Worship and teaching", body: "The current site describes contemporary worship and expository, line-by-line Bible teaching." },
-    { title: "A warm welcome", body: "Living Message’s visitor pages emphasize greeting new people and helping them feel connected rather than alone." },
+    { title: "Parking and arrival", body: "Follow the Living Message Church signs when you arrive. Parking is available around the building, and door greeters can help you find your way." },
+    { title: "Children’s check-in", body: "Self check-in stations are located through the lobby in the hallway. A team member can help, and a matching security sticker is used for pickup." },
+    { title: "Worship and teaching", body: "Sunday includes contemporary Christian worship, church updates, and Christ-centered, Scripture-saturated teaching that is usually expository." },
+    { title: "Meet a pastor", body: "Pastors and elders are available after the service and wear name tags so guests can easily introduce themselves and ask questions." },
+    { title: "Find connection", body: "Connect Cards are available on the chairs and by QR code in the lobby. The connection team can follow up, pray with you, and help with next steps." },
   ],
+  kidsEyebrow: "LMC Kids",
+  kidsTitle: "A Sunday designed with children in mind.",
+  kidsBody: "LMC Kids uses Bible-centered curriculum with each message pointing children to Christ. The ministry emphasizes learning, laughter, and a welcoming environment.",
   questionsEyebrow: "Still wondering?",
   questionsTitle: "Ask before you arrive.",
   questionsBody: "No question is too small when you’re planning a first visit.",

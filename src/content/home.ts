@@ -8,7 +8,7 @@ export const homeSections: Record<string, HomepageSection> = {
     body: "A welcoming church community centered on genuine connection, meaningful discipleship, and line-by-line Bible teaching.",
     tone: "ink",
     actions: [
-      { label: "Plan your visit", href: "/new-here", style: "primary" },
+      { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
       { label: "Get directions", href: "/contact#directions", style: "secondary" },
     ],
   },
@@ -27,7 +27,7 @@ export const homeSections: Record<string, HomepageSection> = {
     titleAccent: "welcoming",
     body: "Find practical details about parking, children’s check-in, worship, teaching, and ways to connect before you arrive.",
     tone: "sun",
-    actions: [{ label: "Start planning", href: "/new-here", style: "primary" }],
+    actions: [{ label: "Start planning", href: "/plan-your-visit", style: "primary" }],
   },
   messages: {
     id: "messages",
@@ -67,7 +67,7 @@ export const homeSections: Record<string, HomepageSection> = {
     body: "Plan your visit, get directions, or reach out with a question before you come.",
     tone: "ink",
     actions: [
-      { label: "Plan your visit", href: "/new-here", style: "primary" },
+      { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
       { label: "Contact us", href: "/contact", style: "secondary" },
     ],
   },

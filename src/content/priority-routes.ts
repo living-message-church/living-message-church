@@ -37,7 +37,7 @@ export const priorityRouteContent = {
       { number: "02", title: "Beliefs", body: "The complete doctrinal statement has a dedicated route and remains pending pastoral approval.", href: "/about/beliefs", linkLabel: "Open beliefs" },
       { number: "03", title: "Leadership", body: "The leadership route is prepared for an approved roster, titles, biographies, and portraits.", href: "/about/leadership", linkLabel: "Open leadership" },
     ],
-    { label: "Plan your visit", href: "/new-here", style: "primary" },
+    { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
   ),
   beliefs: pending(
     "/about/beliefs",
@@ -78,7 +78,7 @@ export const priorityRouteContent = {
       { number: "04", title: "Groups", body: "A future directory of current, approved groups and connection rhythms.", href: "/connect/groups", linkLabel: "Open Groups" },
       { number: "05", title: "Next Steps Class", body: "A future guide to the confirmed connection, service, and growth pathway.", href: "/connect/next-steps", linkLabel: "Open Next Steps Class" },
     ],
-    { label: "New Here", href: "/new-here", style: "primary" },
+    { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
   ),
   kids: pending(
     "/connect/kids",
@@ -91,7 +91,7 @@ export const priorityRouteContent = {
       { number: "02", title: "Check-in and pickup", body: "The complete approved arrival, label, security, and pickup process will be documented here." },
       { number: "03", title: "Safety and access", body: "Approved screening, allergy, accommodation, and accessibility information is required before publication." },
     ],
-    { label: "Plan your visit", href: "/new-here", style: "primary" },
+    { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
   ),
   youth: pending(
     "/connect/youth",

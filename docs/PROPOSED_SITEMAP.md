@@ -6,7 +6,7 @@ The primary navigation should remain concise: **New Here, About, Connect, Messag
 
 ```text
 /
-├── new-here
+├── plan-your-visit
 ├── about
 │   ├── beliefs
 │   ├── leadership
@@ -67,4 +67,3 @@ The primary navigation should remain concise: **New Here, About, Connect, Messag
 - `/events/[slug]` requires an authoritative event source and editorial owner.
 - `/give` requires finance-approved copy and verified Church Center account.
 - `/about/gallery` requires a curated, consent-cleared image set with alt text.
-
