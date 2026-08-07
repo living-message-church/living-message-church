@@ -15,7 +15,7 @@ The connected in-app browser was unavailable after the documented connection and
 
 ## Verified YouTube feed integration
 
-The user-approved Streams source resolves to channel ID `UC-YctizZq1wTbhgn3tQOJqA`; the official public Atom feed resolves to the same channel. The provider-neutral adapter now fetches and normalizes the newest 15 records, sorts them newest-first, marks the first as featured, and supplies title, published date, first description paragraph, video ID, watch URL, and thumbnail without credentials. Categories are derived only from explicit stream/title/description metadata and publication year. Home, `/messages`, and `/messages/live` revalidate hourly; `/messages` is now indexable and included in the sitemap.
+The user-approved Streams source resolves to channel ID `UC-YctizZq1wTbhgn3tQOJqA`; the official public Atom feed resolves to the same channel. The provider-neutral adapter now fetches and normalizes the newest 15 records, sorts them newest-first, marks the first as featured, and supplies title, published date, first description paragraph, video ID, watch URL, and thumbnail without credentials. Categories are derived only from explicit stream/title/description metadata and publication year. Home, `/messages`, and `/online-church` revalidate hourly; `/messages` is now indexable and included in the sitemap.
 
 The public feed is intentionally a recent-history integration, not a claim of complete channel history. A full historical import requires the future authenticated Data API or editorial backend. If YouTube is unavailable during generation, the adapter retains the approved four-record local fallback instead of failing the page.
 
@@ -108,7 +108,7 @@ Source and HTTP checks passed for:
 - homepage and `/messages` rendering the current newest normalized feed record (`SGsP83hGEN8` at test time) through `youtube-nocookie.com` with an accessible iframe title;
 - `/messages` rendering normalized feed records, publication dates, category controls, search input, responsive cards, canonical metadata, and indexable robots behavior;
 - `/admin/messages` returning 200, retaining `noindex, nofollow`, exposing no write endpoint, and rendering disabled persistence/upload controls;
-- `/messages/live` returning 200 through the existing provider-normalized archive path;
+- `/online-church` returning 200 through the verified provider-normalized live path;
 - final lint, redirect validation, and the 23-page production build.
 
 Interactive filtering, category creation/removal, local metadata editing, YouTube playback, focus order, and small-screen visual composition still require a connected browser. The browser connection check returned no available in-app or extension browser, so no screenshots or unverified interaction claims were recorded.
@@ -172,7 +172,7 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 | Staged/no-index handling | About, Gallery, most Connect routes, Events, Outreach, and Give retain deliberate `noindex, nofollow`; Beliefs, Pastor, Team, Next Steps, Messages, and Church Online are indexable. |
 | Metadata | Home emitted a unique title, canonical URL, Open Graph/Twitter metadata, and Organization JSON-LD. |
 | Structured-data restraint | Only the verified organization name and canonical URL are emitted; no address, phone, service, event, sermon, rating, or founding claims were fabricated. |
-| Messages source | Home, `/messages`, and `/messages/live` consume the verified canonical YouTube feed through one normalized adapter, with approved local records retained only for feed failure. |
+| Messages source | Home, `/messages`, and `/online-church` consume the verified canonical YouTube feed through one normalized adapter, with approved local records retained only for feed failure. |
 | Message privacy/SEO restraint | Click-to-load message and live players use `youtube-nocookie.com`; Messages and Church Online are indexable after channel verification, Admin remains no-indexed, and no unapproved `VideoObject` claims are emitted. |
 | Admin safety boundary | `/admin/messages` has no API mutation, authentication claim, Supabase client, or enabled upload/save control; all prototype edits are browser-local. |
 | Events fallback | `/events` and Home rendered the unconfigured adapter state; historical WordPress events were not treated as upcoming. |
@@ -231,5 +231,5 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 | Our Team route smoke | Passed; `/about/leadership` returned 200 with 16 cards and 3 tiers, remained indexable, appeared in the sitemap, and `/the-team/` returned a direct 301 to it. |
 | Current message-control refinement | `npm run lint` passed. The default Turbopack build reached TypeScript and then hit an environment-level internal port restriction; the webpack production path remains the validated build command. |
 | Previous message milestone route smoke | Passed at that milestone; Home, Messages, Live, sitemap, and robots returned HTTP 200. The former Live no-index state is superseded by the Church Online milestone below. |
-| Church Online milestone | `npm run lint`, `npm run validate:redirects`, and `npm run build` passed. `/messages/live` returned 200, rendered live and archive landmarks without `noindex`, appeared in the sitemap, and legacy `/online-church/` returned a direct 301. Interactive visual QA remains pending because no browser connection was available. |
+| Church Online milestone | `npm run lint`, `npm run validate:redirects`, and `npm run build` passed. `/online-church` is the canonical 200 route, renders the live player without `noindex`, appears in the sitemap, and `/messages/live` returns a direct 301. The duplicate embedded archive was removed in favor of the dedicated `/messages` page. Interactive visual QA remains pending because no browser connection was available. |
 | Existing automated tests | No test suite or test command is configured |

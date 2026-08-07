@@ -77,7 +77,7 @@ export const pagePhotography: Record<string, ContentImage> = {
     "People connecting in the lobby at Living Message Church.",
   ),
   "/messages": homePhotography.message,
-  "/messages/live": homePhotography.message,
+  "/online-church": homePhotography.message,
   "/outreach": approved(
     "/images/outreach/living-message-serving-families.jpg",
     "Living Message Church volunteers preparing food for local families.",

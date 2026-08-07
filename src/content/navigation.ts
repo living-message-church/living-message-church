@@ -42,7 +42,7 @@ export const primaryNavigation: NavigationItem[] = [
     href: "/messages",
     availability: "implemented",
     children: [
-      { label: "Church Online", href: "/messages/live", availability: "implemented" },
+      { label: "Church Online", href: "/online-church", availability: "implemented" },
       { label: "Message Archive", href: "/messages", availability: "implemented" },
     ],
   },
@@ -67,7 +67,7 @@ export const footerGroups: FooterGroup[] = [
       { label: "About", href: "/about-living-message-church-clermont", availability: "implemented" },
       { label: "Connect", href: "/connect", availability: "staged" },
       { label: "Messages", href: "/messages", availability: "implemented" },
-      { label: "Church Online", href: "/messages/live", availability: "implemented" },
+      { label: "Church Online", href: "/online-church", availability: "implemented" },
       { label: "Outreach", href: "/outreach", availability: "staged" },
       { label: "Give", href: "/give", availability: "staged" },
     ],

@@ -39,7 +39,7 @@ This ledger covers all **458 canonical public URLs** advertised by the productio
 | `/events-living-message-church-clermont/` | `/events` | Permanent (301) | Keep / Rewrite |
 | `/contact-living-message-church-clermont/` | `/contact` | Permanent (301) | Keep / Rewrite |
 | `/home2/` | `/` | Permanent (301) | Merge / Archive |
-| `/online-church/` | `/messages/live` | Permanent (301) | Keep / Rewrite |
+| `/online-church/` | `/online-church` | Keep (200) | Preserve the authoritative production slug and replace the legacy presentation in place. |
 | `/new-visitors/` | `/plan-your-visit` | Permanent (301) | Merge / Rewrite |
 | `/plan-your-visit/` | `/plan-your-visit` | Keep (200) | Preserve the authoritative visitor slug and replace the legacy presentation in place. |
 | `/nextsteps/` | `/connect/next-steps` | Permanent (301) | Keep / Rewrite |

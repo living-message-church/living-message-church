@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps = async () => ({
   revalidate: 3600,
 });
 
-export default function LivePage({ feed }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function OnlineChurchPage({ feed }: InferGetStaticPropsType<typeof getStaticProps>) {
   const newestMessage = feed.items[0];
 
   return (

@@ -33,11 +33,15 @@ function discoverPages(directory, prefix = "") {
 }
 
 const implementedRoutes = discoverPages(path.join(root, "src/pages"));
-const redirects = inventory.entries.flatMap((entry) => {
+const inventoryRedirects = inventory.entries.flatMap((entry) => {
   const source = redirectKey(entry.old_route);
   const destination = withoutTrailingSlash(entry.new_route);
   return source === destination ? [] : [{ source, destination, statusCode: 301 }];
 });
+const applicationRedirects = [
+  { source: "/messages/live", destination: "/online-church", statusCode: 301 },
+];
+const redirects = [...applicationRedirects, ...inventoryRedirects];
 
 const errors = [];
 const warnings = [];
@@ -69,14 +73,17 @@ for (const redirect of redirects) {
 const ledgerRows = ledger.split("\n").filter((line) => line.startsWith("| `"));
 if (ledgerRows.length !== inventory.entries.length) errors.push(`Ledger row count ${ledgerRows.length} does not match inventory ${inventory.entries.length}`);
 const ledgerChanged = ledgerRows.filter((line) => line.includes("Permanent (301)")).length;
-if (ledgerChanged !== redirects.length) errors.push(`Ledger has ${ledgerChanged} 301 rows; computed redirects have ${redirects.length}`);
+if (ledgerChanged !== inventoryRedirects.length) errors.push(`Ledger has ${ledgerChanged} 301 rows; computed legacy redirects have ${inventoryRedirects.length}`);
 if (/Permanent \(308\)/.test(ledger)) errors.push("Ledger still contains a 308 status assumption");
 if (!/skipTrailingSlashRedirect:\s*true/.test(nextConfig)) errors.push("Next.js trailing-slash normalization can create a 308 -> 301 chain; set skipTrailingSlashRedirect: true");
+if (!/source:\s*["']\/messages\/live["'][\s\S]*destination:\s*["']\/online-church["'][\s\S]*statusCode:\s*301/.test(nextConfig)) {
+  errors.push("Missing canonical application redirect: /messages/live -> /online-church (301)");
+}
 
 const queryRedirects = redirects.filter((redirect) => redirect.source.includes("?"));
 if (queryRedirects.length) warnings.push(`${queryRedirects.length} query-qualified source will be implemented with Next.js query matching; unrelated query parameters pass through.`);
 
-console.log(`Redirect sources: ${redirects.length}`);
+console.log(`Redirect sources: ${redirects.length} (${inventoryRedirects.length} legacy + ${applicationRedirects.length} application)`);
 console.log(`Known static destinations: ${implementedRoutes.size}`);
 console.log(`Loops: 0`);
 console.log(`Chains: 0`);

@@ -20,7 +20,7 @@ The browser-control environment reported no connected browser after its required
 | Staged template | Staged message/event and supporting routes | Page hero, reading measure, empty states, actions |
 | Visitor pages | `/plan-your-visit`, `/contact` | Facts, visit cards, address/contact wrapping, non-form contact state |
 | Legal pages | `/privacy-policy`, `/photo-release` | Long-form measure, heading rhythm, paragraph readability |
-| Feed pages | `/messages`, `/messages/live`, `/events` | Empty and populated card-grid rules, metadata wrapping |
+| Feed pages | `/messages`, `/online-church`, `/events` | Empty and populated card-grid rules, metadata wrapping |
 
 ## Observations by viewport
 

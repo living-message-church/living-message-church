@@ -215,7 +215,7 @@ SEO titles and descriptions below are the values exposed by public Yoast metadat
 - **Purpose/content:** current 10:45 AM online service, previous sermons, worship quote, welcome from Brian and Allison.
 - **Embeds:** YouTube feed/player plugin; church/community images.
 - **Important copy:** offers online and in-person connection, Zoom or coffee/conversation; contains typo “Panera Breard.”
-- **Disposition:** **Keep + Rewrite + Verify** at `/messages/live`; confirm livestream schedule, platform, moderation, and connection options.
+- **Disposition:** **Keep + Rewrite + Verify** at `/online-church`; confirm livestream schedule, platform, moderation, and connection options.
 
 ### `/events-living-message-church-clermont/` — Events
 
@@ -338,7 +338,7 @@ The URL-by-URL register is generated from the production sitemaps and appended b
 | `/events-living-message-church-clermont/` | Events | page | Keep / Rewrite | `/events` |
 | `/contact-living-message-church-clermont/` | Contact | page | Keep / Rewrite | `/contact` |
 | `/home2/` | Home2 | page | Merge / Archive | `/` |
-| `/online-church/` | Online Church | page | Keep / Rewrite | `/messages/live` |
+| `/online-church/` | Online Church | page | Keep / Rewrite | `/online-church` |
 | `/new-visitors/` | I’m New | page | Merge / Rewrite | `/plan-your-visit` |
 | `/plan-your-visit/` | Plan Your Visit | page | Merge / Rewrite | `/plan-your-visit` |
 | `/nextsteps/` | Next Steps | page | Keep / Rewrite | `/connect/next-steps` |

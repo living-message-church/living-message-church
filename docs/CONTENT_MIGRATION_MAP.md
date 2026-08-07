@@ -30,7 +30,7 @@ Audit date: 2026-08-05
 | `/connect/groups` | Men, women, marriage, discipleship, other groups | Homepage/landing/event evidence; requires current group list and schedule |
 | `/connect/next-steps` | Connect, serve, grow class | `/nextsteps/` and active registration source |
 | `/messages` | Latest message and searchable archive | `/media/`, `/sermons-living-message-church-clermont/`, YouTube/Podbean after feed verification |
-| `/messages/live` | 10:45 online service and online connection | `/online-church/` |
+| `/online-church` | Online service and online connection | `/online-church/` |
 | `/events` | Current/upcoming event cards and details | `/events-living-message-church-clermont/`, Church Center registrations; no blind legacy import |
 | `/events/[slug]` | Only current or intentionally archived individual events | New authoritative event records |
 | `/outreach` | Find, Feed & Restore plus approved missions/partners | `/outreach/`, About outreach history, confirmed partner links |
@@ -55,7 +55,7 @@ Audit date: 2026-08-05
 | `/nextsteps/` | `/connect/next-steps` | Keep/Rewrite | Confirm class timing and registration URL. |
 | `/living-message-bible-training-school/` | `/connect` | Archive | Historical 2018 program; verify whether a successor exists. |
 | `/media/`, `/sermons-living-message-church-clermont/` | `/messages` | Merge/Rebuild | Create structured sermon archive; verify feeds/rights. |
-| `/online-church/` | `/messages/live` | Keep/Rewrite | Preserve current 10:45 livestream after verification. |
+| `/online-church/` | `/online-church` | Keep/Rewrite | Preserve the authoritative production slug; omit the unverified online-service time. |
 | `/events-living-message-church-clermont/`, `/events/` | `/events` | Merge/Rebuild | One event source; current records only. |
 | 415 `/event/.../` URLs | `/events` | Archive | All sitemap-advertised details are historical. Exact mappings are in `REDIRECTS.md`. |
 | `/outreach/` | `/outreach` | Keep/Rewrite | Verify program/legal/timeline claims; retain external donate/learn-more path. |

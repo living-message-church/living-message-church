@@ -44,7 +44,14 @@ const nextConfig: NextConfig = {
   // 308 normalization so audited content redirects can respond in one 301 hop.
   skipTrailingSlashRedirect: true,
   async redirects() {
-    return buildRedirects();
+    return [
+      {
+        source: "/messages/live",
+        destination: "/online-church",
+        statusCode: 301,
+      },
+      ...buildRedirects(),
+    ];
   },
 };
 

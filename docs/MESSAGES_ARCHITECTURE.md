@@ -27,7 +27,7 @@ The credential-free Atom feed exposes the newest 15 records, so it is a recent a
 - Homepage featured message uses the newest feed record in a privacy-enhanced `youtube-nocookie.com` iframe and revalidates hourly.
 - `/messages` includes the newest feed record as its featured player, publication dates, evidence-backed category chips, keyword search, responsive video cards, empty results, and player selection without leaving the page.
 - Thumbnails come from the verified feed’s YouTube media metadata; the local fallback uses standard YouTube thumbnail URLs for its approved IDs.
-- `/messages/live` consumes the same normalized feed and verified channel ID for a click-to-load live player plus the recent archive. The unresolved online-service time is omitted, so the completed route is indexable without publishing a disputed schedule.
+- `/online-church` consumes the same normalized feed and verified channel ID for a click-to-load live player. Past-message actions lead to the dedicated `/messages` archive. The unresolved online-service time is omitted, so the completed route is indexable without publishing a disputed schedule.
 
 ### Admin prototype
 
