@@ -110,7 +110,6 @@ export default function OnlineChurchPage({ liveResolution, nextService }: InferG
           <p className="online-live-note">{onlineChurchContent.live.note}</p>
         </div>
         <YouTubeLiveEmbed
-          channelId={youtubeChannel.id}
           resolutionStatus={liveResolution.status}
           video={liveResolution.video}
         />

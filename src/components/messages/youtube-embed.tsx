@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { type MouseEvent, useRef, useState } from "react";
 import type { Message } from "@/types/content";
 
 export function YouTubeEmbed({
@@ -33,6 +33,15 @@ export function YouTubeEmbed({
   const closeVideo = () => {
     setPlaying(false);
     dialogRef.current?.close();
+  };
+  const closeFromVeil = (event: MouseEvent<HTMLDialogElement>) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    if (
+      event.clientX < bounds.left
+      || event.clientX > bounds.right
+      || event.clientY < bounds.top
+      || event.clientY > bounds.bottom
+    ) closeVideo();
   };
 
   return (
@@ -79,7 +88,7 @@ export function YouTubeEmbed({
         )}
       </div>
       {presentation === "cinema" ? (
-        <dialog className="youtube-cinema" onClose={() => setPlaying(false)} ref={dialogRef}>
+        <dialog className="youtube-cinema" onClick={closeFromVeil} onClose={() => setPlaying(false)} ref={dialogRef}>
           <button aria-label="Close cinema player" className="youtube-cinema-close" onClick={closeVideo} type="button">
             <span aria-hidden="true">Close</span>
           </button>

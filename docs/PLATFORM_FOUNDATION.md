@@ -57,7 +57,7 @@ YouTube adds the following non-sensitive checks to `/admin/platform`:
 - normalized current state as `Live`, `Upcoming`, `Offline`, or `Unavailable`
 - resolved video ID status as `Resolved` or `Not resolved`; the ID itself is not shown
 
-`src/lib/youtube` owns the server-only client, provider wire types, normalized video model, and deterministic Live → Upcoming → latest completed selection. The resolver reads the configured channel's uploads playlist, hydrates candidate video resources, rejects records from other channels or videos that are private or not embeddable, and caches its result for 55 seconds. `/online-church` revalidates every 60 seconds and uses that safe projection only for status and schedule context; playback always targets the configured channel's live-stream embed.
+`src/lib/youtube` owns the server-only client, provider wire types, normalized video model, and deterministic Live → Upcoming → latest completed selection. The resolver reads the configured channel's uploads playlist, hydrates candidate video resources, rejects records from other channels or videos that are private or not embeddable, and caches its result for 55 seconds. `/online-church` revalidates every 60 seconds and embeds only the resolved Live or future Upcoming video ID. The completed record remains diagnostic context and is never substituted into Church Online playback.
 
 The Google API key is currently restricted to the approved development origin. Server-side Data API requests therefore send `https://dev.livingmessagechurch.com/` as their `Referer`. Without it, Google returns HTTP 403 before the channel resource is read. Before the production hostname becomes authoritative, `https://livingmessagechurch.com/` must also be added to the key's allowed website restrictions; the key itself remains server-only.
 
@@ -75,7 +75,7 @@ No `middleware.ts` or root `proxy.ts` was added. Next.js 16 reserves Proxy for r
 - Planning Center credentials are read only by server-side provider modules and never serialized into page props.
 - Planning Center diagnostics never request People records, group memberships, submitted registrations, attendees, giving records, or contact data.
 - The YouTube API key is read only by `src/lib/youtube/client.ts`; it is never imported by a client component or serialized into page props.
-- The public player uses the configured channel's `youtube-nocookie.com/embed/live_stream` endpoint, does not force autoplay inline, supports cinema mode after user activation, and retains the supplied channel's `/live` URL as a fallback.
+- The public player uses `youtube-nocookie.com` for a resolved Live or future Upcoming video, does not force autoplay inline, supports cinema mode after user activation, and retains the supplied channel's `/live` URL as an offline fallback.
 - YouTube API errors are reduced to non-sensitive reachability/status metadata. Raw provider responses and request URLs containing the key are never logged or rendered.
 
 ## Deferred work
@@ -100,7 +100,7 @@ Validated locally on August 7, 2026:
 - Missing-credential behavior — `/admin/platform` reports `Missing` and all provider endpoints report `Not checked`; the preview reports no counts or records
 - Client-bundle credential scan — no Planning Center environment-variable names, Basic credential payloads, or Authorization logic found in `.next/static`
 - YouTube state selection — fixture coverage passed for Live priority, Upcoming fallback, Offline fallback, and rejection of a non-embeddable candidate
-- YouTube failure behavior — when status resolution is unavailable, `/online-church` retains its verified live-channel player and channel fallback without substituting an old completed message
+- YouTube failure behavior — when status resolution is unavailable, `/online-church` retains its 16:9 media window as a branded offline state with the verified channel fallback; no old completed message or YouTube error is shown
 - YouTube client-bundle scan — no API key, YouTube environment-variable names, or Data API request logic found in `.next/static`
 - Authenticated discovery — the initial request formerly failed at `channels.list(part=contentDetails)` with HTTP 403 `forbidden` because Google received an empty referrer. Adding the approved development referrer resolves the channel and uploads playlist. The next 25 records currently include 25 public, embeddable videos and a playable completed-message fallback. Six records carry stale `upcoming` markers with past scheduled dates; the resolver now rejects those instead of treating them as future services.
 - Production HTTP smoke check — `200 OK`

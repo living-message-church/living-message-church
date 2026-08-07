@@ -16,7 +16,7 @@ export const onlineChurchContent = {
     nextServiceLabel: "Live begins",
     nextServiceAction: "View service details",
     note:
-      "This player stays connected to the verified live channel. When no service is streaming, return here when the next broadcast begins.",
+      "A live or scheduled broadcast appears here automatically. When the church is offline, return when the next service begins.",
     channelAction: "Open live channel",
     archiveAction: "Browse past messages",
   },
