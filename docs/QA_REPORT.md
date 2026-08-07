@@ -168,12 +168,12 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 
 | Area | Evidence |
 | --- | --- |
-| Primary and priority routes | Existing public routes plus the new no-index `/admin/messages` prototype build successfully; representative Home, Messages, Live, and Admin routes returned HTTP 200 locally. |
-| Staged/no-index handling | About, Gallery, most Connect routes, Live, Events, Outreach, and Give retain deliberate `noindex, nofollow`; Beliefs, Pastor, Team, Next Steps, and the verified `/messages` archive are indexable. |
+| Primary and priority routes | Existing public routes plus the no-index administrative prototypes build successfully; representative Home, Messages, Church Online, and Admin routes returned HTTP 200 locally. |
+| Staged/no-index handling | About, Gallery, most Connect routes, Events, Outreach, and Give retain deliberate `noindex, nofollow`; Beliefs, Pastor, Team, Next Steps, Messages, and Church Online are indexable. |
 | Metadata | Home emitted a unique title, canonical URL, Open Graph/Twitter metadata, and Organization JSON-LD. |
 | Structured-data restraint | Only the verified organization name and canonical URL are emitted; no address, phone, service, event, sermon, rating, or founding claims were fabricated. |
 | Messages source | Home, `/messages`, and `/messages/live` consume the verified canonical YouTube feed through one normalized adapter, with approved local records retained only for feed failure. |
-| Message privacy/SEO restraint | The iframe uses `youtube-nocookie.com`; Messages is indexable after source verification, Admin remains no-indexed, and no unapproved `VideoObject` claims are emitted. |
+| Message privacy/SEO restraint | Click-to-load message and live players use `youtube-nocookie.com`; Messages and Church Online are indexable after channel verification, Admin remains no-indexed, and no unapproved `VideoObject` claims are emitted. |
 | Admin safety boundary | `/admin/messages` has no API mutation, authentication claim, Supabase client, or enabled upload/save control; all prototype edits are browser-local. |
 | Events fallback | `/events` and Home rendered the unconfigured adapter state; historical WordPress events were not treated as upcoming. |
 | Redirects | Representative legacy routes return direct 301 responses to `/`, `/plan-your-visit`, and `/events`; the canonical `/plan-your-visit/` source remains a 200 page. Static validation found 452 redirect sources, no duplicates, no loops, no chains, and no missing destinations. |
@@ -184,7 +184,7 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 | Button sizing | Action links have a 3rem minimum height and responsive wrapping. |
 | Reduced-motion code path | `prefers-reduced-motion: reduce` disables smooth scrolling and minimizes animation/transition duration. |
 | Photography crops | Local approved-source images render within defined 4:3 and 16:9 frames using `next/image`, responsive `sizes`, and `object-fit: cover`; page-hero backgrounds use capped cover crops. |
-| Sitemap/robots | Both returned HTTP 200; the sitemap contains the published Home, Plan Your Visit, About, Beliefs, Pastor, Team, Next Steps, Messages, and Contact routes. |
+| Sitemap/robots | Both returned HTTP 200; the sitemap contains the published Home, Plan Your Visit, About, Beliefs, Pastor, Team, Next Steps, Messages, Church Online, and Contact routes. |
 
 ## Failed and fixed
 
@@ -218,6 +218,7 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 - Screen-reader announcement of mobile navigation and feed empty states.
 - Safari/iOS and Chromium rendering differences.
 - Public category/search behavior, selected-player scrolling, remote YouTube thumbnail crops, and iframe playback in a real browser.
+- Live-channel availability behavior when YouTube has an active stream, a scheduled stream, and no stream; the external channel fallback remains available in every state.
 - Admin keyboard behavior for local title/meta fields, category add/remove actions, and narrow-screen row composition.
 
 ## Validation commands
@@ -229,5 +230,6 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 | `npm run build -- --webpack` | Passed on Next.js 16.3.0 with the verified public YouTube feed available during generation; all 25 pages plus robots, sitemap, and API routes generated successfully |
 | Our Team route smoke | Passed; `/about/leadership` returned 200 with 16 cards and 3 tiers, remained indexable, appeared in the sitemap, and `/the-team/` returned a direct 301 to it. |
 | Current message-control refinement | `npm run lint` passed. The default Turbopack build reached TypeScript and then hit an environment-level internal port restriction; the webpack production path remains the validated build command. |
-| Message milestone route smoke | Passed; Home, Messages, Live, sitemap, and robots returned HTTP 200. Home and Messages contained newest video `SGsP83hGEN8`; Messages was indexable, Live retained no-index, and the sitemap contained `/messages`. |
+| Previous message milestone route smoke | Passed at that milestone; Home, Messages, Live, sitemap, and robots returned HTTP 200. The former Live no-index state is superseded by the Church Online milestone below. |
+| Church Online milestone | `npm run lint`, `npm run validate:redirects`, and `npm run build` passed. `/messages/live` returned 200, rendered live and archive landmarks without `noindex`, appeared in the sitemap, and legacy `/online-church/` returned a direct 301. Interactive visual QA remains pending because no browser connection was available. |
 | Existing automated tests | No test suite or test command is configured |

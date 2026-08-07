@@ -10,7 +10,7 @@ Updated: 2026-08-07
 - Shared primary header, accessible mobile navigation, skip link, main landmark, and footer.
 - Required homepage sections with content separated from components.
 - Implemented foundation routes: `/`, `/plan-your-visit`, `/about-living-message-church-clermont`, `/about/beliefs`, `/about/pastor`, `/about/leadership`, `/contact`, `/privacy-policy`, `/photo-release`; `/new-here` permanently redirects to `/plan-your-visit` for backward compatibility.
-- Deliberate no-index staged destinations for About, gallery, Connect, live, Events, Outreach, and Give keep the full redirect ledger valid; `/messages`, `/plan-your-visit`, `/connect/next-steps`, `/about/beliefs`, `/about/pastor`, and `/about/leadership` are published from current approved sources.
+- Deliberate no-index staged destinations for About, gallery, Connect, Events, Outreach, and Give keep the full redirect ledger valid; `/messages`, `/messages/live`, `/plan-your-visit`, `/connect/next-steps`, `/about/beliefs`, `/about/pastor`, and `/about/leadership` are published from current approved sources.
 - Sitewide metadata component, canonical URLs, Open Graph/Twitter defaults, minimal verified Organization JSON-LD, XML sitemap, and robots route.
 - 452 audited 301 redirect rules sourced from the machine-readable inventory, including one query-qualified legacy route; the production `/plan-your-visit/` slug is now preserved as a 200 route.
 - Redirect validator for duplicate sources, statically missing destinations, loops, chains, ledger counts, and invalid status assumptions.
@@ -19,6 +19,8 @@ Updated: 2026-08-07
 - Priority route structures remain for About, Connect, Kids, Youth, Young Adults, Groups, Outreach, and Give. The materially incomplete routes remain no-indexed; Next Steps, Our Beliefs, Our Pastor, and Our Team now have complete indexable routes sourced from their current production pages.
 - Provider-neutral message and event adapters added with deterministic unavailable-source fallbacks and no fabricated records.
 - `/messages`, `/messages/live`, `/events`, and the homepage event section now consume normalized adapter results.
+- `/messages/live` is now the complete Church Online destination: a click-to-load verified YouTube live player, newest featured service, searchable/category-filtered recent archive, and online-to-in-person connection pathway. The unresolved online-service time is intentionally omitted.
+- The official Supabase client foundation, browser/server helpers, environment validation, and no-index `/admin/platform` health page are implemented without tables, authentication, forms, or content migration.
 - Editorial route panels, feed states, stronger page-hero treatment, card depth, and responsive compositions refined.
 - Asset register now records the approved-source photography library, its optimized local derivatives, page uses, and outstanding attribution/release checks.
 - HTTP route, metadata, no-index, structured-data, provider-fallback, sitemap, robots, and representative redirect smoke checks pass.

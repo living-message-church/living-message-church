@@ -8,6 +8,7 @@ export * from "./messages";
 export * from "./ministries";
 export * from "./navigation";
 export * from "./next-steps";
+export * from "./online-church";
 export * from "./outreach";
 export * from "./pastor";
 export * from "./pages";
