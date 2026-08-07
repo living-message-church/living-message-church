@@ -9,14 +9,14 @@ Updated: 2026-08-07
 - Project-native design tokens and responsive editorial component foundation.
 - Shared primary header, accessible mobile navigation, skip link, main landmark, and footer.
 - Required homepage sections with content separated from components.
-- Implemented foundation routes: `/`, `/plan-your-visit`, `/about-living-message-church-clermont`, `/contact`, `/privacy-policy`, `/photo-release`; `/new-here` permanently redirects to `/plan-your-visit` for backward compatibility.
-- Deliberate no-index staged destinations for About, beliefs, leadership, gallery, Connect, live, Events, Outreach, and Give so the full redirect ledger has valid destinations; `/messages`, `/plan-your-visit`, and `/connect/next-steps` are published from current approved sources.
+- Implemented foundation routes: `/`, `/plan-your-visit`, `/about-living-message-church-clermont`, `/about/beliefs`, `/contact`, `/privacy-policy`, `/photo-release`; `/new-here` permanently redirects to `/plan-your-visit` for backward compatibility.
+- Deliberate no-index staged destinations for About, leadership, gallery, Connect, live, Events, Outreach, and Give keep the full redirect ledger valid; `/messages`, `/plan-your-visit`, `/connect/next-steps`, and `/about/beliefs` are published from current approved sources.
 - Sitewide metadata component, canonical URLs, Open Graph/Twitter defaults, minimal verified Organization JSON-LD, XML sitemap, and robots route.
 - 452 audited 301 redirect rules sourced from the machine-readable inventory, including one query-qualified legacy route; the production `/plan-your-visit/` slug is now preserved as a 200 route.
 - Redirect validator for duplicate sources, statically missing destinations, loops, chains, ledger counts, and invalid status assumptions.
 - Lint, redirect validation, and production build pass.
-- Verification reconciliation remains explicit: the public church name and canonical YouTube source are verified; Next Steps and the user-directed Our Church identity story are approved for temporary use with their remaining blockers documented.
-- Priority route structures completed for About, beliefs, leadership, Connect, Kids, Youth, Young Adults, Groups, Outreach, and Give; all remain no-indexed while materially incomplete. Next Steps now has a complete indexable route sourced from the current production page.
+- Verification reconciliation remains explicit: the public church name and canonical YouTube source are verified; Next Steps, the user-directed Our Church identity story, and the current doctrinal statement are approved for temporary use with their remaining blockers documented.
+- Priority route structures remain for About, leadership, Connect, Kids, Youth, Young Adults, Groups, Outreach, and Give. The materially incomplete routes remain no-indexed; Next Steps and Our Beliefs now have complete indexable routes sourced from their current production pages.
 - Provider-neutral message and event adapters added with deterministic unavailable-source fallbacks and no fabricated records.
 - `/messages`, `/messages/live`, `/events`, and the homepage event section now consume normalized adapter results.
 - Editorial route panels, feed states, stronger page-hero treatment, card depth, and responsive compositions refined.
@@ -54,6 +54,7 @@ Updated: 2026-08-07
 - `/plan-your-visit` now provides a complete photography-led visitor journey using only current-site facts and approved Living Message imagery. It preserves the production slug, omits the disputed Kids starting age, and keeps visitor form submission with the observed Church Center provider.
 - `/connect/next-steps` now preserves the current Connect · Serve · Grow pathway, one-class Sunday format, 10:45 AM timing, leadership-team host, Scripture references, and Church Center registration handoff in a complete responsive presentation. Unconfirmed duration, childcare, recurrence dates, and form governance remain documented rather than invented.
 - `/about-living-message-church-clermont` now preserves the user-supplied Our Church slug, family-not-membership philosophy, “Living Message” name story, general commitment to serving people, and visitor pathway. Its supplied YouTube story uses a compact poster and an optional cinema-mode player, and its hero uses a unique production-site worship image. Stale outreach figures and changing program claims remain excluded.
+- `/about/beliefs` now preserves the current Why Beliefs Matter introduction, historic-confession note, six doctrinal statement groups, and Scripture references in a premium native accordion. It uses neutral SEO, a unique production-site Bible-study image, and remains explicitly subject to final pastoral proofreading.
 
 ## In progress
 
@@ -68,7 +69,7 @@ Updated: 2026-08-07
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
 - Authoritative event source and publishing/registration policy.
 - Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
-- Outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
+- Final pastoral proofreading of the temporarily approved doctrinal statement, plus outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
 
 ## Deferred
@@ -76,7 +77,7 @@ Updated: 2026-08-07
 - Supabase persistence/auth/storage, native form submission, newsletter integration, prayer handling, analytics, and consent tooling.
 - Full-history YouTube Data API or future Supabase editorial sync and the live event API. The credential-free YouTube feed currently supplies the newest 15 records; local records remain a failure fallback.
 - Dynamic message/event detail routes; public message search and category filtering are now implemented.
-- Full ministry, beliefs, leadership, history, and gallery publication.
+- Full ministry, leadership, history, and gallery publication.
 - Production deployment, DNS changes, and WordPress decommissioning.
 
 ## Recommended next milestone

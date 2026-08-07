@@ -17,7 +17,7 @@ export const primaryNavigation: NavigationItem[] = [
     availability: "implemented",
     children: [
       { label: "Our Church", href: "/about-living-message-church-clermont", availability: "implemented" },
-      { label: "Our Beliefs", href: "/about/beliefs", availability: "staged" },
+      { label: "Our Beliefs", href: "/about/beliefs", availability: "implemented" },
       { label: "Our Pastor", href: "/about/leadership", availability: "staged" },
       { label: "Our Team", href: "/about/leadership", availability: "staged" },
       { label: "Our Outreach", href: "/outreach", availability: "staged" },

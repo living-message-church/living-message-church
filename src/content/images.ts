@@ -59,8 +59,8 @@ export const pagePhotography: Record<string, ContentImage> = {
     "The Living Message Church congregation gathered for worship.",
   ),
   "/about/beliefs": approved(
-    "/images/general/living-message-bible-teaching.jpg",
-    "Bible teaching from the stage at Living Message Church.",
+    "/images/general/living-message-bible-study.jpg",
+    "Men gathered around open Bibles during a Living Message Church study.",
   ),
   "/about/leadership": approved(
     "/images/leadership/living-message-broadway-family.jpg",

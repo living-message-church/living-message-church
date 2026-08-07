@@ -58,7 +58,6 @@ export const pageContent = {
 
 export const stagedPages: Record<string, PageContent> = {
   about: page("/about", "About | Living Message Church", "Learn about Living Message Church.", "About", "A church community shaped by Scripture.", "The church story, beliefs, and leadership are being prepared from reviewed source content."),
-  beliefs: page("/about/beliefs", "Beliefs | Living Message Church", "Living Message Church beliefs and teaching philosophy.", "About", "Beliefs and teaching philosophy.", "Doctrinal content is staged pending pastoral review."),
   leadership: page("/about/leadership", "Leadership | Living Message Church", "Meet the leadership of Living Message Church.", "About", "Leadership rooted in service.", "The audited leadership roster is staged pending confirmation of every name, title, biography, and portrait."),
   gallery: page("/about/gallery", "Gallery | Living Message Church", "A future gallery of Living Message Church community life.", "About", "Church life, honestly seen.", "Photography will be added only after ownership, consent, relevance, and alt text are approved."),
   connect: page("/connect", "Connect | Living Message Church", "Explore connection and ministry pathways at Living Message Church.", "Connect", "There is a next step for you.", "Ministry and group details are being prepared with their leaders."),

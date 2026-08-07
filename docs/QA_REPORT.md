@@ -45,6 +45,12 @@ The supplied `/about-living-message-church-clermont/` slug is preserved as a dir
 
 Source-level responsive review confirms that the photography-led hero retains bounded type, family and service splits collapse below 56rem, the family statement remains inside the image composition, the name-story columns stack, and all actions retain the shared target sizing. Final rendered optical approval remains pending because no browser connection was available.
 
+## Our Beliefs redesign
+
+`/about/beliefs` now replaces its no-index staging shell with the doctrinal material on the current production `/our-beliefs/` page. The misleading legacy “Church of Christ teachings” SEO phrase is not carried forward. The page retains the source’s Why Beliefs Matter introduction, historic-confession note, Holy Scriptures, Trinity, Human Condition, Salvation, Assurance of Salvation, and Church statements with their Scripture references. Copy received punctuation and readability cleanup without adding doctrinal claims; final pastoral proofreading remains recorded in the verification registry.
+
+The route uses a unique Living Message Bible-study photograph, a restrained two-column foundation section, and native `details`/`summary` disclosures with visible hover, open, keyboard-focus, and plus/minus states. The disclosure index stacks below the introduction at 56rem, mobile rows retain 40px controls inside 5rem targets, long doctrine keeps a bounded reading measure, and the shared Sunday invitation closes the page. Rendered optical approval remains pending because no browser connection was available.
+
 ## Plan Your Visit redesign
 
 The authoritative production `/plan-your-visit/` slug now remains a 200 destination instead of redirecting to `/new-here`; the superseded internal `/new-here` route returns a direct 301 to the preserved slug. The redesigned page uses a photography-led visitor hero, Sunday service card, three-column essentials summary, five-step arrival and connection guide, LMC Kids feature, and final invitation. Copy is limited to facts observable on the current production page: parking and greeters, hallway self check-in and pickup sticker, contemporary worship, Scripture-centered teaching, available pastors and elders, Connect Cards, current service times, and the current address. The disputed Kids starting age is intentionally omitted.

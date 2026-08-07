@@ -34,23 +34,10 @@ export const priorityRouteContent = {
     "A focused place for the church’s approved story, identity, and leadership pathways.",
     [
       { number: "01", title: "Story and identity", body: "The approved history, name origin, and church-family language will live here after pastoral review." },
-      { number: "02", title: "Beliefs", body: "The complete doctrinal statement has a dedicated route and remains pending pastoral approval.", href: "/about/beliefs", linkLabel: "Open beliefs" },
+      { number: "02", title: "Beliefs", body: "Read the church’s complete current doctrinal statement and Scripture references.", href: "/about/beliefs", linkLabel: "Open beliefs" },
       { number: "03", title: "Leadership", body: "The leadership route is prepared for an approved roster, titles, biographies, and portraits.", href: "/about/leadership", linkLabel: "Open leadership" },
     ],
     { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
-  ),
-  beliefs: pending(
-    "/about/beliefs",
-    "Beliefs",
-    "About",
-    "Beliefs deserve careful words.",
-    "The audited doctrinal material is not being republished until pastoral review resolves wording and denominational ambiguity.",
-    [
-      { number: "01", title: "Scripture", body: "Approved teaching about Scripture will be presented in a readable, source-supported format." },
-      { number: "02", title: "Core doctrine", body: "Approved sections will cover only positions explicitly confirmed by pastoral leadership." },
-      { number: "03", title: "Teaching approach", body: "The public description of the church’s teaching approach remains pending final wording." },
-    ],
-    { label: "Return to About", href: "/about", style: "secondary" },
   ),
   leadership: pending(
     "/about/leadership",

@@ -351,6 +351,45 @@ button, input, textarea, select { font: inherit; }
 .about-church-final-layout .heading { max-width: 13ch; }
 .about-church-final-layout .lede { margin: 0; color: var(--color-ink-soft); }
 
+.beliefs-hero { position: relative; display: grid; min-height: clamp(35rem, 68svh, 47rem); isolation: isolate; overflow: hidden; background: var(--color-ink); color: white; }
+.beliefs-hero-image { z-index: -3; object-fit: cover; object-position: center 54%; }
+.beliefs-hero-scrim { position: absolute; z-index: -2; background: linear-gradient(90deg, rgb(8 9 8 / 0.94) 0%, rgb(8 9 8 / 0.7) 46%, rgb(8 9 8 / 0.2) 100%); inset: 0; }
+.beliefs-hero-inner { display: grid; min-height: inherit; align-items: end; padding-block: clamp(4rem, 7vw, 6.5rem); }
+.beliefs-hero-copy { max-width: 54rem; }
+.beliefs-hero-copy h1 { margin: 0; font-size: clamp(4.75rem, 3.5rem + 5vw, 8rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; }
+.beliefs-hero-copy > p:not(.eyebrow) { max-width: 39rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.82); font-size: var(--step-1); line-height: 1.45; }
+
+.beliefs-intro-section { padding-block: clamp(5rem, 9vw, 9rem); }
+.beliefs-intro-layout { display: grid; grid-template-columns: minmax(20rem, 0.78fr) minmax(28rem, 1.22fr); gap: clamp(3rem, 9vw, 10rem); }
+.beliefs-intro-layout .heading { max-width: 11ch; }
+.beliefs-intro-copy > p:not(.beliefs-references) { max-width: 45rem; margin: 0 0 var(--space-4); color: var(--color-ink-soft); }
+.beliefs-references { max-width: 45rem; margin: var(--space-5) 0 0; border-top: 1px solid var(--color-line); padding-top: var(--space-3); color: var(--color-ink-soft); font-size: var(--step--1); }
+.beliefs-confession-note { max-width: 45rem; margin-top: var(--space-6); border-radius: var(--radius-md); background: color-mix(in srgb, var(--color-blue) 10%, white); padding: clamp(1.5rem, 3vw, 2.25rem); }
+.beliefs-confession-note span { display: block; margin-bottom: var(--space-2); color: var(--color-blue); font-size: var(--step--1); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.beliefs-confession-note p { margin: 0; color: var(--color-ink); }
+
+.beliefs-statements-section { border-top: 1px solid var(--color-line); background: white; padding-block: clamp(5rem, 9vw, 9rem); }
+.beliefs-statements-layout { display: grid; align-items: start; grid-template-columns: minmax(18rem, 0.52fr) minmax(0, 1.48fr); gap: clamp(3rem, 8vw, 8rem); }
+.beliefs-statements-intro { position: sticky; top: var(--space-6); }
+.beliefs-statements-intro .heading { max-width: 10ch; }
+.beliefs-statements-intro > p:not(.eyebrow) { max-width: 27rem; margin: var(--space-4) 0 0; color: var(--color-ink-soft); }
+.beliefs-accordion { border-top: 1px solid var(--color-ink); }
+.belief-item { border-bottom: 1px solid var(--color-line); }
+.belief-item summary { display: grid; min-height: 5.75rem; align-items: center; grid-template-columns: 2.75rem minmax(0, 1fr) 2.75rem; gap: var(--space-3); list-style: none; color: var(--color-ink); cursor: pointer; transition: color 160ms ease; }
+.belief-item summary::-webkit-details-marker { display: none; }
+.belief-item summary:hover { color: var(--color-blue); }
+.belief-item summary > span:nth-child(2) { font-size: var(--step-1); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
+.belief-number { color: var(--color-ink-soft); font-size: var(--step--1); font-weight: 700; font-variant-numeric: tabular-nums; }
+.belief-toggle { position: relative; width: 2.75rem; height: 2.75rem; border: 1px solid var(--color-line); border-radius: 50%; }
+.belief-toggle::before, .belief-toggle::after { position: absolute; width: 0.85rem; height: 1px; background: currentColor; content: ""; inset: 50% auto auto 50%; transform: translate(-50%, -50%); transition: opacity 160ms ease, transform 160ms ease; }
+.belief-toggle::after { transform: translate(-50%, -50%) rotate(90deg); }
+.belief-item[open] summary { color: var(--color-brand-navy); }
+.belief-item[open] .belief-toggle { border-color: color-mix(in srgb, var(--color-blue) 50%, transparent); background: color-mix(in srgb, var(--color-blue) 10%, white); }
+.belief-item[open] .belief-toggle::after { opacity: 0; transform: translate(-50%, -50%) rotate(0); }
+.belief-content { max-width: 49rem; padding: 0 3.75rem var(--space-6); }
+.belief-content p { margin: 0 0 var(--space-4); color: var(--color-ink-soft); }
+.belief-content p:last-child { margin-bottom: 0; }
+
 .route-purpose { display: grid; grid-template-columns: minmax(13rem, 0.35fr) minmax(0, 1fr); gap: clamp(3rem, 6vw, 6rem); }
 .route-status { position: sticky; top: 2rem; align-self: start; border-top: 1px solid var(--color-line); padding-top: var(--space-4); }
 .route-status p { color: var(--color-ink-soft); }
@@ -543,10 +582,12 @@ button, input, textarea, select { font: inherit; }
   .visit-kids-layout .media-frame { max-width: 42rem; }
   .next-steps-overview > .container-shell, .next-steps-class-layout, .next-steps-final-layout { grid-template-columns: 1fr; }
   .next-steps-facts { max-width: 42rem; }
-  .about-family-layout, .about-name-layout, .about-community-layout, .about-church-final-layout { grid-template-columns: 1fr; }
+  .about-family-layout, .about-name-layout, .about-community-layout, .about-church-final-layout, .beliefs-intro-layout, .beliefs-statements-layout { grid-template-columns: 1fr; }
   .about-family-copy { max-width: 44rem; }
   .about-community-image { order: 2; }
   .about-community-copy { order: 1; }
+  .beliefs-intro-layout > div:first-child { max-width: 42rem; }
+  .beliefs-statements-intro { position: static; max-width: 42rem; }
   .footer-lead { grid-template-columns: 1fr; }
   .footer-lead .footer-facts { grid-column: 1; }
 }
@@ -606,6 +647,14 @@ button, input, textarea, select { font: inherit; }
   .youtube-cinema { width: calc(100vw - (var(--gutter) * 2)); padding-top: 3rem; }
   .youtube-cinema-player { border-radius: var(--radius-md); }
   .about-community-image { width: 100%; aspect-ratio: 16 / 11; }
+  .beliefs-hero { min-height: auto; }
+  .beliefs-hero-inner { min-height: clamp(34rem, 125vw, 44rem); align-content: end; padding-block: var(--space-7); }
+  .beliefs-hero-copy h1 { font-size: clamp(3.75rem, 18vw, 5.5rem); }
+  .beliefs-hero-scrim { background: linear-gradient(180deg, rgb(8 9 8 / 0.25) 0%, rgb(8 9 8 / 0.88) 68%, rgb(8 9 8 / 0.96) 100%); }
+  .beliefs-hero-image { object-position: 48% center; }
+  .belief-item summary { min-height: 5rem; grid-template-columns: 2rem minmax(0, 1fr) 2.5rem; gap: var(--space-2); }
+  .belief-toggle { width: 2.5rem; height: 2.5rem; }
+  .belief-content { padding: 0 0 var(--space-5) 2.75rem; }
   .footer-lead .footer-facts { grid-column: 1; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid > div:first-child { grid-column: 1 / -1; margin-bottom: var(--space-4); }

@@ -1,6 +1,6 @@
 # Component library
 
-Updated: 2026-08-06
+Updated: 2026-08-07
 
 The component library is project-native React and CSS/Tailwind infrastructure. No UI library or new dependency was installed.
 
@@ -30,6 +30,7 @@ The component library is project-native React and CSS/Tailwind infrastructure. N
 - `PageHero` provides consistent interior-page hierarchy.
 - `StagedPage` gives intentionally staged sitemap destinations useful content and `noindex` metadata.
 - `PriorityPage` provides a production-quality editorial structure for verification-gated About, Connect, Outreach, and Give routes without leaking unresolved facts.
+- `BeliefsPage` presents the sourced doctrinal introduction and six statement groups through a photography-led hero and native, keyboard-accessible disclosure rows.
 
 ## Integration components
 
