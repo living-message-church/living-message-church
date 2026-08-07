@@ -56,7 +56,14 @@ export function SiteHeader() {
                   </button>
                   <div className="desktop-nav-dropdown" id="desktop-im-new-menu">
                     {item.children.map((child) => (
-                      <Link key={child.href} href={child.href} aria-current={isCurrent(child.href) ? "page" : undefined}>{child.label}</Link>
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        aria-current={isCurrent(child.href) ? "page" : undefined}
+                        onClick={() => setNewMenuOpen(false)}
+                      >
+                        {child.label}
+                      </Link>
                     ))}
                   </div>
                 </div>
