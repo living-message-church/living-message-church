@@ -39,9 +39,19 @@ export function BeliefsPage() {
         containerClassName="beliefs-intro-layout"
         containerSize="editorial"
       >
-        <div>
-          <Eyebrow>{introduction.eyebrow}</Eyebrow>
-          <Heading as="h2" id="beliefs-intro-title">{introduction.title}</Heading>
+        <div className="beliefs-intro-visual">
+          <Image
+            alt={introduction.image.alt}
+            className="beliefs-intro-image"
+            fill
+            sizes="(max-width: 896px) calc(100vw - 2.5rem), 38vw"
+            src={introduction.image.src}
+          />
+          <div className="beliefs-intro-scrim" />
+          <div className="beliefs-intro-heading">
+            <Eyebrow>{introduction.eyebrow}</Eyebrow>
+            <Heading as="h2" id="beliefs-intro-title">{introduction.title}</Heading>
+          </div>
         </div>
         <div className="beliefs-intro-copy">
           {introduction.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
