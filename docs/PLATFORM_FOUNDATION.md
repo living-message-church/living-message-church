@@ -86,15 +86,19 @@ No `middleware.ts` or root `proxy.ts` was added. Next.js 16 reserves Proxy for r
 
 ## Deferred work
 
-- Database schema and migrations
+- General application schemas and content migrations. The isolated AI event-creative migration is authored but not automatically applied.
 - Generated database types
 - Authentication and session refresh
 - Proxy/middleware integration
-- Storage buckets
+- General storage. The private `event-art` bucket is declared by migration for approved creative workflow deployment.
 - Content migration
 - Forms and administrative workflows
 - Planning Center public activation, synchronization, webhooks, and write operations
 - YouTube administrative editing, uploads, webhooks, and historical database synchronization
+
+## AI event creative foundation
+
+The platform now includes a provider-neutral server-only artwork interface, deterministic public-field prompt builder, strict Calendar-origin eligibility gate, Supabase workflow migration, private asset resolver, and sanitized diagnostics. `/admin/events/creative` remains read-only because administrative authentication does not yet exist. No mutation action is browser-callable, and no Planning Center request behavior changed.
 
 ## Validation
 

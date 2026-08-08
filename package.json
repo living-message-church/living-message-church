@@ -8,13 +8,15 @@
     "start": "next start",
     "lint": "eslint",
     "validate:redirects": "node scripts/validate-redirects.mjs",
-    "validate:planning-center-read-only": "node scripts/validate-planning-center-read-only.mjs"
+    "validate:planning-center-read-only": "node scripts/validate-planning-center-read-only.mjs",
+    "validate:creative-pipeline": "node scripts/validate-creative-pipeline.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",
     "next": "16.3.0",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "sharp": "^0.35.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

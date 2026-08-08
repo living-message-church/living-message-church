@@ -7,6 +7,7 @@ import type {
   NormalizedEvent,
   NormalizedGroup,
   NormalizedRegistration,
+  PlanningCenterCanonicalEventDiagnostic,
   PlanningCenterDiagnostics,
   PlanningCenterEndpointState,
 } from "@/lib/planning-center/types";
@@ -40,6 +41,44 @@ function EventSample({ item }: { item: NormalizedEvent }) {
       <h3>{item.title}</h3>
       <dl><div><dt>Starts</dt><dd>{displayDate(firstOccurrence?.startAt ?? null)}</dd></div><div><dt>Sources</dt><dd>{item.sourceMetadata.products.join(" · ")}</dd></div></dl>
       <a href={item.publicUrl} target="_blank" rel="noreferrer">Open public Church Center record <span aria-hidden="true">↗</span></a>
+    </article>
+  );
+}
+
+function words(value: string) {
+  return value.split("-").map((part) => part[0].toUpperCase() + part.slice(1)).join(" ");
+}
+
+function CanonicalEventCandidate({ item }: { item: PlanningCenterCanonicalEventDiagnostic }) {
+  const relationships = [
+    item.registrationRelationship.present ? `Registration (${item.registrationRelationship.status ?? "linked"})` : null,
+    item.groupRelationship ? "Group" : null,
+    item.checkInRelationship ? "Check-In" : null,
+    item.servicesRelationship ? "Services" : null,
+  ].filter(Boolean).join(" · ") || "Calendar only";
+  const providerIds = Object.entries(item.providerIds)
+    .filter(([, ids]) => ids.length)
+    .map(([product, ids]) => {
+      const visibleIds = ids.slice(0, 4).join(", ");
+      const remaining = ids.length > 4 ? ` +${ids.length - 4} more` : "";
+      return `${words(product.replace(/Ids$/, ""))}: ${visibleIds}${remaining}`;
+    });
+
+  return (
+    <article className="platform-sample-card">
+      <p className="eyebrow">{words(item.eligibility)}</p>
+      <h3>{item.title}</h3>
+      <dl>
+        <div><dt>Canonical ID</dt><dd>{item.canonicalId}</dd></div>
+        <div><dt>Series</dt><dd>{words(item.seriesModel)} · {item.occurrenceCount} occurrence{item.occurrenceCount === 1 ? "" : "s"}</dd></div>
+        <div><dt>Products</dt><dd>{item.contributingProducts.map(words).join(" · ")}</dd></div>
+        <div><dt>Relationships</dt><dd>{relationships}</dd></div>
+        <div><dt>Coverage</dt><dd>{item.imageAvailable ? "Image" : "No image"} · {item.locationAvailable ? "Location" : "No location"}</dd></div>
+        <div><dt>Ambiguity</dt><dd>{item.ambiguityFlags.length ? item.ambiguityFlags.map(words).join(" · ") : "None"}</dd></div>
+        <div><dt>Merge evidence</dt><dd>{item.mergeReasons.length ? item.mergeReasons.map(words).join(" · ") : "No cross-record merge"}</dd></div>
+        <div><dt>Provider IDs</dt><dd>{providerIds.join(" · ")}</dd></div>
+        <div><dt>Exclusion</dt><dd>{item.exclusionReason ?? "Not excluded"}</dd></div>
+      </dl>
     </article>
   );
 }
@@ -117,11 +156,20 @@ export default function PlanningCenterPlatformPage({
             </dl>
           </section>
 
-          <section className="platform-metrics" aria-label="Planning Center discovery counts">
-            <article><span>Canonical event candidates</span><strong>{diagnostics.events.totalDiscovered ?? "—"}</strong></article>
-            <article><span>Public signup opportunities</span><strong>{diagnostics.registrations.totalDiscovered ?? "—"}</strong></article>
-            <article><span>Published groups</span><strong>{diagnostics.groups.totalDiscovered ?? "—"}</strong></article>
-          </section>
+          {diagnostics.relationships ? (
+            <section className="platform-metrics" aria-label="Planning Center canonical event counts">
+              <article><span>Raw Calendar parents</span><strong>{diagnostics.relationships.calendar.futureParents}</strong></article>
+              <article><span>Canonical events</span><strong>{diagnostics.relationships.canonicalEvents}</strong></article>
+              <article><span>Exact merged representations</span><strong>{diagnostics.relationships.mergedRecords}</strong></article>
+              <article><span>Ambiguous candidates</span><strong>{diagnostics.relationships.eligibility.ambiguous}</strong></article>
+              <article><span>Excluded Calendar parents</span><strong>{diagnostics.relationships.excludedEvents}</strong></article>
+              <article><span>Registration-linked</span><strong>{diagnostics.relationships.coverage.registrationLinked}</strong></article>
+              <article><span>Group-linked</span><strong>{diagnostics.relationships.coverage.groupLinked}</strong></article>
+              <article><span>Services-linked</span><strong>{diagnostics.relationships.coverage.servicesLinked}</strong></article>
+              <article><span>Image coverage</span><strong>{diagnostics.relationships.coverage.images}/{diagnostics.relationships.canonicalEvents}</strong></article>
+              <article><span>Location coverage</span><strong>{diagnostics.relationships.coverage.locations}/{diagnostics.relationships.canonicalEvents}</strong></article>
+            </section>
+          ) : null}
 
           {diagnostics.relationships ? (
             <section className="platform-status-panel" aria-labelledby="relationship-status-title">
@@ -137,11 +185,23 @@ export default function PlanningCenterPlatformPage({
                 <div className="platform-check"><dt>Feed-origin records</dt><dd><strong>{diagnostics.relationships.feeds.feedOriginEvents}</strong><span>{diagnostics.relationships.feeds.records} configured Calendar feeds.</span></dd></div>
                 <div className="platform-check"><dt>Connected records</dt><dd><strong>{diagnostics.relationships.connectionRecords}</strong><span>Across {diagnostics.relationships.connectedCalendarParents} Calendar parents.</span></dd></div>
                 <div className="platform-check"><dt>Canonical events</dt><dd><strong>{diagnostics.relationships.canonicalEvents}</strong><span>{diagnostics.relationships.mergedRecords} duplicate representations merged by exact relationships.</span></dd></div>
-                <div className="platform-check"><dt>Excluded Calendar parents</dt><dd><strong>{diagnostics.relationships.excludedEvents}</strong><span>Not explicitly eligible for public publication.</span></dd></div>
+                <div className="platform-check"><dt>Excluded Calendar parents</dt><dd><strong>{diagnostics.relationships.excludedEvents}</strong><span>{diagnostics.relationships.exclusionReasons.notChurchCenterPublished} not Church Center published · {diagnostics.relationships.exclusionReasons.notApproved} not approved · {diagnostics.relationships.exclusionReasons.linkOnly} link-only · {diagnostics.relationships.exclusionReasons.other} other.</span></dd></div>
                 <div className="platform-check"><dt>Ambiguous relationships</dt><dd><strong>{diagnostics.relationships.ambiguous.sameTitleCalendarClusters + diagnostics.relationships.ambiguous.unmatchedPublicGroupOccurrences}</strong><span>{diagnostics.relationships.ambiguous.sameTitleCalendarClusters} same-title clusters and {diagnostics.relationships.ambiguous.unmatchedPublicGroupOccurrences} unmatched public Group occurrences remain quarantined.</span></dd></div>
               </dl>
             </section>
           ) : null}
+
+          <section className="platform-samples" aria-labelledby="canonical-candidates-title">
+            <div className="platform-samples-heading">
+              <p className="eyebrow">Canonical events</p>
+              <h2 id="canonical-candidates-title">Sanitized candidate evidence</h2>
+            </div>
+            {diagnostics.events.candidates.length ? (
+              <div className="platform-sample-grid">
+                {diagnostics.events.candidates.map((item) => <CanonicalEventCandidate item={item} key={item.canonicalId} />)}
+              </div>
+            ) : <p className="platform-empty-state">No canonical candidates are available.</p>}
+          </section>
 
           <section className="platform-samples" aria-labelledby="planning-samples-title">
             <div className="platform-samples-heading"><p className="eyebrow">Normalized output</p><h2 id="planning-samples-title">Safe sample records</h2></div>

@@ -22,8 +22,33 @@ export function createSupabaseServerClient(): SupabaseClient {
 }
 
 /**
- * Reports only whether the server-only key exists. The key is deliberately not
- * returned or used until an approved administrative use case requires it.
+ * Creates a server-only service-role client for approved platform workflows.
+ * Never import this helper from a Client Component or expose it through a
+ * browser-callable route. The creative pipeline uses it only after an
+ * authenticated administrative boundary is available.
+ */
+export function createSupabaseAdminClient(): SupabaseClient {
+  if (typeof window !== "undefined") {
+    throw new Error("The Supabase admin client is server-only.");
+  }
+
+  const { url } = getSupabasePublicConfig();
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
+  if (!serviceRoleKey) {
+    throw new Error("Supabase administrative configuration is incomplete.");
+  }
+
+  return createClient(url, serviceRoleKey, {
+    auth: {
+      autoRefreshToken: false,
+      detectSessionInUrl: false,
+      persistSession: false,
+    },
+  });
+}
+
+/**
+ * Reports only whether the server-only key exists. Its value is never returned.
  */
 export function getSupabaseServerEnvironmentStatus(): SupabaseServerEnvironmentStatus {
   return {

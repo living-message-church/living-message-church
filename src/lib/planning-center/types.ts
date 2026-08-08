@@ -82,6 +82,39 @@ export type PlanningCenterProduct =
   | "registrations"
   | "services";
 
+export type PlanningCenterEventAmbiguityClass =
+  | "conflicting-dates"
+  | "conflicting-locations"
+  | "recurring-overlap"
+  | "same-ministry"
+  | "same-title"
+  | "schedule-mismatch"
+  | "unlinked-cross-product-record"
+  | "unverified-duplicate";
+
+export type PlanningCenterEventEligibility =
+  | "ambiguous"
+  | "internal"
+  | "past"
+  | "public"
+  | "public-needs-cleanup"
+  | "public-registration-only";
+
+export type PlanningCenterEventMergeReason =
+  | "calendar-parent-instances"
+  | "exact-event-connection-check-ins"
+  | "exact-event-connection-group"
+  | "exact-event-connection-registration"
+  | "exact-event-connection-services"
+  | "exact-group-id-and-timestamp"
+  | "exact-registration-check-ins-link"
+  | "shared-exact-group-id";
+
+export type PlanningCenterEventSeriesModel =
+  | "multiple-recurring-series-kept-separate"
+  | "recurring-series"
+  | "single-event";
+
 export interface NormalizedEventOccurrence {
   allDay: boolean;
   endAt: string | null;
@@ -132,6 +165,29 @@ export interface NormalizedEvent {
   title: string;
 }
 
+/** Sanitized evidence record for the no-index diagnostics route. */
+export interface PlanningCenterCanonicalEventDiagnostic {
+  ambiguityFlags: PlanningCenterEventAmbiguityClass[];
+  canonicalId: string;
+  checkInRelationship: boolean;
+  contributingProducts: PlanningCenterProduct[];
+  eligibility: PlanningCenterEventEligibility;
+  exclusionReason: string | null;
+  groupRelationship: boolean;
+  imageAvailable: boolean;
+  locationAvailable: boolean;
+  mergeReasons: PlanningCenterEventMergeReason[];
+  occurrenceCount: number;
+  providerIds: NormalizedEvent["providerIds"];
+  registrationRelationship: {
+    present: boolean;
+    status: "closed" | "full" | "open" | "unavailable" | null;
+  };
+  seriesModel: PlanningCenterEventSeriesModel;
+  servicesRelationship: boolean;
+  title: string;
+}
+
 /** A public signup opportunity, never an attendee or submitted registration. */
 export interface NormalizedRegistration {
   closesAt: string | null;
@@ -160,6 +216,7 @@ export interface PlanningCenterDiagnostics {
   checkedAt: string;
   environment: PlanningCenterEnvironmentStatus;
   events: {
+    candidates: PlanningCenterCanonicalEventDiagnostic[];
     samples: NormalizedEvent[];
     totalDiscovered: number | null;
     truncated: boolean;
@@ -202,6 +259,12 @@ export interface PlanningCenterEventRelationshipDiagnostics {
   connectedCalendarParents: number;
   connectionRecords: number;
   excludedEvents: number;
+  exclusionReasons: {
+    linkOnly: number;
+    notApproved: number;
+    notChurchCenterPublished: number;
+    other: number;
+  };
   feeds: {
     feedOriginEvents: number;
     records: number;
@@ -214,10 +277,20 @@ export interface PlanningCenterEventRelationshipDiagnostics {
   };
   mergedRecords: number;
   publicEvents: number;
+  coverage: {
+    checkInLinked: number;
+    groupLinked: number;
+    images: number;
+    locations: number;
+    registrationLinked: number;
+    servicesLinked: number;
+  };
+  eligibility: Record<PlanningCenterEventEligibility, number>;
   registrations: {
     calendarConnections: number;
     records: number;
     scheduledOpenRecords: number;
+    unlinkedPublicCandidates: number;
   };
   services: {
     calendarConnections: number;

@@ -10,6 +10,7 @@ import { getSupabasePublicEnvironmentStatus } from "@/lib/supabase/config";
 import { getSupabaseServerEnvironmentStatus } from "@/lib/supabase/server";
 import { getYouTubeEnvironmentStatus } from "@/lib/youtube/client";
 import { getCurrentLiveVideo } from "@/lib/youtube/live";
+import { getCreativePipelineDiagnostics } from "@/lib/creative/diagnostics";
 
 type CheckTone = "healthy" | "unavailable" | "warning";
 
@@ -83,10 +84,11 @@ function planningCenterPresentation(status: PlanningCenterEndpointStatus) {
 export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async ({ res }) => {
   res.setHeader("Cache-Control", "private, no-store, max-age=0");
 
-  const [connection, planningCenter, youtube] = await Promise.all([
+  const [connection, planningCenter, youtube, creative] = await Promise.all([
     checkSupabaseConnection(),
     getPlanningCenterDiagnostics(0),
     getCurrentLiveVideo(),
+    getCreativePipelineDiagnostics(),
   ]);
   const connectionCheck = connectionPresentation(connection.state, connection.latencyMs);
   const publicEnvironment = getSupabasePublicEnvironmentStatus();
@@ -206,6 +208,24 @@ export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async (
           tone: youtube.video ? "healthy" : "warning",
           value: youtube.video ? "Resolved" : "Not resolved",
         },
+        {
+          detail: "Server-only image generation provider presence; the credential is never displayed.",
+          label: "Creative AI provider",
+          tone: creative.aiProvider.configured ? "healthy" : "warning",
+          value: creative.aiProvider.configured ? "Configured" : "Missing",
+        },
+        {
+          detail: "Private event-art bucket status for permanent generated assets.",
+          label: "Creative storage",
+          tone: creative.registry.storage === "available" ? "healthy" : "warning",
+          value: creative.registry.storage === "available" ? "Available" : creative.registry.storage === "missing" ? "Migration required" : "Unavailable",
+        },
+        {
+          detail: `${creative.eligibleCalendarCandidates} strict public Calendar candidates; ${creative.eventsMissingArtwork} currently lack provider artwork.`,
+          label: "Creative eligibility",
+          tone: "healthy",
+          value: `${creative.eligibleCalendarCandidates} eligible`,
+        },
       ],
     },
   };
@@ -262,6 +282,9 @@ export default function PlatformPage({
           </p>
           <Link className="platform-back-link" href="/admin/platform/planning-center">
             Open Planning Center diagnostics →
+          </Link>
+          <Link className="platform-back-link" href="/admin/events/creative">
+            Open event creative diagnostics →
           </Link>
         </Container>
       </div>

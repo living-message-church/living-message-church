@@ -22,7 +22,7 @@ Updated: 2026-08-07
 - `/online-church` is now the canonical Church Online destination: its media window embeds only a server-resolved active Live or genuinely future Upcoming video from the verified channel. When neither exists, a branded offline state replaces YouTube's “video unavailable” screen; it never substitutes a completed sermon. Past-message actions route to `/messages`; `/messages/live` redirects permanently to the production-authoritative slug.
 - The official Supabase client foundation, browser/server helpers, environment validation, and no-index `/admin/platform` health page are implemented without tables, authentication, forms, or content migration.
 - A read-only Planning Center foundation now provides a centralized server-only REST client, pinned product API versions, timeouts, safe errors, and normalized public projections for future Calendar events, signup opportunities, and listed Groups. `/admin/platform` includes sanitized provider checks, while `/admin/platform/planning-center` provides a private/no-store, no-index preview without people, members, giving, attendee, submitted-registration, contact, or organization data.
-- Planning Center event discovery is now relationship-aware across Calendar, Registrations, Groups, Services, and Check-Ins. Exact Event Connections, Registration Integration Links, publication state, recurrence parents, and timestamps assemble 21 diagnostic canonical candidates from the current live snapshot. Public event pages remain unchanged pending resolution of the quarantined ambiguities in `PLANNING_CENTER_EVENT_RELATIONSHIPS.md`.
+- Planning Center event discovery is now relationship-aware across Calendar, Registrations, Groups, Services, and Check-Ins. Exact Event Connections, Registration Integration Links, publication state, recurrence parents, and raw occurrence timestamps assemble 21 sanitized canonical candidates. The diagnostics classify 12 Public, 8 Public – needs cleanup, and 1 Ambiguous candidate. Public event pages remain unchanged.
 - The Planning Center boundary is now explicitly and mechanically GET-only. Planning Center remains the canonical system of record; the application has no write client, may not request write scopes or permissions, and must stop and report any future requirement that would need provider mutation. `npm run validate:planning-center-read-only` guards the invariant.
 - Planning Center now uses the provider-aligned `PLANNING_CENTER_CLIENT_ID` plus `PLANNING_CENTER_SECRET` environment contract. Both variables are detected, and API, organization, Calendar, Registrations, and Groups each return HTTP 200 through the existing read-only adapters.
 - `/online-church` now has a conservative Planning Center schedule projection: when credentials and Calendar permissions are available, it shows the earliest future public event explicitly named as an online, Sunday, or worship service. It exposes only the formatted date/time and public Church Center URL; all other events and all provider failures remain hidden.
@@ -70,6 +70,9 @@ Updated: 2026-08-07
 
 ## In progress
 
+- The AI event creative foundation is implemented: canonical eligibility, eight style presets, deterministic prompt construction, provider-neutral generation, 1600×900 WebP normalization, private Supabase storage schema, approval-aware resolver, and sanitized diagnostics. The migration is authored but not automatically applied.
+- `/admin/events/creative` is a no-index, read-only preview. Generation, approval, rejection, regeneration, and concept selection remain disabled until admin authentication and authorization exist.
+
 - Current event cards, Youth, and Young Adults still require current record-specific or ministry-specific media; truthful fallback or approved-temporary presentation remains in place.
 - Legal routes preserve the current subjects but remain interim/no-index pending legal and processor review.
 - Interactive responsive/browser QA remains pending because no in-app or extension browser was connected. All 15 requested viewport widths are source-reviewed and documented as rendered verification pending in `QA_REPORT.md`.
@@ -79,15 +82,15 @@ Updated: 2026-08-07
 - Service/online times, address/map/entrance, phone, email, accessibility, service duration, and kids ages/safety.
 - Final individual team active status, spelling/title approval, biography copy, and portrait release records; the current production roster is approved only for temporary use.
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
-- Planning Center live access and relationship discovery are verified. Public activation is blocked by two same-title Calendar clusters, three unmatched public Group occurrences, an open unscheduled Signup, and unlinked same-name records. Calendar is the schedule/publication authority only where its publication state is explicit.
+- Planning Center live access and relationship discovery are verified. Public activation is blocked by two same-title Calendar clusters, nine unmatched public Group occurrences, an open unscheduled Signup, and unlinked same-name records. Calendar is the schedule/publication authority only where its publication state is explicit.
 - Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
 - Final pastoral proofreading of the temporarily approved doctrinal statement; final Broadway title, biography, history, and image approval; plus outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
 
 ## Deferred
 
-- Supabase persistence/auth/storage, native form submission, newsletter integration, prayer handling, analytics, and consent tooling.
-- Planning Center public activation, pagination/synchronization, webhooks, event-art association, and all write operations.
+- General Supabase persistence, authentication, native form submission, newsletter integration, prayer handling, analytics, and consent tooling. The event-creative schema/storage foundation is isolated and authored, but unsafe actions remain blocked.
+- Planning Center public activation, webhooks, and event-art association. Planning Center write operations are permanently prohibited, not deferred.
 - Full-history YouTube/Supabase editorial synchronization, uploads, and webhook handling. The Data API live-status resolver is implemented; the credential-free feed remains the bounded archive and API-failure fallback.
 - Dynamic message/event detail routes; public message search and category filtering are now implemented.
 - Full ministry, expanded leadership biographies, history, and gallery publication.
@@ -95,20 +98,24 @@ Updated: 2026-08-07
 
 ## Recommended next milestone
 
-Have a Planning Center owner resolve or explicitly exclude the seven relationship ambiguities in `PLANNING_CENTER_EVENT_RELATIONSHIPS.md`. Once approved, activate the canonical aggregator for `/events`, `/events/[slug]`, and the homepage. Planning Center writes are prohibited permanently—not merely deferred—and any operational correction must happen inside Planning Center.
+Implement authenticated, role-gated administration with audit identity and CSRF protection, then apply the reviewed event-creative migration and exercise one eligible missing-artwork event through generation, private storage, review, approval, and signed public resolution. Public Events activation remains separate and still requires a Planning Center owner to resolve or explicitly exclude the relationship ambiguities in `PLANNING_CENTER_EVENT_RELATIONSHIPS.md`.
 
 ## Validation record
 
 | Check | Result |
 | --- | --- |
 | `npm run lint` | Passed |
+| `npm run validate:creative-pipeline` | Passed: private storage, approval gating, three-concept generation, and auth-blocked mutations confirmed |
+| AI creative live diagnostics | 12 strict public Calendar candidates; 3 Registration-linked; 1 unlinked public Registration held; 2 eligible events missing Planning Center art; 0 jobs/concepts/assets created because auth is absent and the migration/provider are not active |
+| AI creative admin smoke | `/admin/events/creative`, `/admin/platform`, and `/admin/platform/planning-center` returned HTTP 200; creative route is no-index and all mutation controls are disabled |
+| Current production build | Passed on Next.js 16.3.0; `/admin/events/creative` emits as a dynamic server-rendered route |
 | `npm run validate:redirects` | Passed: 451 sources, 24 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
 | Production build | Default `npm run build` completed TypeScript and then hit the environment-level Turbopack worker-port `EPERM`; `npm run build -- --webpack` passed all 25 pages and emitted `/online-church` as a 60-second revalidated route. |
 | YouTube state selection | Passed deterministic fixtures for Live priority, Upcoming fallback, Offline fallback, and non-embeddable rejection. |
 | YouTube API failure | The page retains the 16:9 player window with a calm offline state and channel fallback when status metadata cannot refresh; it does not expose a YouTube error or substitute an old completed message. |
 | YouTube privacy scan | No API key, YouTube environment-variable names, or Data API endpoint logic was emitted in `.next/static`; `/admin/platform` shows status labels only. |
 | YouTube authenticated discovery | Passed after sending the API key's approved development referrer. `channels.list`, `playlistItems.list`, and `videos.list` all succeed; 25 public embeddable candidates were found. Six stale `upcoming` records have past scheduled times and are rejected, allowing the latest completed message to resolve. |
-| Planning Center diagnostics | `/admin/platform` and `/admin/platform/planning-center` returned 200 with private/no-store caching and noindex metadata. Environment rendered `Configured`; API, Organization, Calendar, Registrations, and Groups rendered `Reachable`, each backed by HTTP 200. |
+| Planning Center diagnostics | `/admin/platform` and `/admin/platform/planning-center` returned 200 with private/no-store caching and noindex metadata. Environment rendered `Configured`; API, Organization, Calendar, Registrations, Groups, Services, and Check-Ins rendered `Reachable`, each backed by HTTP 200. The canonical diagnostics expose all 21 sanitized candidates without private data. |
 | Planning Center privacy scan | No Planning Center environment-variable names, Basic credential payloads, or Authorization logic were found in `.next/static`; rendered props contained status metadata only. No people, members, attendees, submitted registrations, giving, contacts, or organization records were present. |
 | Local HTTP smoke check | Home, Messages, Live, sitemap, and robots returned 200. Home and Messages rendered newest feed video `SGsP83hGEN8`; Messages was indexable, Live remained no-indexed, and the sitemap included `/messages`. |
 | Interactive browser QA | Not run: no connected browser was available |

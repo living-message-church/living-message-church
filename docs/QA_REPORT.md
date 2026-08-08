@@ -222,6 +222,9 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 
 ## Pending manual verification
 
+- Apply the AI event creative migration in an approved Supabase deployment, then verify private bucket policies, signed approved-asset resolution, and RLS with anonymous/authenticated/service-role sessions.
+- Admin creative generation and approval flows are not testable until authentication exists and an image-provider credential is configured. The UI intentionally exposes no mutation route.
+
 - Keyboard traversal order, menu open/close behavior, Escape expectations, and focus visibility across actual browsers.
 - Visual wrapping of oversized headings at 1440, 1280, 768, 390, and 375 pixels.
 - Computed horizontal overflow at every requested viewport.
@@ -241,6 +244,8 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 | Check | Result |
 | --- | --- |
 | `npm run lint` | Passed |
+| `npm run validate:creative-pipeline` | Passed; the migration declares a private bucket and RLS tables, the prompt includes safety constraints, generation requests three concepts, and all unauthenticated actions remain disabled. |
+| AI event creative route | `/admin/events/creative` returned HTTP 200 with `noindex, nofollow`; live GET-only diagnostics found 12 strict eligible Calendar events, 3 Registration-linked eligible events, 1 unlinked public Registration held for review, and 2 eligible events missing Planning Center artwork. The unapplied migration reported `Migration required`; no job, image generation, upload, or approval mutation ran. |
 | `npm run validate:redirects` | Passed |
 | `npm run build -- --webpack` | Passed on Next.js 16.3.0 with the verified public YouTube feed available during generation; all 25 pages plus robots, sitemap, and API routes generated successfully |
 | Our Team route smoke | Passed; `/about/leadership` returned 200 with 16 cards and 3 tiers, remained indexable, appeared in the sitemap, and `/the-team/` returned a direct 301 to it. |

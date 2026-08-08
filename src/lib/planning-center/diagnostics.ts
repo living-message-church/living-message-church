@@ -83,7 +83,7 @@ export async function getPlanningCenterDiagnostics(sampleLimit = 3): Promise<Pla
       calendar: notConfigured,
       checkedAt,
       environment,
-      events: { samples: [], totalDiscovered: null, truncated: false },
+      events: { candidates: [], samples: [], totalDiscovered: null, truncated: false },
       groups: { samples: [], totalDiscovered: null, truncated: false },
       groupsEndpoint: notConfigured,
       organization: notConfigured,
@@ -123,11 +123,12 @@ export async function getPlanningCenterDiagnostics(sampleLimit = 3): Promise<Pla
     environment,
     events: aggregationResult.status === "fulfilled"
       ? {
+          candidates: aggregationResult.value.candidates,
           samples: aggregationResult.value.events.slice(0, sampleLimit),
           totalDiscovered: aggregationResult.value.events.length,
           truncated: false,
         }
-      : { samples: [], totalDiscovered: null, truncated: false },
+      : { candidates: [], samples: [], totalDiscovered: null, truncated: false },
     groups: groupsResult.status === "fulfilled"
       ? {
           samples: groupsResult.value.items.slice(0, sampleLimit),

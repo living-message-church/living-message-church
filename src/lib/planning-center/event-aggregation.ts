@@ -2,6 +2,7 @@ import { planningCenterGet } from "./client";
 import { PLANNING_CENTER_API_VERSIONS } from "./config";
 import type {
   NormalizedEvent,
+  PlanningCenterCanonicalEventDiagnostic,
   PlanningCenterCollectionResponse,
   PlanningCenterEndpointStatus,
   PlanningCenterEventRelationshipDiagnostics,
@@ -125,6 +126,7 @@ interface RelationshipSources {
 
 export interface PlanningCenterEventAggregationResult {
   calendarStatus: PlanningCenterEndpointStatus;
+  candidates: PlanningCenterCanonicalEventDiagnostic[];
   checkInsStatus: PlanningCenterEndpointStatus;
   diagnostics: PlanningCenterEventRelationshipDiagnostics;
   events: NormalizedEvent[];
@@ -356,6 +358,14 @@ function buildAggregation(sources: RelationshipSources): PlanningCenterEventAggr
     && item.attributes.link_only !== true
   ));
   const publicParentIds = new Set(publicParents.map((item) => item.id));
+  const excludedParents = sources.calendarParents.items.filter((item) => !publicParentIds.has(item.id));
+  const exclusionReasons = excludedParents.reduce((counts, item) => {
+    if (item.attributes.link_only === true) counts.linkOnly += 1;
+    else if (item.attributes.approval_status !== "A") counts.notApproved += 1;
+    else if (item.attributes.visible_in_church_center !== true) counts.notChurchCenterPublished += 1;
+    else counts.other += 1;
+    return counts;
+  }, { linkOnly: 0, notApproved: 0, notChurchCenterPublished: 0, other: 0 });
   const publicInstances = sources.calendarInstances.items.filter((item) => {
     const parentId = oneRelationshipId(item as PlanningCenterResource<unknown>, "event");
     return Boolean(parentId && publicParentIds.has(parentId));
@@ -434,7 +444,10 @@ function buildAggregation(sources: RelationshipSources): PlanningCenterEventAggr
     const directCheckInIds = [...new Set(calendarIds.flatMap((id) => connectionIds(sources, id, "check-ins")))];
     const registrationCheckInIds = registrationIds.flatMap((id) => checkInByRegistration.get(id) ?? []);
     const checkInEventIds = [...new Set([...directCheckInIds, ...registrationCheckInIds])];
-    const instanceStartTimes = new Set(instances.map((item) => item.attributes.published_starts_at ?? item.attributes.starts_at).filter(Boolean));
+    // Relationship proof uses the provider occurrence timestamp, not the
+    // presentation-only published timestamp. This intentionally keeps schedule
+    // differences quarantined rather than inferring that two records are one.
+    const instanceStartTimes = new Set(instances.map((item) => item.attributes.starts_at).filter(Boolean));
     const matchedGroupEvents = eligibleGroupEvents.filter((item) => {
       const groupId = oneRelationshipId(item as PlanningCenterResource<unknown>, "group");
       return Boolean(groupId && groupIds.includes(groupId) && item.attributes.starts_at && instanceStartTimes.has(item.attributes.starts_at));
@@ -531,11 +544,42 @@ function buildAggregation(sources: RelationshipSources): PlanningCenterEventAggr
     .map(([id]) => id);
   const groupCalendarConnections = allConnections.filter((item) => item.attributes.product_name === "groups").length;
   const registrationCalendarConnections = allConnections.filter((item) => item.attributes.product_name === "registrations").length;
+  const connectedRegistrationIds = new Set(allConnections
+    .filter((item) => item.attributes.product_name === "registrations")
+    .map((item) => String(item.attributes.connected_to_id ?? ""))
+    .filter(Boolean));
   const serviceCalendarConnections = allConnections.filter((item) => item.attributes.product_name === "services").length;
   const checkInCalendarConnections = allConnections.filter((item) => item.attributes.product_name === "check-ins").length;
   const mergedGroupEventIds = new Set(events.flatMap((event) => event.providerIds.groupEventIds));
   const publicTitleComponents = groupBy(events, (event) => normalizeTitle(event.title));
   const ambiguousSameTitleClusters = publicTitleComponents.filter((items) => items.length > 1).length;
+  const repeatedTitleEventIds = new Set(
+    publicTitleComponents.filter((items) => items.length > 1).flatMap((items) => items.map((item) => item.id)),
+  );
+  const recurringOverlapEventIds = new Set<string>();
+  for (const titleComponent of publicTitleComponents.filter((items) => items.length > 1)) {
+    for (let firstIndex = 0; firstIndex < titleComponent.length; firstIndex += 1) {
+      for (let secondIndex = firstIndex + 1; secondIndex < titleComponent.length; secondIndex += 1) {
+        const first = titleComponent[firstIndex];
+        const second = titleComponent[secondIndex];
+        const firstTimes = new Set(first.occurrences.map((item) => item.startAt));
+        if (second.occurrences.some((item) => firstTimes.has(item.startAt))) {
+          recurringOverlapEventIds.add(first.id);
+          recurringOverlapEventIds.add(second.id);
+        }
+      }
+    }
+  }
+  const unmatchedGroupEvents = eligibleGroupEvents.filter((item) => !mergedGroupEventIds.has(item.id));
+  const unmatchedGroupIds = new Set(unmatchedGroupEvents
+    .map((item) => oneRelationshipId(item as PlanningCenterResource<unknown>, "group"))
+    .filter((id): id is string => Boolean(id)));
+  const checkInTitles = new Map<string, string[]>();
+  for (const item of sources.checkInEvents.items) {
+    const title = normalizeTitle(item.attributes.name);
+    if (!title) continue;
+    checkInTitles.set(title, [...(checkInTitles.get(title) ?? []), item.id]);
+  }
   const feedOriginEvents = sources.calendarParents.items.filter((item) => {
     const feedId = oneRelationshipId(item as PlanningCenterResource<unknown>, "feed");
     return Boolean(feedId && feedId !== "calendar");
@@ -549,6 +593,74 @@ function buildAggregation(sources: RelationshipSources): PlanningCenterEventAggr
     .map((item) => String(item.attributes.connected_to_id ?? ""))
     .filter(Boolean));
   const mergedCalendarParents = publicParents.length - components.length;
+
+  const candidates = events.map<PlanningCenterCanonicalEventDiagnostic>((event) => {
+    const ambiguityFlags: PlanningCenterCanonicalEventDiagnostic["ambiguityFlags"] = [];
+    const mergeReasons: PlanningCenterCanonicalEventDiagnostic["mergeReasons"] = [];
+    const sameTitleSeries = repeatedTitleEventIds.has(event.id);
+    const hasScheduleMismatch = event.providerIds.groupIds.some((id) => unmatchedGroupIds.has(id));
+    const directCheckInIds = new Set(event.providerIds.calendarEventIds.flatMap((id) => connectionIds(sources, id, "check-ins")));
+    const hasRegistrationCheckIn = event.providerIds.checkInEventIds.some((id) => !directCheckInIds.has(id));
+    const sameNameCheckInIds = checkInTitles.get(normalizeTitle(event.title)) ?? [];
+    const hasUnlinkedCrossProductRecord = !sameTitleSeries
+      && event.providerIds.checkInEventIds.length === 0
+      && sameNameCheckInIds.some((id) => !event.providerIds.checkInEventIds.includes(id));
+
+    if (sameTitleSeries) ambiguityFlags.push("same-title");
+    if (recurringOverlapEventIds.has(event.id)) ambiguityFlags.push("recurring-overlap");
+    if (hasScheduleMismatch) ambiguityFlags.push("schedule-mismatch");
+    if (hasUnlinkedCrossProductRecord) ambiguityFlags.push("unlinked-cross-product-record");
+
+    if (event.providerIds.calendarInstanceIds.length > 1) mergeReasons.push("calendar-parent-instances");
+    if (event.providerIds.calendarEventIds.length > 1) mergeReasons.push("shared-exact-group-id");
+    if (event.providerIds.groupIds.length) mergeReasons.push("exact-event-connection-group");
+    if (event.providerIds.groupEventIds.length) mergeReasons.push("exact-group-id-and-timestamp");
+    if (event.providerIds.registrationIds.length) mergeReasons.push("exact-event-connection-registration");
+    if (directCheckInIds.size) mergeReasons.push("exact-event-connection-check-ins");
+    if (hasRegistrationCheckIn) mergeReasons.push("exact-registration-check-ins-link");
+    if (event.providerIds.serviceTypeIds.length) mergeReasons.push("exact-event-connection-services");
+
+    const eligibility = hasUnlinkedCrossProductRecord
+      ? "ambiguous" as const
+      : ambiguityFlags.length
+        ? "public-needs-cleanup" as const
+        : "public" as const;
+
+    return {
+      ambiguityFlags,
+      canonicalId: event.id,
+      checkInRelationship: event.providerIds.checkInEventIds.length > 0,
+      contributingProducts: event.sourceMetadata.products,
+      eligibility,
+      exclusionReason: null,
+      groupRelationship: event.providerIds.groupIds.length > 0,
+      imageAvailable: Boolean(event.imageUrl),
+      locationAvailable: event.occurrences.some((item) => Boolean(item.location)),
+      mergeReasons,
+      occurrenceCount: event.occurrences.length,
+      providerIds: event.providerIds,
+      registrationRelationship: {
+        present: event.providerIds.registrationIds.length > 0,
+        status: event.registration?.status ?? null,
+      },
+      seriesModel: sameTitleSeries
+        ? "multiple-recurring-series-kept-separate"
+        : event.occurrences.length > 1
+          ? "recurring-series"
+          : "single-event",
+      servicesRelationship: event.providerIds.serviceTypeIds.length > 0,
+      title: event.title,
+    };
+  });
+
+  const eligibility = {
+    ambiguous: candidates.filter((item) => item.eligibility === "ambiguous").length,
+    internal: 0,
+    past: 0,
+    public: candidates.filter((item) => item.eligibility === "public").length,
+    "public-needs-cleanup": candidates.filter((item) => item.eligibility === "public-needs-cleanup").length,
+    "public-registration-only": candidates.filter((item) => item.eligibility === "public-registration-only").length,
+  };
 
   const diagnostics: PlanningCenterEventRelationshipDiagnostics = {
     ambiguous: {
@@ -569,7 +681,17 @@ function buildAggregation(sources: RelationshipSources): PlanningCenterEventAggr
     },
     connectedCalendarParents: connectedParentIds.length,
     connectionRecords: allConnections.length,
+    coverage: {
+      checkInLinked: candidates.filter((item) => item.checkInRelationship).length,
+      groupLinked: candidates.filter((item) => item.groupRelationship).length,
+      images: candidates.filter((item) => item.imageAvailable).length,
+      locations: candidates.filter((item) => item.locationAvailable).length,
+      registrationLinked: candidates.filter((item) => item.registrationRelationship.present).length,
+      servicesLinked: candidates.filter((item) => item.servicesRelationship).length,
+    },
+    eligibility,
     excludedEvents: sources.calendarParents.total - publicParents.length,
+    exclusionReasons,
     feeds: {
       feedOriginEvents,
       records: sources.feeds.total,
@@ -586,6 +708,12 @@ function buildAggregation(sources: RelationshipSources): PlanningCenterEventAggr
       calendarConnections: registrationCalendarConnections,
       records: sources.registrations.total,
       scheduledOpenRecords: openScheduledRegistrations,
+      unlinkedPublicCandidates: sources.registrations.items.filter((item) => (
+        item.attributes.open === true
+        && item.attributes.closed !== true
+        && Boolean(item.attributes.new_registration_url)
+        && !connectedRegistrationIds.has(item.id)
+      )).length,
     },
     services: {
       calendarConnections: serviceCalendarConnections,
@@ -595,6 +723,7 @@ function buildAggregation(sources: RelationshipSources): PlanningCenterEventAggr
 
   return {
     calendarStatus: sources.calendarParents.status,
+    candidates,
     checkInsStatus: sources.checkInEvents.status,
     diagnostics,
     events,

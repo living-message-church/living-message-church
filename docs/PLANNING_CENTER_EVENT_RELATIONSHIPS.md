@@ -6,7 +6,7 @@ This is the relationship-discovery record requested before activating Planning C
 
 Planning Center remains the canonical system of record. This relationship layer issues only `GET` requests and must never modify provider data, request write access, or add write permissions. Any reconciliation must be performed by an authorized owner inside Planning Center.
 
-The public `/events`, `/events/[slug]`, and homepage event experiences **have not been activated** from this aggregation. Two same-title Calendar clusters and three public Group occurrences remain ambiguous. They must be reconciled by a Planning Center owner before the canonical results become a public source.
+The public `/events`, `/events/[slug]`, and homepage event experiences **have not been activated** from this aggregation. Two same-title Calendar clusters and nine public Group occurrences remain unresolved. They must be reconciled by a Planning Center owner before the canonical results become a public source.
 
 ## Privacy boundary
 
@@ -77,12 +77,12 @@ Groups supplies relationship context and, where enabled, its own public meeting 
 
 CrossFit Youth Ministry is listed, but its events are members-only and not listed. A Calendar event connected to that Group may still be public when Calendar explicitly publishes it; the Group event feed must not be used to broaden access.
 
-Of 47 eligible future Group occurrences, 44 have an exact match to the public `published_starts_at` time of a Calendar occurrence connected to the same Group ID. Three do not:
+Of 47 eligible future Group occurrences, 38 have an exact match to the raw provider occurrence timestamp of a Calendar occurrence connected to the same Group ID. Nine do not:
 
-- one Women's Ministry occurrence has no exact published timestamp match;
+- seven Women's Ministry occurrences have no exact raw timestamp match;
 - two Seniors Bible Study occurrences have no Calendar occurrence on the same date.
 
-Those three are quarantined. A matching title or calendar day is not sufficient proof of identity.
+Those nine are quarantined. Six of the Women’s records align only when the Calendar presentation timestamp is substituted for the raw timestamp. That is useful diagnostic evidence, but it is not accepted as identity proof. A matching title, display time, or calendar day is insufficient.
 
 ### Services
 
@@ -120,6 +120,8 @@ The provider layer now defines a relationship-aware `NormalizedEvent` with:
 
 The model is intentionally provider-neutral at the presentation boundary. Raw Planning Center response shapes and credentials do not enter React components.
 
+The per-candidate eligibility, provider-ID evidence, ambiguity flags, coverage, and series decisions are recorded in `PLANNING_CENTER_CANONICAL_EVENTS.md` and rendered on the no-index `/admin/platform/planning-center` diagnostics route.
+
 ## Field precedence
 
 | Field | Precedence | Reason |
@@ -140,19 +142,19 @@ The aggregator applies only these automatic merges:
 
 1. All instances of one Calendar parent become occurrences of one canonical event.
 2. Calendar parents merge only when they have the same normalized title **and** share an exact connected Group ID. This safely merges three duplicate parent records in current LMC data: Women's Ministry, Men's Ministry, and Seniors Bible Study.
-3. A Group Event occurrence merges only when its Group ID is explicitly connected to the Calendar parent and its timestamp exactly matches the Calendar occurrence's public published timestamp. This currently merges 44 duplicate occurrence representations.
+3. A Group Event occurrence merges only when its Group ID is explicitly connected to the Calendar parent and its timestamp exactly matches the Calendar occurrence's raw provider timestamp. This currently merges 38 duplicate occurrence representations.
 4. Registrations merges only through a Calendar `EventConnection` Signup ID.
 5. Check-Ins merges only through a direct Calendar connection or an Integration Link whose Registration ID is already connected to that canonical event.
 6. Services contributes only an exact connected Service Type ID; it does not merge individual Plans.
 7. Feed identity would use an exact Feed/source ID, but LMC currently has no Feeds.
 
-The strict pass produces 21 canonical public candidates from 24 published Calendar parents, with 47 duplicate records/occurrences merged. These 21 are diagnostic candidates, not an approved public index.
+The strict pass produces 21 canonical public candidates from 24 published Calendar parents, with 41 duplicate records/occurrences merged. These 21 are diagnostic candidates, not an approved public index.
 
 ## Remaining ambiguity requiring owner approval
 
 1. **Sunday Services:** two published Calendar parents share the same normalized title, but only one has explicit Services and Check-Ins connections. Confirm whether they are one service program or intentionally separate schedules.
 2. **CrossFit Youth Ministry:** four published Calendar parents share the same title but have no shared exact cross-product identity. Confirm whether they should be one recurring canonical event.
-3. **Women's Ministry schedule:** one public Group occurrence does not exactly match a connected Calendar published timestamp. Confirm whether Calendar or Groups has the authoritative occurrence.
+3. **Women's Ministry schedule:** seven public Group occurrences do not exactly match connected Calendar raw timestamps. Confirm whether Calendar or Groups has the authoritative occurrence; presentation-time alignment alone will not merge them.
 4. **Seniors schedule:** two future public Group occurrences lack a Calendar occurrence on the same date. Confirm whether they should appear publicly.
 5. **Open unscheduled Next Steps Signup:** Signup `3569618` is open but has no next time and no Calendar connection. Confirm whether it is a reusable form, an obsolete duplicate, or a public event.
 6. **Good Friday:** Calendar and Check-Ins have similarly named records without an explicit link. No merge will occur without confirmation or a provider connection.
@@ -161,3 +163,6 @@ The strict pass produces 21 canonical public candidates from 24 published Calend
 ## Publication gate
 
 Before public activation, a Planning Center owner should resolve the seven items above or approve a conservative policy that leaves the ambiguous records excluded. After approval, `/events`, `/events/[slug]`, and the homepage should consume only the canonical aggregator—not Calendar, Groups, or Registrations adapters directly.
+## Creative pipeline boundary
+
+Only strict `public` canonical events may enter creative eligibility. `public-needs-cleanup`, `ambiguous`, internal, expired, and quarantined candidates cannot create jobs. Registrations enrich only through exact Calendar relationships; unlinked public Registration candidates are counted for review and cannot become standalone events or artwork jobs.

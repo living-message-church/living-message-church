@@ -8,11 +8,13 @@ The application may authenticate, issue `GET` requests, normalize, aggregate, ca
 
 `src/lib/planning-center/client.ts` exposes only `planningCenterGet`, uses the immutable method in `read-only-policy.ts`, and is the only allowed Planning Center network boundary. `npm run validate:planning-center-read-only` fails when provider code introduces a write request/helper or application code bypasses the centralized client. If a future requirement cannot be fulfilled without writing to Planning Center, implementation must stop and the requirement must be reported rather than expanding access.
 
+The endpoint-by-endpoint proof is maintained in `PLANNING_CENTER_READONLY_AUDIT.md`.
+
 ## Status
 
 The project now has a read-only, server-side Planning Center provider boundary and an exact-ID, relationship-aware event aggregation layer. The only public activation remains a narrowly scoped next-service schedule on `/online-church`; no aggregated Planning Center event data is activated on the homepage, `/events`, or public Groups experiences, and no data is persisted to Supabase.
 
-The official server-only credentials were detected successfully during local validation on August 7, 2026. Read-only requests returned HTTP 200 for the API, organization, Calendar, Registrations, Groups, Services, and Check-Ins checks. Relationship discovery found 43 future Calendar parents, 720 future Calendar instances, 27 exact Event Connections, no Calendar Feeds, 7 unarchived Signups, 83 future Group Event occurrences, 7 Services Service Types, and 11 Check-Ins Events. The strict aggregation yields 21 diagnostic public candidates but remains behind the publication gate in `PLANNING_CENTER_EVENT_RELATIONSHIPS.md`.
+The official server-only credentials were detected successfully during local validation on August 7, 2026. Read-only requests returned HTTP 200 for the API, organization, Calendar, Registrations, Groups, Services, and Check-Ins checks. Relationship discovery found 43 future Calendar parents, 720 future Calendar instances, 27 exact Event Connections, no Calendar Feeds, 7 unarchived Signups, 83 future Group Event occurrences, 7 Services Service Types, and 11 Check-Ins Events. The strict aggregation yields 21 diagnostic candidates, merges 38 Group occurrences through exact Group ID plus exact raw timestamp, and quarantines nine Group schedule mismatches. It remains behind the publication gate in `PLANNING_CENTER_EVENT_RELATIONSHIPS.md`.
 
 ## Authentication
 
@@ -54,6 +56,7 @@ Provider response shapes are confined to the adapter files. UI code may consume 
 
 - `CalendarEventProjection`: the narrow Calendar-only shape retained for Online Church scheduling.
 - `NormalizedEvent`: one canonical event identity with product IDs, occurrences, presentation, registration, Group context, public visibility, recurrence, and source metadata assembled through exact relationships.
+- `PlanningCenterCanonicalEventDiagnostic`: the sanitized evidence record for each candidate, including provider IDs, source products, relationship presence, coverage, merge reasons, ambiguity classes, series model, and eligibility.
 - `NormalizedRegistration`: public signup title/description, opening/closing dates, public URL, open state, and capacity-full state. Despite the internal compatibility name, this is a public `Signup`, never a person’s submitted registration.
 - `NormalizedGroup`: public title/description, schedule, image, public URL, and a literal `published: true` marker.
 
@@ -80,7 +83,7 @@ Legacy preview adapters remain bounded to 100 records. The relationship aggregat
 ## Diagnostics
 
 - `/admin/platform` reports credential presence and API/product reachability using safe states only.
-- `/admin/platform/planning-center` is a no-index, server-rendered preview with private/no-store caching. It shows discovered public counts and up to three normalized samples per product.
+- `/admin/platform/planning-center` is a no-index, server-rendered preview with private/no-store caching. It shows all 21 sanitized canonical candidate evidence records plus bounded normalized samples.
 - Relationship diagnostics additionally show Calendar parents/instances, Registration and Group-event counts, Services and Check-Ins linkage, feeds, connections, canonical candidates, exclusions, exact merges, and unresolved ambiguity. No public event page consumes those candidates yet.
 - Organization response data is discarded and never enters serialized page props.
 - Both routes degrade to `Missing` / `Not checked` without credentials and remain renderable during provider failures.
@@ -117,6 +120,8 @@ Webhooks are intentionally deferred. A future implementation should:
 
 Planning Center should remain the source for event identity, timing, and registration URLs. A later approved editorial workflow may associate a locally managed event-art record with the provider event ID. Artwork should require source/usage metadata, alt text, crop review, and explicit publish approval. Generated artwork, if later approved, must remain an editorial derivative and must never overwrite the provider record automatically.
 
+That read-only creative foundation is now implemented in `src/lib/creative` and the Supabase migration documented in `AI_EVENT_CREATIVE_PIPELINE.md`. Calendar remains the discovery source; an exact Calendar EventConnection may enrich the candidate with Registration, Group, Check-In, or Services context. Unlinked Registration records remain diagnostics-only. All creative writes target Supabase; the Planning Center client and validator remain GET-only.
+
 ## Deferred public activation
 
 - No public activation beyond the scoped `/online-church` next-service projection
@@ -136,12 +141,12 @@ Validated locally on August 7, 2026:
 - `PLANNING_CENTER_SECRET` — Configured
 - API — HTTP 200, Reachable
 - Organization — HTTP 200, Reachable; response data discarded
-- Calendar — HTTP 200, Reachable; 100 bounded records discovered, truncated
+- Calendar — HTTP 200, Reachable; 43 future parents and 720 future instances read through paginated GET requests
 - Registrations — HTTP 200, Reachable; 7 public signup opportunities discovered
 - Groups — HTTP 200, Reachable; 5 published groups discovered
 - `/admin/platform` — HTTP 200 with `Cache-Control: private, no-store, max-age=0`
 - `/admin/platform/planning-center` — HTTP 200 with `Cache-Control: private, no-store, max-age=0`
-- Relationship diagnostics — 21 canonical candidates; 47 duplicate representations merged; 2 same-title clusters and 3 unmatched public Group occurrences quarantined
+- Relationship diagnostics — 21 canonical candidates; 41 duplicate representations merged; 2 same-title clusters and 9 unmatched public Group occurrences quarantined
 - `npm run validate:planning-center-read-only` — passed; centralized GET-only access and no write paths found
 - `npm run lint` — passed
 - `npm run build` — passed with Next.js 16.3.0 Turbopack
