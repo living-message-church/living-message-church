@@ -1,7 +1,7 @@
 import { planningCenterGet } from "./client";
 import { PLANNING_CENTER_API_VERSIONS } from "./config";
 import type {
-  NormalizedEvent,
+  CalendarEventProjection,
   PlanningCenterAdapterResult,
   PlanningCenterCollectionResponse,
 } from "./types";
@@ -27,7 +27,7 @@ const ONLINE_SERVICE_TITLE_PATTERNS = [
   /\bworship\s+services?\b/i,
 ];
 
-export async function getUpcomingEvents(): Promise<PlanningCenterAdapterResult<NormalizedEvent>> {
+export async function getUpcomingEvents(): Promise<PlanningCenterAdapterResult<CalendarEventProjection>> {
   const response = await planningCenterGet<PlanningCenterCollectionResponse<CalendarEventInstanceAttributes>>(
     "/calendar/v2/event_instances",
     {
@@ -41,7 +41,7 @@ export async function getUpcomingEvents(): Promise<PlanningCenterAdapterResult<N
     },
   );
 
-  const items = response.data.data.flatMap<NormalizedEvent>((resource) => {
+  const items = response.data.data.flatMap<CalendarEventProjection>((resource) => {
     const attributes = resource.attributes;
     const title = attributes.name?.trim();
     const publicUrl = attributes.church_center_url?.trim();
@@ -74,7 +74,7 @@ export async function getUpcomingEvents(): Promise<PlanningCenterAdapterResult<N
  * Returns only an explicitly service-named public event. This avoids treating
  * the next generic Calendar event as the next livestream.
  */
-export async function getNextScheduledOnlineService(): Promise<NormalizedEvent | null> {
+export async function getNextScheduledOnlineService(): Promise<CalendarEventProjection | null> {
   const result = await getUpcomingEvents();
   const now = Date.now();
 

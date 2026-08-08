@@ -4,6 +4,10 @@ import {
   PLANNING_CENTER_REQUEST_TIMEOUT_MS,
   PlanningCenterConfigurationError,
 } from "./config";
+import {
+  assertPlanningCenterReadOnlyMethod,
+  PLANNING_CENTER_READ_ONLY_METHOD,
+} from "./read-only-policy";
 import type { PlanningCenterRequestOptions } from "./types";
 
 type PlanningCenterErrorCode =
@@ -93,6 +97,8 @@ export async function planningCenterGet<T>(
   path: string,
   options: PlanningCenterRequestOptions,
 ): Promise<PlanningCenterResponse<T>> {
+  assertPlanningCenterReadOnlyMethod(PLANNING_CENTER_READ_ONLY_METHOD);
+
   let credentials: ReturnType<typeof getPlanningCenterConfig>;
   try {
     credentials = getPlanningCenterConfig();
@@ -114,7 +120,7 @@ export async function planningCenterGet<T>(
         Authorization: `Basic ${authorization}`,
         "X-PCO-API-Version": options.apiVersion,
       },
-      method: "GET",
+      method: PLANNING_CENTER_READ_ONLY_METHOD,
       signal: AbortSignal.timeout(PLANNING_CENTER_REQUEST_TIMEOUT_MS),
     });
     const latencyMs = Math.round(performance.now() - startedAt);

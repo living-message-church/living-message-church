@@ -1,5 +1,9 @@
 # Platform Foundation
 
+## Planning Center architecture invariant
+
+Planning Center is the canonical operational system and this application is a read-only consumer. The platform has no Planning Center write client, may never request write scopes or permissions, and must stop and report any future requirement that would need a `POST`, `PUT`, `PATCH`, or `DELETE`. Run `npm run validate:planning-center-read-only` to enforce the centralized GET-only boundary.
+
 ## Status
 
 The Supabase platform foundation is configured without application tables, authentication, forms, or content migration. The implementation uses the official `@supabase/supabase-js` client and exposes a no-index health page at `/admin/platform`. Separate read-only Planning Center and YouTube provider foundations add sanitized diagnostics while keeping credentials and provider logic on the server.
@@ -46,11 +50,11 @@ Planning Center adds the following non-sensitive checks to `/admin/platform`:
 
 - credential presence as `Configured` or `Missing`
 - API and organization reachability
-- Calendar, Registrations, and Groups endpoint reachability
+- Calendar, Registrations, Groups, Services, and Check-Ins endpoint reachability
 
-The no-index `/admin/platform/planning-center` route adds counts and safe normalized samples from public-eligible records. Both diagnostic routes are server-rendered with `Cache-Control: private, no-store, max-age=0`. See `PLANNING_CENTER_INTEGRATION.md` for the complete provider and privacy contract.
+The no-index `/admin/platform/planning-center` route adds counts and safe normalized samples from relationship-aware, public-eligible candidates. Both diagnostic routes are server-rendered with `Cache-Control: private, no-store, max-age=0`. The aggregator caches its read-only provider snapshot in-process for 60 seconds to prevent duplicate diagnostics bursts. See `PLANNING_CENTER_INTEGRATION.md` and `PLANNING_CENTER_EVENT_RELATIONSHIPS.md` for the provider, relationship, and privacy contracts.
 
-Planning Center environment validation uses the provider-aligned `PLANNING_CENTER_CLIENT_ID` and `PLANNING_CENTER_SECRET` names. Validation on August 7, 2026 detected both variables and returned HTTP 200 for API, organization, Calendar, Registrations, and Groups checks. Only configured/missing, reachability, sanitized status, latency, public counts, and approved normalized public samples reach diagnostic props.
+Planning Center environment validation uses the provider-aligned `PLANNING_CENTER_CLIENT_ID` and `PLANNING_CENTER_SECRET` names. Validation on August 7, 2026 detected both variables and returned HTTP 200 for API, organization, Calendar, Registrations, Groups, Services, and Check-Ins checks. Only configured/missing, reachability, sanitized status, latency, public counts, relationship counts, and approved normalized public samples reach diagnostic props.
 
 YouTube adds the following non-sensitive checks to `/admin/platform`:
 

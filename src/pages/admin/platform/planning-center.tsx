@@ -33,11 +33,12 @@ function displayDate(value: string | null) {
 }
 
 function EventSample({ item }: { item: NormalizedEvent }) {
+  const firstOccurrence = item.occurrences[0];
   return (
     <article className="platform-sample-card">
       <p className="eyebrow">Calendar event</p>
       <h3>{item.title}</h3>
-      <dl><div><dt>Starts</dt><dd>{displayDate(item.startAt)}</dd></div><div><dt>Location</dt><dd>{item.location ?? "Not supplied"}</dd></div></dl>
+      <dl><div><dt>Starts</dt><dd>{displayDate(firstOccurrence?.startAt ?? null)}</dd></div><div><dt>Sources</dt><dd>{item.sourceMetadata.products.join(" · ")}</dd></div></dl>
       <a href={item.publicUrl} target="_blank" rel="noreferrer">Open public Church Center record <span aria-hidden="true">↗</span></a>
     </article>
   );
@@ -79,6 +80,8 @@ export default function PlanningCenterPlatformPage({
     ["Calendar", diagnostics.calendar.state],
     ["Registrations", diagnostics.registrationsEndpoint.state],
     ["Groups", diagnostics.groupsEndpoint.state],
+    ["Services", diagnostics.servicesEndpoint.state],
+    ["Check-Ins", diagnostics.checkInsEndpoint.state],
   ] as const;
   const samples = [
     ...diagnostics.events.samples.map((item) => <EventSample item={item} key={`event-${item.publicUrl}`} />),
@@ -99,7 +102,7 @@ export default function PlanningCenterPlatformPage({
           <header className="platform-header">
             <p className="eyebrow">Planning Center foundation</p>
             <h1>Provider diagnostics</h1>
-            <p>Sanitized, read-only checks for public Calendar, signup, and published Groups data.</p>
+            <p>Sanitized, read-only checks for relationship-aware Calendar, Registrations, Groups, Services, and Check-Ins data.</p>
             <Link href="/admin/platform" className="platform-back-link">← System health</Link>
           </header>
 
@@ -115,10 +118,30 @@ export default function PlanningCenterPlatformPage({
           </section>
 
           <section className="platform-metrics" aria-label="Planning Center discovery counts">
-            <article><span>Upcoming public events</span><strong>{diagnostics.events.totalDiscovered ?? "—"}</strong></article>
+            <article><span>Canonical event candidates</span><strong>{diagnostics.events.totalDiscovered ?? "—"}</strong></article>
             <article><span>Public signup opportunities</span><strong>{diagnostics.registrations.totalDiscovered ?? "—"}</strong></article>
             <article><span>Published groups</span><strong>{diagnostics.groups.totalDiscovered ?? "—"}</strong></article>
           </section>
+
+          {diagnostics.relationships ? (
+            <section className="platform-status-panel" aria-labelledby="relationship-status-title">
+              <div className="platform-status-heading">
+                <div><p className="eyebrow">Relationship aggregation</p><h2 id="relationship-status-title">Sanitized source counts</h2></div>
+                <span className="platform-live-indicator">Exact IDs only</span>
+              </div>
+              <dl className="platform-check-list">
+                <div className="platform-check"><dt>Calendar records</dt><dd><strong>{diagnostics.relationships.calendar.futureParents} parents · {diagnostics.relationships.calendar.futureInstances} instances</strong><span>{diagnostics.relationships.calendar.publicParents} parents explicitly published.</span></dd></div>
+                <div className="platform-check"><dt>Registration records</dt><dd><strong>{diagnostics.relationships.registrations.records}</strong><span>{diagnostics.relationships.registrations.calendarConnections} exact Calendar connections.</span></dd></div>
+                <div className="platform-check"><dt>Group event records</dt><dd><strong>{diagnostics.relationships.groups.futureEventRecords}</strong><span>{diagnostics.relationships.groups.eligibleFutureOccurrences} explicitly public occurrences; {diagnostics.relationships.groups.mergedOccurrences} exact schedule matches.</span></dd></div>
+                <div className="platform-check"><dt>Services-linked records</dt><dd><strong>{diagnostics.relationships.services.calendarConnections}</strong><span>{diagnostics.relationships.services.linkedServiceTypes} distinct service types.</span></dd></div>
+                <div className="platform-check"><dt>Feed-origin records</dt><dd><strong>{diagnostics.relationships.feeds.feedOriginEvents}</strong><span>{diagnostics.relationships.feeds.records} configured Calendar feeds.</span></dd></div>
+                <div className="platform-check"><dt>Connected records</dt><dd><strong>{diagnostics.relationships.connectionRecords}</strong><span>Across {diagnostics.relationships.connectedCalendarParents} Calendar parents.</span></dd></div>
+                <div className="platform-check"><dt>Canonical events</dt><dd><strong>{diagnostics.relationships.canonicalEvents}</strong><span>{diagnostics.relationships.mergedRecords} duplicate representations merged by exact relationships.</span></dd></div>
+                <div className="platform-check"><dt>Excluded Calendar parents</dt><dd><strong>{diagnostics.relationships.excludedEvents}</strong><span>Not explicitly eligible for public publication.</span></dd></div>
+                <div className="platform-check"><dt>Ambiguous relationships</dt><dd><strong>{diagnostics.relationships.ambiguous.sameTitleCalendarClusters + diagnostics.relationships.ambiguous.unmatchedPublicGroupOccurrences}</strong><span>{diagnostics.relationships.ambiguous.sameTitleCalendarClusters} same-title clusters and {diagnostics.relationships.ambiguous.unmatchedPublicGroupOccurrences} unmatched public Group occurrences remain quarantined.</span></dd></div>
+              </dl>
+            </section>
+          ) : null}
 
           <section className="platform-samples" aria-labelledby="planning-samples-title">
             <div className="platform-samples-heading"><p className="eyebrow">Normalized output</p><h2 id="planning-samples-title">Safe sample records</h2></div>

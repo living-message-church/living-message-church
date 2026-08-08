@@ -169,6 +169,14 @@ export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async (
           ...planningCenterPresentation(planningCenter.groupsEndpoint),
         },
         {
+          label: "Planning Center Services",
+          ...planningCenterPresentation(planningCenter.servicesEndpoint),
+        },
+        {
+          label: "Planning Center Check-Ins",
+          ...planningCenterPresentation(planningCenter.checkInsEndpoint),
+        },
+        {
           detail: "Server-only YouTube Data API credential presence.",
           label: "YouTube API configured",
           tone: youtubeEnvironment.apiKey === "configured" ? "healthy" : "warning",

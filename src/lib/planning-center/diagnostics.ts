@@ -1,6 +1,6 @@
 import { planningCenterGet, PlanningCenterRequestError } from "./client";
 import { getPlanningCenterEnvironmentStatus, PLANNING_CENTER_API_VERSIONS } from "./config";
-import { getUpcomingEvents } from "./events";
+import { getPlanningCenterEventAggregation } from "./event-aggregation";
 import { getPublishedGroups } from "./groups";
 import { getPublicRegistrationOpportunities } from "./registrations";
 import type {
@@ -89,31 +89,43 @@ export async function getPlanningCenterDiagnostics(sampleLimit = 3): Promise<Pla
       organization: notConfigured,
       registrations: { samples: [], totalDiscovered: null, truncated: false },
       registrationsEndpoint: notConfigured,
+      relationships: null,
+      servicesEndpoint: notConfigured,
+      checkInsEndpoint: notConfigured,
     };
   }
 
-  const [organizationResult, eventsResult, registrationsResult, groupsResult] = await Promise.allSettled([
+  const [organizationResult, aggregationResult, registrationsResult, groupsResult] = await Promise.allSettled([
     checkOrganization(),
-    getUpcomingEvents(),
+    getPlanningCenterEventAggregation(),
     getPublicRegistrationOpportunities(),
     getPublishedGroups(),
   ]);
 
   const organization = settledStatus(organizationResult);
-  const calendar = settledStatus(eventsResult);
+  const calendar = aggregationResult.status === "fulfilled"
+    ? aggregationResult.value.calendarStatus
+    : statusFromError(aggregationResult.reason);
+  const checkInsEndpoint = aggregationResult.status === "fulfilled"
+    ? aggregationResult.value.checkInsStatus
+    : statusFromError(aggregationResult.reason);
+  const servicesEndpoint = aggregationResult.status === "fulfilled"
+    ? aggregationResult.value.servicesStatus
+    : statusFromError(aggregationResult.reason);
   const registrationsEndpoint = settledStatus(registrationsResult);
   const groupsEndpoint = settledStatus(groupsResult);
 
   return {
-    api: apiStatus([organization, calendar, registrationsEndpoint, groupsEndpoint]),
+    api: apiStatus([organization, calendar, registrationsEndpoint, groupsEndpoint, servicesEndpoint, checkInsEndpoint]),
     calendar,
+    checkInsEndpoint,
     checkedAt,
     environment,
-    events: eventsResult.status === "fulfilled"
+    events: aggregationResult.status === "fulfilled"
       ? {
-          samples: eventsResult.value.items.slice(0, sampleLimit),
-          totalDiscovered: eventsResult.value.totalDiscovered,
-          truncated: eventsResult.value.truncated,
+          samples: aggregationResult.value.events.slice(0, sampleLimit),
+          totalDiscovered: aggregationResult.value.events.length,
+          truncated: false,
         }
       : { samples: [], totalDiscovered: null, truncated: false },
     groups: groupsResult.status === "fulfilled"
@@ -125,6 +137,7 @@ export async function getPlanningCenterDiagnostics(sampleLimit = 3): Promise<Pla
       : { samples: [], totalDiscovered: null, truncated: false },
     groupsEndpoint,
     organization,
+    relationships: aggregationResult.status === "fulfilled" ? aggregationResult.value.diagnostics : null,
     registrations: registrationsResult.status === "fulfilled"
       ? {
           samples: registrationsResult.value.items.slice(0, sampleLimit),
@@ -133,5 +146,6 @@ export async function getPlanningCenterDiagnostics(sampleLimit = 3): Promise<Pla
         }
       : { samples: [], totalDiscovered: null, truncated: false },
     registrationsEndpoint,
+    servicesEndpoint,
   };
 }

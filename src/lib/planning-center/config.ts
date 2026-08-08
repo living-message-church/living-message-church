@@ -10,9 +10,11 @@ export const PLANNING_CENTER_REQUEST_TIMEOUT_MS = 8_000;
 
 export const PLANNING_CENTER_API_VERSIONS = {
   calendar: "2022-07-07",
+  checkIns: "2025-05-28",
   groups: "2023-07-10",
   people: "2021-08-17",
   registrations: "2025-05-01",
+  services: "2018-11-01",
 } as const;
 
 export class PlanningCenterConfigurationError extends Error {

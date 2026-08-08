@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "validate:redirects": "node scripts/validate-redirects.mjs"
+    "validate:redirects": "node scripts/validate-redirects.mjs",
+    "validate:planning-center-read-only": "node scripts/validate-planning-center-read-only.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",

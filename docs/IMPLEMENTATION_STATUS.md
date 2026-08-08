@@ -22,6 +22,8 @@ Updated: 2026-08-07
 - `/online-church` is now the canonical Church Online destination: its media window embeds only a server-resolved active Live or genuinely future Upcoming video from the verified channel. When neither exists, a branded offline state replaces YouTube's “video unavailable” screen; it never substitutes a completed sermon. Past-message actions route to `/messages`; `/messages/live` redirects permanently to the production-authoritative slug.
 - The official Supabase client foundation, browser/server helpers, environment validation, and no-index `/admin/platform` health page are implemented without tables, authentication, forms, or content migration.
 - A read-only Planning Center foundation now provides a centralized server-only REST client, pinned product API versions, timeouts, safe errors, and normalized public projections for future Calendar events, signup opportunities, and listed Groups. `/admin/platform` includes sanitized provider checks, while `/admin/platform/planning-center` provides a private/no-store, no-index preview without people, members, giving, attendee, submitted-registration, contact, or organization data.
+- Planning Center event discovery is now relationship-aware across Calendar, Registrations, Groups, Services, and Check-Ins. Exact Event Connections, Registration Integration Links, publication state, recurrence parents, and timestamps assemble 21 diagnostic canonical candidates from the current live snapshot. Public event pages remain unchanged pending resolution of the quarantined ambiguities in `PLANNING_CENTER_EVENT_RELATIONSHIPS.md`.
+- The Planning Center boundary is now explicitly and mechanically GET-only. Planning Center remains the canonical system of record; the application has no write client, may not request write scopes or permissions, and must stop and report any future requirement that would need provider mutation. `npm run validate:planning-center-read-only` guards the invariant.
 - Planning Center now uses the provider-aligned `PLANNING_CENTER_CLIENT_ID` plus `PLANNING_CENTER_SECRET` environment contract. Both variables are detected, and API, organization, Calendar, Registrations, and Groups each return HTTP 200 through the existing read-only adapters.
 - `/online-church` now has a conservative Planning Center schedule projection: when credentials and Calendar permissions are available, it shows the earliest future public event explicitly named as an online, Sunday, or worship service. It exposes only the formatted date/time and public Church Center URL; all other events and all provider failures remain hidden.
 - The YouTube Data API foundation centralizes server-only authentication, timeouts, normalized errors, channel ownership checks, and Live → Upcoming → Offline selection under `src/lib/youtube`. Results are cached for 55 seconds, the page revalidates every minute, and `/admin/platform` exposes only safe configuration/reachability/state indicators.
@@ -77,8 +79,7 @@ Updated: 2026-08-07
 - Service/online times, address/map/entrance, phone, email, accessibility, service duration, and kids ages/safety.
 - Final individual team active status, spelling/title approval, biography copy, and portrait release records; the current production roster is approved only for temporary use.
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
-- Authoritative event source and publishing/registration policy.
-- Planning Center live access is verified. The bounded discovery pass found 100 upcoming Calendar records (truncated), 7 public signup opportunities, and 5 published groups; public activation, pagination, and editorial publication policy remain deferred.
+- Planning Center live access and relationship discovery are verified. Public activation is blocked by two same-title Calendar clusters, three unmatched public Group occurrences, an open unscheduled Signup, and unlinked same-name records. Calendar is the schedule/publication authority only where its publication state is explicit.
 - Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
 - Final pastoral proofreading of the temporarily approved doctrinal statement; final Broadway title, biography, history, and image approval; plus outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
@@ -94,7 +95,7 @@ Updated: 2026-08-07
 
 ## Recommended next milestone
 
-Approve the authoritative Planning Center event-source and publication policy now that the Personal Access Token and Calendar/Registrations/Groups product permissions are verified. The next implementation milestone should add bounded server synchronization and editorial approval for public events only; webhooks, people data, giving data, and writes should remain deferred.
+Have a Planning Center owner resolve or explicitly exclude the seven relationship ambiguities in `PLANNING_CENTER_EVENT_RELATIONSHIPS.md`. Once approved, activate the canonical aggregator for `/events`, `/events/[slug]`, and the homepage. Planning Center writes are prohibited permanently—not merely deferred—and any operational correction must happen inside Planning Center.
 
 ## Validation record
 
