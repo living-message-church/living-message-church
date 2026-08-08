@@ -9,7 +9,7 @@ export type PlanningCenterEndpointState =
   | "not-configured";
 
 export interface PlanningCenterEnvironmentStatus {
-  appId: PlanningCenterEnvironmentState;
+  clientId: PlanningCenterEnvironmentState;
   ready: boolean;
   secret: PlanningCenterEnvironmentState;
 }

@@ -22,6 +22,7 @@ Updated: 2026-08-07
 - `/online-church` is now the canonical Church Online destination: its media window embeds only a server-resolved active Live or genuinely future Upcoming video from the verified channel. When neither exists, a branded offline state replaces YouTube's “video unavailable” screen; it never substitutes a completed sermon. Past-message actions route to `/messages`; `/messages/live` redirects permanently to the production-authoritative slug.
 - The official Supabase client foundation, browser/server helpers, environment validation, and no-index `/admin/platform` health page are implemented without tables, authentication, forms, or content migration.
 - A read-only Planning Center foundation now provides a centralized server-only REST client, pinned product API versions, timeouts, safe errors, and normalized public projections for future Calendar events, signup opportunities, and listed Groups. `/admin/platform` includes sanitized provider checks, while `/admin/platform/planning-center` provides a private/no-store, no-index preview without people, members, giving, attendee, submitted-registration, contact, or organization data.
+- Planning Center now uses the provider-aligned `PLANNING_CENTER_CLIENT_ID` plus `PLANNING_CENTER_SECRET` environment contract. Both variables are detected, and API, organization, Calendar, Registrations, and Groups each return HTTP 200 through the existing read-only adapters.
 - `/online-church` now has a conservative Planning Center schedule projection: when credentials and Calendar permissions are available, it shows the earliest future public event explicitly named as an online, Sunday, or worship service. It exposes only the formatted date/time and public Church Center URL; all other events and all provider failures remain hidden.
 - The YouTube Data API foundation centralizes server-only authentication, timeouts, normalized errors, channel ownership checks, and Live → Upcoming → Offline selection under `src/lib/youtube`. Results are cached for 55 seconds, the page revalidates every minute, and `/admin/platform` exposes only safe configuration/reachability/state indicators.
 - Editorial route panels, feed states, stronger page-hero treatment, card depth, and responsive compositions refined.
@@ -77,7 +78,7 @@ Updated: 2026-08-07
 - Final individual team active status, spelling/title approval, biography copy, and portrait release records; the current production roster is approved only for temporary use.
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
 - Authoritative event source and publishing/registration policy.
-- Live Planning Center credentials and product permissions are not configured in the validated local environment, so organization, Calendar, Registrations, and Groups reachability plus provider sample counts remain unverified. The adapters degrade safely to `Missing` / `Not checked` until configuration is supplied.
+- Planning Center live access is verified. The bounded discovery pass found 100 upcoming Calendar records (truncated), 7 public signup opportunities, and 5 published groups; public activation, pagination, and editorial publication policy remain deferred.
 - Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
 - Final pastoral proofreading of the temporarily approved doctrinal statement; final Broadway title, biography, history, and image approval; plus outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
@@ -93,7 +94,7 @@ Updated: 2026-08-07
 
 ## Recommended next milestone
 
-Configure a least-privilege Planning Center Personal Access Token in a controlled environment, verify Calendar/Registrations/Groups product permissions and public sample projections, then approve the authoritative event-source and publication policy. The next implementation milestone should add bounded server synchronization and editorial approval for public events only; webhooks, people data, giving data, and writes should remain deferred.
+Approve the authoritative Planning Center event-source and publication policy now that the Personal Access Token and Calendar/Registrations/Groups product permissions are verified. The next implementation milestone should add bounded server synchronization and editorial approval for public events only; webhooks, people data, giving data, and writes should remain deferred.
 
 ## Validation record
 
@@ -106,7 +107,7 @@ Configure a least-privilege Planning Center Personal Access Token in a controlle
 | YouTube API failure | The page retains the 16:9 player window with a calm offline state and channel fallback when status metadata cannot refresh; it does not expose a YouTube error or substitute an old completed message. |
 | YouTube privacy scan | No API key, YouTube environment-variable names, or Data API endpoint logic was emitted in `.next/static`; `/admin/platform` shows status labels only. |
 | YouTube authenticated discovery | Passed after sending the API key's approved development referrer. `channels.list`, `playlistItems.list`, and `videos.list` all succeed; 25 public embeddable candidates were found. Six stale `upcoming` records have past scheduled times and are rejected, allowing the latest completed message to resolve. |
-| Planning Center diagnostics | `/admin/platform` and `/admin/platform/planning-center` returned 200 with private/no-store caching and noindex metadata. With local credentials absent, the pages correctly rendered `Missing` / `Not checked`, null counts, and no samples. |
+| Planning Center diagnostics | `/admin/platform` and `/admin/platform/planning-center` returned 200 with private/no-store caching and noindex metadata. Environment rendered `Configured`; API, Organization, Calendar, Registrations, and Groups rendered `Reachable`, each backed by HTTP 200. |
 | Planning Center privacy scan | No Planning Center environment-variable names, Basic credential payloads, or Authorization logic were found in `.next/static`; rendered props contained status metadata only. No people, members, attendees, submitted registrations, giving, contacts, or organization records were present. |
 | Local HTTP smoke check | Home, Messages, Live, sitemap, and robots returned 200. Home and Messages rendered newest feed video `SGsP83hGEN8`; Messages was indexable, Live remained no-indexed, and the sitemap included `/messages`. |
 | Interactive browser QA | Not run: no connected browser was available |

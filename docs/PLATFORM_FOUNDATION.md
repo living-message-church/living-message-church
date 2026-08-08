@@ -13,7 +13,7 @@ The application expects these variables at the repository root in `.env.local` a
 | `NEXT_PUBLIC_SUPABASE_URL` | Browser and server | Project endpoint and connectivity check |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Browser and server | Publishable client access with Row Level Security enforced |
 | `SUPABASE_SERVICE_ROLE_KEY` | Server only | Presence verified only; not used by the application |
-| `PLANNING_CENTER_APP_ID` | Server only | Planning Center Personal Access Token identifier |
+| `PLANNING_CENTER_CLIENT_ID` | Server only | Planning Center Personal Access Token client identifier |
 | `PLANNING_CENTER_SECRET` | Server only | Planning Center Personal Access Token secret |
 | `YOUTUBE_API_KEY` | Server only | YouTube Data API requests for livestream resolution |
 | `YOUTUBE_CHANNEL_ID` | Server only | Restricts resolved videos to the configured Living Message Church channel |
@@ -49,6 +49,8 @@ Planning Center adds the following non-sensitive checks to `/admin/platform`:
 - Calendar, Registrations, and Groups endpoint reachability
 
 The no-index `/admin/platform/planning-center` route adds counts and safe normalized samples from public-eligible records. Both diagnostic routes are server-rendered with `Cache-Control: private, no-store, max-age=0`. See `PLANNING_CENTER_INTEGRATION.md` for the complete provider and privacy contract.
+
+Planning Center environment validation uses the provider-aligned `PLANNING_CENTER_CLIENT_ID` and `PLANNING_CENTER_SECRET` names. Validation on August 7, 2026 detected both variables and returned HTTP 200 for API, organization, Calendar, Registrations, and Groups checks. Only configured/missing, reachability, sanitized status, latency, public counts, and approved normalized public samples reach diagnostic props.
 
 YouTube adds the following non-sensitive checks to `/admin/platform`:
 
@@ -96,8 +98,10 @@ Validated locally on August 7, 2026:
 
 - `npm run lint` — passed
 - `npm run build` — passed; `/admin/platform` is emitted as a dynamic server-rendered route
-- Planning Center diagnostics — `/admin/platform/planning-center` is emitted as a dynamic server-rendered route and returns `200 OK`, `noindex, nofollow`, and `Cache-Control: private, no-store, max-age=0`
-- Missing-credential behavior — `/admin/platform` reports `Missing` and all provider endpoints report `Not checked`; the preview reports no counts or records
+- Planning Center diagnostics — `/admin/platform` and `/admin/platform/planning-center` are dynamic server-rendered routes and return `200 OK`, `noindex, nofollow`, and `Cache-Control: private, no-store, max-age=0`
+- Planning Center environment — both `PLANNING_CENTER_CLIENT_ID` and `PLANNING_CENTER_SECRET` are detected as configured; credential values are never rendered
+- Planning Center connectivity — API, organization, Calendar, Registrations, and Groups each returned sanitized `Reachable` state with HTTP 200
+- Planning Center discovery — 100 bounded upcoming Calendar records (truncated), 7 public signup opportunities, and 5 published groups
 - Client-bundle credential scan — no Planning Center environment-variable names, Basic credential payloads, or Authorization logic found in `.next/static`
 - YouTube state selection — fixture coverage passed for Live priority, Upcoming fallback, Offline fallback, and rejection of a non-embeddable candidate
 - YouTube failure behavior — when status resolution is unavailable, `/online-church` retains its 16:9 media window as a branded offline state with the verified channel fallback; no old completed message or YouTube error is shown

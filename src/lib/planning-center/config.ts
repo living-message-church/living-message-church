@@ -1,7 +1,7 @@
 import type { PlanningCenterEnvironmentStatus } from "./types";
 
 export const PLANNING_CENTER_ENVIRONMENT_VARIABLES = [
-  "PLANNING_CENTER_APP_ID",
+  "PLANNING_CENTER_CLIENT_ID",
   "PLANNING_CENTER_SECRET",
 ] as const;
 
@@ -28,13 +28,13 @@ function configured(value: string | undefined) {
 
 /** Returns presence states only. Credential values never leave this module. */
 export function getPlanningCenterEnvironmentStatus(): PlanningCenterEnvironmentStatus {
-  const appId = configured(process.env.PLANNING_CENTER_APP_ID);
+  const clientId = configured(process.env.PLANNING_CENTER_CLIENT_ID);
   const secret = configured(process.env.PLANNING_CENTER_SECRET);
 
   return {
-    appId,
+    clientId,
     secret,
-    ready: appId === "configured" && secret === "configured",
+    ready: clientId === "configured" && secret === "configured",
   };
 }
 
@@ -48,7 +48,7 @@ export function getPlanningCenterConfig() {
   if (!status.ready) throw new PlanningCenterConfigurationError();
 
   return {
-    appId: process.env.PLANNING_CENTER_APP_ID!.trim(),
+    clientId: process.env.PLANNING_CENTER_CLIENT_ID!.trim(),
     secret: process.env.PLANNING_CENTER_SECRET!.trim(),
   };
 }

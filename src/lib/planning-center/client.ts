@@ -103,7 +103,7 @@ export async function planningCenterGet<T>(
     throw error;
   }
 
-  const authorization = Buffer.from(`${credentials.appId}:${credentials.secret}`).toString("base64");
+  const authorization = Buffer.from(`${credentials.clientId}:${credentials.secret}`).toString("base64");
   const startedAt = performance.now();
 
   try {

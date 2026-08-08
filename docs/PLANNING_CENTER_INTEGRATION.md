@@ -4,17 +4,17 @@
 
 The project now has a read-only, server-side Planning Center provider boundary. The only public activation is a narrowly scoped next-service schedule on `/online-church`; no Planning Center data is activated on the homepage, `/events`, or public Groups experiences, and no data is persisted to Supabase.
 
-Local credentials were not present when this milestone was validated on August 7, 2026. The code therefore proves graceful missing-configuration behavior locally; live organization/product reachability and record counts remain unverified until the two server-only variables are supplied.
+The official server-only credentials were detected successfully during local validation on August 7, 2026. Read-only requests returned HTTP 200 for the API, organization, Calendar, Registrations, and Groups checks. Discovery returned 100 upcoming public Calendar records (the bounded adapter limit, marked truncated), 7 public signup opportunities, and 5 published groups. Credential values and organization data remained excluded from diagnostics output.
 
 ## Authentication
 
-This integration uses a Planning Center Personal Access Token for one church. Each request sends the application ID and secret with HTTP Basic authentication, as specified by [Planning Center authentication guidance](https://api.planningcenteronline.com/docs/overview/authentication).
+This integration uses a Planning Center Personal Access Token for one church. Each request sends the client ID and secret with HTTP Basic authentication, as specified by [Planning Center authentication guidance](https://api.planningcenteronline.com/docs/overview/authentication).
 
 Required server-only variables:
 
 | Variable | Exposure | Purpose |
 | --- | --- | --- |
-| `PLANNING_CENTER_APP_ID` | Server only | Personal Access Token application identifier |
+| `PLANNING_CENTER_CLIENT_ID` | Server only | Personal Access Token client identifier |
 | `PLANNING_CENTER_SECRET` | Server only | Personal Access Token secret |
 
 Neither variable may use a `NEXT_PUBLIC_` prefix. Their values are read only in `src/lib/planning-center/config.ts`, passed directly to the centralized server request client, and never returned in page props, rendered HTML, logs, normalized records, or public JavaScript.
@@ -116,4 +116,19 @@ Planning Center should remain the source for event identity, timing, and registr
 
 ## Validation
 
-See `docs/IMPLEMENTATION_STATUS.md` for the current lint, build, and smoke-test record. Live Planning Center endpoint and sample-count validation is blocked until `PLANNING_CENTER_APP_ID` and `PLANNING_CENTER_SECRET` are configured locally or in the tested deployment environment.
+Validated locally on August 7, 2026:
+
+- `PLANNING_CENTER_CLIENT_ID` — Configured
+- `PLANNING_CENTER_SECRET` — Configured
+- API — HTTP 200, Reachable
+- Organization — HTTP 200, Reachable; response data discarded
+- Calendar — HTTP 200, Reachable; 100 bounded records discovered, truncated
+- Registrations — HTTP 200, Reachable; 7 public signup opportunities discovered
+- Groups — HTTP 200, Reachable; 5 published groups discovered
+- `/admin/platform` — HTTP 200 with `Cache-Control: private, no-store, max-age=0`
+- `/admin/platform/planning-center` — HTTP 200 with `Cache-Control: private, no-store, max-age=0`
+- `npm run lint` — passed
+- `npm run build -- --webpack` — passed
+- No Planning Center credential names or values were found in `.next/static` or rendered diagnostic HTML
+
+The required server-only credentials are `PLANNING_CENTER_CLIENT_ID` and `PLANNING_CENTER_SECRET`. See `docs/IMPLEMENTATION_STATUS.md` for the consolidated project status.
