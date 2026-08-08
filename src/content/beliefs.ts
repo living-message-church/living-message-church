@@ -23,21 +23,15 @@ export const beliefsContent = {
     title: "Our beliefs.",
     body: "The foundation of our relationship with Christ is reading, interpreting, and applying sound doctrine from the Word of God.",
     image: {
-      src: "/images/general/living-message-bible-study.jpg",
-      alt: "Men gathered around open Bibles during a Living Message Church study.",
+      src: "/images/hero/living-message-beliefs-bible-hero.jpg",
+      alt: "An open Bible illuminated by warm window light.",
       status: "approved-temporary",
-      credit: "Living Message Church legacy website",
+      credit: "Original AI-assisted artwork created for Living Message Church",
     } satisfies ContentImage,
   },
   introduction: {
     eyebrow: "Why beliefs matter",
     title: "A secure foundation for life together.",
-    image: {
-      src: "/images/general/living-message-open-bible-beliefs.jpg",
-      alt: "An open Bible resting in warm window light.",
-      status: "approved-temporary",
-      credit: "Original AI-assisted artwork created for Living Message Church",
-    } satisfies ContentImage,
     paragraphs: [
       "No matter how strong a building is, it will crumble under pressure if its foundation is not secure. Ephesians 4:14 calls believers to maturity so they are not carried by every changing teaching.",
       "The church is to be a place of fellowship: devoted to one another, honoring one another, offering instruction, showing kindness and compassion, giving encouragement, and above all, loving one another.",
