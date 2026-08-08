@@ -6,7 +6,7 @@ Snapshot date: August 7, 2026
 
 The relationship-aware read model currently yields **21 canonical diagnostic candidates** from **24 explicitly published Calendar parents**. Three parent duplicates are merged only because each pair shares an exact connected Group ID. The remaining Calendar series stay separate unless an allowed exact relationship proves identity.
 
-This is a no-index diagnostic model only. `/events`, `/events/[slug]`, and homepage Events remain unchanged and do not consume these candidates.
+The complete evidence register remains available only in no-index diagnostics. The public `/events` index and three-item homepage slice consume the same model through a strict `eligibility === "public"` gate; `/events/[slug]` remains deferred. Cleanup and ambiguous candidates never reach public props.
 
 The AI creative foundation consumes this same model but admits only the 12 strict `public` candidates. The 8 cleanup candidates and 1 ambiguous candidate remain quarantined. Creative workflow state never changes canonical Planning Center facts.
 

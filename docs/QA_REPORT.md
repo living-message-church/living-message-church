@@ -246,6 +246,7 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 | `npm run lint` | Passed |
 | `npm run validate:creative-pipeline` | Passed; the migration declares a private bucket and RLS tables, the prompt includes safety constraints, generation requests three concepts, and all unauthenticated actions remain disabled. |
 | AI event creative route | `/admin/events/creative` returned HTTP 200 with `noindex, nofollow`; live GET-only diagnostics found 12 strict eligible Calendar events, 3 Registration-linked eligible events, 1 unlinked public Registration held for review, and 2 eligible events missing Planning Center artwork. The unapplied migration reported `Migration required`; no job, image generation, upload, or approval mutation ran. |
+| Public Events index | `/events` returned HTTP 200 with 12 strict public canonical rows, indexable metadata, current Planning Center/approved fallback imagery, and five-minute ISR. Home returned HTTP 200 with the same feed limited to 3 rows. Cleanup, ambiguous, and unlinked Registration candidates were absent. |
 | `npm run validate:redirects` | Passed |
 | `npm run build -- --webpack` | Passed on Next.js 16.3.0 with the verified public YouTube feed available during generation; all 25 pages plus robots, sitemap, and API routes generated successfully |
 | Our Team route smoke | Passed; `/about/leadership` returned 200 with 16 cards and 3 tiers, remained indexable, appeared in the sitemap, and `/the-team/` returned a direct 301 to it. |

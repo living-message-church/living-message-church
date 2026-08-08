@@ -33,10 +33,10 @@ export function EventCollection({ feed, headingLevel = "h2" }: { feed: ContentFe
           <div className="event-list-copy">
             {event.start ? <p className="event-date">{event.start.value}</p> : null}
             <Heading>{event.title.value}</Heading>
-            <p>{event.summary.value}</p>
+            {event.summary.value ? <p>{event.summary.value}</p> : null}
             {event.location ? <p className="event-location">{event.location.value}</p> : null}
           </div>
-          {event.registrationUrl ? <a className="event-row-action" href={event.registrationUrl.value} target="_blank" rel="noreferrer">Learn more</a> : null}
+          {event.registrationUrl ? <a className="event-row-action" href={event.registrationUrl.value} target="_blank" rel="noreferrer">{event.actionLabel ?? "View event"}<span aria-hidden="true">↗</span></a> : null}
         </article>
       ))}
     </div>

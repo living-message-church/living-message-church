@@ -6,7 +6,7 @@ This is the relationship-discovery record requested before activating Planning C
 
 Planning Center remains the canonical system of record. This relationship layer issues only `GET` requests and must never modify provider data, request write access, or add write permissions. Any reconciliation must be performed by an authorized owner inside Planning Center.
 
-The public `/events`, `/events/[slug]`, and homepage event experiences **have not been activated** from this aggregation. Two same-title Calendar clusters and nine public Group occurrences remain unresolved. They must be reconciled by a Planning Center owner before the canonical results become a public source.
+The public `/events` index and three-item homepage slice now consume only candidates classified exactly as `public`. `/events/[slug]` remains deferred. Two same-title Calendar clusters and nine public Group occurrences remain unresolved and quarantined; they do not enter the public adapter.
 
 ## Privacy boundary
 

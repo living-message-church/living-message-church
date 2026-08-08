@@ -8,6 +8,7 @@ import { Eyebrow, Heading } from "@/components/ui/typography";
 export function UpcomingEvents({ feed }: { feed: ContentFeedResult<ChurchEvent> }) {
   const content = homeSections.events;
   const [titleLead, ...titleAccent] = content.title.split(" ");
+  const homepageFeed = { ...feed, items: feed.items.slice(0, 3) };
   return (
     <Section className="event-section" tone={content.tone} labelledBy="events-title" containerSize="editorial">
       <div className="event-section-heading">
@@ -16,7 +17,7 @@ export function UpcomingEvents({ feed }: { feed: ContentFeedResult<ChurchEvent> 
           <span>{titleLead}</span> <em>{titleAccent.join(" ")}</em>
         </Heading>
       </div>
-      <EventCollection feed={feed} headingLevel="h3" />
+      <EventCollection feed={homepageFeed} headingLevel="h3" />
       {content.actions ? <div className="event-section-actions"><ActionGroup actions={content.actions} /></div> : null}
     </Section>
   );

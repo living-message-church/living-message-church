@@ -72,6 +72,7 @@ Updated: 2026-08-07
 
 - The AI event creative foundation is implemented: canonical eligibility, eight style presets, deterministic prompt construction, provider-neutral generation, 1600×900 WebP normalization, private Supabase storage schema, approval-aware resolver, and sanitized diagnostics. The migration is authored but not automatically applied.
 - `/admin/events/creative` is a no-index, read-only preview. Generation, approval, rejection, regeneration, and concept selection remain disabled until admin authentication and authorization exist.
+- `/events` now presents the 12 strict public canonical Planning Center events in a wide, image-led editorial list with recurrence/date, public description, location, and verified Church Center actions. The homepage uses the same source and is capped at three. Both remain Planning Center GET-only; eight cleanup and one ambiguous candidate stay quarantined.
 
 - Current event cards, Youth, and Young Adults still require current record-specific or ministry-specific media; truthful fallback or approved-temporary presentation remains in place.
 - Legal routes preserve the current subjects but remain interim/no-index pending legal and processor review.
@@ -82,7 +83,7 @@ Updated: 2026-08-07
 - Service/online times, address/map/entrance, phone, email, accessibility, service duration, and kids ages/safety.
 - Final individual team active status, spelling/title approval, biography copy, and portrait release records; the current production roster is approved only for temporary use.
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
-- Planning Center live access and relationship discovery are verified. Public activation is blocked by two same-title Calendar clusters, nine unmatched public Group occurrences, an open unscheduled Signup, and unlinked same-name records. Calendar is the schedule/publication authority only where its publication state is explicit.
+- Planning Center live access and relationship discovery are verified. The strict public subset is active, while two same-title Calendar clusters, nine unmatched public Group occurrences, an open unscheduled Signup, and unlinked same-name records remain blocked and excluded. Calendar is the schedule/publication authority only where its publication state is explicit.
 - Church Center namespaces, giving destination, visit form, Next Steps form ownership/recipient/retention, Typeform, Text In Church, newsletter, prayer, and volunteer workflows.
 - Final pastoral proofreading of the temporarily approved doctrinal statement; final Broadway title, biography, history, and image approval; plus outreach relationship/program details, partner approvals, social ownership, and underlying photographer/model/minor release records for migrated production-site imagery.
 - Final privacy and photo-release wording.
@@ -92,7 +93,7 @@ Updated: 2026-08-07
 - General Supabase persistence, authentication, native form submission, newsletter integration, prayer handling, analytics, and consent tooling. The event-creative schema/storage foundation is isolated and authored, but unsafe actions remain blocked.
 - Planning Center public activation, webhooks, and event-art association. Planning Center write operations are permanently prohibited, not deferred.
 - Full-history YouTube/Supabase editorial synchronization, uploads, and webhook handling. The Data API live-status resolver is implemented; the credential-free feed remains the bounded archive and API-failure fallback.
-- Dynamic message/event detail routes; public message search and category filtering are now implemented.
+- Dynamic event detail routes; public message search and category filtering are implemented, while event actions currently hand off to Church Center.
 - Full ministry, expanded leadership biographies, history, and gallery publication.
 - Production deployment, DNS changes, and WordPress decommissioning.
 
@@ -109,6 +110,7 @@ Implement authenticated, role-gated administration with audit identity and CSRF 
 | AI creative live diagnostics | 12 strict public Calendar candidates; 3 Registration-linked; 1 unlinked public Registration held; 2 eligible events missing Planning Center art; 0 jobs/concepts/assets created because auth is absent and the migration/provider are not active |
 | AI creative admin smoke | `/admin/events/creative`, `/admin/platform`, and `/admin/platform/planning-center` returned HTTP 200; creative route is no-index and all mutation controls are disabled |
 | Current production build | Passed on Next.js 16.3.0; `/admin/events/creative` emits as a dynamic server-rendered route |
+| Live Events activation | Passed: `/events` returned 200 with 12 strict public canonical rows and no no-index directive; Home returned 200 with exactly 3 rows. Six rendered Register labels represent 3 verified Registration-linked records across HTML and hydration data. |
 | `npm run validate:redirects` | Passed: 451 sources, 24 known destinations, 0 loops, 0 chains, 0 duplicates/missing destinations |
 | Production build | Default `npm run build` completed TypeScript and then hit the environment-level Turbopack worker-port `EPERM`; `npm run build -- --webpack` passed all 25 pages and emitted `/online-church` as a 60-second revalidated route. |
 | YouTube state selection | Passed deterministic fixtures for Live priority, Upcoming fallback, Offline fallback, and non-embeddable rejection. |

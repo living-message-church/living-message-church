@@ -92,7 +92,7 @@ The visible “Scan eligible Calendar events” control is disabled for the same
 2. authoritative public Planning Center/connected artwork;
 3. approved local LMC fallback.
 
-Presentation components receive only `ResolvedEventArtwork`; they do not know the AI or source provider. Public Events activation remains deferred.
+Presentation components receive only `ResolvedEventArtwork`; they do not know the AI or source provider. The strict public Events adapter now uses this resolver, but no public page triggers generation.
 
 ## Failure behavior
 

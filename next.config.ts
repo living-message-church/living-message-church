@@ -6,6 +6,16 @@ type InventoryEntry = {
   new_route: string;
 };
 
+const supabaseImageHostname = (() => {
+  try {
+    return process.env.NEXT_PUBLIC_SUPABASE_URL
+      ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname
+      : null;
+  } catch {
+    return null;
+  }
+})();
+
 function withoutTrailingSlash(path: string) {
   return path === "/" ? path : path.replace(/\/$/, "");
 }
@@ -40,6 +50,15 @@ function buildRedirects() {
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "images.planningcenterusercontent.com", pathname: "/v1/transform" },
+      { protocol: "https", hostname: "groups-production.s3.amazonaws.com", pathname: "/uploads/group/header_image/**" },
+      ...(supabaseImageHostname
+        ? [{ protocol: "https" as const, hostname: supabaseImageHostname, pathname: "/storage/v1/object/sign/event-art/**" }]
+        : []),
+    ],
+  },
   // Legacy WordPress URLs include trailing slashes. Disable Next's automatic
   // 308 normalization so audited content redirects can respond in one 301 hop.
   skipTrailingSlashRedirect: true,

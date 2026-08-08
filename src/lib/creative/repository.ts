@@ -1,6 +1,8 @@
 import { createSupabaseAdminClient, getSupabaseServerEnvironmentStatus } from "@/lib/supabase/server";
 import type { CreativeRegistryMetrics, ResolvedEventArtwork } from "./types";
 
+let creativeOverridesUnavailableUntil = 0;
+
 function isMissingRelation(message: string) {
   return /does not exist|schema cache|could not find/i.test(message);
 }
@@ -43,6 +45,7 @@ export async function getCreativeRegistryMetrics(): Promise<CreativeRegistryMetr
 
 /** Returns only an approved, public-enabled override; pending assets never resolve. */
 export async function getApprovedCreativeArtwork(canonicalEventId: string): Promise<ResolvedEventArtwork | null> {
+  if (creativeOverridesUnavailableUntil > Date.now()) return null;
   try {
     const client = createSupabaseAdminClient();
     const override = await client.from("event_creative_overrides")
@@ -50,7 +53,11 @@ export async function getApprovedCreativeArtwork(canonicalEventId: string): Prom
       .eq("canonical_event_id", canonicalEventId)
       .eq("public_enabled", true)
       .maybeSingle();
-    if (override.error || !override.data?.selected_asset_id) return null;
+    if (override.error) {
+      if (isMissingRelation(override.error.message)) creativeOverridesUnavailableUntil = Date.now() + 60_000;
+      return null;
+    }
+    if (!override.data?.selected_asset_id) return null;
     const asset = await client.from("event_creative_assets")
       .select("storage_path,width,height,status")
       .eq("id", override.data.selected_asset_id)

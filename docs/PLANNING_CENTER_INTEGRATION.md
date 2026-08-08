@@ -122,11 +122,11 @@ Planning Center should remain the source for event identity, timing, and registr
 
 That read-only creative foundation is now implemented in `src/lib/creative` and the Supabase migration documented in `AI_EVENT_CREATIVE_PIPELINE.md`. Calendar remains the discovery source; an exact Calendar EventConnection may enrich the candidate with Registration, Group, Check-In, or Services context. Unlinked Registration records remain diagnostics-only. All creative writes target Supabase; the Planning Center client and validator remain GET-only.
 
-## Deferred public activation
+## Public activation boundary
 
-- No public activation beyond the scoped `/online-church` next-service projection
-- No homepage event replacement
-- No `/events` replacement
+- `/events` and the three-item homepage slice now consume only strict public canonical Calendar candidates through five-minute ISR.
+- Dynamic `/events/[slug]` detail pages remain deferred; Church Center owns current detail and Registration actions.
+- Cleanup and ambiguous candidates remain diagnostics-only.
 - No public Groups replacement
 - No webhooks
 - No Supabase tables or synchronization
