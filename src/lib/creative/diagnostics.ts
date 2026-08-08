@@ -1,13 +1,15 @@
 import { getPlanningCenterEventAggregation } from "@/lib/planning-center/event-aggregation";
 import { getCreativeProviderEnvironmentStatus } from "./providers";
-import { getCreativeRegistryMetrics } from "./repository";
+import { getCreativeRegistryMetrics, getCreativeTestMetrics } from "./repository";
 import { scanEligibleCalendarEvents } from "./scan";
+import { CREATIVE_V1_TEST_EVENT_ID } from "./test-event";
 
 export async function getCreativePipelineDiagnostics() {
-  const [aggregation, candidates, registry] = await Promise.all([
+  const [aggregation, candidates, registry, test] = await Promise.all([
     getPlanningCenterEventAggregation(),
     scanEligibleCalendarEvents(),
     getCreativeRegistryMetrics(),
+    getCreativeTestMetrics(CREATIVE_V1_TEST_EVENT_ID),
   ]);
   const eligible = candidates.filter((candidate) => candidate.eligibility.eligible);
   return {
@@ -17,6 +19,7 @@ export async function getCreativePipelineDiagnostics() {
     eventsMissingArtwork: eligible.filter((candidate) => !candidate.planningCenterImageAvailable).length,
     registrationLinkedCanonicalEvents: eligible.filter((candidate) => candidate.event.providerIds.registrationIds.length > 0).length,
     registry,
+    test,
     unlinkedRegistrationCandidates: aggregation.diagnostics.registrations.unlinkedPublicCandidates,
   };
 }

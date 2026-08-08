@@ -101,6 +101,7 @@ export interface CreativeCandidate {
 }
 
 export interface CreativeRegistryMetrics {
+  audit: "available" | "not-migrated" | "unavailable";
   approvedAssets: number | null;
   jobsPending: number | null;
   pendingApprovals: number | null;
@@ -108,4 +109,24 @@ export interface CreativeRegistryMetrics {
   generationFailures: number | null;
   state: "available" | "not-migrated" | "unavailable";
   storage: "available" | "missing" | "unavailable";
+}
+
+export interface CreativeReviewAsset {
+  createdAt: string;
+  height: number;
+  id: string;
+  model: string;
+  provider: string;
+  signedUrl: string;
+  status: CreativeAssetStatus;
+  width: number;
+}
+
+export interface CreativeReviewJob {
+  assets: CreativeReviewAsset[];
+  canonicalEventId: string;
+  createdAt: string;
+  generationStatus: CreativeGenerationStatus;
+  generationVersion: number;
+  id: string;
 }

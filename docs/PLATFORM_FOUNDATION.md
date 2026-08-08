@@ -6,7 +6,7 @@ Planning Center is the canonical operational system and this application is a re
 
 ## Status
 
-The Supabase platform foundation is configured without application tables, authentication, forms, or content migration. The implementation uses the official `@supabase/supabase-js` client and exposes a no-index health page at `/admin/platform`. Separate read-only Planning Center and YouTube provider foundations add sanitized diagnostics while keeping credentials and provider logic on the server.
+The Supabase platform now includes cookie-backed Supabase Auth for manually provisioned administrators, private creative workflow tables/storage, and protected diagnostics. It uses the official `@supabase/supabase-js` and `@supabase/ssr` clients. Planning Center and YouTube provider foundations keep credentials and provider logic server-only.
 
 ## Environment contract
 
@@ -16,7 +16,8 @@ The application expects these variables at the repository root in `.env.local` a
 | --- | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL` | Browser and server | Project endpoint and connectivity check |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Browser and server | Publishable client access with Row Level Security enforced |
-| `SUPABASE_SERVICE_ROLE_KEY` | Server only | Presence verified only; not used by the application |
+| `SUPABASE_SERVICE_ROLE_KEY` | Server only | Creative registry, private Storage, and append-only audit work after verified admin authorization |
+| `OPENAI_API_KEY` | Server only | Optional GPT Image provider; generation remains disabled when missing |
 | `PLANNING_CENTER_CLIENT_ID` | Server only | Planning Center Personal Access Token client identifier |
 | `PLANNING_CENTER_SECRET` | Server only | Planning Center Personal Access Token secret |
 | `YOUTUBE_API_KEY` | Server only | YouTube Data API requests for livestream resolution |
@@ -67,9 +68,9 @@ YouTube adds the following non-sensitive checks to `/admin/platform`:
 
 The Google API key is currently restricted to the approved development origin. Server-side Data API requests therefore send `https://dev.livingmessagechurch.com/` as their `Referer`. Without it, Google returns HTTP 403 before the channel resource is read. Before the production hostname becomes authoritative, `https://livingmessagechurch.com/` must also be added to the key's allowed website restrictions; the key itself remains server-only.
 
-## Middleware decision
+## Session and Proxy boundary
 
-No `middleware.ts` or root `proxy.ts` was added. Next.js 16 reserves Proxy for request-time rewriting and optimistic authorization, and Supabase needs it primarily to refresh cookie-backed authentication sessions. Authentication is explicitly outside this milestone, so adding Proxy now would create an unused request interception layer. Revisit this decision when the authentication architecture is approved.
+Next.js 16 `src/proxy.ts` refreshes Supabase Auth cookies and performs only an optimistic claims check for `/admin/*`. Secure authorization remains in the server data-access boundary: protected pages call `auth.getUser()`, and creative POST handlers repeat authentication, role, method, media-type, and same-origin checks. Protected responses are private/no-store.
 
 ## Security boundaries
 
@@ -88,8 +89,7 @@ No `middleware.ts` or root `proxy.ts` was added. Next.js 16 reserves Proxy for r
 
 - General application schemas and content migrations. The isolated AI event-creative migration is authored but not automatically applied.
 - Generated database types
-- Authentication and session refresh
-- Proxy/middleware integration
+- Public signup (intentionally prohibited)
 - General storage. The private `event-art` bucket is declared by migration for approved creative workflow deployment.
 - Content migration
 - Forms and administrative workflows

@@ -3,11 +3,13 @@ import type { NormalizedEvent } from "@/lib/planning-center/types";
 import { createSupabaseAdminClient } from "@/lib/supabase/server";
 import { buildEventArtworkPrompt } from "./prompt-builder";
 import { inferCreativeStylePreset } from "./presets";
-import { generateEventArtwork } from "./providers";
+import { generateEventArtwork, getCreativeProviderEnvironmentStatus } from "./providers";
 import type { CreativeCandidate } from "./types";
 
 export interface AuthenticatedCreativeAdmin {
   authenticated: true;
+  email: string | null;
+  role: "admin";
   subject: string;
 }
 
@@ -21,6 +23,37 @@ function safePathSegment(value: string) {
   return value.replace(/[^a-zA-Z0-9_-]+/g, "-").replace(/^-|-$/g, "").slice(0, 160);
 }
 
+type CreativeAuditAction = "creative_scanned" | "creative_generated" | "creative_regenerated" | "creative_approved" | "creative_rejected" | "creative_selected" | "creative_published";
+
+async function recordCreativeAudit(
+  actor: AuthenticatedCreativeAdmin,
+  action: CreativeAuditAction,
+  values: { assetId?: string; canonicalEventId?: string; jobId?: string; metadata?: Record<string, string | number | boolean | null> } = {},
+) {
+  const client = createSupabaseAdminClient();
+  const result = await client.from("creative_audit_log").insert({
+    acting_user_email: actor.email,
+    acting_user_id: actor.subject,
+    action,
+    asset_id: values.assetId ?? null,
+    canonical_event_id: values.canonicalEventId ?? null,
+    job_id: values.jobId ?? null,
+    metadata: values.metadata ?? {},
+  });
+  if (result.error) throw new Error("Creative audit storage is unavailable. Apply the secure-admin migration before enabling mutations.");
+}
+
+async function assertCreativeAuditReady() {
+  const result = await createSupabaseAdminClient().from("creative_audit_log").select("id", { head: true, count: "exact" });
+  if (result.error) throw new Error("Creative audit storage is unavailable. Apply the secure-admin migration before enabling mutations.");
+}
+
+export async function recordCreativeScan(actor: AuthenticatedCreativeAdmin, eligibleCount: number) {
+  requireAdmin(actor);
+  await assertCreativeAuditReady();
+  await recordCreativeAudit(actor, "creative_scanned", { metadata: { eligibleCount } });
+}
+
 /** Writes only Supabase. The canonical event was previously read from Planning Center via GET. */
 export async function generateCreativeConcepts(
   actor: AuthenticatedCreativeAdmin,
@@ -28,12 +61,16 @@ export async function generateCreativeConcepts(
   reason: "manual" | "missing-artwork" | "source-change",
 ) {
   requireAdmin(actor);
+  await assertCreativeAuditReady();
   if (!candidate.eligibility.eligible) {
     throw new Error("Only strict public canonical Calendar events may enter generation.");
   }
   const event: NormalizedEvent = candidate.event;
   if (reason === "missing-artwork" && candidate.planningCenterImageAvailable) {
     throw new Error("The event already has authoritative Planning Center artwork.");
+  }
+  if (!getCreativeProviderEnvironmentStatus().configured) {
+    throw new Error("The image generation provider is not configured.");
   }
   const client = createSupabaseAdminClient();
   const preset = inferCreativeStylePreset(event.title, event.category);
@@ -58,6 +95,12 @@ export async function generateCreativeConcepts(
     source_updated_at: event.sourceMetadata.updatedAt,
   }).select("id").single();
   if (job.error || !job.data) throw new Error("Creative job could not be created.");
+
+  await recordCreativeAudit(actor, version > 1 ? "creative_regenerated" : "creative_generated", {
+    canonicalEventId: event.id,
+    jobId: job.data.id,
+    metadata: { reason, version },
+  });
 
   try {
     const concepts = await generateEventArtwork({ aspectRatio: "16:9", conceptCount: 3, prompt, stylePreset: preset });
@@ -97,6 +140,7 @@ export async function generateCreativeConcepts(
 /** Approves and selects an asset in Supabase only; Planning Center is untouched. */
 export async function approveCreativeAsset(actor: AuthenticatedCreativeAdmin, canonicalEventId: string, assetId: string) {
   requireAdmin(actor);
+  await assertCreativeAuditReady();
   const client = createSupabaseAdminClient();
   const approvedAt = new Date().toISOString();
   const asset = await client.from("event_creative_assets").update({
@@ -112,12 +156,29 @@ export async function approveCreativeAsset(actor: AuthenticatedCreativeAdmin, ca
   });
   if (override.error) throw new Error("Creative override could not be selected.");
   await client.from("event_creative_jobs").update({ generation_status: "approved" }).eq("id", asset.data.job_id);
+  await recordCreativeAudit(actor, "creative_approved", { assetId, canonicalEventId, jobId: asset.data.job_id });
+  await recordCreativeAudit(actor, "creative_selected", { assetId, canonicalEventId, jobId: asset.data.job_id });
+  await recordCreativeAudit(actor, "creative_published", { assetId, canonicalEventId, jobId: asset.data.job_id });
 }
 
 /** Rejects an asset in Supabase without deleting its historical generation. */
-export async function rejectCreativeAsset(actor: AuthenticatedCreativeAdmin, assetId: string) {
+export async function rejectCreativeAsset(actor: AuthenticatedCreativeAdmin, canonicalEventId: string, assetId: string) {
   requireAdmin(actor);
+  await assertCreativeAuditReady();
   const client = createSupabaseAdminClient();
-  const result = await client.from("event_creative_assets").update({ status: "rejected" }).eq("id", assetId);
-  if (result.error) throw new Error("Creative asset could not be rejected.");
+  const result = await client.from("event_creative_assets").update({ status: "rejected" }).eq("id", assetId).eq("canonical_event_id", canonicalEventId).select("id").maybeSingle();
+  if (result.error || !result.data) throw new Error("Creative asset could not be rejected.");
+  await recordCreativeAudit(actor, "creative_rejected", { assetId, canonicalEventId });
+}
+
+/** Selects a concept for later publication without making it public. */
+export async function selectCreativeAsset(actor: AuthenticatedCreativeAdmin, canonicalEventId: string, assetId: string) {
+  requireAdmin(actor);
+  await assertCreativeAuditReady();
+  const client = createSupabaseAdminClient();
+  const asset = await client.from("event_creative_assets").select("id").eq("id", assetId).eq("canonical_event_id", canonicalEventId).maybeSingle();
+  if (asset.error || !asset.data) throw new Error("Creative asset is unavailable.");
+  const result = await client.from("event_creative_overrides").upsert({ canonical_event_id: canonicalEventId, public_enabled: false, selected_asset_id: assetId });
+  if (result.error) throw new Error("Creative asset could not be selected.");
+  await recordCreativeAudit(actor, "creative_selected", { assetId, canonicalEventId });
 }

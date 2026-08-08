@@ -1,5 +1,7 @@
 # Creative Style Presets
 
+Preset selection remains deterministic and server-side. Secure administration does not change the preset vocabulary, and the single v1 test uses the inferred Students direction without placing event text or an LMC logo inside generated pixels.
+
 Presets are deterministic brand directions stored in code and seeded into Supabase for a future authenticated admin. They are not event-specific React copy.
 
 | Preset | Direction | Guardrails |
@@ -14,4 +16,3 @@ Presets are deterministic brand directions stored in code and seeded into Supaba
 | General | Premium neutral LMC fallback | Blue, cream, warm neutrals; minimal and authentic |
 
 All presets inherit global rules: 16:9 art without baked-in titles, logos, or readable Scripture; no Motivation Church assets or imitation; and no private Planning Center data.
-

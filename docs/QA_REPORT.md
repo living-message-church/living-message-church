@@ -222,6 +222,9 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 
 ## Pending manual verification
 
+- Apply `202608080002_secure_creative_admin.sql`, provision one admin and one viewer, and complete authenticated browser QA for login, sign-out, viewer read-only behavior, admin mutations, session refresh, and expired sessions.
+- Configure `OPENAI_API_KEY`, generate exactly three concepts for the gated Youth Ministry Volunteer Training record, approve one, and verify approved/public versus pending/rejected private delivery.
+
 - Apply the AI event creative migration in an approved Supabase deployment, then verify private bucket policies, signed approved-asset resolution, and RLS with anonymous/authenticated/service-role sessions.
 - Admin creative generation and approval flows are not testable until authentication exists and an image-provider credential is configured. The UI intentionally exposes no mutation route.
 
@@ -256,3 +259,23 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 | Planning Center service schedule | The public projection is limited to the earliest future public Calendar record with an explicit online/Sunday/worship service title, formatted in Eastern time. The block degrades by omission. Current local and deployed diagnostics report Planning Center credentials as missing, so a live schedule record could not be rendered or verified. |
 | YouTube live resolver | The empty-referrer 403 was reproduced and fixed. Authenticated `channels.list`, `playlistItems.list`, and `videos.list` requests passed; Live/Upcoming/Offline/stale-Upcoming selection fixtures passed; and the no-credentials failure path retained a playable latest-message iframe and fallback channel link. The default Turbopack build hit its environment-level worker-port `EPERM` after TypeScript; the webpack production fallback passed all 25 pages. `/online-church` revalidates every 60 seconds. |
 | Existing automated tests | No test suite or test command is configured |
+
+## Secure creative admin validation — August 7, 2026
+
+| Check | Result |
+| --- | --- |
+| Unauthenticated protected pages | Passed: `/admin/platform` and `/admin/events/creative` return 307 to `/admin/login` with a bounded local `next` destination. |
+| Login route | Passed: `/admin/login` returns 200, is no-index, and exposes sign-in only; no signup action exists. |
+| GET mutation attempt | Passed: `/api/admin/creative` returns 405. |
+| Cross-origin POST | Passed: a JSON POST from an untrusted Origin returns 403 before authentication or workflow access. |
+| Same-origin anonymous POST | Passed: returns 401; no Planning Center, OpenAI, Storage, or creative mutation runs. |
+| Viewer/admin live tests | Blocked: the connected Supabase Auth project currently contains zero provisioned users. |
+| Creative base schema/storage | Passed: existing creative tables and private `event-art` bucket are reachable through sanitized server diagnostics. |
+| Audit migration | Pending: `creative_audit_log` returns migration-required; all UI mutations remain disabled and server mutations fail closed. |
+| Provider state | Expected blocked state: `OPENAI_API_KEY` is missing locally, so generation is disabled without affecting public pages. |
+| Single test event | Selected only: Youth Ministry Volunteer Training (`planning-center:22003630`) is future, strict-public, unambiguous, descriptive, and missing provider art. Generated concepts: 0. Approved concepts: 0. |
+| `npm run lint` | Passed. |
+| `npm run build` | Passed once with Next.js 16.3.0/Turbopack and emitted dynamic protected routes plus Proxy. A repeated run hit the environment-level Turbopack worker-port `EPERM`; `npm run build -- --webpack` then passed all routes and TypeScript. |
+| `npm run validate:creative-pipeline` | Passed: verified roles, same-origin POST, audit schema, private storage, approval gate, and single-event restriction. |
+| `npm run validate:planning-center-read-only` | Passed: centralized GET-only access; no write paths. |
+| `npm run validate:redirects` | Passed: 451 sources, 0 loops, 0 chains. |

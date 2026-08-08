@@ -1,5 +1,9 @@
 # Architecture Principles
 
+## Secure administrative boundary
+
+Administrative access uses Supabase Auth with no public signup. Next.js Proxy refreshes sessions but is never the sole authorization control. Server-confirmed users and administrator-controlled `app_metadata.admin_role` values gate protected pages and mutations. Creative writes are same-origin POST requests, audited in Supabase, and may never create a path back into Planning Center.
+
 ## Systems of record
 
 - Planning Center owns operational church facts and is permanently GET-only from this platform.
@@ -15,4 +19,3 @@ Provider APIs are isolated under `src/lib`. React components consume normalized 
 ## Publication
 
 Provider readability is not publication permission. Canonical identity, explicit public visibility, ambiguity quarantine, and editorial approval are distinct gates. AI output is non-public until an approved asset is explicitly selected and enabled.
-

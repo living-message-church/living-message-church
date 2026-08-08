@@ -11,6 +11,8 @@ import { getSupabaseServerEnvironmentStatus } from "@/lib/supabase/server";
 import { getYouTubeEnvironmentStatus } from "@/lib/youtube/client";
 import { getCurrentLiveVideo } from "@/lib/youtube/live";
 import { getCreativePipelineDiagnostics } from "@/lib/creative/diagnostics";
+import { AdminSession } from "@/components/admin/admin-session";
+import { adminLoginRedirect, getAdminIdentity, type AdminIdentity } from "@/lib/supabase/auth";
 
 type CheckTone = "healthy" | "unavailable" | "warning";
 
@@ -23,6 +25,7 @@ interface PlatformCheck {
 
 interface PlatformPageProps {
   checks: PlatformCheck[];
+  identity: AdminIdentity;
 }
 
 function connectionPresentation(state: SupabaseConnectionState, latencyMs: number | null) {
@@ -81,8 +84,10 @@ function planningCenterPresentation(status: PlanningCenterEndpointStatus) {
   };
 }
 
-export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async ({ req, res, resolvedUrl }) => {
   res.setHeader("Cache-Control", "private, no-store, max-age=0");
+  const identity = await getAdminIdentity(req, res);
+  if (!identity) return { redirect: { destination: adminLoginRedirect(resolvedUrl), permanent: false } };
 
   const [connection, planningCenter, youtube, creative] = await Promise.all([
     checkSupabaseConnection(),
@@ -109,7 +114,20 @@ export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async (
 
   return {
     props: {
+      identity,
       checks: [
+        {
+          detail: "Supabase Auth cookie sessions are verified server-side before this page renders.",
+          label: "Admin authentication",
+          tone: "healthy",
+          value: "Configured",
+        },
+        {
+          detail: identity.email ?? "Authenticated Supabase user without a displayable email.",
+          label: "Current admin identity",
+          tone: "healthy",
+          value: identity.role === "admin" ? "Admin" : "Viewer",
+        },
         {
           label: "Supabase connection",
           ...connectionCheck,
@@ -221,10 +239,22 @@ export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async (
           value: creative.registry.storage === "available" ? "Available" : creative.registry.storage === "missing" ? "Migration required" : "Unavailable",
         },
         {
+          detail: "Append-only identity and action records for creative mutations.",
+          label: "Creative audit",
+          tone: creative.registry.audit === "available" ? "healthy" : "warning",
+          value: creative.registry.audit === "available" ? "Available" : creative.registry.audit === "not-migrated" ? "Migration required" : "Unavailable",
+        },
+        {
           detail: `${creative.eligibleCalendarCandidates} strict public Calendar candidates; ${creative.eventsMissingArtwork} currently lack provider artwork.`,
           label: "Creative eligibility",
           tone: "healthy",
           value: `${creative.eligibleCalendarCandidates} eligible`,
+        },
+        {
+          detail: `${creative.test?.jobs ?? 0} jobs · ${creative.test?.concepts ?? 0} concepts · ${creative.test?.approvals ?? 0} approvals.`,
+          label: "Single-event creative test",
+          tone: creative.test?.publicOverrideResolved ? "healthy" : "warning",
+          value: creative.test?.publicOverrideResolved ? "Public override resolved" : "Not completed",
         },
       ],
     },
@@ -233,6 +263,7 @@ export const getServerSideProps: GetServerSideProps<PlatformPageProps> = async (
 
 export default function PlatformPage({
   checks,
+  identity,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
@@ -245,6 +276,7 @@ export default function PlatformPage({
       <div className="platform-page">
         <Container size="content">
           <header className="platform-header">
+            <AdminSession identity={identity} />
             <p className="eyebrow">Platform foundation</p>
             <h1>System health</h1>
             <p>Non-sensitive connectivity and deployment checks for the website platform.</p>

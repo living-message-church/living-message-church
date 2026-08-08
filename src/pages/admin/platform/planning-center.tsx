@@ -2,6 +2,8 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Link from "next/link";
 import { SiteHead } from "@/components/seo/site-head";
 import { Container } from "@/components/ui/container";
+import { AdminSession } from "@/components/admin/admin-session";
+import { adminLoginRedirect, getAdminIdentity, type AdminIdentity } from "@/lib/supabase/auth";
 import { getPlanningCenterDiagnostics } from "@/lib/planning-center/diagnostics";
 import type {
   NormalizedEvent,
@@ -14,6 +16,7 @@ import type {
 
 interface PlanningCenterPageProps {
   diagnostics: PlanningCenterDiagnostics;
+  identity: AdminIdentity;
 }
 
 function stateLabel(state: PlanningCenterEndpointState) {
@@ -105,13 +108,16 @@ function GroupSample({ item }: { item: NormalizedGroup }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<PlanningCenterPageProps> = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps<PlanningCenterPageProps> = async ({ req, res, resolvedUrl }) => {
   res.setHeader("Cache-Control", "private, no-store, max-age=0");
-  return { props: { diagnostics: await getPlanningCenterDiagnostics() } };
+  const identity = await getAdminIdentity(req, res);
+  if (!identity) return { redirect: { destination: adminLoginRedirect(resolvedUrl), permanent: false } };
+  return { props: { diagnostics: await getPlanningCenterDiagnostics(), identity } };
 };
 
 export default function PlanningCenterPlatformPage({
   diagnostics,
+  identity,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const endpointRows = [
     ["API", diagnostics.api.state],
@@ -139,6 +145,7 @@ export default function PlanningCenterPlatformPage({
       <div className="platform-page">
         <Container size="content">
           <header className="platform-header">
+            <AdminSession identity={identity} />
             <p className="eyebrow">Planning Center foundation</p>
             <h1>Provider diagnostics</h1>
             <p>Sanitized, read-only checks for relationship-aware Calendar, Registrations, Groups, Services, and Check-Ins data.</p>

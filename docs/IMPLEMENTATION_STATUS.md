@@ -4,6 +4,10 @@ Updated: 2026-08-07
 
 ## Completed
 
+- Supabase Auth foundation with cookie-backed SSR sessions, manually provisioned accounts, server-confirmed identity, `admin`/`viewer` role gates from protected Auth app metadata, and Next.js 16 Proxy session refresh.
+- Protected `/admin/platform`, `/admin/platform/planning-center`, `/admin/events/creative`, and `/admin/messages`; all emit private/no-store responses and redirect unauthenticated requests to `/admin/login`.
+- Same-origin, JSON-only creative POST boundary with repeated server authentication/authorization, no GET mutations, single-test-event generation gating, private signed previews, and an authored append-only audit migration.
+
 - Content verification registry covering the audit’s unresolved and conflicting facts.
 - Typed content models for identity, contact, services, navigation/footer, leadership, ministries, messages, events, outreach, social channels, external services, images, calls to action, pages, and homepage sections.
 - Project-native design tokens and responsive editorial component foundation.
@@ -80,6 +84,8 @@ Updated: 2026-08-07
 
 ## Blocked by verification
 
+- First AI event generation/approval: `OPENAI_API_KEY` is missing locally, zero Supabase Auth users are provisioned, and `202608080002_secure_creative_admin.sql` is not applied. No concepts were generated and no approval was fabricated.
+
 - Service/online times, address/map/entrance, phone, email, accessibility, service duration, and kids ages/safety.
 - Final individual team active status, spelling/title approval, biography copy, and portrait release records; the current production roster is approved only for temporary use.
 - Message editorial-correction ownership and Podbean status; the canonical YouTube channel and feed are verified.
@@ -99,12 +105,15 @@ Updated: 2026-08-07
 
 ## Recommended next milestone
 
-Implement authenticated, role-gated administration with audit identity and CSRF protection, then apply the reviewed event-creative migration and exercise one eligible missing-artwork event through generation, private storage, review, approval, and signed public resolution. Public Events activation remains separate and still requires a Planning Center owner to resolve or explicitly exclude the relationship ambiguities in `PLANNING_CENTER_EVENT_RELATIONSHIPS.md`.
+Apply the secure-admin migration, manually provision one Supabase Auth administrator with `app_metadata.admin_role = admin`, and configure `OPENAI_API_KEY`. Then run only the gated Youth Ministry Volunteer Training test through three concepts, approve one, and verify its signed public override before enabling any second event.
 
 ## Validation record
 
 | Check | Result |
 | --- | --- |
+| Secure admin route smoke | Anonymous platform/creative routes redirect 307 to `/admin/login`; login returns 200; GET mutation returns 405; cross-origin POST returns 403; same-origin anonymous POST returns 401. |
+| Supabase activation state | Base creative tables and private `event-art` are reachable. Secure audit migration is pending; Auth has 0 users (0 admins, 0 viewers); `OPENAI_API_KEY` is missing. No concepts or approvals were created. |
+| Secure admin build | Default Turbopack build passed once; a repeat hit the known environment worker-port `EPERM`. The webpack production build passed TypeScript and all 25 pages, including Proxy and `/api/admin/creative`. |
 | `npm run lint` | Passed |
 | `npm run validate:creative-pipeline` | Passed: private storage, approval gating, three-concept generation, and auth-blocked mutations confirmed |
 | AI creative live diagnostics | 12 strict public Calendar candidates; 3 Registration-linked; 1 unlinked public Registration held; 2 eligible events missing Planning Center art; 0 jobs/concepts/assets created because auth is absent and the migration/provider are not active |
