@@ -86,10 +86,10 @@ export const kidsPageContent: KidsPageContent = {
       credit: "User-supplied lmkids.svg",
     },
     image: {
-      src: "/images/kids/lm-kids-city-community-hero.webp",
+      src: "/images/kids/lm-kids-city-community-branded.webp",
       alt: "An illustrated LM Kids neighborhood with homes, a community garden, playground, school, youth space, and skate park at night.",
       status: "approved-temporary",
-      credit: "User-supplied LM Kids city artwork",
+      credit: "User-supplied city artwork with the official user-supplied LM Kids logo",
     },
     actions: [
       { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
