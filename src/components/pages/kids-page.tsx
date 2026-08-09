@@ -16,7 +16,11 @@ export function KidsPage() {
         <Container className="kids-hero-layout" size="hero">
           <div className="kids-hero-copy">
             <Eyebrow>{content.hero.eyebrow}</Eyebrow>
-            <h1 id="kids-hero-title">{content.hero.title}</h1>
+            <h1 id="kids-hero-title">
+              <span>{content.hero.title.lead}</span>
+              <em>{content.hero.title.accent}</em>
+              <span>{content.hero.title.end}</span>
+            </h1>
             <p>{content.hero.body}</p>
             <ActionGroup actions={content.hero.actions} />
           </div>

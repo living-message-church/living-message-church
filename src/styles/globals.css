@@ -774,7 +774,9 @@ button, input, textarea, select { font: inherit; }
 .kids-hero-glow-one { top: -16rem; right: -8rem; width: 38rem; height: 38rem; background: radial-gradient(circle, rgb(96 125 139 / 0.32), transparent 66%); animation: kids-drift 16s ease-in-out infinite alternate; }
 .kids-hero-glow-two { bottom: -18rem; left: 22%; width: 32rem; height: 32rem; background: radial-gradient(circle, rgb(164 235 81 / 0.08), transparent 68%); animation: kids-drift 20s ease-in-out infinite alternate-reverse; }
 .kids-hero-copy .eyebrow { color: var(--color-gold); }
-.kids-hero-copy h1 { max-width: 8ch; margin: 0; font-size: clamp(4rem, 2.2rem + 4.8vw, 7rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; text-wrap: balance; }
+.kids-hero-copy h1 { display: grid; max-width: 8ch; gap: 0.055em; margin: 0; font-size: clamp(4rem, 2.2rem + 4.8vw, 7rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; }
+.kids-hero-copy h1 span, .kids-hero-copy h1 em { display: block; }
+.kids-hero-copy h1 em { font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.04em; font-style: italic; font-weight: 400; letter-spacing: -0.045em; line-height: 0.82; }
 .kids-hero-copy > p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.8); font-size: var(--step-1); line-height: 1.5; }
 .kids-hero-copy .action-primary { border-color: #a4eb51; background: #a4eb51; color: var(--color-ink-deep); }
 .kids-hero-copy .action-primary:hover { border-color: #baf36d; background: #baf36d; }
@@ -1024,7 +1026,8 @@ button, input, textarea, select { font: inherit; }
   .connect-final .action-group { justify-content: center; }
   .kids-hero-layout { min-height: auto; grid-template-columns: 1fr; padding-block: var(--space-7); }
   .kids-hero-copy { max-width: 38rem; }
-  .kids-hero-copy h1 { max-width: 8ch; font-size: clamp(3.6rem, 16vw, 5.2rem); }
+  .kids-hero-copy h1 { max-width: 8ch; gap: 0.08em; font-size: clamp(3.35rem, 14.5vw, 4.8rem); line-height: 0.9; }
+  .kids-hero-copy h1 em { line-height: 0.86; }
   .kids-hero-copy > p { font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
   .kids-hero-visual { max-width: 40rem; margin-top: var(--space-3); padding: var(--space-5) 0 0 var(--space-4); }
   .kids-logo-card { width: min(58%, 18rem); }

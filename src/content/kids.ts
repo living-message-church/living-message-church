@@ -16,7 +16,11 @@ export interface KidsPageContent {
   seo: SeoContent;
   hero: {
     eyebrow: string;
-    title: string;
+    title: {
+      lead: string;
+      accent: string;
+      end: string;
+    };
     body: string;
     logo: ContentImage;
     image: ContentImage;
@@ -59,7 +63,11 @@ export const kidsPageContent: KidsPageContent = {
   },
   hero: {
     eyebrow: "LMC Kids",
-    title: "Big truth. Bright wonder.",
+    title: {
+      lead: "Big truth.",
+      accent: "Bright",
+      end: "wonder.",
+    },
     body:
       "LMC Kids uses Bible-centered curriculum with each message pointing children to Christ. The ministry emphasizes learning, laughter, and a welcoming environment.",
     logo: {
