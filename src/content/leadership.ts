@@ -35,22 +35,22 @@ const person = (
 // project-owner direction. Individual active status, role wording, and the
 // Garry/Gary and Jaime/Jamie source-filename discrepancies remain documented.
 export const leadership: TeamMember[] = [
-  person("brian-broadway", "Brian Broadway", "Lead Pastor / Bishop", "pastoral", "executive", 1, "brian-broadway.jpg"),
-  person("allison-broadway", "Allison Broadway", "Administrator", "pastoral", "executive", 2, "allison-broadway.jpg"),
-  person("brad-banker", "Brad Banker", "Elder", "elder", "executive", 3, "brad-banker.jpg"),
-  person("garry-grant", "Garry Grant", "Elder", "elder", "executive", 4, "garry-grant.jpg"),
-  person("carlos-martinez", "Carlos Martinez", "Elder", "elder", "executive", 5, "carlos-martinez.jpg"),
-  person("ricky-ortiz", "Ricky Ortiz", "Associate Pastor", "pastoral", "executive", 6, "ricky-ortiz.jpg"),
-  person("dwayne-bishop", "Dwayne Bishop", "Deacon / Connection", "deacon", "deacons", 1, "dwayne-bishop.jpg"),
-  person("dennis-carter", "Dennis Carter", "Deacon", "deacon", "deacons", 2, "dennis-carter.jpg"),
-  person("nathanael-edmund", "Nathanael Edmund", "Deacon / Worship Pastor", "deacon", "deacons", 3, "nathanael-edmund.jpg"),
-  person("nathan-lehman", "Nathan Lehman", "Deacon / Connection", "deacon", "deacons", 4, "nathan-lehman.jpg"),
-  person("stephen-mcpherson", "Stephen McPherson", "Deacon / Men’s Leader", "deacon", "deacons", 5, "stephen-mcpherson.jpg"),
-  person("alfredo-olivo", "Alfredo Olivo Jr.", "Deacon", "deacon", "deacons", 6, "alfredo-olivo.jpg"),
-  person("kaidyn-exline", "Kaidyn Exline", "Children’s & Nursery Director", "ministry", "ministry-leaders", 1, "kaidyn-exline.jpg"),
-  person("jaime-simons", "Jaime Simons", "Facilities Director", "ministry", "ministry-leaders", 2, "jaime-simons.jpg"),
-  person("alejandro-hernandez", "Alejandro Hernandez", "Young Adults Director", "ministry", "ministry-leaders", 3, "alejandro-hernandez.jpg"),
-  person("dawn-simons", "Dawn Simons", "Hospitality Director", "ministry", "ministry-leaders", 4, "dawn-simons.jpg"),
+  person("brian-broadway", "Brian Broadway", "Lead Pastor / Bishop", "pastoral", "executive", 1, "brian-broadway.webp"),
+  person("allison-broadway", "Allison Broadway", "Administrator", "pastoral", "executive", 2, "allison-broadway.webp"),
+  person("brad-banker", "Brad Banker", "Elder", "elder", "executive", 3, "brad-banker.webp"),
+  person("garry-grant", "Garry Grant", "Elder", "elder", "executive", 4, "garry-grant.webp"),
+  person("carlos-martinez", "Carlos Martinez", "Elder", "elder", "executive", 5, "carlos-martinez.webp"),
+  person("ricky-ortiz", "Ricky Ortiz", "Associate Pastor", "pastoral", "executive", 6, "ricky-ortiz.webp"),
+  person("dwayne-bishop", "Dwayne Bishop", "Deacon / Connection", "deacon", "deacons", 1, "dwayne-bishop.webp"),
+  person("dennis-carter", "Dennis Carter", "Deacon", "deacon", "deacons", 2, "dennis-carter.webp"),
+  person("nathanael-edmund", "Nathanael Edmund", "Deacon / Worship Pastor", "deacon", "deacons", 3, "nathanael-edmund.webp"),
+  person("nathan-lehman", "Nathan Lehman", "Deacon / Connection", "deacon", "deacons", 4, "nathan-lehman.webp"),
+  person("stephen-mcpherson", "Stephen McPherson", "Deacon / Men’s Leader", "deacon", "deacons", 5, "stephen-mcpherson.webp"),
+  person("alfredo-olivo", "Alfredo Olivo Jr.", "Deacon", "deacon", "deacons", 6, "alfredo-olivo.webp"),
+  person("kaidyn-exline", "Kaidyn Exline", "Children’s & Nursery Director", "ministry", "ministry-leaders", 1, "kaidyn-exline.webp"),
+  person("jaime-simons", "Jaime Simons", "Facilities Director", "ministry", "ministry-leaders", 2, "jaime-simons.webp"),
+  person("alejandro-hernandez", "Alejandro Hernandez", "Young Adults Director", "ministry", "ministry-leaders", 3, "alejandro-hernandez.webp"),
+  person("dawn-simons", "Dawn Simons", "Hospitality Director", "ministry", "ministry-leaders", 4, "dawn-simons.webp"),
 ];
 
 const approvedImage = (src: string, alt: string): ContentImage => ({
@@ -96,7 +96,7 @@ export const teamContent = {
     title: "People who serve people.",
     body: "We are a team of like-minded people with a passion for serving God and others.",
     image: approvedImage(
-      "/images/leadership/living-message-team-header.jpg",
+      "/images/leadership/living-message-team-header.webp",
       "The Living Message Church congregation worshipping together in Clermont, Florida.",
     ),
   },

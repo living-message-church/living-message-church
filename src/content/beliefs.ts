@@ -23,7 +23,7 @@ export const beliefsContent = {
     title: "Our beliefs.",
     body: "The foundation of our relationship with Christ is reading, interpreting, and applying sound doctrine from the Word of God.",
     image: {
-      src: "/images/hero/living-message-beliefs-word-hero.jpg",
+      src: "/images/hero/living-message-beliefs-word-hero.webp",
       alt: "An open Bible illuminated by warm light against a deep blue and indigo background.",
       status: "approved-temporary",
       credit: "Original AI-assisted artwork created for Living Message Church",

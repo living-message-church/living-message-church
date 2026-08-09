@@ -30,7 +30,7 @@ export const pastorContent = {
     title: "Meet our lead pastor.",
     body: "Pastor Brian Broadway serves Living Message Church with a focus on expository teaching, discipleship, church family, and community outreach.",
     image: approvedImage(
-      "/images/leadership/living-message-pastor-header.jpg",
+      "/images/leadership/living-message-pastor-header.webp",
       "Pastor Brian Broadway teaching from the Living Message Church stage.",
     ),
   },
@@ -45,7 +45,7 @@ export const pastorContent = {
     ],
     closing: "We look forward to meeting you soon.",
     image: approvedImage(
-      "/images/leadership/living-message-broadway-family.jpg",
+      "/images/leadership/living-message-broadway-family.webp",
       "Pastor Brian and Allison Broadway with their family.",
     ),
   },

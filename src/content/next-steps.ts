@@ -49,7 +49,7 @@ export const nextStepsContent = {
   classBody:
     "Register through Living Message Church’s current Church Center form. The church’s leadership team hosts the class during the second Sunday service.",
   classImage: {
-    src: "/images/ministries/living-message-next-steps-class.jpg",
+    src: "/images/ministries/living-message-next-steps-class.webp",
     alt: "Next Steps Class at Living Message Church.",
     status: "approved-temporary" as const,
     credit: "Living Message Church legacy website",

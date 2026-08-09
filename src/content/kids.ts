@@ -78,7 +78,7 @@ export const kidsPageContent: KidsPageContent = {
       credit: "User-supplied LMKids Logo.svg",
     },
     image: {
-      src: "/images/kids/living-message-kids-room.jpg",
+      src: "/images/kids/living-message-kids-room.webp",
       alt: "Children taking part in an activity in the Living Message Church kids room.",
       status: "approved-temporary",
       credit: "Living Message Church legacy website",
@@ -94,8 +94,8 @@ export const kidsPageContent: KidsPageContent = {
     body:
       "The current LMC Kids description centers Scripture, Christ, learning, laughter, and a welcoming environment.",
     image: {
-      src: "/images/kids/lm-kids-learn-laugh-belong.png",
-      alt: "Illustrated scene of children holding hands beneath a tree mural reading Learn, Laugh, Belong.",
+      src: "/images/kids/lm-kids-learn-laugh-belong.webp",
+      alt: "Illustrated children celebrating together beneath an LM Kids tree mural with the words Laugh, Learn, and Belong.",
       status: "approved-temporary",
       credit: "User-supplied LM Kids artwork",
     },
@@ -106,7 +106,7 @@ export const kidsPageContent: KidsPageContent = {
     body:
       "Children are invited into Bible-centered learning that points them to Christ in an environment created for learning and laughter.",
     image: {
-      src: "/images/connect/living-message-kids-community.jpg",
+      src: "/images/connect/living-message-kids-community.webp",
       alt: "Children gathering on colorful seats in the Living Message Church kids room.",
       status: "approved-temporary",
       credit:

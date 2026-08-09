@@ -144,7 +144,7 @@ button, input, textarea, select { font: inherit; }
 
 .hero { position: relative; display: grid; min-height: calc(100vh - 6.5rem); min-height: calc(100svh - 6.5rem); align-items: end; isolation: isolate; overflow: clip; background: var(--color-ink); color: var(--color-paper-bright); padding-block: clamp(3.5rem, 6vw, 6rem); }
 .hero-media, .hero-scrim { position: absolute; inset: 0; }
-.hero-media { z-index: -2; background: var(--color-ink) url("/images/hero/living-message-church-community-poster.jpg") center 46% / cover no-repeat; }
+.hero-media { z-index: -2; background: var(--color-ink) url("/images/hero/living-message-church-community-poster.webp") center 46% / cover no-repeat; }
 .hero-video { width: 100%; height: 100%; object-fit: cover; object-position: center 46%; }
 .hero-scrim { z-index: -1; background: linear-gradient(90deg, rgb(18 19 17 / 0.9) 0%, rgb(18 19 17 / 0.72) 52%, rgb(18 19 17 / 0.48) 100%); }
 .hero-grid { position: relative; display: grid; align-items: end; grid-template-columns: minmax(0, 1.65fr) minmax(18rem, 0.5fr); gap: clamp(3rem, 6vw, 7rem); }
@@ -223,7 +223,7 @@ button, input, textarea, select { font: inherit; }
 .card-copy p { max-width: 34ch; color: var(--color-ink-soft); }
 .card-copy a { font-size: var(--step--1); font-weight: 700; letter-spacing: 0; }
 .outreach-mark { font-family: var(--font-display); font-size: var(--step-4); font-weight: 700; letter-spacing: -0.045em; line-height: 0.84; }
-.invitation-section { display: flex; min-height: clamp(34rem, 48vw, 42rem); align-items: center; background-image: linear-gradient(90deg, rgb(18 19 17 / 0.93) 0%, rgb(18 19 17 / 0.78) 48%, rgb(18 19 17 / 0.5) 100%), url("/images/general/living-message-community-welcome.jpg"); background-position: center 46%; background-size: cover; }
+.invitation-section { display: flex; min-height: clamp(34rem, 48vw, 42rem); align-items: center; background-image: linear-gradient(90deg, rgb(18 19 17 / 0.93) 0%, rgb(18 19 17 / 0.78) 48%, rgb(18 19 17 / 0.5) 100%), url("/images/general/living-message-community-welcome.webp"); background-position: center 46%; background-size: cover; }
 .invitation-section .heading-page { max-width: 11ch; }
 .invitation-details .lede strong { color: var(--color-gold); }
 

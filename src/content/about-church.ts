@@ -23,7 +23,7 @@ export const aboutChurchContent = {
     title: "A church that calls people family.",
     body: "Living Message Church describes belonging as a relationship—not simply a membership status or a place someone attends.",
     image: approvedImage(
-      "/images/general/living-message-worship-prayer.jpg",
+      "/images/general/living-message-worship-prayer.webp",
       "Living Message Church attendees worshipping together during a service.",
     ),
   },
@@ -81,7 +81,7 @@ export const aboutChurchContent = {
     title: "Faith becomes visible through care for people.",
     body: "The current church story presents serving people in need as a central responsibility. Living Message describes faith in action as a message people can see—one life caring for and impacting another.",
     image: approvedImage(
-      "/images/outreach/living-message-community-meal.jpg",
+      "/images/outreach/living-message-community-meal.webp",
       "Living Message Church volunteers serving neighbors at a community meal.",
     ),
     actionLabel: "Explore outreach",

@@ -58,7 +58,7 @@ export const connectPageContent: ConnectPageContent = {
     body:
       "Church is more than a service. Explore pathways toward community, growth, and life together.",
     image: {
-      src: "/images/connect/living-message-connect-hero.jpg",
+      src: "/images/connect/living-message-connect-hero.webp",
       alt: "Two women sharing a conversation at Living Message Church.",
       status: "approved-temporary",
       credit: `${oldSite}/wp-content/uploads/2024/12/Screenshot-2024-12-17-140420.png`,
@@ -87,7 +87,7 @@ export const connectPageContent: ConnectPageContent = {
       href: "/connect/kids",
       linkLabel: "Explore LMC Kids",
       image: {
-        src: "/images/connect/living-message-kids-community.jpg",
+        src: "/images/connect/living-message-kids-community.webp",
         alt: "Children gathering in the Living Message Church kids room.",
         status: "approved-temporary",
         credit: `${oldSite}/wp-content/uploads/2024/12/Kids-Min-2.png`,
@@ -103,7 +103,7 @@ export const connectPageContent: ConnectPageContent = {
       href: "/connect/youth",
       linkLabel: "Explore Youth",
       image: {
-        src: "/images/connect/living-message-youth-gathering.jpg",
+        src: "/images/connect/living-message-youth-gathering.webp",
         alt: "Students gathered for youth ministry at Living Message Church.",
         status: "approved-temporary",
         credit: `${oldSite}/wp-content/uploads/2024/12/VideoCapture_20230404-063930.jpg`,
@@ -119,7 +119,7 @@ export const connectPageContent: ConnectPageContent = {
       href: "/connect/young-adults",
       linkLabel: "Explore Young Adults",
       image: {
-        src: "/images/connect/living-message-young-adults-connection.jpg",
+        src: "/images/connect/living-message-young-adults-connection.webp",
         alt: "Young adults talking together at Living Message Church.",
         status: "approved-temporary",
         credit: `${oldSite}/wp-content/uploads/2024/12/Screenshot-2024-12-17-140746-1.png`,
@@ -135,7 +135,7 @@ export const connectPageContent: ConnectPageContent = {
       href: "/connect/groups",
       linkLabel: "Explore Groups",
       image: {
-        src: "/images/connect/living-message-small-group-circle.jpg",
+        src: "/images/connect/living-message-small-group-circle.webp",
         alt: "A small group gathered in a circle at Living Message Church.",
         status: "approved-temporary",
         credit: `${oldSite}/wp-content/uploads/2023/04/VideoCapture_20230404-064148.jpg`,
@@ -151,7 +151,7 @@ export const connectPageContent: ConnectPageContent = {
       href: "/connect/next-steps",
       linkLabel: "Explore Next Steps",
       image: {
-        src: "/images/connect/living-message-next-step-worship.jpg",
+        src: "/images/connect/living-message-next-step-worship.webp",
         alt: "The Living Message Church congregation gathered for worship.",
         status: "approved-temporary",
         credit: `${oldSite}/wp-content/uploads/2025/03/Church-Pics.png`,

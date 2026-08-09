@@ -3,8 +3,8 @@ import { getApprovedCreativeArtwork } from "./repository";
 import type { ResolvedEventArtwork } from "./types";
 
 const GENERIC_EVENT_ARTWORK = [
-  { alt: "Living Message Church community gathered for worship", url: "/images/general/living-message-worship-gathering.jpg" },
-  { alt: "People connecting at Living Message Church", url: "/images/general/living-message-lobby-community.jpg" },
+  { alt: "Living Message Church community gathered for worship", url: "/images/general/living-message-worship-gathering.webp" },
+  { alt: "People connecting at Living Message Church", url: "/images/general/living-message-lobby-community.webp" },
 ] as const;
 
 function fallbackFor(event: NormalizedEvent): ResolvedEventArtwork {

@@ -26,7 +26,7 @@ function HeroBackgroundVideo() {
       muted
       playsInline
       preload="metadata"
-      poster="/images/hero/living-message-church-community-poster.jpg"
+      poster="/images/hero/living-message-church-community-poster.webp"
       aria-hidden="true"
     >
       <source src="/videos/living-message-church-community-promo.mp4" type="video/mp4" />
