@@ -34,88 +34,73 @@ export function KidsPage() {
         </Container>
       </section>
 
-      <section className="kids-touchpoints" aria-labelledby="kids-touchpoints-title">
+      <section className="kids-neighborhood-intro" aria-labelledby="kids-neighborhood-title">
         <Container size="editorial">
-          <header className="kids-section-intro">
-            <Eyebrow>{content.touchpoints.eyebrow}</Eyebrow>
-            <h2 id="kids-touchpoints-title">{content.touchpoints.title}</h2>
-            <p>{content.touchpoints.body}</p>
-          </header>
-
-          <div className="kids-touchpoint-grid">
-            {content.touchpoints.items.map((item) => (
-              <article key={item.mark}>
-                <span aria-hidden="true">{item.mark}</span>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="kids-ages" aria-labelledby="kids-ages-title">
-        <Container className="kids-ages-layout" size="editorial">
-          <div className="kids-ages-art">
-            <Image
-              src={content.ages.image.src}
-              alt={content.ages.image.alt}
-              fill
-              sizes="(max-width: 768px) calc(100vw - 3rem), 48vw"
-            />
-            <div className="kids-grade-badge" aria-label="LM Kids serves children through fifth grade">
-              <span>Through</span>
-              <strong>5th</strong>
-              <span>Grade</span>
+          <div className="kids-neighborhood-heading">
+            <Eyebrow>{content.neighborhood.eyebrow}</Eyebrow>
+            <h2 id="kids-neighborhood-title">{content.neighborhood.title}</h2>
+            <div>
+              <p>{content.neighborhood.body}</p>
+              <small>{content.neighborhood.note}</small>
             </div>
           </div>
 
-          <div className="kids-ages-copy">
-            <Eyebrow>{content.ages.eyebrow}</Eyebrow>
-            <h2 id="kids-ages-title">{content.ages.title}</h2>
-            <p>{content.ages.body}</p>
-            <aside>{content.ages.note}</aside>
-            <ActionGroup actions={content.ages.actions} />
-          </div>
+          <ul className="kids-neighborhood-facts" aria-label="LM Kids at a glance">
+            {content.neighborhood.facts.map((fact) => (
+              <li key={fact.label}>
+                <strong>{fact.value}</strong>
+                <span>{fact.label}</span>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 
-      <section className="kids-imagination" aria-labelledby="kids-imagination-title">
-        <Container size="hero">
-          <div className="kids-imagination-art">
-            <Image
-              src={content.experience.image.src}
-              alt={content.experience.image.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, 62vw"
-            />
-          </div>
-          <div className="kids-imagination-copy">
-            <Eyebrow>{content.experience.eyebrow}</Eyebrow>
-            <h2 id="kids-imagination-title">{content.experience.title}</h2>
-            <p>{content.experience.body}</p>
-            <ul>
-              {content.experience.bullets.map((bullet, index) => (
-                <li key={bullet}>
-                  <span aria-hidden="true">0{index + 1}</span>
-                  {bullet}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Container>
-      </section>
+      <div className="kids-districts">
+        {content.districts.map((district, index) => (
+          <section
+            className={`kids-district kids-district-${district.tone}`}
+            aria-labelledby={`kids-district-${district.id}`}
+            key={district.id}
+          >
+            <Container className={`kids-district-layout${index % 2 ? " kids-district-layout-reverse" : ""}`} size="hero">
+              <div className="kids-district-image">
+                <Image
+                  src={district.image.src}
+                  alt={district.image.alt}
+                  fill
+                  sizes="(max-width: 768px) calc(100vw - 2.5rem), 56vw"
+                />
+              </div>
 
-      <section className="kids-arrival" aria-labelledby="kids-arrival-title">
+              <div className="kids-district-copy">
+                <p className="kids-district-label">
+                  <span>{district.number}</span>
+                  {district.label}
+                </p>
+                <h2 id={`kids-district-${district.id}`}>{district.title}</h2>
+                <p>{district.body}</p>
+                <ul>
+                  {district.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
+              </div>
+            </Container>
+          </section>
+        ))}
+      </div>
+
+      <section className="kids-visit" aria-labelledby="kids-visit-title">
         <Container size="editorial">
-          <header className="kids-arrival-heading">
-            <Eyebrow>{content.arrival.eyebrow}</Eyebrow>
-            <h2 id="kids-arrival-title">{content.arrival.title}</h2>
-            <p>{content.arrival.body}</p>
+          <header className="kids-visit-heading">
+            <Eyebrow>{content.visit.eyebrow}</Eyebrow>
+            <h2 id="kids-visit-title">{content.visit.title}</h2>
+            <p>{content.visit.body}</p>
           </header>
 
-          <ol className="kids-arrival-steps">
-            {content.arrival.steps.map((step) => (
+          <ol className="kids-visit-steps">
+            {content.visit.steps.map((step) => (
               <li key={step.number}>
                 <span>{step.number}</span>
                 <div>

@@ -789,60 +789,55 @@ button, input, textarea, select { font: inherit; }
 .kids-hero-copy .action-secondary { border-color: rgb(255 255 255 / 0.32); color: white; }
 .kids-hero-copy .action-secondary:hover { border-color: rgb(255 255 255 / 0.64); background: rgb(255 255 255 / 0.06); }
 
-.kids-touchpoints { overflow: hidden; background: #fff; padding-block: clamp(6rem, 10vw, 10rem); }
-.kids-section-intro { display: grid; grid-template-columns: minmax(10rem, 0.34fr) minmax(22rem, 1fr) minmax(18rem, 0.66fr); align-items: end; gap: clamp(2rem, 5vw, 6rem); }
-.kids-section-intro .eyebrow { align-self: start; margin: 0; color: var(--color-coral); }
-.kids-section-intro h2 { max-width: 10ch; margin: 0; font-size: clamp(3.4rem, 2.2rem + 3.5vw, 6.25rem); letter-spacing: -0.06em; line-height: 0.9; }
-.kids-section-intro > p { max-width: 30rem; margin: 0 0 0.3rem; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.5; }
-.kids-touchpoint-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; overflow: hidden; margin-top: clamp(4rem, 7vw, 7rem); border-radius: var(--radius-image); background: #111635; }
-.kids-touchpoint-grid article { --touchpoint: #8495ff; position: relative; min-height: clamp(20rem, 25vw, 25rem); overflow: hidden; background: #12183e; padding: clamp(2rem, 3vw, 3.25rem); color: white; }
-.kids-touchpoint-grid article:nth-child(2) { --touchpoint: #ff765f; background: #1b2049; }
-.kids-touchpoint-grid article:nth-child(3) { --touchpoint: #bf8eff; background: #101636; }
-.kids-touchpoint-grid article:nth-child(4) { --touchpoint: #a4eb51; background: #202553; }
-.kids-touchpoint-grid article::after { position: absolute; right: -3rem; bottom: -5rem; width: 13rem; height: 13rem; border: 1px solid color-mix(in srgb, var(--touchpoint) 50%, transparent); border-radius: 50%; content: ""; transition: transform 350ms ease; }
-.kids-touchpoint-grid article:hover::after { transform: translate(-1rem, -1rem) scale(1.08); }
-.kids-touchpoint-grid article > span { display: grid; width: 3.5rem; height: 3.5rem; place-items: center; border-radius: 50%; background: var(--touchpoint); color: #101534; font-size: 0.78rem; font-weight: 900; letter-spacing: 0.08em; }
-.kids-touchpoint-grid h3 { max-width: 8ch; margin: clamp(5rem, 8vw, 8rem) 0 var(--space-3); color: white; font-size: clamp(1.8rem, 1.35rem + 1.4vw, 2.7rem); letter-spacing: -0.045em; line-height: 0.96; }
-.kids-touchpoint-grid p { position: relative; z-index: 1; max-width: 18rem; margin: 0; color: rgb(255 255 255 / 0.68); line-height: 1.5; }
+.kids-neighborhood-intro { background: #fff; padding-block: clamp(6rem, 10vw, 10rem); }
+.kids-neighborhood-heading { display: grid; grid-template-columns: minmax(9rem, 0.3fr) minmax(22rem, 0.95fr) minmax(19rem, 0.75fr); align-items: start; gap: clamp(2rem, 5vw, 6rem); }
+.kids-neighborhood-heading .eyebrow { margin: 0; color: var(--color-coral); }
+.kids-neighborhood-heading h2 { max-width: 9ch; margin: 0; font-size: clamp(3.5rem, 2.2rem + 3.7vw, 6.5rem); letter-spacing: -0.06em; line-height: 0.9; }
+.kids-neighborhood-heading > div { max-width: 34rem; }
+.kids-neighborhood-heading p { margin: 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
+.kids-neighborhood-heading small { display: block; margin-top: var(--space-4); color: var(--color-ink-soft); font-size: var(--step--1); line-height: 1.5; }
+.kids-neighborhood-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: clamp(4rem, 7vw, 7rem) 0 0; padding: 0; border-block: 1px solid var(--color-line); list-style: none; }
+.kids-neighborhood-facts li { display: grid; min-height: 9rem; align-content: center; gap: 0.35rem; padding: clamp(1.5rem, 3vw, 2.5rem); }
+.kids-neighborhood-facts li + li { border-left: 1px solid var(--color-line); }
+.kids-neighborhood-facts strong { font-size: clamp(1.55rem, 1.2rem + 1vw, 2.25rem); letter-spacing: -0.04em; line-height: 1; }
+.kids-neighborhood-facts span { color: var(--color-ink-soft); font-size: var(--step--1); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 
-.kids-ages { overflow: hidden; background: #f2f0ea; padding-block: clamp(5rem, 9vw, 9rem); }
-.kids-ages-layout { display: grid; grid-template-columns: minmax(28rem, 1.15fr) minmax(24rem, 0.85fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
-.kids-ages-art { position: relative; overflow: hidden; border-radius: var(--radius-image); aspect-ratio: 4 / 3; background: #17204c; }
-.kids-ages-art > img { object-fit: cover; }
-.kids-ages-art::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgb(7 12 35 / 0.68)); content: ""; }
-.kids-grade-badge { position: absolute; z-index: 1; right: clamp(1rem, 3vw, 2.5rem); bottom: clamp(1rem, 3vw, 2.5rem); display: grid; width: clamp(9.5rem, 13vw, 12rem); aspect-ratio: 1; place-content: center; border-radius: 50%; background: #a4eb51; color: #111635; text-align: center; transform: rotate(-5deg); }
-.kids-grade-badge span { font-size: 0.68rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; }
-.kids-grade-badge strong { margin-block: -0.08em; font-size: clamp(3.5rem, 5vw, 5rem); letter-spacing: -0.09em; line-height: 0.9; }
-.kids-ages-copy .eyebrow { color: var(--color-coral); }
-.kids-ages-copy h2 { max-width: 9ch; margin: 0; font-size: clamp(3.3rem, 2rem + 3.5vw, 6rem); letter-spacing: -0.06em; line-height: 0.9; }
-.kids-ages-copy > p { max-width: 34rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
-.kids-ages-copy aside { max-width: 34rem; margin-top: var(--space-5); border-left: 0.25rem solid #76529e; background: rgb(255 255 255 / 0.72); padding: var(--space-4); color: var(--color-ink-soft); font-size: var(--step--1); line-height: 1.5; }
+.kids-district { background: #fff; padding-block: clamp(5rem, 8vw, 8rem); }
+.kids-district-mist { background: #f2f0ea; }
+.kids-district-night { background: #111636; color: white; }
+.kids-district-layout { display: grid; grid-template-columns: minmax(26rem, 1.3fr) minmax(21rem, 0.7fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
+.kids-district-layout-reverse { grid-template-columns: minmax(21rem, 0.7fr) minmax(26rem, 1.3fr); }
+.kids-district-layout-reverse .kids-district-image { order: 2; }
+.kids-district-layout-reverse .kids-district-copy { order: 1; }
+.kids-district-image { position: relative; overflow: hidden; aspect-ratio: 16 / 9; border-radius: var(--radius-image); background: #151b40; }
+.kids-district-image img { object-fit: cover; transition: transform 900ms cubic-bezier(0.2, 0.75, 0.2, 1); }
+.kids-district-image:hover img { transform: scale(1.025); }
+.kids-district-copy { max-width: 34rem; }
+.kids-district-label { display: flex; align-items: center; gap: var(--space-3); margin: 0 0 clamp(2rem, 4vw, 3.5rem); color: var(--color-coral); font-size: var(--step--1); font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
+.kids-district-label span { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: 0.68rem; }
+.kids-district-copy h2 { max-width: 9ch; margin: 0; font-size: clamp(3.2rem, 2rem + 3vw, 5.6rem); letter-spacing: -0.06em; line-height: 0.9; }
+.kids-district-copy > p { max-width: 32rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
+.kids-district-copy ul { margin: var(--space-6) 0 0; padding: 0; border-top: 1px solid var(--color-line); list-style: none; }
+.kids-district-copy li { position: relative; padding: 1rem 0 1rem 1.5rem; border-bottom: 1px solid var(--color-line); font-weight: 700; }
+.kids-district-copy li::before { position: absolute; top: 1.55rem; left: 0; width: 0.42rem; height: 0.42rem; border-radius: 50%; background: var(--color-coral); content: ""; }
+.kids-district-night .kids-district-copy > p { color: rgb(255 255 255 / 0.7); }
+.kids-district-night .kids-district-copy ul, .kids-district-night .kids-district-copy li { border-color: rgb(255 255 255 / 0.18); }
+.kids-district-night .kids-district-label { color: var(--color-gold); }
+.kids-district-night .kids-district-copy li::before { background: var(--color-gold); }
 
-.kids-imagination { background: #111636; color: white; padding-block: clamp(5rem, 9vw, 9rem); }
-.kids-imagination > .container-shell { display: grid; grid-template-columns: minmax(26rem, 1.22fr) minmax(22rem, 0.78fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
-.kids-imagination-art { position: relative; overflow: hidden; aspect-ratio: 16 / 11; border-radius: var(--radius-image); background: #242a5a; }
-.kids-imagination-art img { object-fit: cover; transition: transform 800ms cubic-bezier(0.2, 0.75, 0.2, 1); }
-.kids-imagination-art:hover img { transform: scale(1.025); }
-.kids-imagination-copy .eyebrow { color: #a4eb51; }
-.kids-imagination-copy h2 { max-width: 8ch; margin: 0; font-size: clamp(3.3rem, 2rem + 3.7vw, 6.2rem); letter-spacing: -0.06em; line-height: 0.9; }
-.kids-imagination-copy > p { max-width: 32rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.68); font-size: var(--step-1); line-height: 1.55; }
-.kids-imagination-copy ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: var(--space-6) 0 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.16); list-style: none; }
-.kids-imagination-copy li { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--space-3); min-height: 4rem; border-bottom: 1px solid rgb(255 255 255 / 0.16); font-weight: 700; }
-.kids-imagination-copy li:nth-child(odd) { margin-right: var(--space-4); }
-.kids-imagination-copy li span { color: #a4eb51; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; }
+.kids-visit { background: #fff; padding-block: clamp(6rem, 10vw, 10rem); }
+.kids-visit-heading { display: grid; grid-template-columns: minmax(9rem, 0.3fr) minmax(21rem, 0.95fr) minmax(18rem, 0.75fr); gap: clamp(2rem, 5vw, 6rem); }
+.kids-visit-heading .eyebrow { margin: 0; color: var(--color-coral); }
+.kids-visit-heading h2 { max-width: 11ch; margin: 0; font-size: var(--step-4); letter-spacing: -0.052em; line-height: 0.94; }
+.kids-visit-heading > p { max-width: 32rem; margin: 0.35rem 0 0; color: var(--color-ink-soft); }
+.kids-visit-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: clamp(4rem, 7vw, 7rem) 0 0; padding: 0; border-block: 1px solid var(--color-line); list-style: none; }
+.kids-visit-steps li { display: grid; min-height: 14rem; align-content: space-between; padding: clamp(1.5rem, 3vw, 2.5rem); }
+.kids-visit-steps li + li { border-left: 1px solid var(--color-line); }
+.kids-visit-steps li > span { color: #76529e; font-size: var(--step--1); font-weight: 900; letter-spacing: 0.1em; }
+.kids-visit-steps h3 { margin: 0 0 var(--space-2); font-size: var(--step-2); letter-spacing: -0.04em; line-height: 1; }
+.kids-visit-steps p { margin: 0; color: var(--color-ink-soft); line-height: 1.5; }
 
-.kids-arrival { background: #fff; padding-block: clamp(6rem, 10vw, 10rem); }
-.kids-arrival-heading { display: grid; grid-template-columns: minmax(9rem, 0.34fr) minmax(20rem, 1fr) minmax(18rem, 0.66fr); gap: clamp(2rem, 5vw, 6rem); }
-.kids-arrival-heading .eyebrow { margin: 0; color: var(--color-coral); }
-.kids-arrival-heading h2 { max-width: 11ch; margin: 0; font-size: var(--step-4); letter-spacing: -0.052em; line-height: 0.94; }
-.kids-arrival-heading > p { max-width: 32rem; margin: 0.35rem 0 0; color: var(--color-ink-soft); }
-.kids-arrival-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.5rem); margin: clamp(4rem, 7vw, 7rem) 0 0; padding: 0; list-style: none; }
-.kids-arrival-steps li { display: grid; min-height: 17rem; align-content: space-between; border: 1px solid var(--color-line); border-radius: var(--radius-image); padding: clamp(1.5rem, 3vw, 2.5rem); }
-.kids-arrival-steps li > span { color: #76529e; font-size: clamp(3rem, 4vw, 4.5rem); font-weight: 800; letter-spacing: -0.08em; line-height: 1; }
-.kids-arrival-steps h3 { margin: 0 0 var(--space-2); font-size: var(--step-2); letter-spacing: -0.04em; line-height: 1; }
-.kids-arrival-steps p { margin: 0; color: var(--color-ink-soft); line-height: 1.5; }
-
-.kids-final { background: linear-gradient(125deg, var(--color-brand-navy), var(--color-brand-indigo)); color: white; padding-block: clamp(6rem, 10vw, 10rem); }
+.kids-final { background: #111636; color: white; padding-block: clamp(6rem, 10vw, 10rem); }
 .kids-final-layout { display: grid; grid-template-columns: minmax(9rem, 0.34fr) minmax(0, 1.66fr); gap: clamp(2rem, 5vw, 6rem); }
 .kids-final .eyebrow { margin: 0; color: #a4eb51; }
 .kids-final h2 { max-width: 13ch; margin: 0; font-size: clamp(3rem, 2rem + 3.4vw, 5.8rem); letter-spacing: -0.055em; line-height: 0.92; }
@@ -982,8 +977,10 @@ button, input, textarea, select { font: inherit; }
   .connect-introduction > .container-shell > p { grid-column: 2; }
   .connect-pathway, .connect-pathway-wide { grid-column: span 6; }
   .connect-pathway-next-steps { grid-column: 1 / -1; }
-  .kids-arrival-heading { grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr); }
-  .kids-arrival-heading > p { grid-column: 2; }
+  .kids-neighborhood-heading, .kids-visit-heading { grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr); }
+  .kids-neighborhood-heading > div, .kids-visit-heading > p { grid-column: 2; }
+  .kids-district-layout, .kids-district-layout-reverse { grid-template-columns: 1fr; max-width: 48rem; }
+  .kids-district-layout-reverse .kids-district-image, .kids-district-layout-reverse .kids-district-copy { order: initial; }
   .visit-page-hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
   .visit-page-service-card { width: min(100%, 26rem); }
   .visit-kids-layout, .visit-final-layout { grid-template-columns: 1fr; }
@@ -1050,21 +1047,21 @@ button, input, textarea, select { font: inherit; }
   .kids-hero-copy h1 em { line-height: 0.86; }
   .kids-hero-copy > p { margin-inline: auto; font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
   .kids-hero-copy .action-group { justify-content: center; }
-  .kids-touchpoints, .kids-arrival { padding-block: var(--space-8); }
-  .kids-section-intro { grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr); }
-  .kids-section-intro > p { grid-column: 2; }
-  .kids-touchpoint-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .kids-ages-layout, .kids-imagination > .container-shell { grid-template-columns: 1fr; max-width: 44rem; }
-  .kids-ages-copy { text-align: center; }
-  .kids-ages-copy h2, .kids-ages-copy > p, .kids-ages-copy aside { margin-inline: auto; }
-  .kids-ages-copy .action-group { justify-content: center; }
-  .kids-imagination-copy { text-align: center; }
-  .kids-imagination-copy h2, .kids-imagination-copy > p { margin-inline: auto; }
-  .kids-arrival-heading { display: block; max-width: 38rem; text-align: center; }
-  .kids-arrival-heading h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.6rem); }
-  .kids-arrival-heading > p { margin: var(--space-5) auto 0; }
-  .kids-arrival-steps { grid-template-columns: 1fr; }
-  .kids-arrival-steps li { min-height: 13rem; }
+  .kids-neighborhood-intro, .kids-visit { padding-block: var(--space-8); }
+  .kids-neighborhood-heading, .kids-visit-heading { display: block; max-width: 38rem; margin-inline: auto; text-align: center; }
+  .kids-neighborhood-heading h2, .kids-visit-heading h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.6rem); }
+  .kids-neighborhood-heading > div, .kids-visit-heading > p { margin: var(--space-5) auto 0; }
+  .kids-neighborhood-facts, .kids-visit-steps { grid-template-columns: 1fr; max-width: 38rem; margin-inline: auto; }
+  .kids-neighborhood-facts li, .kids-visit-steps li { min-height: 0; padding-block: var(--space-5); text-align: center; }
+  .kids-neighborhood-facts li + li, .kids-visit-steps li + li { border-top: 1px solid var(--color-line); border-left: 0; }
+  .kids-district { padding-block: var(--space-8); }
+  .kids-district-layout, .kids-district-layout-reverse { max-width: 42rem; gap: var(--space-6); }
+  .kids-district-copy { max-width: 36rem; margin-inline: auto; text-align: center; }
+  .kids-district-copy h2, .kids-district-copy > p { margin-inline: auto; }
+  .kids-district-label { justify-content: center; }
+  .kids-district-copy li { padding-left: 0; }
+  .kids-district-copy li::before { display: none; }
+  .kids-visit-steps li { gap: var(--space-5); }
   .kids-final-layout { display: block; max-width: 40rem; text-align: center; }
   .kids-final h2, .kids-final p { margin-inline: auto; }
   .kids-final h2 { margin-top: var(--space-4); font-size: clamp(3rem, 14vw, 4.6rem); }
@@ -1200,15 +1197,8 @@ button, input, textarea, select { font: inherit; }
 
 @media (max-width: 32rem) {
   .site-logo { width: 10rem; }
-  .kids-section-intro { display: block; text-align: center; }
-  .kids-section-intro h2, .kids-section-intro > p { margin-inline: auto; }
-  .kids-section-intro > p { margin-top: var(--space-5); }
-  .kids-touchpoint-grid { grid-template-columns: 1fr; }
-  .kids-touchpoint-grid article { min-height: 18rem; }
-  .kids-touchpoint-grid h3 { margin-top: var(--space-7); }
-  .kids-grade-badge { width: 8.5rem; }
-  .kids-imagination-copy ul { grid-template-columns: 1fr; }
-  .kids-imagination-copy li:nth-child(odd) { margin-right: 0; }
+  .kids-district-image { border-radius: 1.25rem; }
+  .kids-district-copy h2 { font-size: clamp(2.8rem, 14vw, 3.8rem); }
   .action-group { align-items: stretch; flex-direction: column; }
   .action-link:not(.action-text) { width: 100%; }
   .hero-fact-card { width: min(19rem, 100%); }

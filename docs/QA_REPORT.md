@@ -257,6 +257,14 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 - `/lmkids` is now the canonical Kids ministry route and owns its page metadata.
 - The former internal route `/connect/kids` returns a direct permanent 301 to `/lmkids`; internal Connect links target `/lmkids` directly to avoid redirect chains.
 
+### LM Kids neighborhood narrative — August 9, 2026
+
+- Replaced every legacy below-hero Kids section with one cohesive alternating district narrative: Local School, Park & Playground, Skate Park, Community Garden, Home, and Café & Game Room.
+- All six district assets are optimized local WebPs and use descriptive alt text. The page explicitly identifies the neighborhood as a storytelling device rather than a physical-facility map.
+- Verified facts remain intact: Bible-centered curriculum, messages pointing children to Christ, learning and laughter, a welcoming environment, children through fifth grade, hallway self check-in, team assistance, and a matching pickup sticker.
+- Desktop and mobile CSS use intentional image/copy alternation, collapse to single-column layouts at 56rem, retain balanced side gutters, and remove the previous card-heavy treatment.
+- `npm run lint` and `npm run build` pass. The production server returned HTTP 200 with all six district sections in rendered HTML. Rendered screenshot review remains pending because no browser connection was available.
+
 | Check | Result |
 | --- | --- |
 | `npm run lint` | Passed |

@@ -1,12 +1,17 @@
 import type { CallToAction, ContentImage, SeoContent } from "@/types/content";
 
-interface KidsTouchpoint {
-  mark: string;
+interface KidsDistrict {
+  id: string;
+  number: string;
+  label: string;
   title: string;
   body: string;
+  highlights: string[];
+  tone: "paper" | "mist" | "night";
+  image: ContentImage;
 }
 
-interface KidsJourneyStep {
+interface KidsVisitStep {
   number: string;
   title: string;
   body: string;
@@ -26,32 +31,19 @@ export interface KidsPageContent {
     image: ContentImage;
     actions: CallToAction[];
   };
-  touchpoints: {
-    eyebrow: string;
-    title: string;
-    body: string;
-    items: KidsTouchpoint[];
-  };
-  ages: {
+  neighborhood: {
     eyebrow: string;
     title: string;
     body: string;
     note: string;
-    image: ContentImage;
-    actions: CallToAction[];
+    facts: Array<{ value: string; label: string }>;
   };
-  experience: {
+  districts: KidsDistrict[];
+  visit: {
     eyebrow: string;
     title: string;
     body: string;
-    image: ContentImage;
-    bullets: string[];
-  };
-  arrival: {
-    eyebrow: string;
-    title: string;
-    body: string;
-    steps: KidsJourneyStep[];
+    steps: KidsVisitStep[];
   };
   final: {
     eyebrow: string;
@@ -60,6 +52,13 @@ export interface KidsPageContent {
     actions: CallToAction[];
   };
 }
+
+const districtImage = (src: string, alt: string): ContentImage => ({
+  src,
+  alt,
+  status: "approved-temporary",
+  credit: "Original AI-assisted LM Kids neighborhood artwork created for this project",
+});
 
 export const kidsPageContent: KidsPageContent = {
   seo: {
@@ -96,63 +95,106 @@ export const kidsPageContent: KidsPageContent = {
       { label: "Ask a question", href: "/contact", style: "secondary" },
     ],
   },
-  touchpoints: {
-    eyebrow: "What shapes every Sunday",
-    title: "Made for faith. Built for kids.",
+  neighborhood: {
+    eyebrow: "Explore the neighborhood",
+    title: "One big place to grow.",
     body:
-      "A clear ministry rhythm gives children room to hear truth, ask questions, laugh, and know they belong.",
-    items: [
-      {
-        mark: "01",
-        title: "Know the story",
-        body: "Bible-centered curriculum gives every gathering a clear foundation.",
-      },
-      {
-        mark: "02",
-        title: "Meet Jesus",
-        body: "Each message is described as pointing children to Christ.",
-      },
-      {
-        mark: "03",
-        title: "Make friends",
-        body: "Learning and laughter create natural room for children to connect.",
-      },
-      {
-        mark: "04",
-        title: "Feel welcome",
-        body: "A warm environment helps every child enter the room with confidence.",
-      },
+      "Every part of the LM Kids neighborhood represents something children need on Sunday: truth, joy, room to learn, and people who are ready to welcome them.",
+    note:
+      "The illustrated districts are a storytelling device for the ministry experience, not a map of the church facility.",
+    facts: [
+      { value: "Through 5th", label: "Grade" },
+      { value: "Bible-centered", label: "Curriculum" },
+      { value: "Matching sticker", label: "Secure pickup" },
     ],
   },
-  ages: {
-    eyebrow: "Ages & rooms",
-    title: "A place to grow through fifth grade.",
-    body:
-      "LM Kids serves children through fifth grade with Bible-centered teaching, laughter, and a welcoming environment designed with kids in mind.",
-    note:
-      "Room assignments and exact age groupings are being confirmed. A team member can help your family find the right room when you arrive.",
-    image: {
-      src: "/images/kids/lm-kids-learn-laugh-belong.webp",
-      alt: "Illustrated children celebrating together beneath an LM Kids tree mural with the words Laugh, Learn, and Belong.",
-      status: "approved-temporary",
-      credit: "User-supplied LM Kids artwork",
+  districts: [
+    {
+      id: "local-school",
+      number: "01",
+      label: "Local School",
+      title: "Big truth, made clear.",
+      body:
+        "Bible-centered curriculum gives every Sunday a clear foundation, with each message described as pointing children to Christ.",
+      highlights: ["Bible-centered curriculum", "Messages that point to Christ"],
+      tone: "paper",
+      image: districtImage(
+        "/images/kids/lm-kids-district-local-school.webp",
+        "Illustrated children learning together around a table in the LM Kids neighborhood school.",
+      ),
     },
-    actions: [{ label: "Ask about age groups", href: "/contact", style: "secondary" }],
-  },
-  experience: {
-    eyebrow: "Inside LM Kids",
-    title: "Wonder belongs in the room.",
-    body:
-      "Children are invited into Bible-centered learning that points them to Christ in an environment created for curiosity, joy, and connection.",
-    image: {
-      src: "/images/kids/lm-kids-wonder-room.webp",
-      alt: "Illustrated children relaxing, laughing, and spending time together on bright red seats in a glowing woodland setting.",
-      status: "approved-temporary",
-      credit: "User-supplied LM Kids wonder-room artwork",
+    {
+      id: "park-playground",
+      number: "02",
+      label: "Park & Playground",
+      title: "Room for joy.",
+      body:
+        "Learning and laughter belong in the same place. A welcoming environment gives children room to participate and discover together.",
+      highlights: ["Learning and laughter", "A welcoming environment"],
+      tone: "mist",
+      image: districtImage(
+        "/images/kids/lm-kids-district-playground.webp",
+        "Illustrated children playing together in the LM Kids neighborhood park and playground.",
+      ),
     },
-    bullets: ["Bible-centered", "Christ-focused", "Made for learning", "Warm and welcoming"],
-  },
-  arrival: {
+    {
+      id: "skate-park",
+      number: "03",
+      label: "Skate Park",
+      title: "Every child gets room to try.",
+      body:
+        "LM Kids is designed with children in mind—a place where they can learn, ask questions, and enter the room with confidence.",
+      highlights: ["Made for learning", "Questions are welcome"],
+      tone: "paper",
+      image: districtImage(
+        "/images/kids/lm-kids-district-skate-park.webp",
+        "Illustrated children encouraging one another while learning to skateboard in the LM Kids neighborhood.",
+      ),
+    },
+    {
+      id: "community-garden",
+      number: "04",
+      label: "Community Garden",
+      title: "Faith grows together.",
+      body:
+        "LM Kids brings clear teaching and genuine connection into the same space so children can hear truth and know they belong.",
+      highlights: ["A clear foundation", "Connection with other children"],
+      tone: "mist",
+      image: districtImage(
+        "/images/kids/lm-kids-district-community-garden.webp",
+        "Illustrated children planting, watering, and sharing produce in the LM Kids neighborhood garden.",
+      ),
+    },
+    {
+      id: "home",
+      number: "05",
+      label: "Home",
+      title: "Families belong here, too.",
+      body:
+        "LM Kids serves children through fifth grade. Exact room assignments and age groupings are being confirmed, and a team member can help when you arrive.",
+      highlights: ["Children through fifth grade", "Help finding the right room"],
+      tone: "paper",
+      image: districtImage(
+        "/images/kids/lm-kids-district-home.webp",
+        "Illustrated children, family members, and leaders talking together in a warm neighborhood home.",
+      ),
+    },
+    {
+      id: "cafe-game-room",
+      number: "06",
+      label: "Café & Game Room",
+      title: "Friendship has a seat.",
+      body:
+        "Learning, laughter, and a welcoming environment make natural room for children to connect and enjoy Sunday together.",
+      highlights: ["Natural connection", "A warm Sunday welcome"],
+      tone: "night",
+      image: districtImage(
+        "/images/kids/lm-kids-district-cafe-game-room.webp",
+        "Illustrated children playing games, building, and welcoming a friend in the LM Kids neighborhood café and game room.",
+      ),
+    },
+  ],
+  visit: {
     eyebrow: "Your first Sunday",
     title: "From the lobby to pickup—made simple.",
     body:
