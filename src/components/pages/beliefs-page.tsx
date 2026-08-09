@@ -8,6 +8,8 @@ import { Eyebrow, Heading } from "@/components/ui/typography";
 
 export function BeliefsPage() {
   const { hero, introduction, statements } = beliefsContent;
+  const [introLead, ...introParagraphs] = introduction.paragraphs;
+  const [titleBeforeAccent, titleAfterAccent] = introduction.title.split(introduction.titleAccent);
 
   return (
     <>
@@ -39,18 +41,26 @@ export function BeliefsPage() {
         containerClassName="beliefs-intro-layout"
         containerSize="editorial"
       >
-        <div>
+        <div className="beliefs-intro-heading-block">
           <Eyebrow>{introduction.eyebrow}</Eyebrow>
-          <Heading as="h2" id="beliefs-intro-title">{introduction.title}</Heading>
+          <Heading as="h2" id="beliefs-intro-title">
+            {titleBeforeAccent}<em>{introduction.titleAccent}</em>{titleAfterAccent}
+          </Heading>
         </div>
-        <div className="beliefs-intro-copy">
-          {introduction.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          <p className="beliefs-references">{introduction.references}</p>
-          <aside className="beliefs-confession-note">
-            <span>Historic confessions</span>
-            <p>{introduction.confession}</p>
-          </aside>
+        <div className="beliefs-intro-body">
+          <p className="beliefs-intro-lede">{introLead}</p>
+          <div className="beliefs-intro-copy">
+            {introParagraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            <div className="beliefs-references">
+              <span>Scripture</span>
+              <p>{introduction.references}</p>
+            </div>
+          </div>
         </div>
+        <aside className="beliefs-confession-note">
+          <span>Historic confessions</span>
+          <p>{introduction.confession}</p>
+        </aside>
       </Section>
 
       <Section
