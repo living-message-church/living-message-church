@@ -772,8 +772,8 @@ button, input, textarea, select { font: inherit; }
 .kids-hero::after { position: absolute; top: -9rem; left: -7rem; width: 24rem; height: 24rem; border: 1px solid rgb(255 255 255 / 0.1); border-radius: 50%; content: ""; pointer-events: none; }
 .kids-hero-layout { position: relative; display: grid; min-height: clamp(45rem, 80svh, 56rem); grid-template-columns: minmax(19rem, 0.72fr) minmax(34rem, 1.28fr); align-items: center; gap: clamp(3rem, 6vw, 7rem); padding-block: clamp(5rem, 8vw, 7.5rem); }
 .kids-hero-copy { position: relative; z-index: 2; }
-.kids-hero-brand { position: absolute; z-index: 2; top: 50%; left: 50%; width: clamp(15rem, 25vw, 24rem); transform: translate(-50%, -50%); }
-.kids-hero-brand img { width: 100%; height: auto; filter: drop-shadow(0 1.5rem 3rem rgb(3 5 24 / 0.45)); }
+.kids-hero-brand { width: clamp(8.5rem, 11vw, 11rem); margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.kids-hero-brand img { width: 100%; height: auto; filter: drop-shadow(0 0.75rem 1.75rem rgb(3 5 24 / 0.25)); }
 .kids-hero-copy::before { display: block; width: 100%; max-width: 20rem; height: 1px; margin-bottom: var(--space-5); background: rgb(255 255 255 / 0.24); content: ""; }
 .kids-hero-copy .eyebrow { color: #cdd3ff; }
 .kids-hero-copy h1 { display: grid; max-width: 8ch; gap: 0.055em; margin: 0; font-size: clamp(4rem, 2.2rem + 4.8vw, 7rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; }
@@ -783,10 +783,9 @@ button, input, textarea, select { font: inherit; }
 .kids-hero-copy .action-primary { border-color: white; background: white; color: var(--color-ink-deep); }
 .kids-hero-copy .action-primary:hover { border-color: #e7e8f3; background: #e7e8f3; }
 .kids-hero-copy .action-secondary { border-color: rgb(255 255 255 / 0.5); color: white; }
-.kids-hero-visual { position: relative; min-width: 0; }
-.kids-hero-photo { position: relative; overflow: hidden; aspect-ratio: 3 / 2; border: 1px solid rgb(255 255 255 / 0.2); border-radius: clamp(1.25rem, 1rem + 0.8vw, 2rem); background: #1e2f5b; box-shadow: 0 2.5rem 6rem rgb(3 5 24 / 0.36); }
-.kids-hero-photo::after { position: absolute; z-index: 1; inset: 0; background: linear-gradient(135deg, rgb(13 20 61 / 0.18), rgb(45 36 102 / 0.34)), radial-gradient(circle at 50% 50%, transparent 20%, rgb(5 8 29 / 0.34) 100%); content: ""; }
-.kids-hero-photo img { object-fit: cover; object-position: center; }
+.kids-hero-visual { position: relative; min-width: 0; align-self: end; }
+.kids-hero-photo { position: relative; aspect-ratio: 1200 / 896; }
+.kids-hero-photo img { object-fit: contain; object-position: center bottom; }
 
 .kids-introduction { overflow: hidden; padding-block: clamp(6rem, 10vw, 10rem); background: var(--color-paper-bright); }
 .kids-introduction-layout { display: grid; grid-template-columns: minmax(22rem, 0.84fr) minmax(28rem, 1.16fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
@@ -1031,7 +1030,7 @@ button, input, textarea, select { font: inherit; }
   .kids-hero-copy > p { margin-inline: auto; font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
   .kids-hero-copy .action-group { justify-content: center; }
   .kids-hero-visual { width: 100%; max-width: 40rem; margin: var(--space-5) auto 0; padding: 0; }
-  .kids-hero-brand { width: clamp(12rem, 55vw, 18rem); }
+  .kids-hero-brand { width: clamp(8rem, 28vw, 10rem); margin-inline: auto; }
   .kids-introduction, .kids-arrival { padding-block: var(--space-8); }
   .kids-introduction-layout { grid-template-columns: 1fr; max-width: 40rem; gap: var(--space-6); }
   .kids-introduction-copy { text-align: center; }
