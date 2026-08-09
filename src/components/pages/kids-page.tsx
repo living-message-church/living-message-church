@@ -5,43 +5,6 @@ import { ActionGroup } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/typography";
 
-function KidsValueIcon({ icon }: { icon: "book" | "cross" | "bulb" | "heart" }) {
-  if (icon === "book") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M7.5 12.5c6.3-2 11.8-.7 16.5 3.8v23c-4.7-4.5-10.2-5.8-16.5-3.8v-23Z" />
-        <path d="M40.5 12.5c-6.3-2-11.8-.7-16.5 3.8v23c4.7-4.5 10.2-5.8 16.5-3.8v-23Z" />
-        <path d="M12 8.5V5.8M24 8V4M36 8.5V5.8" />
-      </svg>
-    );
-  }
-
-  if (icon === "cross") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <circle cx="24" cy="24" r="19" />
-        <path d="M21 12h6v9h8v6h-8v10h-6V27h-8v-6h8v-9Z" />
-      </svg>
-    );
-  }
-
-  if (icon === "bulb") {
-    return (
-      <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M35.5 20.5c0 5.1-2.6 8.2-6 11.2-1.5 1.3-2 2.8-2 4.3h-7c0-1.5-.5-3-2-4.3-3.4-3-6-6.1-6-11.2C12.5 14 17.6 9 24 9s11.5 5 11.5 11.5Z" />
-        <path d="M20.5 41h7M8 20.5H4.5M43.5 20.5H40M12.5 9 10 6.5M35.5 9 38 6.5M24 5V1.5" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path d="M24 39S8 31 8 18.8C8 12.4 12.8 9 17.5 9c3 0 5.4 1.5 6.5 4 1.1-2.5 3.5-4 6.5-4 4.7 0 9.5 3.4 9.5 9.8C40 31 24 39 24 39Z" />
-      <path d="M8 8 5.5 5.5M40 8l2.5-2.5M24 5V1.5" />
-    </svg>
-  );
-}
-
 export function KidsPage() {
   return (
     <>
@@ -80,80 +43,74 @@ export function KidsPage() {
         </Container>
       </section>
 
-      <section className="kids-introduction" aria-labelledby="kids-introduction-title">
+      <section className="kids-touchpoints" aria-labelledby="kids-touchpoints-title">
         <Container size="editorial">
-          <div className="kids-values" aria-label="LMC Kids ministry values">
-            {content.introduction.values.map((value) => (
-              <article key={value.title}>
-                <span className="kids-value-icon">
-                  <KidsValueIcon icon={value.icon} />
-                </span>
-                <h2>{value.title}</h2>
-                <p>{value.body}</p>
+          <header className="kids-section-intro">
+            <Eyebrow>{content.touchpoints.eyebrow}</Eyebrow>
+            <h2 id="kids-touchpoints-title">{content.touchpoints.title}</h2>
+            <p>{content.touchpoints.body}</p>
+          </header>
+
+          <div className="kids-touchpoint-grid">
+            {content.touchpoints.items.map((item) => (
+              <article key={item.mark}>
+                <span aria-hidden="true">{item.mark}</span>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
               </article>
             ))}
           </div>
+        </Container>
+      </section>
 
-          <div className="kids-introduction-layout">
-            <div className="kids-introduction-copy">
-              <Eyebrow>{content.introduction.eyebrow}</Eyebrow>
-              <h2 id="kids-introduction-title">{content.introduction.title}</h2>
-              <p>{content.introduction.body}</p>
+      <section className="kids-ages" aria-labelledby="kids-ages-title">
+        <Container className="kids-ages-layout" size="editorial">
+          <div className="kids-ages-art">
+            <Image
+              src={content.ages.image.src}
+              alt={content.ages.image.alt}
+              fill
+              sizes="(max-width: 768px) calc(100vw - 3rem), 48vw"
+            />
+            <div className="kids-grade-badge" aria-label="LM Kids serves children through fifth grade">
+              <span>Through</span>
+              <strong>5th</strong>
+              <span>Grade</span>
             </div>
-            <div className="kids-introduction-visual">
-              <Image
-                src={content.introduction.image.src}
-                alt={content.introduction.image.alt}
-                fill
-                sizes="(max-width: 768px) calc(100vw - 3rem), 52vw"
-              />
-            </div>
+          </div>
+
+          <div className="kids-ages-copy">
+            <Eyebrow>{content.ages.eyebrow}</Eyebrow>
+            <h2 id="kids-ages-title">{content.ages.title}</h2>
+            <p>{content.ages.body}</p>
+            <aside>{content.ages.note}</aside>
+            <ActionGroup actions={content.ages.actions} />
           </div>
         </Container>
       </section>
 
-      <section className="kids-age" aria-labelledby="kids-age-title">
-        <Container className="kids-age-layout" size="editorial">
-          <div className="kids-age-mark" aria-hidden="true">
-            <span>Through</span>
-            <strong>5th</strong>
-            <span>Grade</span>
-          </div>
-          <div className="kids-age-copy">
-            <Eyebrow>{content.age.eyebrow}</Eyebrow>
-            <h2 id="kids-age-title">{content.age.title}</h2>
-            <p>{content.age.body}</p>
-            <p className="kids-age-note">{content.age.note}</p>
-            <ActionGroup actions={content.age.actions} />
-          </div>
-        </Container>
-      </section>
-
-      <section className="kids-experience" aria-labelledby="kids-experience-title">
-        <Container className="kids-experience-layout" size="editorial">
-          <div className="kids-experience-image">
+      <section className="kids-imagination" aria-labelledby="kids-imagination-title">
+        <Container size="hero">
+          <div className="kids-imagination-art">
             <Image
               src={content.experience.image.src}
               alt={content.experience.image.alt}
               fill
-              sizes="(max-width: 768px) 100vw, 56vw"
+              sizes="(max-width: 768px) 100vw, 62vw"
             />
           </div>
-
-          <div className="kids-experience-copy">
+          <div className="kids-imagination-copy">
             <Eyebrow>{content.experience.eyebrow}</Eyebrow>
-            <h2 id="kids-experience-title">{content.experience.title}</h2>
+            <h2 id="kids-imagination-title">{content.experience.title}</h2>
             <p>{content.experience.body}</p>
-          </div>
-
-          <div className="kids-principles">
-            {content.experience.principles.map((principle) => (
-              <article key={principle.number}>
-                <span>{principle.number}</span>
-                <h3>{principle.title}</h3>
-                <p>{principle.body}</p>
-              </article>
-            ))}
+            <ul>
+              {content.experience.bullets.map((bullet, index) => (
+                <li key={bullet}>
+                  <span aria-hidden="true">0{index + 1}</span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
           </div>
         </Container>
       </section>
@@ -166,15 +123,17 @@ export function KidsPage() {
             <p>{content.arrival.body}</p>
           </header>
 
-          <div className="kids-arrival-steps">
+          <ol className="kids-arrival-steps">
             {content.arrival.steps.map((step) => (
-              <article key={step.number}>
+              <li key={step.number}>
                 <span>{step.number}</span>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-              </article>
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </Container>
       </section>
 

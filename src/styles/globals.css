@@ -785,63 +785,58 @@ button, input, textarea, select { font: inherit; }
 .kids-hero-copy .action-secondary { border-color: rgb(255 255 255 / 0.32); color: white; }
 .kids-hero-copy .action-secondary:hover { border-color: rgb(255 255 255 / 0.64); background: rgb(255 255 255 / 0.06); }
 
-.kids-introduction { overflow: hidden; padding-block: clamp(6rem, 10vw, 10rem); background: #fff; }
-.kids-values { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--color-line); }
-.kids-values article { --value-accent: #35418e; display: grid; min-height: 16rem; align-content: center; justify-items: center; padding: clamp(2rem, 4vw, 3.25rem) clamp(1rem, 2.5vw, 2.25rem); text-align: center; }
-.kids-values article + article { border-left: 1px solid var(--color-line); }
-.kids-values article:nth-child(2) { --value-accent: #b84f39; }
-.kids-values article:nth-child(3) { --value-accent: #76529e; }
-.kids-values article:nth-child(4) { --value-accent: #397564; }
-.kids-value-icon { display: grid; width: 4.75rem; height: 4.75rem; place-items: center; margin-bottom: var(--space-4); border: 1px solid color-mix(in srgb, var(--value-accent) 24%, white); border-radius: 50%; background: color-mix(in srgb, var(--value-accent) 7%, white); color: var(--value-accent); }
-.kids-value-icon svg { width: 2.65rem; height: 2.65rem; overflow: visible; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.15; }
-.kids-values h2 { margin: 0; color: var(--value-accent); font-size: clamp(1.1rem, 1rem + 0.4vw, 1.4rem); font-weight: 800; letter-spacing: 0.03em; line-height: 1; text-transform: uppercase; }
-.kids-values p { max-width: 17rem; margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--step--1); line-height: 1.5; }
-.kids-introduction-layout { display: grid; grid-template-columns: minmax(22rem, 0.84fr) minmax(28rem, 1.16fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); margin-top: clamp(4rem, 7vw, 7rem); }
-.kids-introduction-copy { min-width: 0; }
-.kids-introduction .eyebrow { color: var(--color-coral); }
-.kids-introduction-copy h2 { max-width: 11ch; margin: 0; font-size: clamp(3.2rem, 2rem + 3.5vw, 6rem); letter-spacing: -0.055em; line-height: 0.92; }
-.kids-introduction-copy > p { max-width: 31rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
-.kids-introduction-visual { position: relative; overflow: hidden; width: 100%; border-radius: var(--radius-image); aspect-ratio: 4 / 3; background: var(--color-brand-navy); box-shadow: 0 1.75rem 4.5rem rgb(14 21 61 / 0.16); }
-.kids-introduction-visual img { object-fit: cover; object-position: center; }
+.kids-touchpoints { overflow: hidden; background: #fff; padding-block: clamp(6rem, 10vw, 10rem); }
+.kids-section-intro { display: grid; grid-template-columns: minmax(10rem, 0.34fr) minmax(22rem, 1fr) minmax(18rem, 0.66fr); align-items: end; gap: clamp(2rem, 5vw, 6rem); }
+.kids-section-intro .eyebrow { align-self: start; margin: 0; color: var(--color-coral); }
+.kids-section-intro h2 { max-width: 10ch; margin: 0; font-size: clamp(3.4rem, 2.2rem + 3.5vw, 6.25rem); letter-spacing: -0.06em; line-height: 0.9; }
+.kids-section-intro > p { max-width: 30rem; margin: 0 0 0.3rem; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.5; }
+.kids-touchpoint-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; overflow: hidden; margin-top: clamp(4rem, 7vw, 7rem); border-radius: var(--radius-image); background: #111635; }
+.kids-touchpoint-grid article { --touchpoint: #8495ff; position: relative; min-height: clamp(20rem, 25vw, 25rem); overflow: hidden; background: #12183e; padding: clamp(2rem, 3vw, 3.25rem); color: white; }
+.kids-touchpoint-grid article:nth-child(2) { --touchpoint: #ff765f; background: #1b2049; }
+.kids-touchpoint-grid article:nth-child(3) { --touchpoint: #bf8eff; background: #101636; }
+.kids-touchpoint-grid article:nth-child(4) { --touchpoint: #a4eb51; background: #202553; }
+.kids-touchpoint-grid article::after { position: absolute; right: -3rem; bottom: -5rem; width: 13rem; height: 13rem; border: 1px solid color-mix(in srgb, var(--touchpoint) 50%, transparent); border-radius: 50%; content: ""; transition: transform 350ms ease; }
+.kids-touchpoint-grid article:hover::after { transform: translate(-1rem, -1rem) scale(1.08); }
+.kids-touchpoint-grid article > span { display: grid; width: 3.5rem; height: 3.5rem; place-items: center; border-radius: 50%; background: var(--touchpoint); color: #101534; font-size: 0.78rem; font-weight: 900; letter-spacing: 0.08em; }
+.kids-touchpoint-grid h3 { max-width: 8ch; margin: clamp(5rem, 8vw, 8rem) 0 var(--space-3); color: white; font-size: clamp(1.8rem, 1.35rem + 1.4vw, 2.7rem); letter-spacing: -0.045em; line-height: 0.96; }
+.kids-touchpoint-grid p { position: relative; z-index: 1; max-width: 18rem; margin: 0; color: rgb(255 255 255 / 0.68); line-height: 1.5; }
 
-.kids-age { overflow: hidden; background: linear-gradient(128deg, #10163d 0%, #171c4d 58%, #28215f 100%); color: white; padding-block: clamp(5rem, 9vw, 8.5rem); }
-.kids-age-layout { display: grid; grid-template-columns: minmax(20rem, 0.82fr) minmax(26rem, 1.18fr); align-items: center; gap: clamp(3rem, 8vw, 9rem); }
-.kids-age-mark { position: relative; display: grid; min-height: clamp(24rem, 32vw, 31rem); align-content: center; justify-items: center; overflow: hidden; border: 1px solid rgb(255 255 255 / 0.14); border-radius: var(--radius-image); background: radial-gradient(circle at 50% 42%, rgb(141 114 207 / 0.34), transparent 42%), rgb(255 255 255 / 0.035); text-align: center; }
-.kids-age-mark::before, .kids-age-mark::after { position: absolute; border: 1px solid rgb(255 255 255 / 0.11); border-radius: 50%; content: ""; }
-.kids-age-mark::before { width: 19rem; height: 19rem; }
-.kids-age-mark::after { width: 27rem; height: 27rem; }
-.kids-age-mark span { position: relative; z-index: 1; color: var(--color-gold); font-size: var(--step--1); font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
-.kids-age-mark strong { position: relative; z-index: 1; margin-block: -0.1em; font-size: clamp(7rem, 5rem + 8vw, 12rem); letter-spacing: -0.09em; line-height: 0.9; text-transform: uppercase; }
-.kids-age-copy .eyebrow { color: var(--color-gold); }
-.kids-age-copy h2 { max-width: 10ch; margin: 0; font-size: clamp(3.2rem, 2rem + 3.6vw, 6rem); letter-spacing: -0.055em; line-height: 0.92; }
-.kids-age-copy > p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.75); font-size: var(--step-1); line-height: 1.5; }
-.kids-age-copy .kids-age-note { max-width: 32rem; border-top: 1px solid rgb(255 255 255 / 0.18); padding-top: var(--space-4); color: rgb(255 255 255 / 0.58); font-size: var(--step-0); }
-.kids-age-copy .action-secondary { border-color: rgb(255 255 255 / 0.5); color: white; }
-.kids-age-copy .action-secondary:hover { border-color: white; background: white; color: var(--color-ink-deep); }
+.kids-ages { overflow: hidden; background: #f2f0ea; padding-block: clamp(5rem, 9vw, 9rem); }
+.kids-ages-layout { display: grid; grid-template-columns: minmax(28rem, 1.15fr) minmax(24rem, 0.85fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
+.kids-ages-art { position: relative; overflow: hidden; border-radius: var(--radius-image); aspect-ratio: 4 / 3; background: #17204c; }
+.kids-ages-art > img { object-fit: cover; }
+.kids-ages-art::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgb(7 12 35 / 0.68)); content: ""; }
+.kids-grade-badge { position: absolute; z-index: 1; right: clamp(1rem, 3vw, 2.5rem); bottom: clamp(1rem, 3vw, 2.5rem); display: grid; width: clamp(9.5rem, 13vw, 12rem); aspect-ratio: 1; place-content: center; border-radius: 50%; background: #a4eb51; color: #111635; text-align: center; transform: rotate(-5deg); }
+.kids-grade-badge span { font-size: 0.68rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; }
+.kids-grade-badge strong { margin-block: -0.08em; font-size: clamp(3.5rem, 5vw, 5rem); letter-spacing: -0.09em; line-height: 0.9; }
+.kids-ages-copy .eyebrow { color: var(--color-coral); }
+.kids-ages-copy h2 { max-width: 9ch; margin: 0; font-size: clamp(3.3rem, 2rem + 3.5vw, 6rem); letter-spacing: -0.06em; line-height: 0.9; }
+.kids-ages-copy > p { max-width: 34rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
+.kids-ages-copy aside { max-width: 34rem; margin-top: var(--space-5); border-left: 0.25rem solid #76529e; background: rgb(255 255 255 / 0.72); padding: var(--space-4); color: var(--color-ink-soft); font-size: var(--step--1); line-height: 1.5; }
 
-.kids-experience { background: #f4f3ef; padding-block: clamp(5rem, 9vw, 9rem); }
-.kids-experience-layout { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; gap: clamp(2rem, 5vw, 5rem); }
-.kids-experience-image { position: relative; grid-column: span 7; overflow: hidden; aspect-ratio: 16 / 11; border-radius: var(--radius-image); background: var(--color-sage); box-shadow: 0 1.5rem 4rem rgb(17 22 48 / 0.1); }
-.kids-experience-image img { object-fit: cover; }
-.kids-experience-copy { grid-column: span 5; }
-.kids-experience-copy .eyebrow { color: var(--color-coral); }
-.kids-experience-copy h2 { max-width: 10ch; margin: 0; font-size: var(--step-4); letter-spacing: -0.052em; line-height: 0.92; }
-.kids-experience-copy > p { max-width: 31rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); }
-.kids-principles { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: var(--space-5); border-top: 1px solid var(--color-line); }
-.kids-principles article { padding: var(--space-5) clamp(1rem, 2.4vw, 2.5rem) 0 0; }
-.kids-principles article + article { border-left: 1px solid var(--color-line); padding-left: clamp(1rem, 2.4vw, 2.5rem); }
-.kids-principles span, .kids-arrival-steps span { color: var(--color-coral); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; }
-.kids-principles h3, .kids-arrival-steps h3 { margin: var(--space-4) 0 var(--space-2); font-size: var(--step-2); letter-spacing: -0.04em; line-height: 1; }
-.kids-principles p, .kids-arrival-steps p { margin: 0; color: var(--color-ink-soft); line-height: 1.5; }
+.kids-imagination { background: #111636; color: white; padding-block: clamp(5rem, 9vw, 9rem); }
+.kids-imagination > .container-shell { display: grid; grid-template-columns: minmax(26rem, 1.22fr) minmax(22rem, 0.78fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
+.kids-imagination-art { position: relative; overflow: hidden; aspect-ratio: 16 / 11; border-radius: var(--radius-image); background: #242a5a; }
+.kids-imagination-art img { object-fit: cover; transition: transform 800ms cubic-bezier(0.2, 0.75, 0.2, 1); }
+.kids-imagination-art:hover img { transform: scale(1.025); }
+.kids-imagination-copy .eyebrow { color: #a4eb51; }
+.kids-imagination-copy h2 { max-width: 8ch; margin: 0; font-size: clamp(3.3rem, 2rem + 3.7vw, 6.2rem); letter-spacing: -0.06em; line-height: 0.9; }
+.kids-imagination-copy > p { max-width: 32rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.68); font-size: var(--step-1); line-height: 1.55; }
+.kids-imagination-copy ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; margin: var(--space-6) 0 0; padding: 0; border-top: 1px solid rgb(255 255 255 / 0.16); list-style: none; }
+.kids-imagination-copy li { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--space-3); min-height: 4rem; border-bottom: 1px solid rgb(255 255 255 / 0.16); font-weight: 700; }
+.kids-imagination-copy li:nth-child(odd) { margin-right: var(--space-4); }
+.kids-imagination-copy li span { color: #a4eb51; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.08em; }
 
 .kids-arrival { background: #fff; padding-block: clamp(6rem, 10vw, 10rem); }
 .kids-arrival-heading { display: grid; grid-template-columns: minmax(9rem, 0.34fr) minmax(20rem, 1fr) minmax(18rem, 0.66fr); gap: clamp(2rem, 5vw, 6rem); }
 .kids-arrival-heading .eyebrow { margin: 0; color: var(--color-coral); }
 .kids-arrival-heading h2 { max-width: 11ch; margin: 0; font-size: var(--step-4); letter-spacing: -0.052em; line-height: 0.94; }
 .kids-arrival-heading > p { max-width: 32rem; margin: 0.35rem 0 0; color: var(--color-ink-soft); }
-.kids-arrival-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: clamp(4rem, 7vw, 7rem); border-top: 1px solid var(--color-line); }
-.kids-arrival-steps article { padding: var(--space-5) clamp(1rem, 2.5vw, 2.75rem) 0 0; }
-.kids-arrival-steps article + article { border-left: 1px solid var(--color-line); padding-left: clamp(1rem, 2.5vw, 2.75rem); }
+.kids-arrival-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.5rem); margin: clamp(4rem, 7vw, 7rem) 0 0; padding: 0; list-style: none; }
+.kids-arrival-steps li { display: grid; min-height: 17rem; align-content: space-between; border: 1px solid var(--color-line); border-radius: var(--radius-image); padding: clamp(1.5rem, 3vw, 2.5rem); }
+.kids-arrival-steps li > span { color: #76529e; font-size: clamp(3rem, 4vw, 4.5rem); font-weight: 800; letter-spacing: -0.08em; line-height: 1; }
+.kids-arrival-steps h3 { margin: 0 0 var(--space-2); font-size: var(--step-2); letter-spacing: -0.04em; line-height: 1; }
+.kids-arrival-steps p { margin: 0; color: var(--color-ink-soft); line-height: 1.5; }
 
 .kids-final { background: linear-gradient(125deg, var(--color-brand-navy), var(--color-brand-indigo)); color: white; padding-block: clamp(6rem, 10vw, 10rem); }
 .kids-final-layout { display: grid; grid-template-columns: minmax(9rem, 0.34fr) minmax(0, 1.66fr); gap: clamp(2rem, 5vw, 6rem); }
@@ -985,8 +980,6 @@ button, input, textarea, select { font: inherit; }
   .connect-pathway-next-steps { grid-column: 1 / -1; }
   .kids-arrival-heading { grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr); }
   .kids-arrival-heading > p { grid-column: 2; }
-  .kids-experience-image, .kids-experience-copy { grid-column: 1 / -1; }
-  .kids-experience-copy { max-width: 42rem; }
   .visit-page-hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
   .visit-page-service-card { width: min(100%, 26rem); }
   .visit-kids-layout, .visit-final-layout { grid-template-columns: 1fr; }
@@ -1054,31 +1047,21 @@ button, input, textarea, select { font: inherit; }
   .kids-hero-copy h1 em { line-height: 0.86; }
   .kids-hero-copy > p { margin-inline: auto; font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
   .kids-hero-copy .action-group { justify-content: center; }
-  .kids-introduction, .kids-arrival { padding-block: var(--space-8); }
-  .kids-values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .kids-values article { min-height: 16rem; }
-  .kids-values article:nth-child(3) { border-left: 0; }
-  .kids-values article:nth-child(n + 3) { border-top: 1px solid var(--color-line); }
-  .kids-introduction-layout { grid-template-columns: 1fr; max-width: 40rem; gap: var(--space-6); }
-  .kids-introduction-copy { text-align: center; }
+  .kids-touchpoints, .kids-arrival { padding-block: var(--space-8); }
+  .kids-section-intro { grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr); }
+  .kids-section-intro > p { grid-column: 2; }
+  .kids-touchpoint-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kids-ages-layout, .kids-imagination > .container-shell { grid-template-columns: 1fr; max-width: 44rem; }
+  .kids-ages-copy { text-align: center; }
+  .kids-ages-copy h2, .kids-ages-copy > p, .kids-ages-copy aside { margin-inline: auto; }
+  .kids-ages-copy .action-group { justify-content: center; }
+  .kids-imagination-copy { text-align: center; }
+  .kids-imagination-copy h2, .kids-imagination-copy > p { margin-inline: auto; }
   .kids-arrival-heading { display: block; max-width: 38rem; text-align: center; }
-  .kids-introduction-copy h2, .kids-arrival-heading h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.6rem); }
-  .kids-introduction-copy > p, .kids-arrival-heading > p { margin: var(--space-5) auto 0; }
-  .kids-introduction-visual { aspect-ratio: 4 / 3; }
-  .kids-age-layout { grid-template-columns: 1fr; max-width: 40rem; }
-  .kids-age-mark { min-height: 22rem; }
-  .kids-age-copy { text-align: center; }
-  .kids-age-copy h2, .kids-age-copy > p { margin-inline: auto; }
-  .kids-age-copy .action-group { justify-content: center; }
-  .kids-experience-layout { display: flex; flex-direction: column; }
-  .kids-experience-copy { max-width: 38rem; text-align: center; }
-  .kids-experience-copy h2, .kids-experience-copy > p { margin-inline: auto; }
-  .kids-experience-image { width: 100%; order: 2; }
-  .kids-experience-copy { order: 1; }
-  .kids-principles { width: 100%; order: 3; grid-template-columns: 1fr; }
-  .kids-principles article, .kids-arrival-steps article { padding: var(--space-5) 0; }
-  .kids-principles article + article, .kids-arrival-steps article + article { border-left: 0; border-top: 1px solid var(--color-line); padding-left: 0; }
+  .kids-arrival-heading h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.6rem); }
+  .kids-arrival-heading > p { margin: var(--space-5) auto 0; }
   .kids-arrival-steps { grid-template-columns: 1fr; }
+  .kids-arrival-steps li { min-height: 13rem; }
   .kids-final-layout { display: block; max-width: 40rem; text-align: center; }
   .kids-final h2, .kids-final p { margin-inline: auto; }
   .kids-final h2 { margin-top: var(--space-4); font-size: clamp(3rem, 14vw, 4.6rem); }
@@ -1214,9 +1197,15 @@ button, input, textarea, select { font: inherit; }
 
 @media (max-width: 32rem) {
   .site-logo { width: 10rem; }
-  .kids-values { grid-template-columns: 1fr; }
-  .kids-values article { min-height: 14rem; }
-  .kids-values article + article { border-left: 0; border-top: 1px solid var(--color-line); }
+  .kids-section-intro { display: block; text-align: center; }
+  .kids-section-intro h2, .kids-section-intro > p { margin-inline: auto; }
+  .kids-section-intro > p { margin-top: var(--space-5); }
+  .kids-touchpoint-grid { grid-template-columns: 1fr; }
+  .kids-touchpoint-grid article { min-height: 18rem; }
+  .kids-touchpoint-grid h3 { margin-top: var(--space-7); }
+  .kids-grade-badge { width: 8.5rem; }
+  .kids-imagination-copy ul { grid-template-columns: 1fr; }
+  .kids-imagination-copy li:nth-child(odd) { margin-right: 0; }
   .action-group { align-items: stretch; flex-direction: column; }
   .action-link:not(.action-text) { width: 100%; }
   .hero-fact-card { width: min(19rem, 100%); }
