@@ -783,9 +783,9 @@ button, input, textarea, select { font: inherit; }
 .kids-hero-copy .action-primary { border-color: white; background: white; color: var(--color-ink-deep); }
 .kids-hero-copy .action-primary:hover { border-color: #e7e8f3; background: #e7e8f3; }
 .kids-hero-copy .action-secondary { border-color: rgb(255 255 255 / 0.5); color: white; }
-.kids-hero-visual { position: relative; min-width: 0; align-self: end; }
-.kids-hero-photo { position: relative; aspect-ratio: 1200 / 896; }
-.kids-hero-photo img { object-fit: contain; object-position: center bottom; }
+.kids-hero-visual { position: relative; min-width: 0; }
+.kids-hero-photo { position: relative; overflow: hidden; aspect-ratio: 3 / 2; border: 1px solid rgb(255 255 255 / 0.2); border-radius: clamp(1.25rem, 1rem + 0.8vw, 2rem); background: #1e2f5b; box-shadow: 0 2.5rem 6rem rgb(3 5 24 / 0.36); }
+.kids-hero-photo img { object-fit: cover; object-position: center; }
 
 .kids-introduction { overflow: hidden; padding-block: clamp(6rem, 10vw, 10rem); background: var(--color-paper-bright); }
 .kids-introduction-layout { display: grid; grid-template-columns: minmax(22rem, 0.84fr) minmax(28rem, 1.16fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }

@@ -78,10 +78,10 @@ export const kidsPageContent: KidsPageContent = {
       credit: "User-supplied lmkids.svg",
     },
     image: {
-      src: "/images/kids/lm-kids-jumping-transparent.webp",
-      alt: "Four illustrated children jumping together with joyful expressions.",
+      src: "/images/kids/lm-kids-imagination-hero.webp",
+      alt: "Illustrated children relaxing and laughing together on red seats in a glowing blue woodland setting.",
       status: "approved-temporary",
-      credit: "User-supplied LM Kids illustration with its white background removed for the hero",
+      credit: "User-supplied LM Kids imagination artwork",
     },
     actions: [
       { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
