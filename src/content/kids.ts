@@ -6,6 +6,12 @@ interface KidsPrinciple {
   body: string;
 }
 
+interface KidsValue {
+  icon: "book" | "cross" | "spark" | "heart";
+  title: string;
+  body: string;
+}
+
 interface KidsArrivalStep {
   number: string;
   title: string;
@@ -31,6 +37,7 @@ export interface KidsPageContent {
     title: string;
     body: string;
     image: ContentImage;
+    values: KidsValue[];
   };
   experience: {
     eyebrow: string;
@@ -99,6 +106,28 @@ export const kidsPageContent: KidsPageContent = {
       status: "approved-temporary",
       credit: "User-supplied LM Kids artwork",
     },
+    values: [
+      {
+        icon: "book",
+        title: "Scripture",
+        body: "Bible-centered curriculum gives every Sunday a clear foundation.",
+      },
+      {
+        icon: "cross",
+        title: "Christ",
+        body: "Each message is described as pointing children to Christ.",
+      },
+      {
+        icon: "spark",
+        title: "Learning",
+        body: "Children have room to learn, engage, and discover together.",
+      },
+      {
+        icon: "heart",
+        title: "Welcome",
+        body: "Laughter and a welcoming environment shape the invitation.",
+      },
+    ],
   },
   experience: {
     eyebrow: "Inside LMC Kids",
