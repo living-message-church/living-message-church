@@ -721,6 +721,53 @@ button, input, textarea, select { font: inherit; }
 .message-admin-row footer { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-top: var(--space-4); border-top: 1px solid var(--color-line); padding-top: var(--space-3); color: var(--color-ink-soft); font-size: 0.72rem; }
 .message-admin-row footer button { min-height: 2.5rem; border: 1px solid var(--color-line); border-radius: var(--radius-sm); background: var(--color-paper); color: var(--color-ink-soft); padding-inline: 0.8rem; font-weight: 700; }
 
+.connect-hero { position: relative; min-height: clamp(39rem, 76svh, 52rem); overflow: hidden; background: var(--color-ink); color: white; }
+.connect-hero-image { object-fit: cover; object-position: center 46%; }
+.connect-hero-scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(8 9 8 / 0.88) 0%, rgb(8 9 8 / 0.62) 38%, rgb(8 9 8 / 0.12) 72%, rgb(8 9 8 / 0.22) 100%); }
+.connect-hero-inner { position: relative; z-index: 1; display: grid; min-height: inherit; align-items: end; padding-block: clamp(4rem, 8vh, 6.5rem); }
+.connect-hero-copy { max-width: 50rem; }
+.connect-hero-copy .eyebrow { color: var(--color-gold); }
+.connect-hero-copy h1 { max-width: 9.8ch; margin: 0; font-size: clamp(4.25rem, 2.4rem + 5vw, 7.6rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; text-wrap: balance; }
+.connect-hero-copy h1 em { font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.08em; font-weight: 400; letter-spacing: -0.055em; }
+.connect-hero-copy h1 span { display: block; }
+.connect-hero-copy > p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.82); font-size: var(--step-1); line-height: 1.45; }
+.connect-hero-copy .action-secondary { border-color: rgb(255 255 255 / 0.52); }
+
+.connect-introduction { padding-block: clamp(6rem, 11vw, 11rem); background: var(--color-paper-bright); }
+.connect-introduction-layout { display: grid; grid-template-columns: minmax(9rem, 0.35fr) minmax(20rem, 1fr) minmax(18rem, 0.62fr); align-items: start; gap: clamp(2rem, 5vw, 6rem); }
+.connect-introduction .eyebrow { margin: 0; color: var(--color-coral); }
+.connect-introduction h2 { max-width: 11ch; margin: 0; font-size: clamp(3.2rem, 2rem + 3.5vw, 6rem); font-weight: 700; letter-spacing: -0.055em; line-height: 0.92; }
+.connect-introduction h2 em { font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.08em; font-weight: 400; letter-spacing: -0.055em; }
+.connect-introduction > .container-shell > p { max-width: 32rem; margin: 0.35rem 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
+
+.connect-pathways { background: var(--color-paper); padding-block: clamp(5rem, 9vw, 9rem); }
+.connect-pathways-heading { display: grid; grid-template-columns: minmax(9rem, 0.35fr) minmax(0, 1.65fr); gap: clamp(2rem, 5vw, 6rem); margin-bottom: clamp(3rem, 7vw, 6rem); }
+.connect-pathways-heading .eyebrow { margin: 0; color: var(--color-coral); }
+.connect-pathways-heading h2 { max-width: 14ch; margin: 0; font-size: var(--step-4); letter-spacing: -0.05em; line-height: 0.95; }
+.connect-pathway-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(3rem, 6vw, 6.5rem) clamp(1.5rem, 3vw, 3rem); }
+.connect-pathway { grid-column: span 5; min-width: 0; color: inherit; text-decoration: none; }
+.connect-pathway-wide { grid-column: span 7; }
+.connect-pathway-image { position: relative; overflow: hidden; aspect-ratio: 16 / 11; border-radius: var(--radius-image); background: var(--color-sage); }
+.connect-pathway-image img { object-fit: cover; transition: transform 500ms cubic-bezier(0.2, 0.75, 0.25, 1); }
+.connect-pathway:hover .connect-pathway-image img { transform: scale(1.025); }
+.connect-pathway-copy { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: var(--space-3); border-top: 1px solid var(--color-line); margin-top: var(--space-4); padding-top: var(--space-4); }
+.connect-pathway-number { color: var(--color-coral); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; }
+.connect-pathway-copy h3 { margin: 0; font-size: clamp(1.8rem, 1.4rem + 1.25vw, 2.8rem); letter-spacing: -0.045em; line-height: 0.98; }
+.connect-pathway-copy p { max-width: 33rem; margin: var(--space-3) 0; color: var(--color-ink-soft); line-height: 1.5; }
+.connect-pathway-action { display: inline-flex; align-items: center; gap: 1rem; font-size: var(--step--1); font-weight: 800; }
+.connect-pathway-action > span { transition: transform 180ms ease; }
+.connect-pathway:hover .connect-pathway-action > span { transform: translateX(0.25rem); }
+.connect-pathway-next-steps { display: grid; grid-column: 1 / -1; grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); }
+.connect-pathway-next-steps .connect-pathway-image { aspect-ratio: 16 / 8.5; }
+.connect-pathway-next-steps .connect-pathway-copy { margin-top: 0; }
+
+.connect-final { background: linear-gradient(120deg, var(--color-brand-navy), var(--color-brand-indigo)); color: white; padding-block: clamp(6rem, 10vw, 10rem); }
+.connect-final-layout { display: grid; grid-template-columns: minmax(9rem, 0.35fr) minmax(0, 1.65fr); gap: clamp(2rem, 5vw, 6rem); }
+.connect-final .eyebrow { margin: 0; color: var(--color-gold); }
+.connect-final h2 { max-width: 15ch; margin: 0; font-size: clamp(3rem, 2rem + 3.4vw, 5.8rem); letter-spacing: -0.055em; line-height: 0.92; }
+.connect-final p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.72); font-size: var(--step-1); }
+.connect-final .action-secondary { border-color: rgb(255 255 255 / 0.48); }
+
 .platform-page { min-height: 70vh; background: var(--color-paper); padding-block: var(--space-7); }
 .platform-header { display: grid; max-width: 45rem; gap: var(--space-3); margin-bottom: var(--space-6); }
 .platform-header .eyebrow, .platform-status-heading .eyebrow { margin-bottom: 0; color: var(--color-coral); }
@@ -848,6 +895,10 @@ button, input, textarea, select { font: inherit; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-copy { max-width: 46rem; }
   .hero-side { justify-content: flex-start; }
+  .connect-introduction-layout { grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr); }
+  .connect-introduction > .container-shell > p { grid-column: 2; }
+  .connect-pathway, .connect-pathway-wide { grid-column: span 6; }
+  .connect-pathway-next-steps { grid-column: 1 / -1; }
   .visit-page-hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
   .visit-page-service-card { width: min(100%, 26rem); }
   .visit-kids-layout, .visit-final-layout { grid-template-columns: 1fr; }
@@ -885,6 +936,26 @@ button, input, textarea, select { font: inherit; }
     --space-8: clamp(4.5rem, 18vw, 6rem);
   }
   .header-inner { min-height: 5.5rem; }
+  .connect-hero { min-height: clamp(39rem, 132vw, 48rem); }
+  .connect-hero-image { object-position: 61% center; }
+  .connect-hero-scrim { background: linear-gradient(180deg, rgb(8 9 8 / 0.22) 0%, rgb(8 9 8 / 0.55) 45%, rgb(8 9 8 / 0.94) 100%); }
+  .connect-hero-inner { padding-block: var(--space-7); }
+  .connect-hero-copy h1 { max-width: 9ch; font-size: clamp(3.55rem, 16vw, 5rem); }
+  .connect-hero-copy > p { max-width: 30rem; font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
+  .connect-introduction { padding-block: var(--space-8); }
+  .connect-introduction-layout { display: block; max-width: 36rem; text-align: center; }
+  .connect-introduction h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.5rem); }
+  .connect-introduction > .container-shell > p { margin: var(--space-5) auto 0; }
+  .connect-pathways-heading { display: block; text-align: center; }
+  .connect-pathways-heading h2 { margin-inline: auto; }
+  .connect-pathway-grid { grid-template-columns: 1fr; gap: var(--space-7); }
+  .connect-pathway, .connect-pathway-wide, .connect-pathway-next-steps { display: block; grid-column: auto; }
+  .connect-pathway-image, .connect-pathway-next-steps .connect-pathway-image { aspect-ratio: 16 / 11; }
+  .connect-pathway-copy { margin-top: var(--space-3); }
+  .connect-final-layout { display: block; max-width: 40rem; text-align: center; }
+  .connect-final h2, .connect-final p { margin-inline: auto; }
+  .connect-final h2 { margin-top: var(--space-4); font-size: clamp(3rem, 14vw, 4.6rem); }
+  .connect-final .action-group { justify-content: center; }
   .hero-grid, .editorial-split, .identity-layout, .feature-grid, .message-feature, .outreach-grid, .invitation-grid, .contact-grid, .footer-lead, .route-purpose { grid-template-columns: 1fr; }
   .hero { min-height: calc(90vh - 5.5rem); min-height: calc(90svh - 5.5rem); }
   .hero .heading-display { font-size: clamp(2.35rem, 1.75rem + 2.6vw, 3rem); line-height: 0.96; }
