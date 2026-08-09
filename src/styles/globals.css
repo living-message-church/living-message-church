@@ -768,17 +768,17 @@ button, input, textarea, select { font: inherit; }
 .connect-final p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.72); font-size: var(--step-1); }
 .connect-final .action-secondary { border-color: rgb(255 255 255 / 0.48); }
 
-.kids-hero { position: relative; overflow: hidden; background: linear-gradient(135deg, #e8eef0 0%, #d3e0e4 58%, #c6d6dc 100%); color: #14232a; }
+.kids-hero { position: relative; overflow: hidden; background: radial-gradient(circle at 8% 4%, rgb(198 112 91 / 0.2), transparent 30%), linear-gradient(135deg, #e8eef0 0%, #d3e0e4 58%, #c6d6dc 100%); color: #14232a; }
 .kids-hero-layout { position: relative; display: grid; min-height: clamp(45rem, 80svh, 56rem); grid-template-columns: minmax(19rem, 0.7fr) minmax(34rem, 1.3fr); align-items: center; gap: clamp(3rem, 6vw, 7rem); padding-block: clamp(5rem, 8vw, 7.5rem); }
 .kids-hero-copy { position: relative; z-index: 2; }
-.kids-hero-copy::before { display: block; width: 4rem; height: 2px; margin-bottom: var(--space-5); background: #6f8994; content: ""; }
-.kids-hero-copy .eyebrow { color: #526f7b; }
+.kids-hero-copy::before { display: block; width: 4rem; height: 3px; margin-bottom: var(--space-5); background: var(--color-coral); content: ""; }
+.kids-hero-copy .eyebrow { color: var(--color-coral); }
 .kids-hero-copy h1 { display: grid; max-width: 8ch; gap: 0.055em; margin: 0; font-size: clamp(4rem, 2.2rem + 4.8vw, 7rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; }
 .kids-hero-copy h1 span, .kids-hero-copy h1 em { display: block; }
-.kids-hero-copy h1 em { color: #496976; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.04em; font-style: italic; font-weight: 400; letter-spacing: -0.045em; line-height: 0.82; }
+.kids-hero-copy h1 em { color: var(--color-brand-indigo); font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.04em; font-style: italic; font-weight: 400; letter-spacing: -0.045em; line-height: 0.82; }
 .kids-hero-copy > p { max-width: 33rem; margin: var(--space-5) 0 0; color: #465a62; font-size: var(--step-1); line-height: 1.5; }
-.kids-hero-copy .action-primary { border-color: #1a3039; background: #1a3039; color: white; }
-.kids-hero-copy .action-primary:hover { border-color: #294650; background: #294650; }
+.kids-hero-copy .action-primary { border-color: var(--color-coral); background: var(--color-coral); color: white; }
+.kids-hero-copy .action-primary:hover { border-color: #933f31; background: #933f31; }
 .kids-hero-copy .action-secondary { border-color: #1a3039; color: #1a3039; }
 .kids-hero-visual { position: relative; min-width: 0; }
 .kids-hero-photo { position: relative; overflow: hidden; aspect-ratio: 1200 / 896; border: 1px solid rgb(20 35 42 / 0.16); border-radius: clamp(1.25rem, 1rem + 0.8vw, 2rem); background: #8fa7b0; box-shadow: 0 2.25rem 5rem rgb(36 62 72 / 0.18); }
