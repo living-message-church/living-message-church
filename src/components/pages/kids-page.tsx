@@ -11,6 +11,15 @@ export function KidsPage() {
       <SiteHead {...content.seo} />
 
       <section className="kids-hero" aria-labelledby="kids-hero-title">
+        <Image
+          className="kids-hero-image"
+          src={content.hero.image.src}
+          alt={content.hero.image.alt}
+          fill
+          preload
+          sizes="100vw"
+        />
+        <div className="kids-hero-scrim" aria-hidden="true" />
         <Container className="kids-hero-layout" size="hero">
           <div className="kids-hero-copy">
             <div className="kids-hero-brand">
@@ -31,18 +40,11 @@ export function KidsPage() {
             </h1>
             <p>{content.hero.body}</p>
             <ActionGroup actions={content.hero.actions} />
-          </div>
-
-          <div className="kids-hero-visual">
-            <div className="kids-hero-photo">
-              <Image
-                src={content.hero.image.src}
-                alt={content.hero.image.alt}
-                fill
-                preload
-                sizes="(max-width: 768px) 100vw, 52vw"
-              />
-            </div>
+            <p className="kids-hero-values" aria-label="Learn, laugh, belong">
+              <span>Learn</span>
+              <span>Laugh</span>
+              <span>Belong</span>
+            </p>
           </div>
         </Container>
       </section>
@@ -95,7 +97,7 @@ export function KidsPage() {
       </section>
 
       <section className="kids-arrival" aria-labelledby="kids-arrival-title">
-        <Container size="editorial">
+        <Container className="kids-arrival-layout" size="editorial">
           <header className="kids-arrival-heading">
             <Eyebrow>{content.arrival.eyebrow}</Eyebrow>
             <h2 id="kids-arrival-title">{content.arrival.title}</h2>
