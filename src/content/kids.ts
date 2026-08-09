@@ -95,7 +95,7 @@ export const kidsPageContent: KidsPageContent = {
       "The current LMC Kids description centers Scripture, Christ, learning, laughter, and a welcoming environment.",
     image: {
       src: "/images/kids/lm-kids-learn-laugh-belong.png",
-      alt: "Colorful illustrated scene of children dancing together beneath the words Learn, Laugh, Belong.",
+      alt: "Illustrated scene of children holding hands beneath a tree mural reading Learn, Laugh, Belong.",
       status: "approved-temporary",
       credit: "User-supplied LM Kids artwork",
     },
