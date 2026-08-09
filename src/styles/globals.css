@@ -787,11 +787,21 @@ button, input, textarea, select { font: inherit; }
 .kids-logo-card { position: absolute; z-index: 2; top: 0; left: 0; display: grid; width: min(58%, 24rem); aspect-ratio: 442 / 260; place-items: center; overflow: hidden; border: 1px solid rgb(255 255 255 / 0.5); border-radius: clamp(1rem, 1rem + 0.8vw, 1.75rem); background: #fbfaf7; box-shadow: 0 1.5rem 4rem rgb(4 6 25 / 0.24); padding: clamp(0.7rem, 1.5vw, 1.25rem); transform: translate(-2%, -2%); }
 .kids-logo-card img { width: 100%; height: 100%; object-fit: contain; }
 
-.kids-introduction { padding-block: clamp(6rem, 11vw, 11rem); background: var(--color-paper-bright); }
-.kids-introduction-layout { display: grid; grid-template-columns: minmax(9rem, 0.34fr) minmax(20rem, 1fr) minmax(18rem, 0.66fr); align-items: start; gap: clamp(2rem, 5vw, 6rem); }
-.kids-introduction .eyebrow { margin: 0; color: var(--color-coral); }
+.kids-introduction { overflow: hidden; padding-block: clamp(6rem, 10vw, 10rem); background: var(--color-paper-bright); }
+.kids-introduction-layout { display: grid; grid-template-columns: minmax(22rem, 0.84fr) minmax(28rem, 1.16fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
+.kids-introduction-copy { min-width: 0; }
+.kids-introduction .eyebrow { color: var(--color-coral); }
 .kids-introduction h2 { max-width: 11ch; margin: 0; font-size: clamp(3.2rem, 2rem + 3.5vw, 6rem); letter-spacing: -0.055em; line-height: 0.92; }
-.kids-introduction > .container-shell > p { max-width: 31rem; margin: 0.35rem 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
+.kids-introduction-copy > p { max-width: 31rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
+.kids-comic-panel { position: relative; isolation: isolate; overflow: hidden; width: 100%; border-radius: var(--radius-image); aspect-ratio: 4 / 3; background: linear-gradient(135deg, var(--color-brand-navy) 0 47%, var(--color-brand-indigo) 47% 72%, #684491 72%); box-shadow: 0 1.75rem 4.5rem rgb(14 21 61 / 0.16); transform: rotate(1.25deg); }
+.kids-comic-panel::before { position: absolute; z-index: -1; width: 48%; aspect-ratio: 1; border: clamp(1.1rem, 2.4vw, 2.5rem) solid #a4eb51; border-radius: 50%; content: ""; inset: -12% -8% auto auto; opacity: 0.92; }
+.kids-comic-panel::after { position: absolute; z-index: -1; background-image: radial-gradient(rgb(255 255 255 / 0.34) 1.2px, transparent 1.2px); background-size: 0.75rem 0.75rem; content: ""; inset: 0 44% 0 0; -webkit-mask-image: linear-gradient(90deg, black, transparent); mask-image: linear-gradient(90deg, black, transparent); }
+.kids-comic-speed-lines { position: absolute; z-index: -1; width: 52%; height: 60%; background: repeating-linear-gradient(118deg, transparent 0 0.7rem, rgb(255 255 255 / 0.13) 0.75rem 0.86rem); inset: 32% -4% auto auto; transform: skewX(-12deg); }
+.kids-comic-word { position: absolute; color: white; font-size: clamp(3rem, 5.2vw, 6.25rem); font-weight: 800; letter-spacing: -0.075em; line-height: 0.78; text-transform: uppercase; text-shadow: 0.12em 0.12em 0 rgb(8 9 8 / 0.26); }
+.kids-comic-word-learn { top: 12%; left: 8%; transform: rotate(-4deg); }
+.kids-comic-word-laugh { top: 39%; right: 8%; color: var(--color-gold); transform: rotate(3deg); }
+.kids-comic-word-belong { bottom: 9%; left: 10%; color: #a4eb51; transform: rotate(-2deg); }
+.kids-comic-stamp { position: absolute; top: 9%; right: 8%; display: grid; width: clamp(3.75rem, 6vw, 5.5rem); aspect-ratio: 1; place-items: center; border: 2px solid white; border-radius: 50%; color: white; font-size: clamp(0.58rem, 0.7vw, 0.76rem); font-weight: 900; letter-spacing: 0.08em; line-height: 1.05; text-align: center; text-transform: uppercase; transform: rotate(9deg); }
 
 .kids-experience { background: var(--color-paper); padding-block: clamp(5rem, 9vw, 9rem); }
 .kids-experience-layout { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; gap: clamp(2rem, 5vw, 5rem); }
@@ -963,8 +973,8 @@ button, input, textarea, select { font: inherit; }
   .connect-pathway, .connect-pathway-wide { grid-column: span 6; }
   .connect-pathway-next-steps { grid-column: 1 / -1; }
   .kids-hero-layout { grid-template-columns: minmax(18rem, 0.8fr) minmax(24rem, 1.2fr); gap: var(--space-5); }
-  .kids-introduction-layout, .kids-arrival-heading { grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr); }
-  .kids-introduction > .container-shell > p, .kids-arrival-heading > p { grid-column: 2; }
+  .kids-arrival-heading { grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr); }
+  .kids-arrival-heading > p { grid-column: 2; }
   .kids-experience-image, .kids-experience-copy { grid-column: 1 / -1; }
   .kids-experience-copy { max-width: 42rem; }
   .visit-page-hero-inner { grid-template-columns: 1fr; gap: var(--space-6); }
@@ -1032,9 +1042,13 @@ button, input, textarea, select { font: inherit; }
   .kids-hero-visual { max-width: 40rem; margin-top: var(--space-3); padding: var(--space-5) 0 0 var(--space-4); }
   .kids-logo-card { width: min(58%, 18rem); }
   .kids-introduction, .kids-arrival { padding-block: var(--space-8); }
-  .kids-introduction-layout, .kids-arrival-heading { display: block; max-width: 38rem; text-align: center; }
+  .kids-introduction-layout { grid-template-columns: 1fr; max-width: 40rem; gap: var(--space-6); }
+  .kids-introduction-copy { text-align: center; }
+  .kids-arrival-heading { display: block; max-width: 38rem; text-align: center; }
   .kids-introduction h2, .kids-arrival-heading h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.6rem); }
-  .kids-introduction > .container-shell > p, .kids-arrival-heading > p { margin: var(--space-5) auto 0; }
+  .kids-introduction-copy > p, .kids-arrival-heading > p { margin: var(--space-5) auto 0; }
+  .kids-comic-panel { aspect-ratio: 5 / 4; transform: rotate(0.65deg); }
+  .kids-comic-word { font-size: clamp(2.8rem, 14vw, 4.75rem); }
   .kids-experience-layout { display: flex; flex-direction: column; }
   .kids-experience-copy { max-width: 38rem; text-align: center; }
   .kids-experience-copy h2, .kids-experience-copy > p { margin-inline: auto; }

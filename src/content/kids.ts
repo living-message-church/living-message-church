@@ -62,7 +62,7 @@ export const kidsPageContent: KidsPageContent = {
     noIndex: true,
   },
   hero: {
-    eyebrow: "LMC Kids",
+    eyebrow: "LM Kids",
     title: {
       lead: "Big truth.",
       accent: "Bright",

@@ -51,9 +51,18 @@ export function KidsPage() {
 
       <section className="kids-introduction" aria-labelledby="kids-introduction-title">
         <Container className="kids-introduction-layout" size="editorial">
-          <Eyebrow>{content.introduction.eyebrow}</Eyebrow>
-          <h2 id="kids-introduction-title">{content.introduction.title}</h2>
-          <p>{content.introduction.body}</p>
+          <div className="kids-introduction-copy">
+            <Eyebrow>{content.introduction.eyebrow}</Eyebrow>
+            <h2 id="kids-introduction-title">{content.introduction.title}</h2>
+            <p>{content.introduction.body}</p>
+          </div>
+          <div className="kids-comic-panel" aria-hidden="true">
+            <div className="kids-comic-speed-lines" />
+            <span className="kids-comic-word kids-comic-word-learn">Learn</span>
+            <span className="kids-comic-word kids-comic-word-laugh">Laugh</span>
+            <span className="kids-comic-word kids-comic-word-belong">Belong</span>
+            <span className="kids-comic-stamp">LM Kids</span>
+          </div>
         </Container>
       </section>
 
