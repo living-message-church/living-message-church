@@ -40,6 +40,7 @@ const inventoryRedirects = inventory.entries.flatMap((entry) => {
 });
 const applicationRedirects = [
   { source: "/messages/live", destination: "/online-church", statusCode: 301 },
+  { source: "/connect/kids", destination: "/lmkids", statusCode: 301 },
 ];
 const redirects = [...applicationRedirects, ...inventoryRedirects];
 
@@ -78,6 +79,9 @@ if (/Permanent \(308\)/.test(ledger)) errors.push("Ledger still contains a 308 s
 if (!/skipTrailingSlashRedirect:\s*true/.test(nextConfig)) errors.push("Next.js trailing-slash normalization can create a 308 -> 301 chain; set skipTrailingSlashRedirect: true");
 if (!/source:\s*["']\/messages\/live["'][\s\S]*destination:\s*["']\/online-church["'][\s\S]*statusCode:\s*301/.test(nextConfig)) {
   errors.push("Missing canonical application redirect: /messages/live -> /online-church (301)");
+}
+if (!/source:\s*["']\/connect\/kids["'][\s\S]*destination:\s*["']\/lmkids["'][\s\S]*statusCode:\s*301/.test(nextConfig)) {
+  errors.push("Missing canonical application redirect: /connect/kids -> /lmkids (301)");
 }
 
 const queryRedirects = redirects.filter((redirect) => redirect.source.includes("?"));

@@ -11,7 +11,7 @@ This ledger covers all **458 canonical public URLs** advertised by the productio
 - Do not redirect missing assets, admin/API routes, or arbitrary unknown URLs to Home.
 - The 415 historical event detail/recurrence URLs intentionally converge on `/events`; do not recreate them as current events.
 - Test every source with a single-hop redirect and a 200 destination before launch.
-- Keep this ledger as the source for the eventual Next.js redirect configuration; no application redirect has been implemented yet.
+- Keep this ledger as the source for audited legacy redirects. Application-level canonical redirects currently include `/messages/live` → `/online-church` and `/connect/kids` → `/lmkids`, both as permanent 301 responses.
 
 ## Complete mapping
 

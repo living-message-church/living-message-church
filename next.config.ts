@@ -69,6 +69,11 @@ const nextConfig: NextConfig = {
         destination: "/online-church",
         statusCode: 301,
       },
+      {
+        source: "/connect/kids",
+        destination: "/lmkids",
+        statusCode: 301,
+      },
       ...buildRedirects(),
     ];
   },

@@ -69,7 +69,7 @@ export interface KidsPageContent {
 
 export const kidsPageContent: KidsPageContent = {
   seo: {
-    path: "/connect/kids",
+    path: "/lmkids",
     title: "LMC Kids | Living Message Church",
     description:
       "Learn what Living Message Church currently shares about LMC Kids and prepare for children’s check-in on Sunday.",

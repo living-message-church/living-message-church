@@ -136,8 +136,9 @@ button, input, textarea, select { font: inherit; }
 .mobile-menu nav a { display: flex; min-height: 3.25rem; align-items: center; border-bottom: 1px solid var(--color-line); padding-inline: 0.25rem; font-weight: 800; text-decoration: none; }
 .mobile-nav-group p { margin: 0; border-bottom: 1px solid var(--color-line); padding: 0.9rem 0.25rem 0.55rem; color: var(--color-ink-soft); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
 .mobile-nav-group a { padding-left: 1rem !important; }
-.mobile-nav-subgroup summary { display: flex; min-height: 3.25rem; align-items: center; border-bottom: 1px solid var(--color-line); padding-inline: 1rem 0.25rem; font-weight: 800; cursor: pointer; list-style: none; }
+.mobile-nav-subgroup summary { display: flex; width: 100%; height: auto; min-height: 3.25rem; align-items: center; gap: var(--space-3); border-bottom: 1px solid var(--color-line); padding: 0.75rem 0.25rem 0.75rem 1rem; font-weight: 800; cursor: pointer; list-style: none; }
 .mobile-nav-subgroup summary::-webkit-details-marker { display: none; }
+.mobile-nav-subgroup summary > span:first-child { min-width: 0; white-space: nowrap; }
 .mobile-nav-subgroup summary .nav-chevron { margin-left: auto; }
 .mobile-nav-subgroup[open] summary .nav-chevron { transform: translateY(0.12rem) rotate(225deg); }
 .mobile-nav-submenu a { padding-left: 2rem !important; font-weight: 700 !important; }

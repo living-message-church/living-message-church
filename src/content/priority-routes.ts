@@ -46,7 +46,7 @@ export const priorityRouteContent = {
     "A clear path toward connection.",
     "Each pathway below has a dedicated route, but schedules, leaders, age ranges, and registration details remain unpublished until approved.",
     [
-      { number: "01", title: "Kids", body: "A future practical guide to ages, check-in, safety, and first-visit preparation.", href: "/connect/kids", linkLabel: "Open Kids" },
+      { number: "01", title: "Kids", body: "A future practical guide to ages, check-in, safety, and first-visit preparation.", href: "/lmkids", linkLabel: "Open Kids" },
       { number: "02", title: "Youth", body: "A future guide to the verified youth ministry, audience, gatherings, and leadership.", href: "/connect/youth", linkLabel: "Open Youth" },
       { number: "03", title: "Young Adults", body: "A future guide to approved young-adult connection opportunities.", href: "/connect/young-adults", linkLabel: "Open Young Adults" },
       { number: "04", title: "Groups", body: "A future directory of current, approved groups and connection rhythms.", href: "/connect/groups", linkLabel: "Open Groups" },
@@ -55,7 +55,7 @@ export const priorityRouteContent = {
     { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
   ),
   kids: pending(
-    "/connect/kids",
+    "/lmkids",
     "Kids",
     "Connect",
     "A first visit should feel prepared.",

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { primaryNavigation, siteIdentity } from "@/content";
 import { Container } from "@/components/ui/container";
 
@@ -20,7 +20,14 @@ export function SiteHeader() {
   const { pathname } = useRouter();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
   const isCurrent = (href: string) => href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const closeMobileMenu = () => {
+    mobileMenuRef.current?.removeAttribute("open");
+    mobileMenuRef.current?.querySelectorAll("details[open]").forEach((submenu) => {
+      submenu.removeAttribute("open");
+    });
+  };
   return (
     <header className="site-header">
       <Container className="header-inner" size="editorial">
@@ -154,7 +161,7 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <details className="mobile-menu">
+        <details className="mobile-menu" ref={mobileMenuRef}>
           <summary>
             <span className="sr-only menu-label-open">Open navigation</span>
             <span className="sr-only menu-label-close">Close navigation</span>
@@ -164,7 +171,12 @@ export function SiteHeader() {
               <span />
             </span>
           </summary>
-          <nav aria-label="Mobile navigation">
+          <nav
+            aria-label="Mobile navigation"
+            onClick={(event) => {
+              if ((event.target as HTMLElement).closest("a")) closeMobileMenu();
+            }}
+          >
             {primaryNavigation.map((item) => item.children ? (
               <div className="mobile-nav-group" key={item.label}>
                 <p>{item.label}</p>

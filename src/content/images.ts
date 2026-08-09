@@ -70,7 +70,7 @@ export const pagePhotography: Record<string, ContentImage> = {
     "/images/groups/living-message-community-table.webp",
     "People sharing conversation around tables at Living Message Church.",
   ),
-  "/connect/kids": homePhotography.ministries.kids,
+  "/lmkids": homePhotography.ministries.kids,
   "/connect/groups": homePhotography.ministries.groups,
   "/connect/next-steps": approved(
     "/images/general/living-message-lobby-community.webp",

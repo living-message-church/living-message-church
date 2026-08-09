@@ -252,6 +252,11 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 - Responsive CSS includes single-column mobile composition, centered section introductions, full-width photography, stacked arrival steps, and reduced-motion removal of the ambient hero drift.
 - Interactive viewport screenshots remain pending because no in-app or external browser connection was available in the current environment.
 
+### LMC Kids canonical route — August 9, 2026
+
+- `/lmkids` is now the canonical Kids ministry route and owns its page metadata.
+- The former internal route `/connect/kids` returns a direct permanent 301 to `/lmkids`; internal Connect links target `/lmkids` directly to avoid redirect chains.
+
 | Check | Result |
 | --- | --- |
 | `npm run lint` | Passed |

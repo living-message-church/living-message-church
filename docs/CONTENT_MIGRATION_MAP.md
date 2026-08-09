@@ -24,7 +24,7 @@ Audit date: 2026-08-05
 | `/about/leadership` | Elders, deacons, and ministry leaders | `/the-team/` |
 | `/about/gallery` | Curated, consent-cleared church-life gallery (optional but justified) | `/pictures/`, `/photo-gallery/` |
 | `/connect` | Ministry/group discovery and serving pathways | Group references from home/landing pages, `/ministries/`, ministry leader roles, Church Center signups |
-| `/connect/kids` | Kids and nursery details | Home and Plan Your Visit; requires age/safety verification |
+| `/lmkids` | Kids and nursery details | Home and Plan Your Visit; requires age/safety verification. `/connect/kids` permanently redirects here. |
 | `/connect/youth` | Youth ministry | Homepage/group and historical event evidence; requires owner/schedule/content |
 | `/connect/young-adults` | Young adults | Homepage/team/event evidence; requires current schedule/content |
 | `/connect/groups` | Men, women, marriage, discipleship, other groups | Homepage/landing/event evidence; requires current group list and schedule |

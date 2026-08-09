@@ -64,7 +64,7 @@ The primary navigation should remain concise: **New Here, About, Connect, Messag
 
 ## Content dependencies before routes launch
 
-- `/connect/kids`, `/connect/youth`, `/connect/young-adults`, and `/connect/groups` require confirmed ministry data.
+- `/lmkids`, `/connect/youth`, `/connect/young-adults`, and `/connect/groups` require confirmed ministry data.
 - `/messages/[slug]` requires a reliable media import/source and metadata.
 - `/events/[slug]` requires an authoritative event source and editorial owner.
 - `/give` requires finance-approved copy and verified Church Center account.

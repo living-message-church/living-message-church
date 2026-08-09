@@ -84,7 +84,7 @@ export const connectPageContent: ConnectPageContent = {
       title: "LMC Kids",
       summary:
         "Prepare for a first visit and explore the church’s dedicated pathway for children and families.",
-      href: "/connect/kids",
+      href: "/lmkids",
       linkLabel: "Explore LMC Kids",
       image: {
         src: "/images/connect/living-message-kids-community.webp",
