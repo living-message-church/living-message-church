@@ -35,6 +35,9 @@ export function KidsPage() {
                 sizes="(max-width: 768px) 100vw, 52vw"
               />
             </div>
+            <span className="kids-hero-tag kids-hero-tag-learn" aria-hidden="true">Learn</span>
+            <span className="kids-hero-tag kids-hero-tag-laugh" aria-hidden="true">Laugh</span>
+            <span className="kids-hero-tag kids-hero-tag-belong" aria-hidden="true">Belong</span>
             <div className="kids-logo-card">
               <Image
                 src={content.hero.logo.src}
@@ -48,6 +51,13 @@ export function KidsPage() {
           </div>
         </Container>
       </section>
+
+      <div className="kids-word-strip" aria-hidden="true">
+        <div>
+          <span>Learn</span><b>✦</b><span>Laugh</span><b>✦</b><span>Belong</span><b>✦</b>
+          <span>Learn</span><b>✦</b><span>Laugh</span><b>✦</b><span>Belong</span><b>✦</b>
+        </div>
+      </div>
 
       <section className="kids-introduction" aria-labelledby="kids-introduction-title">
         <Container className="kids-introduction-layout" size="editorial">

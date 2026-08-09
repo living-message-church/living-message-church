@@ -768,70 +768,104 @@ button, input, textarea, select { font: inherit; }
 .connect-final p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.72); font-size: var(--step-1); }
 .connect-final .action-secondary { border-color: rgb(255 255 255 / 0.48); }
 
-.kids-hero { position: relative; overflow: hidden; background: linear-gradient(125deg, var(--color-brand-navy) 0%, var(--color-brand-indigo) 62%, #4e3d88 100%); color: white; }
-.kids-hero-layout { position: relative; z-index: 2; display: grid; min-height: clamp(44rem, 78svh, 54rem); grid-template-columns: minmax(20rem, 0.78fr) minmax(30rem, 1.22fr); align-items: center; gap: clamp(3rem, 6vw, 7rem); padding-block: clamp(5rem, 9vw, 8rem); }
+.kids-hero,
+.kids-introduction,
+.kids-experience,
+.kids-arrival,
+.kids-final {
+  --kids-lime: #b9f456;
+  --kids-cyan: #64d9ff;
+  --kids-pink: #ff7096;
+  --kids-violet: #7768ff;
+}
+.kids-hero { position: relative; overflow: hidden; background-color: #10163f; background-image: linear-gradient(rgb(255 255 255 / 0.055) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.055) 1px, transparent 1px), radial-gradient(circle at 88% 12%, rgb(119 104 255 / 0.42), transparent 32%), linear-gradient(125deg, var(--color-brand-navy), #1d225d 68%, #302875); background-size: 3rem 3rem, 3rem 3rem, auto, auto; color: white; }
+.kids-hero::after { position: absolute; right: -5rem; bottom: -8rem; width: 24rem; height: 24rem; border: 2.8rem solid rgb(100 217 255 / 0.1); border-radius: 50%; content: ""; pointer-events: none; }
+.kids-hero-layout { position: relative; z-index: 2; display: grid; min-height: clamp(46rem, 82svh, 57rem); grid-template-columns: minmax(20rem, 0.82fr) minmax(30rem, 1.18fr); align-items: center; gap: clamp(3rem, 6vw, 7rem); padding-block: clamp(5rem, 8vw, 7.5rem); }
 .kids-hero-glow { position: absolute; border: 1px solid rgb(255 255 255 / 0.15); border-radius: 50%; pointer-events: none; }
-.kids-hero-glow-one { top: -16rem; right: -8rem; width: 38rem; height: 38rem; background: radial-gradient(circle, rgb(96 125 139 / 0.32), transparent 66%); animation: kids-drift 16s ease-in-out infinite alternate; }
-.kids-hero-glow-two { bottom: -18rem; left: 22%; width: 32rem; height: 32rem; background: radial-gradient(circle, rgb(164 235 81 / 0.08), transparent 68%); animation: kids-drift 20s ease-in-out infinite alternate-reverse; }
-.kids-hero-copy .eyebrow { color: var(--color-gold); }
+.kids-hero-glow-one { top: -16rem; right: -8rem; width: 38rem; height: 38rem; background: radial-gradient(circle, rgb(100 217 255 / 0.2), transparent 66%); animation: kids-drift 16s ease-in-out infinite alternate; }
+.kids-hero-glow-two { bottom: -18rem; left: 22%; width: 32rem; height: 32rem; background: radial-gradient(circle, rgb(185 244 86 / 0.1), transparent 68%); animation: kids-drift 20s ease-in-out infinite alternate-reverse; }
+.kids-hero-copy { position: relative; z-index: 3; }
+.kids-hero-copy .eyebrow { color: var(--kids-lime); }
 .kids-hero-copy h1 { display: grid; max-width: 8ch; gap: 0.055em; margin: 0; font-size: clamp(4rem, 2.2rem + 4.8vw, 7rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; }
 .kids-hero-copy h1 span, .kids-hero-copy h1 em { display: block; }
-.kids-hero-copy h1 em { font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.04em; font-style: italic; font-weight: 400; letter-spacing: -0.045em; line-height: 0.82; }
-.kids-hero-copy > p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.8); font-size: var(--step-1); line-height: 1.5; }
-.kids-hero-copy .action-primary { border-color: #a4eb51; background: #a4eb51; color: var(--color-ink-deep); }
-.kids-hero-copy .action-primary:hover { border-color: #baf36d; background: #baf36d; }
+.kids-hero-copy h1 em { color: var(--kids-cyan); font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.04em; font-style: italic; font-weight: 400; letter-spacing: -0.045em; line-height: 0.82; text-shadow: 0.08em 0.08em 0 rgb(255 112 150 / 0.55); }
+.kids-hero-copy > p { max-width: 34rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.82); font-size: var(--step-1); line-height: 1.5; }
+.kids-hero-copy .action-primary { border-color: var(--kids-lime); background: var(--kids-lime); color: var(--color-ink-deep); }
+.kids-hero-copy .action-primary:hover { border-color: #cafc73; background: #cafc73; }
 .kids-hero-copy .action-secondary { border-color: rgb(255 255 255 / 0.5); }
-.kids-hero-visual { position: relative; min-width: 0; padding: clamp(2rem, 4vw, 4rem) 0 0 clamp(2rem, 4vw, 4rem); }
-.kids-hero-photo { position: relative; overflow: hidden; aspect-ratio: 4 / 3; border-radius: var(--radius-image); background: var(--color-blue); box-shadow: 0 2rem 5rem rgb(4 6 25 / 0.26); }
-.kids-hero-photo img { object-fit: cover; object-position: center; }
-.kids-logo-card { position: absolute; z-index: 2; top: 0; left: 0; display: grid; width: min(58%, 24rem); aspect-ratio: 442 / 260; place-items: center; overflow: hidden; border: 1px solid rgb(255 255 255 / 0.5); border-radius: clamp(1rem, 1rem + 0.8vw, 1.75rem); background: #fbfaf7; box-shadow: 0 1.5rem 4rem rgb(4 6 25 / 0.24); padding: clamp(0.7rem, 1.5vw, 1.25rem); transform: translate(-2%, -2%); }
+.kids-hero-visual { position: relative; min-width: 0; padding: clamp(2.5rem, 4vw, 4.5rem) clamp(0.5rem, 1.5vw, 1.5rem) clamp(1rem, 2vw, 2rem) clamp(2rem, 4vw, 4rem); }
+.kids-hero-photo { position: relative; overflow: hidden; aspect-ratio: 4 / 3; border: 1px solid rgb(255 255 255 / 0.2); border-radius: 1.25rem; background: var(--color-blue); box-shadow: 1.1rem 1.1rem 0 rgb(100 217 255 / 0.22), 0 2rem 5rem rgb(4 6 25 / 0.32); transform: rotate(1deg); }
+.kids-hero-photo img { object-fit: cover; object-position: center; filter: saturate(1.08) contrast(1.03); transition: transform 700ms cubic-bezier(0.2, 0.75, 0.25, 1); }
+.kids-hero-visual:hover .kids-hero-photo img { transform: scale(1.025); }
+.kids-logo-card { position: absolute; z-index: 4; top: 0; left: 0; display: grid; width: min(54%, 21rem); aspect-ratio: 442 / 260; place-items: center; overflow: hidden; border: 2px solid var(--color-ink-deep); border-radius: 1rem; background: #fbfaf7; box-shadow: 0.65rem 0.65rem 0 var(--kids-pink); padding: clamp(0.65rem, 1.4vw, 1.1rem); transform: rotate(-2.5deg); }
 .kids-logo-card img { width: 100%; height: 100%; object-fit: contain; }
+.kids-hero-tag { position: absolute; z-index: 5; border: 2px solid var(--color-ink-deep); color: var(--color-ink-deep); padding: 0.48rem 0.82rem; font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; line-height: 1; text-transform: uppercase; box-shadow: 0.3rem 0.3rem 0 rgb(8 9 8 / 0.68); }
+.kids-hero-tag-learn { top: 18%; right: -0.5rem; background: var(--kids-lime); transform: rotate(4deg); }
+.kids-hero-tag-laugh { right: 5%; bottom: 2%; background: var(--kids-cyan); transform: rotate(-3deg); }
+.kids-hero-tag-belong { bottom: 10%; left: 0; background: var(--kids-pink); transform: rotate(2deg); }
+.kids-word-strip { overflow: hidden; border-block: 2px solid var(--color-ink-deep); background: var(--kids-lime, #b9f456); color: var(--color-ink-deep); }
+.kids-word-strip > div { display: flex; width: max-content; align-items: center; gap: clamp(1.5rem, 4vw, 4rem); padding-block: 0.7rem; animation: kids-marquee 24s linear infinite; }
+.kids-word-strip span { font-size: clamp(1rem, 1.5vw, 1.35rem); font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
+.kids-word-strip b { font-size: 1rem; }
 
-.kids-introduction { overflow: hidden; padding-block: clamp(6rem, 10vw, 10rem); background: var(--color-paper-bright); }
-.kids-introduction-layout { display: grid; grid-template-columns: minmax(22rem, 0.84fr) minmax(28rem, 1.16fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
-.kids-introduction-copy { min-width: 0; }
-.kids-introduction .eyebrow { color: var(--color-coral); }
-.kids-introduction h2 { max-width: 11ch; margin: 0; font-size: clamp(3.2rem, 2rem + 3.5vw, 6rem); letter-spacing: -0.055em; line-height: 0.92; }
-.kids-introduction-copy > p { max-width: 31rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
-.kids-introduction-visual { position: relative; overflow: hidden; width: 100%; border-radius: var(--radius-image); aspect-ratio: 4 / 3; background: var(--color-brand-navy); box-shadow: 0 1.75rem 4.5rem rgb(14 21 61 / 0.16); }
-.kids-introduction-visual img { object-fit: cover; object-position: center; }
+.kids-introduction { position: relative; overflow: hidden; padding-block: clamp(6rem, 10vw, 10rem); background: #edf2f4; }
+.kids-introduction::before { position: absolute; top: clamp(1rem, 4vw, 3rem); left: -0.04em; color: rgb(14 21 61 / 0.045); content: "IMAGINE"; font-size: clamp(8rem, 21vw, 24rem); font-weight: 900; letter-spacing: -0.08em; line-height: 0.8; pointer-events: none; }
+.kids-introduction-layout { position: relative; display: grid; grid-template-columns: minmax(20rem, 0.72fr) minmax(30rem, 1.28fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
+.kids-introduction-copy { position: relative; z-index: 2; min-width: 0; }
+.kids-introduction-copy::before { display: block; width: 4.5rem; height: 0.55rem; margin-bottom: var(--space-5); background: var(--kids-pink); content: ""; transform: rotate(-2deg); }
+.kids-introduction .eyebrow { color: var(--color-brand-indigo); }
+.kids-introduction h2 { max-width: 9ch; margin: 0; font-size: clamp(3.2rem, 2rem + 3.5vw, 6rem); letter-spacing: -0.06em; line-height: 0.9; }
+.kids-introduction-copy > p { max-width: 30rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
+.kids-introduction-visual { position: relative; overflow: visible; width: 100%; aspect-ratio: 4 / 3; background: var(--color-brand-navy); transform: rotate(1deg); }
+.kids-introduction-visual::before { position: absolute; z-index: -1; inset: 1rem -1rem -1rem 1rem; border-radius: 1.25rem; background: var(--kids-violet); content: ""; }
+.kids-introduction-visual img { overflow: hidden; border: 2px solid var(--color-ink-deep); border-radius: 1.25rem; object-fit: cover; object-position: center; box-shadow: 0 2rem 5rem rgb(14 21 61 / 0.18); }
 
-.kids-experience { background: var(--color-paper); padding-block: clamp(5rem, 9vw, 9rem); }
-.kids-experience-layout { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; gap: clamp(2rem, 5vw, 5rem); }
-.kids-experience-image { position: relative; grid-column: span 7; overflow: hidden; aspect-ratio: 16 / 11; border-radius: var(--radius-image); background: var(--color-sage); }
-.kids-experience-image img { object-fit: cover; }
+.kids-experience { position: relative; overflow: hidden; background: #11163f; color: white; padding-block: clamp(6rem, 10vw, 10rem); }
+.kids-experience::before { position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.12) 1px, transparent 0); background-size: 1.5rem 1.5rem; content: ""; pointer-events: none; }
+.kids-experience-layout { position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; gap: clamp(2rem, 5vw, 5rem); }
+.kids-experience-image { position: relative; grid-column: span 7; overflow: hidden; aspect-ratio: 16 / 11; border: 1px solid rgb(255 255 255 / 0.2); border-radius: 1rem; background: var(--color-sage); box-shadow: -0.8rem 0.8rem 0 var(--kids-cyan); transform: rotate(-0.75deg); }
+.kids-experience-image img { object-fit: cover; filter: saturate(1.08); }
 .kids-experience-copy { grid-column: span 5; }
-.kids-experience-copy .eyebrow { color: var(--color-coral); }
-.kids-experience-copy h2 { max-width: 10ch; margin: 0; font-size: var(--step-4); letter-spacing: -0.052em; line-height: 0.92; }
-.kids-experience-copy > p { max-width: 31rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); }
-.kids-principles { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: var(--space-5); border-top: 1px solid var(--color-line); }
-.kids-principles article { padding: var(--space-5) clamp(1rem, 2.4vw, 2.5rem) 0 0; }
-.kids-principles article + article { border-left: 1px solid var(--color-line); padding-left: clamp(1rem, 2.4vw, 2.5rem); }
-.kids-principles span, .kids-arrival-steps span { color: var(--color-coral); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; }
+.kids-experience-copy .eyebrow { color: var(--kids-lime); }
+.kids-experience-copy h2 { max-width: 10ch; margin: 0; color: white; font-size: var(--step-4); letter-spacing: -0.052em; line-height: 0.92; }
+.kids-experience-copy > p { max-width: 31rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.72); font-size: var(--step-1); }
+.kids-principles { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(0.8rem, 2vw, 1.5rem); margin-top: var(--space-5); }
+.kids-principles article { min-height: 17rem; border: 1px solid rgb(255 255 255 / 0.18); border-radius: 0.8rem; background: rgb(255 255 255 / 0.07); padding: clamp(1.4rem, 3vw, 2.25rem); }
+.kids-principles article:nth-child(1) { border-top: 0.4rem solid var(--kids-cyan); }
+.kids-principles article:nth-child(2) { border-top: 0.4rem solid var(--kids-lime); }
+.kids-principles article:nth-child(3) { border-top: 0.4rem solid var(--kids-pink); }
+.kids-principles span, .kids-arrival-steps span { color: var(--kids-lime); font-size: 0.72rem; font-weight: 900; letter-spacing: 0.1em; }
 .kids-principles h3, .kids-arrival-steps h3 { margin: var(--space-4) 0 var(--space-2); font-size: var(--step-2); letter-spacing: -0.04em; line-height: 1; }
-.kids-principles p, .kids-arrival-steps p { margin: 0; color: var(--color-ink-soft); line-height: 1.5; }
+.kids-principles p { margin: 0; color: rgb(255 255 255 / 0.68); line-height: 1.5; }
 
-.kids-arrival { background: var(--color-paper-bright); padding-block: clamp(6rem, 10vw, 10rem); }
+.kids-arrival { background: #f5f1e7; padding-block: clamp(6rem, 10vw, 10rem); }
 .kids-arrival-heading { display: grid; grid-template-columns: minmax(9rem, 0.34fr) minmax(20rem, 1fr) minmax(18rem, 0.66fr); gap: clamp(2rem, 5vw, 6rem); }
-.kids-arrival-heading .eyebrow { margin: 0; color: var(--color-coral); }
+.kids-arrival-heading .eyebrow { margin: 0; color: var(--color-brand-indigo); }
 .kids-arrival-heading h2 { max-width: 11ch; margin: 0; font-size: var(--step-4); letter-spacing: -0.052em; line-height: 0.94; }
 .kids-arrival-heading > p { max-width: 32rem; margin: 0.35rem 0 0; color: var(--color-ink-soft); }
-.kids-arrival-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: clamp(4rem, 7vw, 7rem); border-top: 1px solid var(--color-line); }
-.kids-arrival-steps article { padding: var(--space-5) clamp(1rem, 2.5vw, 2.75rem) 0 0; }
-.kids-arrival-steps article + article { border-left: 1px solid var(--color-line); padding-left: clamp(1rem, 2.5vw, 2.75rem); }
+.kids-arrival-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.5rem); margin-top: clamp(4rem, 7vw, 7rem); }
+.kids-arrival-steps article { position: relative; min-height: 17rem; overflow: hidden; border: 2px solid var(--color-ink-deep); border-radius: 0.8rem; background: var(--color-paper-bright); padding: clamp(1.4rem, 3vw, 2.25rem); box-shadow: 0.45rem 0.45rem 0 var(--kids-violet); }
+.kids-arrival-steps article:nth-child(2) { box-shadow: 0.45rem 0.45rem 0 var(--kids-pink); transform: translateY(1rem); }
+.kids-arrival-steps article:nth-child(3) { box-shadow: 0.45rem 0.45rem 0 var(--kids-cyan); }
+.kids-arrival-steps span { display: block; color: var(--color-brand-indigo); font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.08em; line-height: 0.8; }
+.kids-arrival-steps p { margin: 0; color: var(--color-ink-soft); line-height: 1.5; }
 
-.kids-final { background: linear-gradient(125deg, var(--color-brand-navy), var(--color-brand-indigo)); color: white; padding-block: clamp(6rem, 10vw, 10rem); }
-.kids-final-layout { display: grid; grid-template-columns: minmax(9rem, 0.34fr) minmax(0, 1.66fr); gap: clamp(2rem, 5vw, 6rem); }
-.kids-final .eyebrow { margin: 0; color: #a4eb51; }
+.kids-final { position: relative; overflow: hidden; background: linear-gradient(125deg, var(--color-brand-navy), var(--color-brand-indigo)); color: white; padding-block: clamp(6rem, 10vw, 10rem); }
+.kids-final::after { position: absolute; right: -7rem; bottom: -12rem; width: 32rem; height: 32rem; border: 4rem solid rgb(185 244 86 / 0.08); border-radius: 50%; content: ""; }
+.kids-final-layout { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(9rem, 0.34fr) minmax(0, 1.66fr); gap: clamp(2rem, 5vw, 6rem); }
+.kids-final .eyebrow { margin: 0; color: var(--kids-lime); }
 .kids-final h2 { max-width: 13ch; margin: 0; font-size: clamp(3rem, 2rem + 3.4vw, 5.8rem); letter-spacing: -0.055em; line-height: 0.92; }
 .kids-final p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.74); font-size: var(--step-1); }
-.kids-final .action-primary { border-color: #a4eb51; background: #a4eb51; color: var(--color-ink-deep); }
-.kids-final .action-primary:hover { border-color: #baf36d; background: #baf36d; }
+.kids-final .action-primary { border-color: var(--kids-lime); background: var(--kids-lime); color: var(--color-ink-deep); }
+.kids-final .action-primary:hover { border-color: #cafc73; background: #cafc73; }
 .kids-final .action-secondary { border-color: rgb(255 255 255 / 0.5); }
 
 @keyframes kids-drift {
   from { transform: translate3d(0, 0, 0); }
   to { transform: translate3d(-1.5rem, 1rem, 0); }
+}
+@keyframes kids-marquee {
+  to { transform: translateX(-50%); }
 }
 
 .platform-page { min-height: 70vh; background: var(--color-paper); padding-block: var(--space-7); }
@@ -1032,24 +1066,32 @@ button, input, textarea, select { font: inherit; }
   .kids-hero-copy h1 { max-width: 8ch; gap: 0.08em; font-size: clamp(3.35rem, 14.5vw, 4.8rem); line-height: 0.9; }
   .kids-hero-copy h1 em { line-height: 0.86; }
   .kids-hero-copy > p { font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
-  .kids-hero-visual { max-width: 40rem; margin-top: var(--space-3); padding: var(--space-5) 0 0 var(--space-4); }
-  .kids-logo-card { width: min(58%, 18rem); }
+  .kids-hero-visual { width: calc(100% - 0.5rem); max-width: 40rem; margin-top: var(--space-4); padding: var(--space-5) 0.3rem 0.8rem var(--space-4); }
+  .kids-logo-card { width: min(56%, 17rem); box-shadow: 0.4rem 0.4rem 0 var(--kids-pink); }
+  .kids-hero-tag { padding: 0.4rem 0.62rem; font-size: 0.62rem; box-shadow: 0.22rem 0.22rem 0 rgb(8 9 8 / 0.68); }
+  .kids-hero-tag-learn { right: 0; }
+  .kids-word-strip > div { gap: 1.5rem; }
   .kids-introduction, .kids-arrival { padding-block: var(--space-8); }
   .kids-introduction-layout { grid-template-columns: 1fr; max-width: 40rem; gap: var(--space-6); }
   .kids-introduction-copy { text-align: center; }
+  .kids-introduction-copy::before { margin-inline: auto; }
   .kids-arrival-heading { display: block; max-width: 38rem; text-align: center; }
   .kids-introduction h2, .kids-arrival-heading h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.6rem); }
   .kids-introduction-copy > p, .kids-arrival-heading > p { margin: var(--space-5) auto 0; }
-  .kids-introduction-visual { aspect-ratio: 4 / 3; }
+  .kids-introduction-visual { width: calc(100% - 0.75rem); aspect-ratio: 4 / 3; transform: rotate(0.5deg); }
+  .kids-introduction-visual::before { inset: 0.65rem -0.65rem -0.65rem 0.65rem; }
   .kids-experience-layout { display: flex; flex-direction: column; }
   .kids-experience-copy { max-width: 38rem; text-align: center; }
   .kids-experience-copy h2, .kids-experience-copy > p { margin-inline: auto; }
   .kids-experience-image { width: 100%; order: 2; }
   .kids-experience-copy { order: 1; }
   .kids-principles { width: 100%; order: 3; grid-template-columns: 1fr; }
-  .kids-principles article, .kids-arrival-steps article { padding: var(--space-5) 0; }
-  .kids-principles article + article, .kids-arrival-steps article + article { border-left: 0; border-top: 1px solid var(--color-line); padding-left: 0; }
+  .kids-principles { gap: var(--space-3); }
+  .kids-principles article, .kids-arrival-steps article { min-height: 0; padding: var(--space-5); }
+  .kids-principles article + article { border: 1px solid rgb(255 255 255 / 0.18); padding-left: var(--space-5); }
+  .kids-arrival-steps article + article { border: 2px solid var(--color-ink-deep); padding-left: var(--space-5); }
   .kids-arrival-steps { grid-template-columns: 1fr; }
+  .kids-arrival-steps article:nth-child(2) { transform: none; }
   .kids-final-layout { display: block; max-width: 40rem; text-align: center; }
   .kids-final h2, .kids-final p { margin-inline: auto; }
   .kids-final h2 { margin-top: var(--space-4); font-size: clamp(3rem, 14vw, 4.6rem); }
@@ -1216,5 +1258,6 @@ button, input, textarea, select { font: inherit; }
   .youtube-cinema::backdrop { animation: none; }
   .youtube-cinema-veil { animation: none; }
   .kids-hero-glow { animation: none; }
+  .kids-word-strip > div { animation: none; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
