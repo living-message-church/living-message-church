@@ -78,10 +78,10 @@ export const kidsPageContent: KidsPageContent = {
       credit: "User-supplied lmkids.svg",
     },
     image: {
-      src: "/images/kids/lm-kids-imagination-hero.webp",
-      alt: "Illustrated children relaxing and laughing together on red seats in a glowing blue woodland setting.",
+      src: "/images/kids/lm-kids-city-community-hero.webp",
+      alt: "An illustrated LM Kids neighborhood with homes, a community garden, playground, school, youth space, and skate park at night.",
       status: "approved-temporary",
-      credit: "User-supplied LM Kids imagination artwork",
+      credit: "User-supplied LM Kids city artwork",
     },
     actions: [
       { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
