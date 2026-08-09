@@ -7,7 +7,7 @@ interface KidsPrinciple {
 }
 
 interface KidsValue {
-  icon: "book" | "cross" | "spark" | "heart";
+  icon: "book" | "cross" | "bulb" | "heart";
   title: string;
   body: string;
 }
@@ -118,7 +118,7 @@ export const kidsPageContent: KidsPageContent = {
         body: "Each message is described as pointing children to Christ.",
       },
       {
-        icon: "spark",
+        icon: "bulb",
         title: "Learning",
         body: "Children have room to learn, engage, and discover together.",
       },
@@ -135,11 +135,10 @@ export const kidsPageContent: KidsPageContent = {
     body:
       "Children are invited into Bible-centered learning that points them to Christ in an environment created for learning and laughter.",
     image: {
-      src: "/images/connect/living-message-kids-community.webp",
-      alt: "Children gathering on colorful seats in the Living Message Church kids room.",
+      src: "/images/kids/lm-kids-wonder-room.webp",
+      alt: "Illustrated children relaxing, laughing, and spending time together on bright red seats in a glowing woodland setting.",
       status: "approved-temporary",
-      credit:
-        "https://www.livingmessagechurch.com/wp-content/uploads/2024/12/Kids-Min-2.png",
+      credit: "User-supplied LM Kids wonder-room artwork",
     },
     principles: [
       {

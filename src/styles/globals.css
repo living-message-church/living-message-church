@@ -785,13 +785,16 @@ button, input, textarea, select { font: inherit; }
 .kids-hero-copy .action-secondary:hover { border-color: rgb(255 255 255 / 0.64); background: rgb(255 255 255 / 0.06); }
 
 .kids-introduction { overflow: hidden; padding-block: clamp(6rem, 10vw, 10rem); background: #fff; }
-.kids-values { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--color-line); }
-.kids-values article { display: grid; justify-items: center; padding: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 2.5vw, 2.5rem); text-align: center; }
-.kids-values article + article { border-left: 1px solid var(--color-line); }
-.kids-value-icon { display: grid; width: 3.25rem; height: 3.25rem; place-items: center; margin-bottom: var(--space-3); color: var(--color-brand-indigo); }
-.kids-value-icon svg { width: 100%; height: 100%; overflow: visible; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; }
-.kids-value-icon svg path:only-child { fill: currentColor; stroke: none; }
-.kids-values h2 { margin: 0; font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.35rem); font-weight: 800; letter-spacing: 0.04em; line-height: 1; text-transform: uppercase; }
+.kids-values { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(0.65rem, 1.25vw, 1.25rem); }
+.kids-values article { --value-accent: #3d4796; --value-wash: #eef0ff; display: grid; min-height: 18rem; align-content: center; justify-items: center; border: 1px solid color-mix(in srgb, var(--value-accent) 18%, white); border-radius: clamp(1.1rem, 0.9rem + 0.55vw, 1.6rem); background: linear-gradient(155deg, white 14%, var(--value-wash) 100%); padding: clamp(2rem, 4vw, 3.25rem) clamp(1rem, 2.5vw, 2.25rem); text-align: center; transition: transform 220ms ease, border-color 220ms ease; }
+.kids-values article:nth-child(2) { --value-accent: #c2553e; --value-wash: #fff0e9; }
+.kids-values article:nth-child(3) { --value-accent: #8a5cb0; --value-wash: #f5efff; }
+.kids-values article:nth-child(4) { --value-accent: #3e816d; --value-wash: #edf8f2; }
+.kids-values article:hover { border-color: color-mix(in srgb, var(--value-accent) 36%, white); transform: translateY(-0.25rem); }
+.kids-value-icon { display: grid; width: 5rem; height: 5rem; place-items: center; margin-bottom: var(--space-4); border-radius: 43% 57% 55% 45% / 48% 43% 57% 52%; background: color-mix(in srgb, var(--value-accent) 12%, white); color: var(--value-accent); transform: rotate(-3deg); }
+.kids-values article:nth-child(even) .kids-value-icon { transform: rotate(3deg); }
+.kids-value-icon svg { width: 2.8rem; height: 2.8rem; overflow: visible; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.15; }
+.kids-values h2 { margin: 0; color: var(--value-accent); font-size: clamp(1.1rem, 1rem + 0.4vw, 1.4rem); font-weight: 800; letter-spacing: 0.03em; line-height: 1; text-transform: uppercase; }
 .kids-values p { max-width: 17rem; margin: var(--space-3) 0 0; color: var(--color-ink-soft); font-size: var(--step--1); line-height: 1.5; }
 .kids-introduction-layout { display: grid; grid-template-columns: minmax(22rem, 0.84fr) minmax(28rem, 1.16fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); margin-top: clamp(4rem, 7vw, 7rem); }
 .kids-introduction-copy { min-width: 0; }
@@ -1038,8 +1041,7 @@ button, input, textarea, select { font: inherit; }
   .kids-hero-copy .action-group { justify-content: center; }
   .kids-introduction, .kids-arrival { padding-block: var(--space-8); }
   .kids-values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .kids-values article:nth-child(3) { border-left: 0; }
-  .kids-values article:nth-child(n + 3) { border-top: 1px solid var(--color-line); }
+  .kids-values article { min-height: 16rem; }
   .kids-introduction-layout { grid-template-columns: 1fr; max-width: 40rem; gap: var(--space-6); }
   .kids-introduction-copy { text-align: center; }
   .kids-arrival-heading { display: block; max-width: 38rem; text-align: center; }
@@ -1190,6 +1192,8 @@ button, input, textarea, select { font: inherit; }
 
 @media (max-width: 32rem) {
   .site-logo { width: 10rem; }
+  .kids-values { grid-template-columns: 1fr; }
+  .kids-values article { min-height: 14rem; }
   .action-group { align-items: stretch; flex-direction: column; }
   .action-link:not(.action-text) { width: 100%; }
   .hero-fact-card { width: min(19rem, 100%); }

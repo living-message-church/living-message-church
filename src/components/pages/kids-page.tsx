@@ -5,12 +5,13 @@ import { ActionGroup } from "@/components/ui/action-link";
 import { Container } from "@/components/ui/container";
 import { Eyebrow } from "@/components/ui/typography";
 
-function KidsValueIcon({ icon }: { icon: "book" | "cross" | "spark" | "heart" }) {
+function KidsValueIcon({ icon }: { icon: "book" | "cross" | "bulb" | "heart" }) {
   if (icon === "book") {
     return (
       <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M7 10.5c6.5-2 12.2-.8 17 3.7v25c-4.8-4.5-10.5-5.7-17-3.7v-25Z" />
-        <path d="M41 10.5c-6.5-2-12.2-.8-17 3.7v25c4.8-4.5 10.5-5.7 17-3.7v-25Z" />
+        <path d="M7.5 12.5c6.3-2 11.8-.7 16.5 3.8v23c-4.7-4.5-10.2-5.8-16.5-3.8v-23Z" />
+        <path d="M40.5 12.5c-6.3-2-11.8-.7-16.5 3.8v23c4.7-4.5 10.2-5.8 16.5-3.8v-23Z" />
+        <path d="M12 8.5V5.8M24 8V4M36 8.5V5.8" />
       </svg>
     );
   }
@@ -18,22 +19,25 @@ function KidsValueIcon({ icon }: { icon: "book" | "cross" | "spark" | "heart" })
   if (icon === "cross") {
     return (
       <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M20 6h8v13h11v8H28v15h-8V27H9v-8h11V6Z" />
+        <circle cx="24" cy="24" r="19" />
+        <path d="M21 12h6v9h8v6h-8v10h-6V27h-8v-6h8v-9Z" />
       </svg>
     );
   }
 
-  if (icon === "spark") {
+  if (icon === "bulb") {
     return (
       <svg viewBox="0 0 48 48" aria-hidden="true">
-        <path d="M24 5c1.5 10.8 7.4 16.7 18 18-10.6 1.3-16.5 7.2-18 18-1.5-10.8-7.4-16.7-18-18 10.6-1.3 16.5-7.2 18-18Z" />
+        <path d="M35.5 20.5c0 5.1-2.6 8.2-6 11.2-1.5 1.3-2 2.8-2 4.3h-7c0-1.5-.5-3-2-4.3-3.4-3-6-6.1-6-11.2C12.5 14 17.6 9 24 9s11.5 5 11.5 11.5Z" />
+        <path d="M20.5 41h7M8 20.5H4.5M43.5 20.5H40M12.5 9 10 6.5M35.5 9 38 6.5M24 5V1.5" />
       </svg>
     );
   }
 
   return (
     <svg viewBox="0 0 48 48" aria-hidden="true">
-      <path d="M24 40S7 31.4 7 18.3C7 11.4 12.2 8 17.2 8c3.1 0 5.6 1.5 6.8 4 1.2-2.5 3.7-4 6.8-4C35.8 8 41 11.4 41 18.3 41 31.4 24 40 24 40Z" />
+      <path d="M24 39S8 31 8 18.8C8 12.4 12.8 9 17.5 9c3 0 5.4 1.5 6.5 4 1.1-2.5 3.5-4 6.5-4 4.7 0 9.5 3.4 9.5 9.8C40 31 24 39 24 39Z" />
+      <path d="M8 8 5.5 5.5M40 8l2.5-2.5M24 5V1.5" />
     </svg>
   );
 }
