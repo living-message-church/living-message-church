@@ -796,7 +796,7 @@ button, input, textarea, select { font: inherit; }
 .kids-introduction-layout { display: grid; grid-template-columns: minmax(22rem, 0.84fr) minmax(28rem, 1.16fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); margin-top: clamp(4rem, 7vw, 7rem); }
 .kids-introduction-copy { min-width: 0; }
 .kids-introduction .eyebrow { color: var(--color-coral); }
-.kids-introduction h2 { max-width: 11ch; margin: 0; font-size: clamp(3.2rem, 2rem + 3.5vw, 6rem); letter-spacing: -0.055em; line-height: 0.92; }
+.kids-introduction-copy h2 { max-width: 11ch; margin: 0; font-size: clamp(3.2rem, 2rem + 3.5vw, 6rem); letter-spacing: -0.055em; line-height: 0.92; }
 .kids-introduction-copy > p { max-width: 31rem; margin: var(--space-5) 0 0; color: var(--color-ink-soft); font-size: var(--step-1); line-height: 1.55; }
 .kids-introduction-visual { position: relative; overflow: hidden; width: 100%; border-radius: var(--radius-image); aspect-ratio: 4 / 3; background: var(--color-brand-navy); box-shadow: 0 1.75rem 4.5rem rgb(14 21 61 / 0.16); }
 .kids-introduction-visual img { object-fit: cover; object-position: center; }
@@ -1043,7 +1043,7 @@ button, input, textarea, select { font: inherit; }
   .kids-introduction-layout { grid-template-columns: 1fr; max-width: 40rem; gap: var(--space-6); }
   .kids-introduction-copy { text-align: center; }
   .kids-arrival-heading { display: block; max-width: 38rem; text-align: center; }
-  .kids-introduction h2, .kids-arrival-heading h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.6rem); }
+  .kids-introduction-copy h2, .kids-arrival-heading h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.6rem); }
   .kids-introduction-copy > p, .kids-arrival-heading > p { margin: var(--space-5) auto 0; }
   .kids-introduction-visual { aspect-ratio: 4 / 3; }
   .kids-experience-layout { display: flex; flex-direction: column; }
