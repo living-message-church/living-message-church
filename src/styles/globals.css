@@ -768,20 +768,23 @@ button, input, textarea, select { font: inherit; }
 .connect-final p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.72); font-size: var(--step-1); }
 .connect-final .action-secondary { border-color: rgb(255 255 255 / 0.48); }
 
-.kids-hero { position: relative; overflow: hidden; background: radial-gradient(circle at 8% 4%, rgb(198 112 91 / 0.2), transparent 30%), linear-gradient(135deg, #e8eef0 0%, #d3e0e4 58%, #c6d6dc 100%); color: #14232a; }
+.kids-hero { position: relative; overflow: hidden; background: radial-gradient(circle at 84% 10%, rgb(91 79 181 / 0.48), transparent 34%), linear-gradient(125deg, var(--color-brand-navy) 0%, #171d53 48%, var(--color-brand-indigo) 100%); color: white; }
+.kids-hero::after { position: absolute; top: -9rem; left: -7rem; width: 24rem; height: 24rem; border: 1px solid rgb(255 255 255 / 0.1); border-radius: 50%; content: ""; pointer-events: none; }
 .kids-hero-layout { position: relative; display: grid; min-height: clamp(45rem, 80svh, 56rem); grid-template-columns: minmax(19rem, 0.7fr) minmax(34rem, 1.3fr); align-items: center; gap: clamp(3rem, 6vw, 7rem); padding-block: clamp(5rem, 8vw, 7.5rem); }
 .kids-hero-copy { position: relative; z-index: 2; }
-.kids-hero-copy::before { display: block; width: 4rem; height: 3px; margin-bottom: var(--space-5); background: var(--color-coral); content: ""; }
-.kids-hero-copy .eyebrow { color: var(--color-coral); }
+.kids-hero-brand { width: clamp(11rem, 16vw, 15rem); margin: 0 0 clamp(1.5rem, 3vw, 2.5rem); }
+.kids-hero-brand img { width: 100%; height: auto; filter: brightness(0) invert(1) drop-shadow(0.28rem 0.28rem 0 rgb(0 0 0 / 0.3)); }
+.kids-hero-copy::before { display: block; width: 100%; max-width: 20rem; height: 1px; margin-bottom: var(--space-5); background: rgb(255 255 255 / 0.24); content: ""; }
+.kids-hero-copy .eyebrow { color: #cdd3ff; }
 .kids-hero-copy h1 { display: grid; max-width: 8ch; gap: 0.055em; margin: 0; font-size: clamp(4rem, 2.2rem + 4.8vw, 7rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; }
 .kids-hero-copy h1 span, .kids-hero-copy h1 em { display: block; }
-.kids-hero-copy h1 em { color: var(--color-brand-indigo); font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.04em; font-style: italic; font-weight: 400; letter-spacing: -0.045em; line-height: 0.82; }
-.kids-hero-copy > p { max-width: 33rem; margin: var(--space-5) 0 0; color: #465a62; font-size: var(--step-1); line-height: 1.5; }
-.kids-hero-copy .action-primary { border-color: var(--color-coral); background: var(--color-coral); color: white; }
-.kids-hero-copy .action-primary:hover { border-color: #933f31; background: #933f31; }
-.kids-hero-copy .action-secondary { border-color: #1a3039; color: #1a3039; }
+.kids-hero-copy h1 em { color: #d5d9ff; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.04em; font-style: italic; font-weight: 400; letter-spacing: -0.045em; line-height: 0.82; }
+.kids-hero-copy > p { max-width: 33rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.76); font-size: var(--step-1); line-height: 1.5; }
+.kids-hero-copy .action-primary { border-color: white; background: white; color: var(--color-ink-deep); }
+.kids-hero-copy .action-primary:hover { border-color: #e7e8f3; background: #e7e8f3; }
+.kids-hero-copy .action-secondary { border-color: rgb(255 255 255 / 0.5); color: white; }
 .kids-hero-visual { position: relative; min-width: 0; }
-.kids-hero-photo { position: relative; overflow: hidden; aspect-ratio: 1200 / 896; border: 1px solid rgb(20 35 42 / 0.16); border-radius: clamp(1.25rem, 1rem + 0.8vw, 2rem); background: #8fa7b0; box-shadow: 0 2.25rem 5rem rgb(36 62 72 / 0.18); }
+.kids-hero-photo { position: relative; overflow: hidden; aspect-ratio: 3 / 2; border: 1px solid rgb(255 255 255 / 0.2); border-radius: clamp(1.25rem, 1rem + 0.8vw, 2rem); background: #8fa7b0; box-shadow: 0 2.5rem 6rem rgb(3 5 24 / 0.36); }
 .kids-hero-photo img { object-fit: cover; object-position: center; }
 
 .kids-introduction { overflow: hidden; padding-block: clamp(6rem, 10vw, 10rem); background: var(--color-paper-bright); }
@@ -1021,6 +1024,7 @@ button, input, textarea, select { font: inherit; }
   .connect-final .action-group { justify-content: center; }
   .kids-hero-layout { min-height: auto; grid-template-columns: 1fr; padding-block: var(--space-7); }
   .kids-hero-copy { max-width: 38rem; margin-inline: auto; text-align: center; }
+  .kids-hero-brand { margin-inline: auto; }
   .kids-hero-copy::before { margin-inline: auto; }
   .kids-hero-copy h1 { max-width: 8ch; gap: 0.08em; margin-inline: auto; font-size: clamp(3.35rem, 14.5vw, 4.8rem); line-height: 0.9; }
   .kids-hero-copy h1 em { line-height: 0.86; }

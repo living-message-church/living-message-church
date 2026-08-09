@@ -13,6 +13,16 @@ export function KidsPage() {
       <section className="kids-hero" aria-labelledby="kids-hero-title">
         <Container className="kids-hero-layout" size="hero">
           <div className="kids-hero-copy">
+            <div className="kids-hero-brand">
+              <Image
+                src={content.hero.logo.src}
+                alt={content.hero.logo.alt}
+                width={884}
+                height={520}
+                loading="eager"
+                unoptimized
+              />
+            </div>
             <Eyebrow>{content.hero.eyebrow}</Eyebrow>
             <h1 id="kids-hero-title">
               <span>{content.hero.title.lead}</span>
