@@ -72,16 +72,16 @@ export const kidsPageContent: KidsPageContent = {
     body:
       "LMC Kids uses Bible-centered curriculum with each message pointing children to Christ. The ministry emphasizes learning, laughter, and a welcoming environment.",
     logo: {
-      src: "/images/brand/living-message-kids-logo.svg",
-      alt: "LMC Kids logo.",
+      src: "/images/brand/lmkids.svg",
+      alt: "LM Kids logo.",
       status: "approved-temporary",
-      credit: "User-supplied LMKids Logo.svg",
+      credit: "User-supplied lmkids.svg",
     },
     image: {
-      src: "/images/kids/lm-kids-hero-community.webp",
-      alt: "A diverse group of children laughing and moving together in a modern indoor space.",
+      src: "/images/kids/lm-kids-city-hero.webp",
+      alt: "A distant city skyline at blue hour with warm lights across an urban neighborhood.",
       status: "approved-temporary",
-      credit: "AI-assisted original artwork created for Living Message Church",
+      credit: "AI-assisted original city backdrop created for Living Message Church",
     },
     actions: [
       { label: "Plan your visit", href: "/plan-your-visit", style: "primary" },
