@@ -45,12 +45,13 @@ export function SiteHeader() {
         <nav className="desktop-nav" aria-label="Primary navigation">
           {primaryNavigation.map((item) => {
             const current = isCurrent(item.href) || item.children?.some((child) => child.availability === "implemented" && isCurrent(child.href));
+            const isMinistriesMenu = item.label === "Our Ministries";
             if (item.children) {
               const menuOpen = openMenu === item.href;
               const menuId = `desktop-${item.label.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}-menu`;
               return (
                 <div
-                  className={`desktop-nav-group${menuOpen ? " is-open" : ""}`}
+                  className={`desktop-nav-group${isMinistriesMenu ? " desktop-nav-group-ministries" : ""}${menuOpen ? " is-open" : ""}`}
                   key={item.label}
                   onBlur={(event) => {
                     if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -82,7 +83,7 @@ export function SiteHeader() {
                   >
                     {item.label}<span className="nav-chevron" aria-hidden="true" />
                   </button>
-                  <div className={`desktop-nav-dropdown${item.children.length > 4 ? " desktop-nav-dropdown-wide" : ""}`} id={menuId}>
+                  <div className={`desktop-nav-dropdown${item.children.length > 4 ? " desktop-nav-dropdown-wide" : ""}${isMinistriesMenu ? " desktop-nav-dropdown-ministries" : ""}`} id={menuId}>
                     {item.children.map((child) => child.children ? (
                       <div
                         className={`desktop-nav-subgroup${openSubmenu === child.href ? " is-open" : ""}`}
@@ -143,6 +144,10 @@ export function SiteHeader() {
                       >
                         <span>{child.label}</span><ExternalLinkIcon />
                       </a>
+                    ) : child.availability === "planned" ? (
+                      <span className="desktop-nav-placeholder" key={`${child.label}-${child.href}`}>
+                        {child.label}<span>Coming soon</span>
+                      </span>
                     ) : (
                       <Link
                         key={`${child.label}-${child.href}`}
@@ -197,6 +202,10 @@ export function SiteHeader() {
                   <a key={`${child.label}-${child.href}`} href={child.href} rel="noreferrer" target="_blank">
                     <span>{child.label}</span><ExternalLinkIcon />
                   </a>
+                ) : child.availability === "planned" ? (
+                  <span className="mobile-nav-placeholder" key={`${child.label}-${child.href}`}>
+                    <span>{child.label}</span><small>Coming soon</small>
+                  </span>
                 ) : (
                   <Link key={`${child.label}-${child.href}`} href={child.href} aria-current={child.availability === "implemented" && isCurrent(child.href) ? "page" : undefined}>{child.label}</Link>
                 ))}

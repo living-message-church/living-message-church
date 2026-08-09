@@ -55,7 +55,7 @@ export interface ServiceTime {
 export interface NavigationItem {
   label: string;
   href: string;
-  availability: "implemented" | "staged" | "external" | "group";
+  availability: "implemented" | "staged" | "external" | "group" | "planned";
   children?: NavigationItem[];
 }
 

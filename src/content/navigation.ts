@@ -36,7 +36,23 @@ export const primaryNavigation: NavigationItem[] = [
       },
     ],
   },
-  { label: "Connect", href: "/connect", availability: "staged" },
+  {
+    label: "Our Ministries",
+    href: "/connect",
+    availability: "implemented",
+    children: [
+      { label: "LMKids", href: "/lmkids", availability: "implemented" },
+      { label: "Youth", href: "/connect/youth", availability: "implemented" },
+      { label: "Young Adults", href: "/connect/young-adults", availability: "implemented" },
+      { label: "Men", href: "#", availability: "planned" },
+      { label: "Women", href: "#", availability: "planned" },
+      { label: "Groups", href: "/connect/groups", availability: "implemented" },
+      { label: "Marriage & Family", href: "#", availability: "planned" },
+      { label: "Care", href: "#", availability: "planned" },
+      { label: "Worship", href: "#", availability: "planned" },
+      { label: "Outreach", href: "/outreach", availability: "staged" },
+    ],
+  },
   {
     label: "Messages",
     href: "/messages",
@@ -47,7 +63,6 @@ export const primaryNavigation: NavigationItem[] = [
     ],
   },
   { label: "Events", href: "/events", availability: "staged" },
-  { label: "Outreach", href: "/outreach", availability: "staged" },
   { label: "Give", href: "/give", availability: "staged" },
   { label: "Contact", href: "/contact", availability: "implemented" },
 ];
