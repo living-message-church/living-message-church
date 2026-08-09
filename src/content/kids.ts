@@ -30,6 +30,7 @@ export interface KidsPageContent {
     eyebrow: string;
     title: string;
     body: string;
+    image: ContentImage;
   };
   experience: {
     eyebrow: string;
@@ -92,6 +93,12 @@ export const kidsPageContent: KidsPageContent = {
     title: "A Sunday designed with children in mind.",
     body:
       "The current LMC Kids description centers Scripture, Christ, learning, laughter, and a welcoming environment.",
+    image: {
+      src: "/images/kids/lm-kids-learn-laugh-belong.png",
+      alt: "Colorful illustrated scene of children dancing together beneath the words Learn, Laugh, Belong.",
+      status: "approved-temporary",
+      credit: "User-supplied LM Kids artwork",
+    },
   },
   experience: {
     eyebrow: "Inside LMC Kids",

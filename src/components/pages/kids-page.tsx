@@ -56,12 +56,13 @@ export function KidsPage() {
             <h2 id="kids-introduction-title">{content.introduction.title}</h2>
             <p>{content.introduction.body}</p>
           </div>
-          <div className="kids-comic-panel" aria-hidden="true">
-            <div className="kids-comic-speed-lines" />
-            <span className="kids-comic-word kids-comic-word-learn">Learn</span>
-            <span className="kids-comic-word kids-comic-word-laugh">Laugh</span>
-            <span className="kids-comic-word kids-comic-word-belong">Belong</span>
-            <span className="kids-comic-stamp">LM Kids</span>
+          <div className="kids-introduction-visual">
+            <Image
+              src={content.introduction.image.src}
+              alt={content.introduction.image.alt}
+              fill
+              sizes="(max-width: 768px) calc(100vw - 2.5rem), 52vw"
+            />
           </div>
         </Container>
       </section>
