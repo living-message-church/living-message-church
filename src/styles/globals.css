@@ -935,7 +935,7 @@ button, input, textarea, select { font: inherit; }
   .beliefs-hero-inner { min-height: clamp(34rem, 125vw, 44rem); align-content: end; padding-block: var(--space-7); }
   .beliefs-hero-copy h1 { font-size: clamp(3.75rem, 18vw, 5.5rem); }
   .beliefs-hero-scrim { background: linear-gradient(180deg, rgb(8 9 8 / 0.25) 0%, rgb(8 9 8 / 0.88) 68%, rgb(8 9 8 / 0.96) 100%); }
-  .beliefs-hero-image { object-position: 48% center; }
+  .beliefs-hero-image { object-position: 72% center; }
   .beliefs-intro-heading-block .heading { font-size: clamp(3.15rem, 15vw, 5rem); }
   .beliefs-references { grid-template-columns: 1fr; gap: var(--space-2); }
   .belief-item summary { min-height: 5rem; grid-template-columns: 2rem minmax(0, 1fr) 2.5rem; gap: var(--space-2); }
