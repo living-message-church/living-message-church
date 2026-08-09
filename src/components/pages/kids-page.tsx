@@ -112,6 +112,23 @@ export function KidsPage() {
         </Container>
       </section>
 
+      <section className="kids-age" aria-labelledby="kids-age-title">
+        <Container className="kids-age-layout" size="editorial">
+          <div className="kids-age-mark" aria-hidden="true">
+            <span>Through</span>
+            <strong>5th</strong>
+            <span>Grade</span>
+          </div>
+          <div className="kids-age-copy">
+            <Eyebrow>{content.age.eyebrow}</Eyebrow>
+            <h2 id="kids-age-title">{content.age.title}</h2>
+            <p>{content.age.body}</p>
+            <p className="kids-age-note">{content.age.note}</p>
+            <ActionGroup actions={content.age.actions} />
+          </div>
+        </Container>
+      </section>
+
       <section className="kids-experience" aria-labelledby="kids-experience-title">
         <Container className="kids-experience-layout" size="editorial">
           <div className="kids-experience-image">

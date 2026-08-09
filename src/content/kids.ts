@@ -39,6 +39,13 @@ export interface KidsPageContent {
     image: ContentImage;
     values: KidsValue[];
   };
+  age: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    note: string;
+    actions: CallToAction[];
+  };
   experience: {
     eyebrow: string;
     title: string;
@@ -128,6 +135,15 @@ export const kidsPageContent: KidsPageContent = {
         body: "Laughter and a welcoming environment shape the invitation.",
       },
     ],
+  },
+  age: {
+    eyebrow: "Who LM Kids serves",
+    title: "A place to grow through fifth grade.",
+    body:
+      "LMC Kids serves children through fifth grade with Bible-centered learning, laughter, and a welcoming environment.",
+    note:
+      "Bringing a baby or younger child? Contact the church before Sunday and the team can help confirm the right room for your family.",
+    actions: [{ label: "Ask about LM Kids", href: "/contact", style: "secondary" }],
   },
   experience: {
     eyebrow: "Inside LMC Kids",
