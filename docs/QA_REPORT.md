@@ -244,6 +244,14 @@ Local HTTP smoke checks passed: `/about/leadership` returned 200, rendered all 1
 
 ## Validation commands
 
+### LMC Kids visual upgrade — August 8, 2026
+
+- `/connect/kids` returned HTTP 200 from the production build and included the supplied LMC Kids SVG, new hero copy, ministry introduction, and check-in journey.
+- The route retained `noindex, nofollow`; the disputed age range and unapproved safeguarding, allergy, accessibility, schedule, and leadership details were not rendered.
+- The SVG variant was visually inspected after isolation against the navy-to-indigo field. Its native proportions and artwork were preserved.
+- Responsive CSS includes single-column mobile composition, centered section introductions, full-width photography, stacked arrival steps, and reduced-motion removal of the ambient hero drift.
+- Interactive viewport screenshots remain pending because no in-app or external browser connection was available in the current environment.
+
 | Check | Result |
 | --- | --- |
 | `npm run lint` | Passed |
