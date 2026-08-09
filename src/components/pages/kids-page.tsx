@@ -22,16 +22,7 @@ export function KidsPage() {
         <div className="kids-hero-scrim" aria-hidden="true" />
         <Container className="kids-hero-layout" size="editorial">
           <div className="kids-hero-copy">
-            <div className="kids-hero-brand">
-              <Image
-                src={content.hero.logo.src}
-                alt={content.hero.logo.alt}
-                width={288}
-                height={288}
-                loading="eager"
-                unoptimized
-              />
-            </div>
+            <Eyebrow>{content.hero.eyebrow}</Eyebrow>
             <h1 id="kids-hero-title">
               <span>{content.hero.title.lead}</span>
               <em>{content.hero.title.accent}</em>
