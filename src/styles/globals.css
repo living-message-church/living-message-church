@@ -769,13 +769,10 @@ button, input, textarea, select { font: inherit; }
 .connect-final .action-secondary { border-color: rgb(255 255 255 / 0.48); }
 
 .kids-hero { position: relative; overflow: hidden; background: radial-gradient(circle at 84% 10%, rgb(91 79 181 / 0.48), transparent 34%), linear-gradient(125deg, var(--color-brand-navy) 0%, #171d53 48%, var(--color-brand-indigo) 100%); color: white; }
-.kids-hero::after { position: absolute; top: -9rem; left: -7rem; width: 24rem; height: 24rem; border: 1px solid rgb(255 255 255 / 0.1); border-radius: 50%; content: ""; pointer-events: none; }
 .kids-hero-layout { position: relative; display: grid; min-height: clamp(45rem, 80svh, 56rem); grid-template-columns: minmax(19rem, 0.72fr) minmax(34rem, 1.28fr); align-items: center; gap: clamp(3rem, 6vw, 7rem); padding-block: clamp(5rem, 8vw, 7.5rem); }
 .kids-hero-copy { position: relative; z-index: 2; }
-.kids-hero-brand { width: clamp(8.5rem, 11vw, 11rem); margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
-.kids-hero-brand img { width: 100%; height: auto; filter: drop-shadow(0 0.75rem 1.75rem rgb(3 5 24 / 0.25)); }
-.kids-hero-copy::before { display: block; width: 100%; max-width: 20rem; height: 1px; margin-bottom: var(--space-5); background: rgb(255 255 255 / 0.24); content: ""; }
-.kids-hero-copy .eyebrow { color: #cdd3ff; }
+.kids-hero-brand { width: clamp(7.5rem, 9vw, 9.5rem); margin-bottom: var(--space-4); }
+.kids-hero-brand img { width: 100%; height: auto; filter: drop-shadow(0 0.5rem 1.25rem rgb(3 5 24 / 0.2)); }
 .kids-hero-copy h1 { display: grid; max-width: 8ch; gap: 0.055em; margin: 0; font-size: clamp(4rem, 2.2rem + 4.8vw, 7rem); font-weight: 700; letter-spacing: -0.06em; line-height: 0.88; }
 .kids-hero-copy h1 span, .kids-hero-copy h1 em { display: block; }
 .kids-hero-copy h1 em { color: #d5d9ff; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.04em; font-style: italic; font-weight: 400; letter-spacing: -0.045em; line-height: 0.82; }
@@ -1024,13 +1021,12 @@ button, input, textarea, select { font: inherit; }
   .connect-final .action-group { justify-content: center; }
   .kids-hero-layout { min-height: auto; grid-template-columns: 1fr; padding-block: var(--space-7); }
   .kids-hero-copy { max-width: 38rem; margin-inline: auto; text-align: center; }
-  .kids-hero-copy::before { margin-inline: auto; }
+  .kids-hero-brand { width: clamp(7rem, 25vw, 9rem); margin-inline: auto; }
   .kids-hero-copy h1 { max-width: 8ch; gap: 0.08em; margin-inline: auto; font-size: clamp(3.35rem, 14.5vw, 4.8rem); line-height: 0.9; }
   .kids-hero-copy h1 em { line-height: 0.86; }
   .kids-hero-copy > p { margin-inline: auto; font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
   .kids-hero-copy .action-group { justify-content: center; }
   .kids-hero-visual { width: 100%; max-width: 40rem; margin: var(--space-5) auto 0; padding: 0; }
-  .kids-hero-brand { width: clamp(8rem, 28vw, 10rem); margin-inline: auto; }
   .kids-introduction, .kids-arrival { padding-block: var(--space-8); }
   .kids-introduction-layout { grid-template-columns: 1fr; max-width: 40rem; gap: var(--space-6); }
   .kids-introduction-copy { text-align: center; }

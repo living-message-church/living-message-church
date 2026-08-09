@@ -23,7 +23,6 @@ export function KidsPage() {
                 unoptimized
               />
             </div>
-            <Eyebrow>{content.hero.eyebrow}</Eyebrow>
             <h1 id="kids-hero-title">
               <span>{content.hero.title.lead}</span>
               <em>{content.hero.title.accent}</em>
