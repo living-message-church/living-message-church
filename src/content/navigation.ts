@@ -37,7 +37,7 @@ export const primaryNavigation: NavigationItem[] = [
     ],
   },
   {
-    label: "Our Ministries",
+    label: "Connect",
     href: "/connect",
     availability: "implemented",
     children: [

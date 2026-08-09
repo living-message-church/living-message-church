@@ -17,7 +17,8 @@ function ExternalLinkIcon() {
 }
 
 export function SiteHeader() {
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const { pathname } = router;
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const mobileMenuRef = useRef<HTMLDetailsElement>(null);
@@ -45,13 +46,12 @@ export function SiteHeader() {
         <nav className="desktop-nav" aria-label="Primary navigation">
           {primaryNavigation.map((item) => {
             const current = isCurrent(item.href) || item.children?.some((child) => child.availability === "implemented" && isCurrent(child.href));
-            const isMinistriesMenu = item.label === "Our Ministries";
             if (item.children) {
               const menuOpen = openMenu === item.href;
               const menuId = `desktop-${item.label.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}-menu`;
               return (
                 <div
-                  className={`desktop-nav-group${isMinistriesMenu ? " desktop-nav-group-ministries" : ""}${menuOpen ? " is-open" : ""}`}
+                  className={`desktop-nav-group${menuOpen ? " is-open" : ""}`}
                   key={item.label}
                   onBlur={(event) => {
                     if (!event.currentTarget.contains(event.relatedTarget)) {
@@ -78,12 +78,19 @@ export function SiteHeader() {
                     aria-current={current ? "page" : undefined}
                     aria-expanded={menuOpen}
                     aria-haspopup="true"
-                    onClick={() => setOpenMenu((active) => active === item.href ? null : item.href)}
+                    onClick={() => {
+                      if (item.label === "Connect") {
+                        setOpenMenu(null);
+                        void router.push(item.href);
+                        return;
+                      }
+                      setOpenMenu((active) => active === item.href ? null : item.href);
+                    }}
                     type="button"
                   >
                     {item.label}<span className="nav-chevron" aria-hidden="true" />
                   </button>
-                  <div className={`desktop-nav-dropdown${item.children.length > 4 ? " desktop-nav-dropdown-wide" : ""}${isMinistriesMenu ? " desktop-nav-dropdown-ministries" : ""}`} id={menuId}>
+                  <div className={`desktop-nav-dropdown${item.children.length > 4 ? " desktop-nav-dropdown-wide" : ""}`} id={menuId}>
                     {item.children.map((child) => child.children ? (
                       <div
                         className={`desktop-nav-subgroup${openSubmenu === child.href ? " is-open" : ""}`}
@@ -184,7 +191,11 @@ export function SiteHeader() {
           >
             {primaryNavigation.map((item) => item.children ? (
               <div className="mobile-nav-group" key={item.label}>
-                <p>{item.label}</p>
+                {item.label === "Connect" ? (
+                  <Link className="mobile-nav-group-title" href={item.href}>{item.label}</Link>
+                ) : (
+                  <p>{item.label}</p>
+                )}
                 {item.children.map((child) => child.children ? (
                   <details className="mobile-nav-subgroup" key={`${child.label}-${child.href}`}>
                     <summary>

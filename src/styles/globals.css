@@ -108,11 +108,6 @@ button, input, textarea, select { font: inherit; }
 .desktop-nav-group.is-open > button .nav-chevron { transform: translateY(0.12rem) rotate(225deg); }
 .desktop-nav-dropdown { position: absolute; z-index: 30; top: calc(100% + 0.75rem); left: 50%; display: grid; width: 15rem; visibility: hidden; gap: 0.15rem; border: 1px solid var(--color-line); border-radius: var(--radius-sm); background: #fff; box-shadow: 0 1.25rem 3rem rgb(29 29 27 / 0.1); padding: 0.65rem; opacity: 0; transform: translate(-50%, 0.4rem); transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease; }
 .desktop-nav-dropdown-wide { width: 18rem; padding: 0.8rem; }
-.desktop-nav-dropdown-ministries { width: 20rem; padding: 1rem; }
-.desktop-nav-dropdown-ministries > a, .desktop-nav-dropdown-ministries > .desktop-nav-placeholder { position: relative; min-height: 3.1rem; justify-content: flex-start; gap: 0.8rem; padding-left: 1.9rem; font-size: 0.9rem; letter-spacing: 0; text-transform: none; }
-.desktop-nav-dropdown-ministries > a::before, .desktop-nav-dropdown-ministries > .desktop-nav-placeholder::before { position: absolute; left: 0.75rem; width: 0.42rem; height: 0.42rem; border-radius: 50%; background: var(--color-coral); content: ""; }
-.desktop-nav-dropdown-ministries > .desktop-nav-placeholder::before { background: var(--color-line-strong); }
-.desktop-nav-dropdown-ministries > .desktop-nav-placeholder > span { margin-left: auto; }
 .desktop-nav-dropdown::before { position: absolute; right: 0; bottom: 100%; left: 0; height: 0.8rem; content: ""; }
 .desktop-nav-dropdown a { display: flex; min-height: 3rem; align-items: center; border-radius: 0.35rem; padding-inline: 0.9rem; font-size: var(--step--1); font-weight: 700; letter-spacing: 0.04em; text-decoration: none; text-transform: uppercase; }
 .desktop-nav-placeholder { display: flex; min-height: 3rem; align-items: center; justify-content: space-between; gap: 0.75rem; border-radius: 0.35rem; padding-inline: 0.9rem; color: var(--color-ink-soft); font-size: var(--step--1); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
@@ -141,8 +136,9 @@ button, input, textarea, select { font: inherit; }
 .mobile-menu[open] .menu-icon span:last-child { transform: translateY(-0.485rem) rotate(-45deg); }
 .mobile-menu nav { position: absolute; top: calc(100% + 1.25rem); right: 0; width: min(22rem, calc(100vw - (var(--gutter) * 2))); border: 1px solid var(--color-line); background: var(--color-paper-bright); color: var(--color-ink); box-shadow: var(--shadow-card); padding: 1.25rem; }
 .mobile-menu nav a { display: flex; min-height: 3.25rem; align-items: center; border-bottom: 1px solid var(--color-line); padding-inline: 0.25rem; font-weight: 800; text-decoration: none; }
-.mobile-nav-group p { margin: 0; border-bottom: 1px solid var(--color-line); padding: 0.9rem 0.25rem 0.55rem; color: var(--color-ink-soft); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+.mobile-nav-group p, .mobile-nav-group-title { display: flex; min-height: 3rem; align-items: center; margin: 0; border-bottom: 1px solid var(--color-line); padding: 0.9rem 0.25rem 0.55rem !important; color: var(--color-ink-soft); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; }
 .mobile-nav-group a { padding-left: 1rem !important; }
+.mobile-nav-group > .mobile-nav-group-title { padding-left: 0.25rem !important; }
 .mobile-nav-placeholder { display: flex; min-height: 3.5rem; align-items: center; justify-content: space-between; gap: var(--space-3); border-bottom: 1px solid var(--color-line); padding: 0.75rem 0.25rem 0.75rem 1rem; color: var(--color-ink-soft); font-weight: 800; }
 .mobile-nav-placeholder small { font-size: 0.62rem; letter-spacing: 0.08em; opacity: 0.6; text-transform: uppercase; }
 .mobile-nav-subgroup summary { display: flex; width: 100%; height: auto; min-height: 3.25rem; align-items: center; gap: var(--space-3); border-bottom: 1px solid var(--color-line); padding: 0.75rem 0.25rem 0.75rem 1rem; font-weight: 800; cursor: pointer; list-style: none; }
