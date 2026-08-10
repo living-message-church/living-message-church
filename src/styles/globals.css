@@ -812,7 +812,7 @@ button, input, textarea, select { font: inherit; }
 .kids-hero { position: relative; display: grid; min-height: clamp(46rem, 82svh, 58rem); align-items: end; isolation: isolate; overflow: hidden; background: #10163d; color: white; }
 .kids-hero-image { z-index: -3; object-fit: cover; object-position: center; }
 .kids-hero-scrim { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgb(7 12 35 / 0.96) 0%, rgb(7 12 35 / 0.83) 30%, rgb(7 12 35 / 0.44) 58%, rgb(7 12 35 / 0.08) 82%), linear-gradient(180deg, rgb(7 12 35 / 0.08) 40%, rgb(7 12 35 / 0.64) 100%); }
-.kids-hero-layout { width: min(calc(100% - (clamp(2rem, 4vw, 4.5rem) * 2)), var(--container-editorial)); padding-block: clamp(4.5rem, 7vw, 6.5rem); }
+.kids-hero-layout { padding-block: clamp(4.5rem, 7vw, 6.5rem); }
 .kids-hero-copy { position: relative; z-index: 2; max-width: 38rem; }
 .kids-hero-copy > .eyebrow { color: var(--color-gold); }
 .kids-hero-copy h1 { display: grid; max-width: 8.4ch; gap: 0.035em; margin: 0; font-size: clamp(3.8rem, 2.15rem + 4.25vw, 6.55rem); font-weight: 700; letter-spacing: -0.062em; line-height: 0.9; text-wrap: balance; }

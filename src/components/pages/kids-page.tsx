@@ -20,7 +20,7 @@ export function KidsPage() {
           sizes="100vw"
         />
         <div className="kids-hero-scrim" aria-hidden="true" />
-        <Container className="kids-hero-layout" size="editorial">
+        <Container className="kids-hero-layout" size="hero">
           <div className="kids-hero-copy">
             <Eyebrow>{content.hero.eyebrow}</Eyebrow>
             <h1 id="kids-hero-title">
