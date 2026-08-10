@@ -66,7 +66,10 @@ class PlanningCenterEventSource implements EventSourceAdapter {
         : event.publicUrl;
       items.push({
         actionLabel: event.registration?.available && event.registration.url ? "Register" : "View event",
+        allDay: occurrence?.allDay ?? false,
         availability: "published",
+        description: sourced(plainText(event.description), event.publicUrl),
+        ...(occurrence?.endAt ? { endAt: sourced(occurrence.endAt, event.publicUrl) } : {}),
         id: event.id,
         image: {
           alt: artwork.alt,
@@ -74,8 +77,11 @@ class PlanningCenterEventSource implements EventSourceAdapter {
           status: artwork.source === "planning-center" ? "verified" : "approved-temporary",
         },
         ...(occurrence?.location ? { location: sourced(occurrence.location, event.publicUrl) } : {}),
+        publicUrl: sourced(event.publicUrl, event.publicUrl),
         registrationUrl: sourced(destination, event.publicUrl),
+        slug: event.slug,
         start: sourced(eventDate(event), event.publicUrl),
+        ...(occurrence?.startAt ? { startAt: sourced(occurrence.startAt, event.publicUrl) } : {}),
         summary: sourced(concise(plainText(event.description)), event.publicUrl),
         title: sourced(event.title, event.publicUrl),
       });

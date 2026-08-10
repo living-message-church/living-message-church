@@ -543,6 +543,21 @@ button, input, textarea, select { font: inherit; }
 .event-list-grid .event-location { margin-top: 0.75rem; color: var(--color-ink); font-size: 1rem; font-weight: 400; }
 .event-list-grid .event-row-action { min-height: 3.25rem; align-self: flex-start; margin-top: var(--space-5); padding-inline: 1.5rem; font-weight: 800; letter-spacing: 0.035em; text-transform: uppercase; }
 .event-list-grid .event-row-action span { display: none; }
+.event-detail { min-height: 70vh; background: var(--color-paper-bright); padding-block: clamp(2.5rem, 5vw, 5rem) clamp(6rem, 10vw, 10rem); }
+.event-detail-back { display: inline-flex; align-items: center; gap: 0.65rem; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); color: var(--color-ink); font-size: var(--step--1); font-weight: 700; text-decoration: none; }
+.event-detail-back:hover { color: var(--color-coral); }
+.event-detail-artwork { position: relative; display: grid; overflow: hidden; width: 100%; aspect-ratio: 16 / 9; place-items: center; border-radius: var(--radius-image); background: var(--color-blue); color: white; }
+.event-detail-artwork img { object-fit: cover; }
+.event-detail-artwork > span { max-width: 12ch; padding: var(--space-6); font-size: clamp(3rem, 7vw, 7rem); font-weight: 800; letter-spacing: -0.065em; line-height: 0.86; text-align: center; text-transform: uppercase; }
+.event-detail-layout { display: grid; align-items: start; grid-template-columns: minmax(0, 1fr) minmax(19rem, 0.42fr); gap: clamp(3rem, 7vw, 8rem); margin-top: clamp(3rem, 6vw, 5.5rem); }
+.event-detail-copy .eyebrow { margin-bottom: var(--space-4); color: var(--color-coral); }
+.event-detail-copy h1 { max-width: 16ch; margin: 0; font-size: clamp(3.25rem, 6vw, 6.5rem); font-weight: 800; letter-spacing: -0.07em; line-height: 0.88; text-transform: uppercase; }
+.event-detail-description { max-width: 48rem; margin: var(--space-6) 0 0; color: var(--color-ink-soft); font-size: clamp(1.08rem, 0.98rem + 0.35vw, 1.3rem); line-height: 1.62; white-space: pre-line; }
+.event-detail-facts { display: grid; gap: var(--space-4); border-radius: var(--radius-image); background: #f1f1ef; padding: clamp(1.5rem, 3vw, 2.25rem); }
+.event-detail-fact { display: grid; align-items: start; grid-template-columns: 1.5rem minmax(0, 1fr); gap: var(--space-3); color: var(--color-ink); line-height: 1.45; }
+.event-detail-fact svg { width: 1.5rem; height: 1.5rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.75; }
+.event-detail-cta { display: inline-flex; min-height: 3.5rem; align-items: center; justify-content: center; gap: 0.75rem; width: fit-content; margin-top: var(--space-3); border-radius: 999px; background: var(--color-coral); color: white; padding: 0.85rem 1.5rem; font-weight: 800; text-decoration: none; }
+.event-detail-cta:hover { background: color-mix(in srgb, var(--color-coral) 88%, black); }
 .youtube-player { position: relative; overflow: hidden; width: 100%; border: 1px solid rgb(255 255 255 / 0.18); border-radius: var(--radius-image); aspect-ratio: 16 / 9; background: #080808; }
 .youtube-player iframe { position: absolute; width: 100%; height: 100%; border: 0; inset: 0; }
 .youtube-facade { position: absolute; display: grid; width: 100%; height: 100%; border: 0; place-items: center; inset: 0; overflow: hidden; background-color: #080808; background-position: center; background-size: cover; color: white; cursor: pointer; }
@@ -1167,6 +1182,9 @@ button, input, textarea, select { font: inherit; }
   .event-list-item, .event-list-empty .event-list-item { grid-template-columns: 1fr; gap: var(--space-4); }
   .event-section .event-list:not(.event-list-empty) .event-list-item { grid-template-columns: 1fr; }
   .event-list-grid { grid-template-columns: 1fr; gap: var(--space-7); }
+  .event-detail-layout { grid-template-columns: 1fr; gap: var(--space-6); }
+  .event-detail-facts { max-width: 34rem; }
+  .event-detail-copy h1 { font-size: clamp(3.35rem, 15vw, 5.25rem); }
   .event-heading { flex-wrap: wrap; }
   .events-page-hero h1 { font-size: clamp(3.75rem, 18vw, 5rem); }
   .events-page-hero-layout > p { max-width: 34rem; }

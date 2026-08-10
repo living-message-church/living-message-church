@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ChurchEvent, ContentFeedResult } from "@/types/content";
 
 export function EventCollection({
@@ -46,7 +47,7 @@ export function EventCollection({
             {event.summary.value ? <p>{event.summary.value}</p> : null}
             {event.location ? <p className="event-location">{event.location.value}</p> : null}
           </div>
-          {event.registrationUrl ? <a className="event-row-action" href={event.registrationUrl.value} target="_blank" rel="noreferrer">{actionLabel ?? event.actionLabel ?? "View event"}<span aria-hidden="true">↗</span></a> : null}
+          <Link className="event-row-action" href={`/events/${event.slug}`}>{actionLabel ?? "View event"}<span aria-hidden="true">→</span></Link>
         </article>
       ))}
     </div>

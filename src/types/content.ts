@@ -121,10 +121,16 @@ export interface Message {
 
 export interface ChurchEvent {
   id: string;
+  slug: string;
   title: SourcedValue<string>;
   summary: SourcedValue<string>;
+  description?: SourcedValue<string>;
   start?: SourcedValue<string>;
+  startAt?: SourcedValue<string>;
+  endAt?: SourcedValue<string>;
+  allDay?: boolean;
   location?: SourcedValue<string>;
+  publicUrl?: SourcedValue<string>;
   registrationUrl?: SourcedValue<string>;
   actionLabel?: "Register" | "View event";
   image?: ContentImage;
