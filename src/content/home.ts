@@ -48,7 +48,7 @@ export const homeSections: Record<string, HomepageSection> = {
   ministries: {
     id: "ministries",
     eyebrow: "Find your next step",
-    title: "Connection for every season of life.",
+    title: "There is a place for everyone.",
     body: "Discover ministry pathways evidenced on the current site while schedules, leaders, and program details are being confirmed.",
     tone: "sage",
   },
