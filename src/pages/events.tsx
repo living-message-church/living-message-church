@@ -4,7 +4,7 @@ import { EventCollection } from "@/components/events/event-collection";
 import { SiteHead } from "@/components/seo/site-head";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Eyebrow, Heading } from "@/components/ui/typography";
+import { Heading } from "@/components/ui/typography";
 import { getEventFeed } from "@/lib/events/event-source";
 
 export const getStaticProps: GetStaticProps = async () => ({
@@ -19,18 +19,13 @@ export default function EventsPage({ feed }: InferGetStaticPropsType<typeof getS
       <header className="events-page-hero">
         <Container className="events-page-hero-layout" size="editorial">
           <div>
-            <Eyebrow>{stagedPages.events.eyebrow}</Eyebrow>
             <Heading as="h1" size="display">Events</Heading>
           </div>
           <p>{stagedPages.events.intro}</p>
         </Container>
       </header>
       <Section className="events-page-list" tone="paper" containerClassName="feed-section" containerSize="editorial" labelledBy="upcoming-events-title">
-        <div className="event-section-heading">
-          <Heading id="upcoming-events-title" className="event-heading">
-            <span>Upcoming</span> <em>events</em>
-          </Heading>
-        </div>
+        <h2 className="sr-only" id="upcoming-events-title">Upcoming events</h2>
         <EventCollection feed={feed} layout="grid" />
       </Section>
     </>
