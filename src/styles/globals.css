@@ -814,7 +814,7 @@ button, input, textarea, select { font: inherit; }
 .kids-hero-scrim { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgb(7 12 35 / 0.96) 0%, rgb(7 12 35 / 0.83) 30%, rgb(7 12 35 / 0.44) 58%, rgb(7 12 35 / 0.08) 82%), linear-gradient(180deg, rgb(7 12 35 / 0.08) 40%, rgb(7 12 35 / 0.64) 100%); }
 .kids-hero-layout { padding-block: clamp(4.5rem, 7vw, 6.5rem); }
 .kids-hero-copy { position: relative; z-index: 2; max-width: 40rem; }
-.kids-hero-brand { position: relative; width: clamp(17rem, 18vw, 21rem); height: clamp(4.75rem, 5vw, 5.75rem); margin: 0 0 0.35rem clamp(-1.6rem, -1.1vw, -0.8rem); opacity: 0.99; }
+.kids-hero-brand { position: relative; width: clamp(17rem, 18vw, 21rem); height: clamp(4.75rem, 5vw, 5.75rem); margin: 0 0 clamp(1rem, 1.4vw, 1.35rem) clamp(-1.6rem, -1.1vw, -0.8rem); opacity: 0.99; }
 .kids-hero-brand img { position: absolute; top: 50%; left: 50%; display: block; width: 100%; height: auto; filter: drop-shadow(0 0.55rem 1.15rem rgb(3 5 24 / 0.24)); transform: translate(-50%, -50%) scale(1.12); }
 .kids-hero-copy h1 { display: grid; max-width: 8.4ch; gap: 0.035em; margin: 0; font-size: clamp(3.8rem, 2.15rem + 4.25vw, 6.55rem); font-weight: 700; letter-spacing: -0.062em; line-height: 0.9; text-wrap: balance; }
 .kids-hero-copy h1 span, .kids-hero-copy h1 em { display: block; }
@@ -1081,7 +1081,7 @@ button, input, textarea, select { font: inherit; }
   .kids-hero-scrim { background: linear-gradient(180deg, rgb(7 12 35 / 0.16) 0%, rgb(7 12 35 / 0.58) 45%, rgb(7 12 35 / 0.96) 100%); }
   .kids-hero-layout { width: calc(100% - 3rem); align-self: end; padding-block: var(--space-7); }
   .kids-hero-copy { max-width: 38rem; margin-inline: auto; text-align: center; }
-  .kids-hero-brand { width: clamp(15rem, 58vw, 18rem); height: clamp(4.25rem, 16vw, 5rem); margin: 0 auto 0.35rem; }
+  .kids-hero-brand { width: clamp(15rem, 58vw, 18rem); height: clamp(4.25rem, 16vw, 5rem); margin: 0 auto 1rem; }
   .kids-hero-copy h1 { max-width: 8ch; gap: 0.08em; margin-inline: auto; font-size: clamp(3.35rem, 14.5vw, 4.8rem); line-height: 0.9; }
   .kids-hero-copy h1 em { line-height: 0.86; }
   .kids-hero-copy > p { margin-inline: auto; font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
