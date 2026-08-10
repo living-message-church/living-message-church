@@ -17,7 +17,7 @@ export function UpcomingEvents({ feed }: { feed: ContentFeedResult<ChurchEvent> 
           <span>{titleLead}</span> <em>{titleAccent.join(" ")}</em>
         </Heading>
       </div>
-      <EventCollection feed={homepageFeed} headingLevel="h3" />
+      <EventCollection feed={homepageFeed} headingLevel="h3" actionLabel="Learn More" />
       {content.actions ? <div className="event-section-actions"><ActionGroup actions={content.actions} /></div> : null}
     </Section>
   );

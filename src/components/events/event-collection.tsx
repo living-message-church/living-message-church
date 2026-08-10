@@ -1,7 +1,15 @@
 import Image from "next/image";
 import type { ChurchEvent, ContentFeedResult } from "@/types/content";
 
-export function EventCollection({ feed, headingLevel = "h2" }: { feed: ContentFeedResult<ChurchEvent>; headingLevel?: "h2" | "h3" }) {
+export function EventCollection({
+  feed,
+  headingLevel = "h2",
+  actionLabel,
+}: {
+  feed: ContentFeedResult<ChurchEvent>;
+  headingLevel?: "h2" | "h3";
+  actionLabel?: string;
+}) {
   const Heading = headingLevel;
   if (feed.status === "unavailable" || feed.items.length === 0) {
     return (
@@ -36,7 +44,7 @@ export function EventCollection({ feed, headingLevel = "h2" }: { feed: ContentFe
             {event.summary.value ? <p>{event.summary.value}</p> : null}
             {event.location ? <p className="event-location">{event.location.value}</p> : null}
           </div>
-          {event.registrationUrl ? <a className="event-row-action" href={event.registrationUrl.value} target="_blank" rel="noreferrer">{event.actionLabel ?? "View event"}<span aria-hidden="true">↗</span></a> : null}
+          {event.registrationUrl ? <a className="event-row-action" href={event.registrationUrl.value} target="_blank" rel="noreferrer">{actionLabel ?? event.actionLabel ?? "View event"}<span aria-hidden="true">↗</span></a> : null}
         </article>
       ))}
     </div>
