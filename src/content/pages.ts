@@ -119,9 +119,9 @@ export const contactPageDetails = {
   detailsEyebrow: "Current contact details",
   detailsTitle: "Come by or reach out.",
   formEyebrow: "Contact form",
-  formTitle: "A secure form is coming next.",
+  formTitle: "Start a conversation.",
   formBody:
-    "No information is collected here yet. Form recipients, privacy, retention, and spam protection must be approved before launch.",
+    "Send a note to the Living Message Church team. Your reply will come directly to the email address you provide.",
   emailLabel: "Email the church instead",
 };
 
