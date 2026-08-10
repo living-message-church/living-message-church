@@ -31,7 +31,7 @@ export function SiteHeader() {
   };
   return (
     <header className="site-header">
-      <Container className="header-inner" size="editorial">
+      <Container className="header-inner" size="hero">
         <Link href="/" className="wordmark" aria-label={`${siteIdentity.name.value} home`}>
           <Image
             className="site-logo"

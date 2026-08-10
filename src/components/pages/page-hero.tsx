@@ -11,7 +11,7 @@ export function PageHero({ content }: { content: PageContent }) {
       className={`page-hero${image ? " page-hero-photo" : ""}`}
       style={image ? { backgroundImage: `linear-gradient(90deg, rgb(18 19 17 / 0.9), rgb(18 19 17 / 0.52)), url(${image.src})` } : undefined}
     >
-      <Container size="standard">
+      <Container size="hero">
         {content.eyebrow ? <Eyebrow>{content.eyebrow}</Eyebrow> : null}
         <Heading as="h1" size="page">{content.title}</Heading>
         <p className="lede">{content.intro}</p>

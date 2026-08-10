@@ -66,6 +66,14 @@ button, input, textarea, select { font: inherit; }
 .container-editorial { --container-max: var(--container-editorial); }
 .container-hero { --container-max: var(--container-hero); }
 .container-full { width: 100%; max-width: none; }
+
+@media (min-width: 108rem) {
+  :root {
+    --container-standard: min(88rem, 90vw);
+    --container-editorial: min(104rem, 90vw);
+    --container-hero: 90vw;
+  }
+}
 .section { position: relative; padding-block: var(--space-7); overflow: clip; }
 .section-paper { background: var(--color-paper-bright); }
 .section-ink { background: var(--color-ink); color: var(--color-paper-bright); }
