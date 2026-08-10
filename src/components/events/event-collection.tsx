@@ -45,7 +45,7 @@ export function EventCollection({
             {event.start ? <p className="event-date">{layout === "grid" ? event.start.value.replace(/^.* · Next /, "") : event.start.value}</p> : null}
             <Heading>{event.title.value}</Heading>
             {event.summary.value ? <p>{event.summary.value}</p> : null}
-            {event.location ? <p className="event-location">{event.location.value}</p> : null}
+            {layout === "grid" ? <p className="event-location">Living Message Church</p> : event.location ? <p className="event-location">{event.location.value}</p> : null}
           </div>
           <Link className="event-row-action" href={`/events/${event.slug}`}>{actionLabel ?? "View event"}<span aria-hidden="true">→</span></Link>
         </article>
