@@ -41,7 +41,7 @@ export function EventCollection({
             )}
           </div>
           <div className="event-list-copy">
-            {event.start ? <p className="event-date">{event.start.value}</p> : null}
+            {event.start ? <p className="event-date">{layout === "grid" ? event.start.value.replace(/^.* · Next /, "") : event.start.value}</p> : null}
             <Heading>{event.title.value}</Heading>
             {event.summary.value ? <p>{event.summary.value}</p> : null}
             {event.location ? <p className="event-location">{event.location.value}</p> : null}
