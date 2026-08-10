@@ -31,7 +31,7 @@ export default function EventsPage({ feed }: InferGetStaticPropsType<typeof getS
             <span>Upcoming</span> <em>events</em>
           </Heading>
         </div>
-        <EventCollection feed={feed} />
+        <EventCollection feed={feed} layout="grid" />
       </Section>
     </>
   );

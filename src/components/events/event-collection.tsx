@@ -5,10 +5,12 @@ export function EventCollection({
   feed,
   headingLevel = "h2",
   actionLabel,
+  layout = "list",
 }: {
   feed: ContentFeedResult<ChurchEvent>;
   headingLevel?: "h2" | "h3";
   actionLabel?: string;
+  layout?: "list" | "grid";
 }) {
   const Heading = headingLevel;
   if (feed.status === "unavailable" || feed.items.length === 0) {
@@ -28,7 +30,7 @@ export function EventCollection({
   }
 
   return (
-    <div className="event-list">
+    <div className={`event-list${layout === "grid" ? " event-list-grid" : ""}`}>
       {feed.items.map((event) => (
         <article className="event-list-item" key={event.id}>
           <div className={`event-list-media${event.image ? " event-list-media-image" : ""}`}>
