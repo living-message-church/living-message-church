@@ -492,11 +492,14 @@ button, input, textarea, select { font: inherit; }
 .editorial-panel p { color: var(--color-ink-soft); }
 .editorial-panel a { display: inline-flex; gap: 0.75rem; margin-top: var(--space-3); font-size: var(--step--1); font-weight: 700; letter-spacing: 0; }
 .feed-section { max-width: 72rem; }
-.events-page-list { padding-block: clamp(2rem, 3vw, 3rem) clamp(5rem, 8vw, 8rem); }
+.events-page-list { padding-block: clamp(4rem, 7vw, 7rem) clamp(5rem, 8vw, 8rem); }
 .events-page-list .feed-section { max-width: none; }
 .events-page-list .event-section-heading { margin-bottom: clamp(3rem, 6vw, 5.5rem); }
 .events-page-list .event-heading { font-size: clamp(3rem, 5.6vw, 5.75rem); line-height: 0.9; }
 .events-page-list .event-heading em { font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.08em; font-style: italic; font-weight: 400; letter-spacing: -0.055em; text-transform: none; }
+.events-page-heading { display: grid; justify-items: center; text-align: center; }
+.events-page-heading .event-heading { justify-content: center; }
+.events-page-heading > p { max-width: 48rem; margin: var(--space-4) 0 0; color: var(--color-ink-soft); font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.3rem); line-height: 1.55; text-wrap: balance; }
 .feed-empty-state { display: grid; min-height: 21rem; align-content: center; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-5); padding: clamp(2rem, 5vw, 4rem); }
 .feed-empty-state h2, .feed-empty-state h3 { max-width: 18ch; margin: 0; font-family: var(--font-display); font-size: var(--step-3); font-weight: 700; letter-spacing: -0.038em; line-height: 1; }
 .feed-empty-state p { max-width: 42rem; }

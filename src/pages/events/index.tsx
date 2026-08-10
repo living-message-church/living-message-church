@@ -17,7 +17,12 @@ export default function EventsPage({ feed }: InferGetStaticPropsType<typeof getS
       <SiteHead {...stagedPages.events.seo} />
       <PageHero content={stagedPages.events} />
       <Section className="events-page-list" tone="paper" containerClassName="feed-section" containerSize="editorial" labelledBy="upcoming-events-title">
-        <h2 className="sr-only" id="upcoming-events-title">Upcoming events</h2>
+        <div className="event-section-heading events-page-heading">
+          <h2 className="event-heading" id="upcoming-events-title">
+            <span>Upcoming</span> <em>Events</em>
+          </h2>
+          <p>Find upcoming gatherings, classes, and ways to connect.</p>
+        </div>
         <EventCollection feed={feed} layout="grid" />
       </Section>
     </>
