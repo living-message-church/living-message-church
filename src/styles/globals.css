@@ -492,10 +492,6 @@ button, input, textarea, select { font: inherit; }
 .editorial-panel p { color: var(--color-ink-soft); }
 .editorial-panel a { display: inline-flex; gap: 0.75rem; margin-top: var(--space-3); font-size: var(--step--1); font-weight: 700; letter-spacing: 0; }
 .feed-section { max-width: 72rem; }
-.events-page-hero { background: var(--color-paper-bright); padding-block: clamp(4rem, 6vw, 6rem) clamp(2rem, 3vw, 3rem); }
-.events-page-hero-layout { display: block; max-width: 54rem; text-align: center; }
-.events-page-hero h1 { margin: 0; font-size: clamp(4.25rem, 7vw, 6.75rem); font-weight: 800; letter-spacing: -0.07em; line-height: 0.82; text-transform: uppercase; }
-.events-page-hero-layout > p { max-width: 46rem; margin: var(--space-4) auto 0; color: var(--color-ink-soft); font-size: var(--step-0); line-height: 1.5; }
 .events-page-list { padding-block: clamp(2rem, 3vw, 3rem) clamp(5rem, 8vw, 8rem); }
 .events-page-list .feed-section { max-width: none; }
 .events-page-list .event-section-heading { margin-bottom: clamp(3rem, 6vw, 5.5rem); }
@@ -1186,8 +1182,6 @@ button, input, textarea, select { font: inherit; }
   .event-detail-facts { max-width: 34rem; }
   .event-detail-copy h1 { font-size: clamp(3.35rem, 15vw, 5.25rem); }
   .event-heading { flex-wrap: wrap; }
-  .events-page-hero h1 { font-size: clamp(3.75rem, 18vw, 5rem); }
-  .events-page-hero-layout > p { max-width: 34rem; }
   .event-list-media, .event-list-placeholder { max-width: none; }
   .event-row-action { width: fit-content; }
   .event-section .event-row-action { width: 100%; justify-self: stretch; }
