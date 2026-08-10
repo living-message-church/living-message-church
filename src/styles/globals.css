@@ -69,9 +69,9 @@ button, input, textarea, select { font: inherit; }
 
 @media (min-width: 108rem) {
   :root {
-    --container-standard: min(88rem, 90vw);
-    --container-editorial: min(104rem, 90vw);
-    --container-hero: 90vw;
+    --container-standard: min(84rem, 84vw);
+    --container-editorial: min(96rem, 84vw);
+    --container-hero: 84vw;
   }
 }
 .section { position: relative; padding-block: var(--space-7); overflow: clip; }

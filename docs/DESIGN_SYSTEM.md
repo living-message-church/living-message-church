@@ -50,7 +50,7 @@ Color combinations must retain WCAG AA text contrast. Blue is used for focus on 
 
 - `--space-1` through `--space-8` establish the rhythm.
 - Section padding uses fluid `--space-7`; content clusters use smaller tokens.
-- Semantic containers separate reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) canvases. At viewports wider than `108rem`, standard, editorial, and hero canvases progressively open to `88rem`, `104rem`, and `90vw` respectively.
+- Semantic containers separate reading (`48rem`), content (`64rem`), standard (`80rem`), editorial (`90rem`), hero (`96rem`), and full-bleed (`100%`) canvases. At viewports wider than `108rem`, standard, editorial, and hero canvases progressively open to `84rem`, `96rem`, and `84vw` respectively.
 - Every bounded container uses the same fluid gutter and centers within its own intentional maximum. Ultra-wide screens move the navigation and primary visual anchors outward while nested copy widths continue to protect reading comfort.
 - Shared two-column compositions use a fluid gap bounded by the existing spacing rhythm.
 - Header and footer use the editorial canvas; the homepage hero and final invitation use the hero canvas; homepage image-led sections use the editorial canvas; ordinary interior pages default to standard.
