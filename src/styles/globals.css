@@ -528,8 +528,12 @@ button, input, textarea, select { font: inherit; }
 .event-row-action:hover { background: color-mix(in srgb, var(--color-coral) 88%, black); }
 .event-list-empty .event-list-item { grid-template-columns: minmax(15rem, 28rem) minmax(0, 1fr); }
 .event-list-empty .feed-meta { margin-top: var(--space-3); }
-.event-section-actions { display: flex; justify-content: center; }
-.event-section-actions .action-group { margin-top: var(--space-6); }
+.event-section .event-list:not(.event-list-empty) .event-list-item { grid-template-columns: minmax(15rem, 25rem) minmax(0, 1fr) minmax(8.75rem, auto); }
+.event-section .event-list:not(.event-list-empty) .event-list-copy > p:not(.event-date, .event-location) { display: none; }
+.event-section .event-row-action { min-width: 8.75rem; justify-self: end; padding-inline: 1.5rem; }
+.event-section-actions { display: flex; justify-content: center; padding-top: clamp(2.5rem, 4vw, 4rem); }
+.event-section-actions .action-group { margin-top: 0; }
+.event-section-actions .action-link { min-height: 3.75rem; padding-inline: 2rem; font-size: 0.95rem; }
 .youtube-player { position: relative; overflow: hidden; width: 100%; border: 1px solid rgb(255 255 255 / 0.18); border-radius: var(--radius-image); aspect-ratio: 16 / 9; background: #080808; }
 .youtube-player iframe { position: absolute; width: 100%; height: 100%; border: 0; inset: 0; }
 .youtube-facade { position: absolute; display: grid; width: 100%; height: 100%; border: 0; place-items: center; inset: 0; overflow: hidden; background-color: #080808; background-position: center; background-size: cover; color: white; cursor: pointer; }
@@ -1151,12 +1155,14 @@ button, input, textarea, select { font: inherit; }
   .route-status { position: static; max-width: 36rem; }
   .editorial-panel-grid, .message-card-grid { grid-template-columns: 1fr; }
   .event-list-item, .event-list-empty .event-list-item { grid-template-columns: 1fr; gap: var(--space-4); }
+  .event-section .event-list:not(.event-list-empty) .event-list-item { grid-template-columns: 1fr; }
   .event-heading { flex-wrap: wrap; }
   .events-page-hero-layout { grid-template-columns: 1fr; gap: var(--space-5); }
   .events-page-hero h1 { font-size: clamp(4.6rem, 22vw, 8rem); }
   .events-page-hero-layout > p { max-width: 38rem; }
   .event-list-media, .event-list-placeholder { max-width: none; }
   .event-row-action { width: fit-content; }
+  .event-section .event-row-action { width: 100%; justify-self: stretch; }
   .message-library-feature, .message-library-grid { grid-template-columns: 1fr; }
   .message-library-feature-copy { order: 2; }
   .message-library-feature .youtube-player { order: 1; }
