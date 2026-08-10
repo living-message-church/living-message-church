@@ -814,7 +814,8 @@ button, input, textarea, select { font: inherit; }
 .kids-hero-scrim { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgb(7 12 35 / 0.96) 0%, rgb(7 12 35 / 0.83) 30%, rgb(7 12 35 / 0.44) 58%, rgb(7 12 35 / 0.08) 82%), linear-gradient(180deg, rgb(7 12 35 / 0.08) 40%, rgb(7 12 35 / 0.64) 100%); }
 .kids-hero-layout { padding-block: clamp(4.5rem, 7vw, 6.5rem); }
 .kids-hero-copy { position: relative; z-index: 2; max-width: 38rem; }
-.kids-hero-copy > .eyebrow { color: var(--color-gold); }
+.kids-hero-brand { width: clamp(8.5rem, 9.5vw, 11rem); margin-bottom: clamp(1.5rem, 2.5vw, 2.25rem); opacity: 0.98; }
+.kids-hero-brand img { display: block; width: 100%; height: auto; filter: drop-shadow(0 0.4rem 0.9rem rgb(3 5 24 / 0.2)); }
 .kids-hero-copy h1 { display: grid; max-width: 8.4ch; gap: 0.035em; margin: 0; font-size: clamp(3.8rem, 2.15rem + 4.25vw, 6.55rem); font-weight: 700; letter-spacing: -0.062em; line-height: 0.9; text-wrap: balance; }
 .kids-hero-copy h1 span, .kids-hero-copy h1 em { display: block; }
 .kids-hero-copy h1 em { color: #d7d9f4; font-family: "Iowan Old Style", Baskerville, "Times New Roman", serif; font-size: 1.02em; font-style: italic; font-weight: 400; letter-spacing: -0.042em; line-height: 0.84; }
@@ -1080,6 +1081,7 @@ button, input, textarea, select { font: inherit; }
   .kids-hero-scrim { background: linear-gradient(180deg, rgb(7 12 35 / 0.16) 0%, rgb(7 12 35 / 0.58) 45%, rgb(7 12 35 / 0.96) 100%); }
   .kids-hero-layout { width: calc(100% - 3rem); align-self: end; padding-block: var(--space-7); }
   .kids-hero-copy { max-width: 38rem; margin-inline: auto; text-align: center; }
+  .kids-hero-brand { width: clamp(8rem, 30vw, 10rem); margin-inline: auto; }
   .kids-hero-copy h1 { max-width: 8ch; gap: 0.08em; margin-inline: auto; font-size: clamp(3.35rem, 14.5vw, 4.8rem); line-height: 0.9; }
   .kids-hero-copy h1 em { line-height: 0.86; }
   .kids-hero-copy > p { margin-inline: auto; font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
