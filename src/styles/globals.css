@@ -789,7 +789,7 @@ button, input, textarea, select { font: inherit; }
 .kids-hero-copy .action-secondary { border-color: rgb(255 255 255 / 0.32); color: white; }
 .kids-hero-copy .action-secondary:hover { border-color: rgb(255 255 255 / 0.64); background: rgb(255 255 255 / 0.06); }
 
-.kids-neighborhood-intro { background: #fff; padding-block: clamp(4rem, 6vw, 6rem); }
+.kids-neighborhood-intro { background: #fff; padding: clamp(4rem, 6vw, 6rem) 0 clamp(1.5rem, 2vw, 2.5rem); }
 .kids-neighborhood-heading { display: grid; grid-template-columns: minmax(9rem, 0.3fr) minmax(22rem, 0.95fr) minmax(19rem, 0.75fr); align-items: start; gap: clamp(2rem, 4vw, 4.5rem); }
 .kids-neighborhood-heading .eyebrow { margin: 0; color: var(--color-coral); }
 .kids-neighborhood-heading h2 { max-width: 9ch; margin: 0; font-size: clamp(3.2rem, 2.2rem + 2.8vw, 5.3rem); letter-spacing: -0.06em; line-height: 0.9; }
@@ -803,6 +803,7 @@ button, input, textarea, select { font: inherit; }
 .kids-neighborhood-facts span { color: var(--color-ink-soft); font-size: var(--step--1); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
 
 .kids-district { background: #fff; padding-block: clamp(5rem, 8vw, 8rem); }
+.kids-districts .kids-district:first-child { padding-top: clamp(2.5rem, 4vw, 4rem); }
 .kids-district-mist { background: #f2f0ea; }
 .kids-district-night { background: #111636; color: white; }
 .kids-district-layout { display: grid; grid-template-columns: minmax(26rem, 1.3fr) minmax(21rem, 0.7fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); }
@@ -1047,7 +1048,7 @@ button, input, textarea, select { font: inherit; }
   .kids-hero-copy h1 em { line-height: 0.86; }
   .kids-hero-copy > p { margin-inline: auto; font-size: clamp(1.05rem, 4.5vw, 1.22rem); }
   .kids-hero-copy .action-group { justify-content: center; }
-  .kids-neighborhood-intro { padding-block: var(--space-7); }
+  .kids-neighborhood-intro { padding: var(--space-7) 0 var(--space-4); }
   .kids-visit { padding-block: var(--space-8); }
   .kids-neighborhood-heading, .kids-visit-heading { display: block; max-width: 38rem; margin-inline: auto; text-align: center; }
   .kids-neighborhood-heading h2, .kids-visit-heading h2 { margin-inline: auto; font-size: clamp(3rem, 14vw, 4.6rem); }
@@ -1056,6 +1057,7 @@ button, input, textarea, select { font: inherit; }
   .kids-neighborhood-facts li, .kids-visit-steps li { min-height: 0; padding-block: var(--space-5); text-align: center; }
   .kids-neighborhood-facts li + li, .kids-visit-steps li + li { border-top: 1px solid var(--color-line); border-left: 0; }
   .kids-district { padding-block: var(--space-8); }
+  .kids-districts .kids-district:first-child { padding-top: var(--space-5); }
   .kids-district-layout, .kids-district-layout-reverse { max-width: 42rem; gap: var(--space-6); }
   .kids-district-copy { max-width: 36rem; margin-inline: auto; text-align: center; }
   .kids-district-copy h2, .kids-district-copy > p { margin-inline: auto; }
