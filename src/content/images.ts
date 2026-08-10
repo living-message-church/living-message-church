@@ -78,6 +78,10 @@ export const pagePhotography: Record<string, ContentImage> = {
   ),
   "/messages": homePhotography.message,
   "/online-church": homePhotography.message,
+  "/events": approved(
+    "/images/connect/living-message-next-step-worship.webp",
+    "The Living Message Church congregation gathered together for worship.",
+  ),
   "/outreach": approved(
     "/images/outreach/living-message-serving-families.webp",
     "Living Message Church volunteers preparing food for local families.",
