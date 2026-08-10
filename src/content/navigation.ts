@@ -50,7 +50,6 @@ export const primaryNavigation: NavigationItem[] = [
       { label: "Marriage & Family", href: "#", availability: "planned" },
       { label: "Care", href: "#", availability: "planned" },
       { label: "Worship", href: "#", availability: "planned" },
-      { label: "Outreach", href: "/outreach", availability: "staged" },
     ],
   },
   {
