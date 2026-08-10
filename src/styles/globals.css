@@ -774,7 +774,7 @@ button, input, textarea, select { font: inherit; }
 .connect-final p { max-width: 35rem; margin: var(--space-5) 0 0; color: rgb(255 255 255 / 0.72); font-size: var(--step-1); }
 .connect-final .action-secondary { border-color: rgb(255 255 255 / 0.48); }
 
-.kids-hero { position: relative; display: grid; min-height: clamp(42rem, 76svh, 52rem); align-items: end; isolation: isolate; overflow: hidden; background: #10163d; color: white; }
+.kids-hero { position: relative; display: grid; min-height: clamp(46rem, 82svh, 58rem); align-items: end; isolation: isolate; overflow: hidden; background: #10163d; color: white; }
 .kids-hero-image { z-index: -3; object-fit: cover; object-position: center; }
 .kids-hero-scrim { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgb(7 12 35 / 0.96) 0%, rgb(7 12 35 / 0.83) 30%, rgb(7 12 35 / 0.44) 58%, rgb(7 12 35 / 0.08) 82%), linear-gradient(180deg, rgb(7 12 35 / 0.08) 40%, rgb(7 12 35 / 0.64) 100%); }
 .kids-hero-layout { width: min(calc(100% - (clamp(2rem, 4vw, 4.5rem) * 2)), var(--container-editorial)); padding-block: clamp(4.5rem, 7vw, 6.5rem); }
@@ -1039,7 +1039,7 @@ button, input, textarea, select { font: inherit; }
   .connect-final h2, .connect-final p { margin-inline: auto; }
   .connect-final h2 { margin-top: var(--space-4); font-size: clamp(3rem, 14vw, 4.6rem); }
   .connect-final .action-group { justify-content: center; }
-  .kids-hero { min-height: clamp(42rem, 145vw, 50rem); }
+  .kids-hero { min-height: clamp(46rem, 155vw, 55rem); }
   .kids-hero-image { object-position: 57% center; }
   .kids-hero-scrim { background: linear-gradient(180deg, rgb(7 12 35 / 0.16) 0%, rgb(7 12 35 / 0.58) 45%, rgb(7 12 35 / 0.96) 100%); }
   .kids-hero-layout { width: calc(100% - 3rem); align-self: end; padding-block: var(--space-7); }
