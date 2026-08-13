@@ -52,7 +52,7 @@ export function KidsPage() {
             <p>{content.gospelStudy.body}</p>
           </header>
 
-          <ol className="kids-gospel-path">
+          <ol className="kids-gospel-path" aria-label="Six principles of LM Kids Bible study" tabIndex={0}>
             {content.gospelStudy.principles.map((principle) => (
               <li className={`kids-gospel-stop kids-gospel-stop-${principle.tone}`} key={principle.title}>
                 <span>{principle.number}</span>
