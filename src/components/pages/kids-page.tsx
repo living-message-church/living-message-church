@@ -52,17 +52,17 @@ export function KidsPage() {
             <p>{content.gospelStudy.body}</p>
           </header>
 
-          <div className="kids-gospel-grid">
+          <ol className="kids-gospel-path">
             {content.gospelStudy.principles.map((principle) => (
-              <article className={`kids-gospel-card kids-gospel-card-${principle.tone}`} key={principle.title}>
+              <li className={`kids-gospel-stop kids-gospel-stop-${principle.tone}`} key={principle.title}>
                 <span>{principle.number}</span>
-                <div>
+                <div className="kids-gospel-stop-copy">
                   <h3>{principle.title}</h3>
                   <p>{principle.body}</p>
                 </div>
-              </article>
+              </li>
             ))}
-          </div>
+          </ol>
         </Container>
       </section>
 
