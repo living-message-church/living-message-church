@@ -14,7 +14,7 @@ export function PageHero({ content }: { content: PageContent }) {
       <Container size="hero">
         {content.eyebrow ? <Eyebrow>{content.eyebrow}</Eyebrow> : null}
         <Heading as="h1" size="page">{content.title}</Heading>
-        <p className="lede">{content.intro}</p>
+        {content.intro ? <p className="lede">{content.intro}</p> : null}
       </Container>
     </header>
   );

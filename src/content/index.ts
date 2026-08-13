@@ -9,6 +9,7 @@ export * from "./kids";
 export * from "./leadership";
 export * from "./messages";
 export * from "./ministries";
+export * from "./ministry-pages";
 export * from "./navigation";
 export * from "./next-steps";
 export * from "./online-church";
