@@ -78,14 +78,7 @@ export function SiteHeader() {
                     aria-current={current ? "page" : undefined}
                     aria-expanded={menuOpen}
                     aria-haspopup="true"
-                    onClick={() => {
-                      if (item.label === "Connect") {
-                        setOpenMenu(null);
-                        void router.push(item.href);
-                        return;
-                      }
-                      setOpenMenu((active) => active === item.href ? null : item.href);
-                    }}
+                    onClick={() => setOpenMenu((active) => active === item.href ? null : item.href)}
                     type="button"
                   >
                     {item.label}<span className="nav-chevron" aria-hidden="true" />
@@ -191,7 +184,7 @@ export function SiteHeader() {
           >
             {primaryNavigation.map((item) => item.children ? (
               <div className="mobile-nav-group" key={item.label}>
-                {item.label === "Connect" ? (
+                {item.availability === "implemented" && item.href !== "#" ? (
                   <Link className="mobile-nav-group-title" href={item.href}>{item.label}</Link>
                 ) : (
                   <p>{item.label}</p>

@@ -251,6 +251,36 @@ button, input, textarea, select { font: inherit; }
 .page-hero-photo .container-shell { position: relative; z-index: 1; }
 .page-hero .lede { margin: var(--space-5) 0 0; }
 
+.growth-overview { padding-block: clamp(5rem, 9vw, 9rem); }
+.growth-overview > .container-shell { display: grid; align-items: start; grid-template-columns: minmax(0, 1fr) minmax(26rem, 0.78fr); gap: clamp(3rem, 8vw, 9rem); }
+.growth-overview-copy .heading { max-width: 10ch; }
+.growth-overview-copy .lede { max-width: 42rem; margin-top: var(--space-5); color: var(--color-ink-soft); }
+.growth-facts { margin: 0; border-top: 1px solid var(--color-line); }
+.growth-facts > div { display: grid; grid-template-columns: minmax(7rem, 0.38fr) minmax(0, 1fr); gap: var(--space-4); border-bottom: 1px solid var(--color-line); padding-block: var(--space-4); }
+.growth-facts dt { color: var(--color-coral); font-size: var(--step--1); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.growth-facts dd { margin: 0; font-size: var(--step-0); font-weight: 650; line-height: 1.5; }
+.growth-curriculum, .growth-options { scroll-margin-top: 7rem; padding-block: clamp(5rem, 9vw, 9rem); }
+.growth-section-heading { display: grid; grid-template-columns: minmax(12rem, 0.34fr) minmax(0, 1fr); gap: var(--space-6); }
+.growth-section-heading .heading { max-width: 13ch; }
+.growth-section-heading .lede { max-width: 48rem; color: var(--color-ink-soft); }
+.growth-curriculum .growth-section-heading .lede { color: rgb(255 255 255 / 0.7); }
+.growth-semesters { margin-top: clamp(3.5rem, 7vw, 6rem); border-top: 1px solid rgb(255 255 255 / 0.22); }
+.growth-semesters article { display: grid; scroll-margin-top: 7rem; grid-template-columns: 3rem minmax(14rem, 0.6fr) minmax(0, 1fr); gap: var(--space-5); border-bottom: 1px solid rgb(255 255 255 / 0.22); padding-block: clamp(2rem, 4vw, 3.5rem); }
+.growth-semesters article > span { color: var(--color-gold); font-size: var(--step--1); font-weight: 800; }
+.growth-semesters article > div > p:first-child { margin: 0 0 0.65rem; color: var(--color-gold); font-size: var(--step--1); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.growth-semesters h3 { max-width: 16ch; margin: 0; font-size: var(--step-2); letter-spacing: -0.035em; line-height: 1.05; }
+.growth-semesters time { display: block; margin-bottom: var(--space-2); color: white; font-size: var(--step-0); font-weight: 700; }
+.growth-semesters small { display: block; margin-bottom: var(--space-3); color: var(--color-gold); font-weight: 750; letter-spacing: 0.04em; text-transform: uppercase; }
+.growth-semesters article > div:last-child p { max-width: 50rem; margin: 0; color: rgb(255 255 255 / 0.7); }
+.growth-class-list { margin: clamp(3rem, 7vw, 6rem) 0 0; border-top: 1px solid var(--color-line); padding: 0; list-style: none; }
+.growth-class-list li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: var(--space-4); border-bottom: 1px solid var(--color-line); padding-block: var(--space-4); }
+.growth-class-list span { color: var(--color-coral); font-size: var(--step--1); font-weight: 800; }
+.growth-class-list strong { max-width: 42rem; font-size: var(--step-1); letter-spacing: -0.025em; line-height: 1.25; }
+.growth-closing { padding-block: clamp(5rem, 9vw, 9rem); }
+.growth-closing .heading { max-width: 11ch; }
+.growth-closing .lede { max-width: 48rem; }
+.growth-closing .action-group { margin-top: var(--space-5); }
+
 .visit-page-hero { position: relative; display: grid; min-height: clamp(40rem, 78svh, 54rem); isolation: isolate; overflow: hidden; background: var(--color-ink); color: white; }
 .visit-page-hero-image { z-index: -3; object-fit: cover; object-position: center 42%; }
 .visit-page-hero-scrim { position: absolute; z-index: -2; background: linear-gradient(90deg, rgb(10 11 10 / 0.9) 0%, rgb(10 11 10 / 0.62) 52%, rgb(10 11 10 / 0.34) 100%); inset: 0; }
@@ -1047,6 +1077,9 @@ button, input, textarea, select { font: inherit; }
   .visit-kids-layout .media-frame { max-width: 42rem; }
   .next-steps-overview > .container-shell, .next-steps-class-layout, .next-steps-final-layout { grid-template-columns: 1fr; }
   .next-steps-facts { max-width: 42rem; }
+  .growth-overview > .container-shell { grid-template-columns: 1fr; }
+  .growth-facts { max-width: 44rem; }
+  .growth-semesters article { grid-template-columns: 3rem minmax(12rem, 0.55fr) minmax(0, 1fr); }
   .about-family-layout, .about-name-layout, .about-community-layout, .about-church-final-layout, .beliefs-intro-layout, .beliefs-statements-layout, .pastor-profile-layout, .pastor-story-layout, .pastor-focus-layout { grid-template-columns: 1fr; }
   .about-family-copy { max-width: 44rem; }
   .about-community-image { order: 2; }
@@ -1098,6 +1131,11 @@ button, input, textarea, select { font: inherit; }
   .connect-final h2, .connect-final p { margin-inline: auto; }
   .connect-final h2 { margin-top: var(--space-4); font-size: clamp(3rem, 14vw, 4.6rem); }
   .connect-final .action-group { justify-content: center; }
+  .growth-section-heading { grid-template-columns: 1fr; gap: var(--space-3); }
+  .growth-semesters article { grid-template-columns: 2.25rem minmax(0, 1fr); gap: var(--space-3); }
+  .growth-semesters article > div:last-child { grid-column: 2; }
+  .growth-facts > div { grid-template-columns: 1fr; gap: var(--space-2); }
+  .growth-class-list li { grid-template-columns: 2.25rem minmax(0, 1fr); }
   .kids-hero { min-height: clamp(46rem, 155vw, 55rem); }
   .kids-hero-image { object-position: 57% center; }
   .kids-hero-scrim { background: linear-gradient(180deg, rgb(7 12 35 / 0.16) 0%, rgb(7 12 35 / 0.58) 45%, rgb(7 12 35 / 0.96) 100%); }

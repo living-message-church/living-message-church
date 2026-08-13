@@ -37,15 +37,16 @@ export const primaryNavigation: NavigationItem[] = [
     ],
   },
   {
-    label: "Connect",
-    href: "/connect",
+    label: "Growth",
+    href: "/connect/groups",
     availability: "implemented",
     children: [
-      { label: "Youth", href: "/connect/youth", availability: "implemented" },
-      { label: "Groups", href: "/connect/groups", availability: "implemented" },
-      { label: "Marriage & Family", href: "#", availability: "planned" },
-      { label: "Care", href: "#", availability: "planned" },
-      { label: "Worship", href: "#", availability: "planned" },
+      { label: "Growth Groups", href: "/connect/groups", availability: "implemented" },
+      { label: "2027 Curriculum", href: "/connect/groups#curriculum", availability: "implemented" },
+      { label: "Winter · Foundations", href: "/connect/groups#foundations", availability: "implemented" },
+      { label: "Additional Winter Classes", href: "/connect/groups#winter-classes", availability: "implemented" },
+      { label: "Spring Semester", href: "/connect/groups#spring", availability: "implemented" },
+      { label: "Summer / Fall Semester", href: "/connect/groups#summer-fall", availability: "implemented" },
     ],
   },
   {

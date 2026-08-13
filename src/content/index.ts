@@ -2,6 +2,7 @@ export * from "./about-church";
 export * from "./beliefs";
 export * from "./connect";
 export * from "./events";
+export * from "./growth";
 export * from "./home";
 export * from "./images";
 export * from "./kids";
