@@ -45,7 +45,7 @@ export function SiteHeader() {
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           {primaryNavigation.map((item) => {
-            const current = isCurrent(item.href) || item.children?.some((child) => child.availability === "implemented" && isCurrent(child.href));
+            const current = pathname === item.href || item.children?.some((child) => child.availability === "implemented" && isCurrent(child.href));
             if (item.children) {
               const menuOpen = openMenu === item.href;
               const menuId = `desktop-${item.label.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}-menu`;

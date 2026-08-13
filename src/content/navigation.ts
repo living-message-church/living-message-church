@@ -41,15 +41,23 @@ export const primaryNavigation: NavigationItem[] = [
     href: "/connect",
     availability: "implemented",
     children: [
-      { label: "LMKids", href: "/lmkids", availability: "implemented" },
       { label: "Youth", href: "/connect/youth", availability: "implemented" },
-      { label: "Young Adults", href: "/connect/young-adults", availability: "implemented" },
-      { label: "Men", href: "#", availability: "planned" },
-      { label: "Women", href: "#", availability: "planned" },
       { label: "Groups", href: "/connect/groups", availability: "implemented" },
       { label: "Marriage & Family", href: "#", availability: "planned" },
       { label: "Care", href: "#", availability: "planned" },
       { label: "Worship", href: "#", availability: "planned" },
+    ],
+  },
+  {
+    label: "Ministries",
+    href: "#ministries",
+    availability: "group",
+    children: [
+      { label: "Men’s", href: "#", availability: "planned" },
+      { label: "Women’s", href: "#", availability: "planned" },
+      { label: "Young Adults", href: "/connect/young-adults", availability: "implemented" },
+      { label: "Seniors", href: "#", availability: "planned" },
+      { label: "LM Kids", href: "/lmkids", availability: "implemented" },
     ],
   },
   {
