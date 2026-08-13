@@ -54,11 +54,12 @@ export const primaryNavigation: NavigationItem[] = [
     href: "#ministries",
     availability: "group",
     children: [
-      { label: "Men’s", href: "#", availability: "planned" },
-      { label: "Women’s", href: "#", availability: "planned" },
-      { label: "Young Adults", href: "/connect/young-adults", availability: "implemented" },
-      { label: "Seniors", href: "#", availability: "planned" },
       { label: "LM Kids", href: "/lmkids", availability: "implemented" },
+      { label: "CrossFit", href: "/connect/youth", availability: "implemented" },
+      { label: "Young Adults", href: "/connect/young-adults", availability: "implemented" },
+      { label: "Men", href: "#", availability: "planned" },
+      { label: "Women", href: "#", availability: "planned" },
+      { label: "Seniors", href: "#", availability: "planned" },
     ],
   },
   {
