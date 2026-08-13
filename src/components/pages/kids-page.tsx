@@ -32,6 +32,7 @@ export function KidsPage() {
                 unoptimized
               />
             </div>
+            <p className="kids-hero-age">{content.hero.ageRange}</p>
             <h1 id="kids-hero-title">
               <span>{content.hero.title.lead}</span>
               <em>{content.hero.title.accent}</em>

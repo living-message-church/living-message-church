@@ -22,6 +22,7 @@ export interface KidsPageContent {
   seo: SeoContent;
   hero: {
     eyebrow: string;
+    ageRange: string;
     title: {
       lead: string;
       accent: string;
@@ -83,6 +84,7 @@ export const kidsPageContent: KidsPageContent = {
   },
   hero: {
     eyebrow: "LM Kids",
+    ageRange: "K5–5th Grade",
     title: {
       lead: "Big truth.",
       accent: "Bright",
