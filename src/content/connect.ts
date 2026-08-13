@@ -46,7 +46,7 @@ export const connectPageContent: ConnectPageContent = {
     path: "/connect",
     title: "Connect | Living Message Church",
     description:
-      "Explore ways to connect with Living Message Church through kids, youth, young adults, groups, and Next Steps.",
+      "Explore ways to connect with Living Message Church through LM Kids, CrossFit youth ministry, Young Adults, groups, and Next Steps.",
     // Ministry schedules, leaders, and audience details remain under verification.
     noIndex: true,
   },
@@ -97,14 +97,14 @@ export const connectPageContent: ConnectPageContent = {
     {
       id: "youth",
       number: "02",
-      title: "Youth",
+      title: "CrossFit",
       summary:
-        "Explore the current youth ministry pathway and the information available for students and families.",
+        "Explore Living Message Church’s CrossFit youth ministry pathway for students and families.",
       href: "/connect/youth",
-      linkLabel: "Explore Youth",
+      linkLabel: "Explore CrossFit",
       image: {
         src: "/images/connect/living-message-youth-gathering.webp",
-        alt: "Students gathered for youth ministry at Living Message Church.",
+        alt: "Students gathered for the CrossFit youth ministry at Living Message Church.",
         status: "approved-temporary",
         credit: `${oldSite}/wp-content/uploads/2024/12/VideoCapture_20230404-063930.jpg`,
       },

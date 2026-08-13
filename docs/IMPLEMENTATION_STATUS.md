@@ -20,7 +20,7 @@ Updated: 2026-08-07
 - Redirect validator for duplicate sources, statically missing destinations, loops, chains, ledger counts, and invalid status assumptions.
 - Lint, redirect validation, and production build pass.
 - Verification reconciliation remains explicit: the public church name and canonical YouTube source are verified; Next Steps, the user-directed Our Church identity story, the current doctrinal statement, and the current Pastor biography/history are approved for temporary use with their remaining blockers documented.
-- Priority route structures remain for About, Youth, Young Adults, Groups, Outreach, and Give. Connect and LM Kids now have dedicated visual experiences; LM Kids uses a cohesive six-district illustrated neighborhood narrative below its hero while remaining no-indexed until age groupings, safeguarding, allergies, accessibility, schedules, and ministry leadership are approved. Next Steps, Our Beliefs, Our Pastor, and Our Team have complete indexable routes sourced from their current production pages.
+- Priority route structures remain for About, CrossFit youth ministry, Young Adults, Groups, Outreach, and Give. Connect and LM Kids now have dedicated visual experiences; LM Kids uses a cohesive six-district illustrated neighborhood narrative below its hero while remaining no-indexed until age groupings, safeguarding, allergies, accessibility, schedules, and ministry leadership are approved. Next Steps, Our Beliefs, Our Pastor, and Our Team have complete indexable routes sourced from their current production pages.
 - Provider-neutral message and event adapters added with deterministic unavailable-source fallbacks and no fabricated records.
 - `/messages`, `/online-church`, `/events`, and the homepage event section now consume normalized adapter results.
 - `/online-church` is now the canonical Church Online destination: its media window embeds only a server-resolved active Live or genuinely future Upcoming video from the verified channel. When neither exists, a branded offline state replaces YouTube's “video unavailable” screen; it never substitutes a completed sermon. Past-message actions route to `/messages`; `/messages/live` redirects permanently to the production-authoritative slug.
@@ -80,7 +80,7 @@ Updated: 2026-08-07
 - `/admin/events/creative` is a no-index, read-only preview. Generation, approval, rejection, regeneration, and concept selection remain disabled until admin authentication and authorization exist.
 - `/events` now presents the 12 strict public canonical Planning Center events in a wide, image-led editorial list with recurrence/date, public description, location, and verified Church Center actions. The homepage uses the same source and is capped at three. Both remain Planning Center GET-only; eight cleanup and one ambiguous candidate stay quarantined.
 
-- Current event cards, Youth, and Young Adults still require current record-specific or ministry-specific media; truthful fallback or approved-temporary presentation remains in place.
+- Current event cards, CrossFit youth ministry, and Young Adults still require current record-specific or ministry-specific media; truthful fallback or approved-temporary presentation remains in place.
 - Legal routes preserve the current subjects but remain interim/no-index pending legal and processor review.
 - Interactive responsive/browser QA remains pending because no in-app or extension browser was connected. All 15 requested viewport widths are source-reviewed and documented as rendered verification pending in `QA_REPORT.md`.
 

@@ -47,7 +47,7 @@ export const priorityRouteContent = {
     "Each pathway below has a dedicated route, but schedules, leaders, age ranges, and registration details remain unpublished until approved.",
     [
       { number: "01", title: "Kids", body: "A future practical guide to ages, check-in, safety, and first-visit preparation.", href: "/lmkids", linkLabel: "Open Kids" },
-      { number: "02", title: "Youth", body: "A future guide to the verified youth ministry, audience, gatherings, and leadership.", href: "/connect/youth", linkLabel: "Open Youth" },
+      { number: "02", title: "CrossFit", body: "A future guide to the verified CrossFit youth ministry, audience, gatherings, and leadership.", href: "/connect/youth", linkLabel: "Open CrossFit" },
       { number: "03", title: "Young Adults", body: "A future guide to approved young-adult connection opportunities.", href: "/connect/young-adults", linkLabel: "Open Young Adults" },
       { number: "04", title: "Groups", body: "A future directory of current, approved groups and connection rhythms.", href: "/connect/groups", linkLabel: "Open Groups" },
       { number: "05", title: "Next Steps Class", body: "A future guide to the confirmed connection, service, and growth pathway.", href: "/connect/next-steps", linkLabel: "Open Next Steps Class" },
@@ -69,10 +69,10 @@ export const priorityRouteContent = {
   ),
   youth: pending(
     "/connect/youth",
-    "Youth",
-    "Connect",
-    "A dedicated place for verified youth information.",
-    "The audit found historical youth references but no complete current ministry record.",
+    "CrossFit Youth Ministry",
+    "CrossFit",
+    "A dedicated place for the CrossFit youth ministry.",
+    "CrossFit is Living Message Church’s youth ministry. Its current audience, schedule, and leadership details remain under verification.",
     [
       { number: "01", title: "Audience", body: "Approved ages or grades are required before this route can publish." },
       { number: "02", title: "Gatherings", body: "Current cadence, location, transportation, and registration remain unconfirmed." },

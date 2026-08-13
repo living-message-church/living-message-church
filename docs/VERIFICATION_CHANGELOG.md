@@ -1,6 +1,6 @@
 # Verification changelog
 
-Updated: 2026-08-07
+Updated: 2026-08-12
 
 This log records only values marked `Verified` or `Approved for Temporary Use` in `CONTENT_VERIFICATION.md`. The user-supplied canonical YouTube Streams URL resolved the channel and recent-message metadata conflicts during this milestone; all other unresolved items remain unchanged.
 
@@ -16,6 +16,7 @@ This log records only values marked `Verified` or `Approved for Temporary Use` i
 | Pastor biography and church history | Pastor route merged into a staged Team page; Brian’s title variants, Allison’s role, and the 2004/2009 history were withheld | Brian Broadway displayed as Lead Pastor and Founder; Allison’s children’s-ministry and administrative help; current Broadway biography; 2004 Clermont move; 2009 Living Message start; expository-teaching focus | Current production `/meet-our-pastor/`, modified 2026-05-23; user directed its implementation and image reuse on 2026-08-07. Temporary publication does not resolve the Team page’s “Bishop” title variant or replace final personal approval. | `/about/pastor`; About navigation; `/meet-our-pastor/` redirect; XML sitemap |
 | Team roster, tiers, titles, order, and portraits | Staged/no-index leadership route with the complete roster withheld | Current 6-person Executive Team, 6-person Deacon tier, and 4-person Ministry Leader tier with their published titles, order, and production portraits | Current production `/the-team/`, modified 2026-07-31; user directed the modern Team implementation on 2026-08-07. Temporary publication preserves the displayed spellings while leaving filename conflicts and individual active-status approval unresolved. | `/about/leadership`; About navigation; `/the-team/` redirect; XML sitemap; typed team collection |
 | Mission partner navigation | Staged Our Missions item linked to the internal Outreach placeholder | Nested external links for Radius International, Life’s Choices, SLPFCC, Ligonier Ministries, Radical, and Campus Outreach Central Florida using the production navigation destinations | Current production navigation; user explicitly directed reuse of those URLs on 2026-08-07. Temporary publication approves the links only, not unreviewed relationship descriptions or logo use. | About → Our Missions desktop flyout and mobile disclosure navigation |
+| Youth ministry public name | Generic “Youth” label with a staged ministry page | CrossFit is Living Message Church’s youth ministry; Young Adults remains a separate ministry | User clarification on 2026-08-12. The name relationship is approved, while CrossFit ages, schedule, leadership, and operating details remain unverified. | Ministries navigation; `/connect/youth`; `/connect`; route metadata and labels |
 
 ## Reconciliation result
 
