@@ -7,6 +7,7 @@ interface KidsDistrict {
   title: string;
   body: string;
   highlights: string[];
+  principle: string;
   tone: "paper" | "mist" | "night";
   image: ContentImage;
 }
@@ -30,6 +31,17 @@ export interface KidsPageContent {
     logo: ContentImage;
     image: ContentImage;
     actions: CallToAction[];
+  };
+  gospelStudy: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    principles: Array<{
+      number: string;
+      title: string;
+      body: string;
+      tone: "navy" | "coral" | "violet" | "gold" | "sky" | "sage";
+    }>;
   };
   neighborhood: {
     eyebrow: string;
@@ -95,6 +107,50 @@ export const kidsPageContent: KidsPageContent = {
       { label: "Ask a question", href: "/contact", style: "secondary" },
     ],
   },
+  gospelStudy: {
+    eyebrow: "Every week in LM Kids",
+    title: "The gospel, made clear for growing hearts.",
+    body:
+      "Kids experience the good news of the gospel through Bible study that is rooted in Scripture, centered on Jesus, and made meaningful for where they are growing.",
+    principles: [
+      {
+        number: "01",
+        title: "Christ Centered",
+        body: "It’s all about Jesus, and every story points back to Him.",
+        tone: "navy",
+      },
+      {
+        number: "02",
+        title: "Heart Transforming",
+        body: "The gospel encourages true transformation—not simple behavior modification.",
+        tone: "coral",
+      },
+      {
+        number: "03",
+        title: "Age Aligned",
+        body: "Each LM Kids group studies the same section of Scripture in an age-aware way.",
+        tone: "violet",
+      },
+      {
+        number: "04",
+        title: "Chronological",
+        body: "Kids study the Bible’s narrative in order, from Genesis to Revelation.",
+        tone: "gold",
+      },
+      {
+        number: "05",
+        title: "Theologically Rich",
+        body: "Every session is doctrinally sound, thorough, and presented with children in mind.",
+        tone: "sky",
+      },
+      {
+        number: "06",
+        title: "Missionally Minded",
+        body: "Every session calls kids to share and live out the gospel.",
+        tone: "sage",
+      },
+    ],
+  },
   neighborhood: {
     eyebrow: "Explore the neighborhood",
     title: "One big place to grow.",
@@ -117,6 +173,7 @@ export const kidsPageContent: KidsPageContent = {
       body:
         "Bible-centered curriculum gives every Sunday a clear foundation, with each message described as pointing children to Christ.",
       highlights: ["Bible-centered curriculum", "Messages that point to Christ"],
+      principle: "Theologically Rich",
       tone: "paper",
       image: districtImage(
         "/images/kids/lm-kids-district-local-school.webp",
@@ -131,6 +188,7 @@ export const kidsPageContent: KidsPageContent = {
       body:
         "Learning and laughter belong in the same place. A welcoming environment gives children room to participate and discover together.",
       highlights: ["Learning and laughter", "A welcoming environment"],
+      principle: "Heart Transforming",
       tone: "mist",
       image: districtImage(
         "/images/kids/lm-kids-district-playground.webp",
@@ -145,6 +203,7 @@ export const kidsPageContent: KidsPageContent = {
       body:
         "LM Kids is designed with children in mind—a place where they can learn, ask questions, and enter the room with confidence.",
       highlights: ["Made for learning", "Questions are welcome"],
+      principle: "Missionally Minded",
       tone: "paper",
       image: districtImage(
         "/images/kids/lm-kids-district-skate-park.webp",
@@ -157,8 +216,9 @@ export const kidsPageContent: KidsPageContent = {
       label: "Community Garden",
       title: "Faith grows together.",
       body:
-        "LM Kids brings clear teaching and genuine connection into the same space so children can hear truth and know they belong.",
-      highlights: ["A clear foundation", "Connection with other children"],
+        "From Genesis to Revelation, children discover how every part of the Bible belongs to one unfolding story of redemption.",
+      highlights: ["The Bible in narrative order", "One unfolding gospel story"],
+      principle: "Chronological",
       tone: "mist",
       image: districtImage(
         "/images/kids/lm-kids-district-community-garden.webp",
@@ -171,8 +231,9 @@ export const kidsPageContent: KidsPageContent = {
       label: "Home",
       title: "Families belong here, too.",
       body:
-        "LM Kids serves children through fifth grade. Exact room assignments and age groupings are being confirmed, and a team member can help when you arrive.",
-      highlights: ["Children through fifth grade", "Help finding the right room"],
+        "Each LM Kids group approaches the same Scripture in a way designed for its stage of learning. A team member can help your family find the right room when you arrive.",
+      highlights: ["Age-aware Bible study", "Help finding the right room"],
+      principle: "Age Aligned",
       tone: "paper",
       image: districtImage(
         "/images/kids/lm-kids-district-home.webp",
@@ -185,8 +246,9 @@ export const kidsPageContent: KidsPageContent = {
       label: "Café & Game Room",
       title: "Friendship has a seat.",
       body:
-        "Learning, laughter, and a welcoming environment make natural room for children to connect and enjoy Sunday together.",
-      highlights: ["Natural connection", "A warm Sunday welcome"],
+        "Every story points children back to Jesus. Learning, laughter, and friendship make natural room for that good news to be heard together.",
+      highlights: ["Every story points to Jesus", "A warm Sunday welcome"],
+      principle: "Christ Centered",
       tone: "night",
       image: districtImage(
         "/images/kids/lm-kids-district-cafe-game-room.webp",

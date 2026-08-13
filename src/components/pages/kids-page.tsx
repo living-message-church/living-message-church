@@ -43,6 +43,28 @@ export function KidsPage() {
         </Container>
       </section>
 
+      <section className="kids-gospel" aria-labelledby="kids-gospel-title">
+        <Container size="editorial">
+          <header className="kids-gospel-heading">
+            <Eyebrow>{content.gospelStudy.eyebrow}</Eyebrow>
+            <h2 id="kids-gospel-title">{content.gospelStudy.title}</h2>
+            <p>{content.gospelStudy.body}</p>
+          </header>
+
+          <div className="kids-gospel-grid">
+            {content.gospelStudy.principles.map((principle) => (
+              <article className={`kids-gospel-card kids-gospel-card-${principle.tone}`} key={principle.title}>
+                <span>{principle.number}</span>
+                <div>
+                  <h3>{principle.title}</h3>
+                  <p>{principle.body}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       <section className="kids-neighborhood-intro" aria-labelledby="kids-neighborhood-title">
         <Container size="editorial">
           <div className="kids-neighborhood-heading">
@@ -87,6 +109,7 @@ export function KidsPage() {
                   <span>{district.number}</span>
                   {district.label}
                 </p>
+                <p className="kids-district-principle">{district.principle}</p>
                 <h2 id={`kids-district-${district.id}`}>{district.title}</h2>
                 <p>{district.body}</p>
                 <ul>
